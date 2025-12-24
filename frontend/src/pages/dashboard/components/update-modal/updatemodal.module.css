@@ -1,0 +1,20 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container {
+    background: #ffffff;
+    width: 400px;
+    height: 368px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    bottom: 20px;
+    filter: drop-shadow(0 1px 2px #d3d3d3);
+    border: 1px solid #ddd;
+}

@@ -3,6 +3,7 @@ export interface InformationState {
 }
 
 export interface UtilState {
+    active: boolean,
     loading: boolean;
     hover: boolean;
     error: string;

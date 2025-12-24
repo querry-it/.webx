@@ -16,5 +16,64 @@
     position: relative;
     bottom: 20px;
     filter: drop-shadow(0 1px 2px #d3d3d3);
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-line-modal);
+    padding: 40px;
+}
+
+.box__content {
+    width: 320px;
+    height: 286px;
+}
+
+.box__content--top {
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.box__content--top span {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.box__content--mid {
+    margin: 16px 0 24px 0;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.box__content--mid span {
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: #5D5D5D;
+}
+
+.box__content--left {
+    height: 44px;
+    margin: 0 0 12px;
+    width: 100%;
+    border: none;
+    background-color: black;
+    border: 1px solid var(--color-line-modal);
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.box__content--right {
+    height: 44px;
+    border: none;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid var(--color-line-modal);
+    filter: drop-shadow(0 1px 1px var(--color-line-modal));
+    width: 100%;
+    font-weight: 600;
 }

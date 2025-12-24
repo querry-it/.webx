@@ -1,39 +1,36 @@
 import classNames from "classnames/bind";
 import styles from "./dropdown.module.css";
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-export default function DropDown({ actions, onClose, buttonRef }) {
+export default function DropDown({ actions, onClose }) {
     const wrapperRef = useRef(null);
+    const buttonRef = useRef(null);
 
-    // useEffect(() => {
-    //     const handleClickOutSide = (event: MouseEvent) => {
-    //         if (
-    //             wrapperRef.current &&
-    //             !wrapperRef.current.contains(event.target as Node) &&
-    //             buttonRef.current &&
-    //             !buttonRef.current.contains(event.target as Node)
-    //         ) {
-    //             onClose();
-    //         }
-    //     };
+    useEffect(() => {
+        const handleClickOutSide = (event: MouseEvent) => {
+            if (
+                wrapperRef.current &&
+                !wrapperRef.current.contains(event.target as Node) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target as Node)
+            ) {
+                onClose();
+            }
+        };
 
-    //     document.addEventListener("mousedown", handleClickOutSide);
+        document.addEventListener("mousedown", handleClickOutSide);
 
-    //     return () => {
-    //         document.removeEventListener("mousedown", handleClickOutSide);
-    //     };
-    // }, [onClose, buttonRef]);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutSide);
+        };
+    }, [onClose]);
 
     return (
         <div ref={wrapperRef} className={cx("dropDown")}>
             <div className={cx("item__top")}>
-                <button
-                    onClick={actions.profile}
-                    className={cx("btn")}
-                >
+                <button onClick={actions.profile} className={cx("btn")}>
                     <div className={cx("wrapper__top")}>
                         <div className={cx("avatar")}>
                             <i className="far fa-frown"></i>
@@ -47,10 +44,7 @@ export default function DropDown({ actions, onClose, buttonRef }) {
             </div>
             <hr className={cx("divider")} />
             <div className={cx("item")}>
-                <button
-                    onClick={actions.update}
-                    className={cx("btn")}
-                >
+                <button onClick={actions.update} className={cx("btn")}>
                     <div className={cx("wrapper")}>
                         <i className="far fa-frown"></i>
                         <p>Nâng cấp gói</p>
@@ -58,10 +52,7 @@ export default function DropDown({ actions, onClose, buttonRef }) {
                 </button>
             </div>
             <div className={cx("item")}>
-                <button
-                    onClick={actions.person}
-                    className={cx("btn")}
-                >
+                <button onClick={actions.person} className={cx("btn")}>
                     <div className={cx("wrapper")}>
                         <i className="far fa-frown"></i>
                         <p>Cá nhân hóa</p>
@@ -69,10 +60,7 @@ export default function DropDown({ actions, onClose, buttonRef }) {
                 </button>
             </div>
             <div className={cx("item")}>
-                <button
-                    onClick={actions.setup}
-                    className={cx("btn")}
-                >
+                <button onClick={actions.setup} className={cx("btn")}>
                     <div className={cx("wrapper")}>
                         <i className="far fa-frown"></i>
                         <p>Cài đặt</p>
@@ -81,17 +69,17 @@ export default function DropDown({ actions, onClose, buttonRef }) {
             </div>
             <hr className={cx("divider")} />
             <div className={cx("item")}>
-                <button
-                    onClick={actions.help}
-                    className={cx("btn")}
-                >
+                <button onClick={actions.help} className={cx("btn")}>
                     <div className={cx("wrapper")}>
                         <i className="far fa-frown"></i>
                         <p>Trợ giúp</p>
                     </div>
                 </button>
             </div>
-            <div className={cx("item")}>
+            <div
+                ref={buttonRef}
+                className={cx("item")}
+            >
                 <button onClick={actions.logout} className={cx("btn")}>
                     <div className={cx("wrapper")}>
                         <i className="far fa-frown"></i>

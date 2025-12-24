@@ -14,6 +14,7 @@
     --size-icon: 1.1rem;
     --font-note: 0.8rem;
     --color-line-space: #f3f3f3;
+    --color-line-modal: #cbcbcb;
 }
 
 body {
@@ -24,4 +25,3 @@ body {
 *:focus {
     outline: none;
 }
-

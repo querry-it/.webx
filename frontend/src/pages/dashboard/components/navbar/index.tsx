@@ -15,7 +15,7 @@ interface NavbarProps {
 export default function Navbar({ actions }: NavbarProps) {
     const { state, dispatch } = useEditor();
 
-     const setTooltip = (key: string, value: boolean) => {
+    const setTooltip = (key: string, value: boolean) => {
         dispatch({
             type: "SET_TOOLTIP",
             payload: { [key]: value },

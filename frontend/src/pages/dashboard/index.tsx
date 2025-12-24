@@ -2,15 +2,16 @@ import { useEditor } from "../../state/useEditor";
 import Loading from "../loading";
 import Container from "./components/container";
 import DropDown from "./components/drop-down";
-import { useRef } from "react";
+import ProfileModal from "./components/profile-modal";
+import SetupModal from "./components/setup-modal";
+import LogoutModal from "./components/logout-modal";
 
 export default function Dashboard() {
-    const buttonRef = useRef(null);
     const { state, dispatch } = useEditor();
 
-    const setDropDown = (key: string, value: boolean) => {
+    const setState = (option: string, key: string, value: boolean) => {
         dispatch({
-            type: "SET_DROPDOWN",
+            type: option,
             payload: { [key]: value },
         });
     };
@@ -21,21 +22,78 @@ export default function Dashboard() {
                 <Loading />
             ) : (
                 <Container
-                    actions={{ logout: () => setDropDown("logout", !state.dropdown["logout"]) }}
+                    actions={{
+                        logout: () => {
+                            setState(
+                                "SET_DROPDOWN",
+                                "logout",
+                                !state.dropdown["logout"]
+                            ),
+                                console.log("True");
+                        },
+                    }}
                 />
             )}
             {state.dropdown.logout && (
                 <DropDown
                     actions={{
-                        profile: () => console.log("1"),
-                        update: () => console.log("2"),
-                        person: () => console.log("3"),
-                        setup: () => console.log("4"),
-                        help: () => console.log("5"),
-                        logout: () => console.log("6"),
+                        profile: () => {
+                            setState("SET_MODAL", "profile", true),
+                                setState("SET_DROPDOWN", "logout", false);
+                        },
+                        update: () => console.log("Nâng cấp gói"),
+                        person: () => {
+                            setState("SET_MODAL", "person", true),
+                                setState("SET_DROPDOWN", "logout", false);
+                        },
+                        setup: () => {
+                            setState("SET_MODAL", "setup", true),
+                                setState("SET_DROPDOWN", "logout", false);
+                        },
+                        help: () => console.log("Trợ giúp"),
+                        logout: () => {
+                            setState("SET_MODAL", "logout", true),
+                                setState("SET_DROPDOWN", "logout", false);
+                        },
                     }}
-                    onClose={() => console.log("7")}
-                    buttonRef={buttonRef}
+                    onClose={() => {
+                        setState(
+                            "SET_DROPDOWN",
+                            "logout",
+                            !state.dropdown["logout"]
+                        );
+                        console.log("False");
+                    }}
+                />
+            )}
+            {state.modal.profile && (
+                <ProfileModal
+                    onClose={() => {
+                        setState("SET_MODAL", "profile", false);
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                />
+            )}
+            {state.modal.person && (
+                <SetupModal
+                    onClose={() => setState("SET_MODAL", "person", false)}
+                    onClick={(e) => e.stopPropagation()}
+                    value={3}
+                />
+            )}
+            {state.modal.setup && (
+                <SetupModal
+                    onClose={() => setState("SET_MODAL", "setup", false)}
+                    onClick={(e) => e.stopPropagation()}
+                    value={1}
+                />
+            )}
+            {state.modal.logout && (
+                <LogoutModal
+                    onClose={() => {
+                        setState("SET_MODAL", "logout", false);
+                    }}
+                    onClick={(e) => e.stopPropagation()}
                 />
             )}
         </>

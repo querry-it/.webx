@@ -5,6 +5,7 @@ export const initialEditorState: EditorState = {
         username: "",
     },
     util: {
+        active: false,
         loading: false,
         hover: false,
         error: "",
