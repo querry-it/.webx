@@ -6,6 +6,7 @@ const cx = classNames.bind(styles);
 
 export default function SetupModal({ onClose, onClick, value }) {
     const [index, setIndex] = useState<number>(value);
+    const [onButton, setButton] = useState<boolean>(false);
 
     return (
         <>
@@ -131,18 +132,28 @@ export default function SetupModal({ onClose, onClick, value }) {
                                 <div className={cx("global")}>
                                     <h3>Chung</h3>
                                 </div>
-                                <hr />
+
                                 <div className={cx("column")}>
-                                    <div>
-                                        <div>
-                                            <div>Giao diện</div>
-                                            <button type="button">
+                                    <div className={cx("column__top")}>
+                                        <div
+                                            className={cx(
+                                                "column__top--content"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Giao diện
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                            >
                                                 <span>Hệ thống</span>
                                                 <span>
                                                     <i
                                                         className={cx(
-                                                            "far",
-                                                            "fa-frown"
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
                                                         )}
                                                     ></i>
                                                 </span>
@@ -150,25 +161,47 @@ export default function SetupModal({ onClose, onClick, value }) {
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+
                                 <div className={cx("column")}>
-                                    <div>
-                                        <div>
-                                            <div>Màu điểm nhấn</div>
-                                            <button type="button">
-                                                <span>
-                                                    <div>
-                                                        <div>
-                                                            <div></div>
-                                                            Xanh Dương
+                                    <div className={cx("column__top")}>
+                                        <div
+                                            className={cx(
+                                                "column__top--content"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Màu điểm nhấn
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                            >
+                                                <span
+                                                    className={cx("span__text")}
+                                                >
+                                                    <div className={cx("text")}>
+                                                        <div
+                                                            className={cx(
+                                                                "text__content"
+                                                            )}
+                                                        >
+                                                            <div
+                                                                className={cx(
+                                                                    "icon"
+                                                                )}
+                                                            ></div>
+                                                            <div>
+                                                                Xanh Dương
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </span>
                                                 <span>
                                                     <i
                                                         className={cx(
-                                                            "far",
-                                                            "fa-frown"
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
                                                         )}
                                                     ></i>
                                                 </span>
@@ -176,18 +209,28 @@ export default function SetupModal({ onClose, onClick, value }) {
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+
                                 <div className={cx("column")}>
-                                    <div>
-                                        <div>
-                                            <div>Giao diện</div>
-                                            <button type="button">
-                                                <span>Dò tự động</span>
+                                    <div className={cx("column__top")}>
+                                        <div
+                                            className={cx(
+                                                "column__top--content"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Ngôn ngữ
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                            >
+                                                <span>Dò tìm tự động</span>
                                                 <span>
                                                     <i
                                                         className={cx(
-                                                            "far",
-                                                            "fa-frown"
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
                                                         )}
                                                     ></i>
                                                 </span>
@@ -195,67 +238,93 @@ export default function SetupModal({ onClose, onClick, value }) {
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+
                                 <div className={cx("speak")}>
-                                    <div>
-                                        <div>
-                                            <div>Ngôn ngữ nói</div>
-                                            <button type="button">
+                                    <div className={cx("speak__content")}>
+                                        <div
+                                            className={cx(
+                                                "speak__content--top"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Ngôn ngữ nói
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                            >
                                                 <span>Dò tự động</span>
                                                 <span>
                                                     <i
                                                         className={cx(
-                                                            "far",
-                                                            "fa-frown"
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
                                                         )}
                                                     ></i>
                                                 </span>
                                             </button>
                                         </div>
-                                        <div>
-                                            <span>
-                                                Để có kết quả tốt nhất, hãy chọn
-                                                ngôn ngữ trò chuyện chính của
-                                                bạn.
-                                            </span>
-                                            <span>
-                                                Nếu ngôn ngữ của bạn chưa có
-                                                trong danh sách, có khả năng hệ
-                                                thống
-                                            </span>
-                                            <span>
-                                                vẫn hỗ trợ ngôn ngữ này thông
-                                                qua tính năng dò tìm tự động.
-                                            </span>
+                                        <div
+                                            className={cx(
+                                                "speak__content--bottom"
+                                            )}
+                                        >
+                                            Để có kết quả tốt nhất, hãy chọn
+                                            ngôn ngữ trò chuyện chính của bạn.
+                                            Nếu ngôn ngữ của bạn chưa có trong
+                                            danh sách, có khả năng hệ thống vẫn
+                                            hỗ trợ ngôn ngữ này thông qua tính
+                                            năng dò tìm tự động.
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+
                                 <div className={cx("column")}>
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <div>Thoại</div>
-                                                <div>
-                                                    <button>
-                                                        <div>
+                                    <div className={cx("column__top")}>
+                                        <div className={cx("column__top")}>
+                                            <div
+                                                className={cx(
+                                                    "column__top--content"
+                                                )}
+                                            >
+                                                <div className={cx("title")}>
+                                                    Thoại
+                                                </div>
+                                                <div
+                                                    className={cx("button__x")}
+                                                >
+                                                    <button
+                                                        className={cx(
+                                                            "button__top"
+                                                        )}
+                                                    >
+                                                        <span>
                                                             <i
                                                                 className={cx(
-                                                                    "far",
-                                                                    "fa-frown"
+                                                                    "fa-solid",
+                                                                    "fa-play",
+                                                                    "icon__y"
                                                                 )}
                                                             ></i>
-                                                            Phát
-                                                        </div>
+                                                        </span>
+                                                        <span> Phát</span>
                                                     </button>
-                                                    <div></div>
-                                                    <button>
+                                                    <div
+                                                        className={cx("space")}
+                                                    ></div>
+                                                    <button
+                                                        className={cx(
+                                                            "button__bottom"
+                                                        )}
+                                                    >
                                                         <span>Ember</span>
                                                         <span>
                                                             <i
                                                                 className={cx(
-                                                                    "far",
-                                                                    "fa-frown"
+                                                                    "fas",
+                                                                    "fa-chevron-down",
+                                                                    "icon__x"
                                                                 )}
                                                             ></i>
                                                         </span>
@@ -265,31 +334,40 @@ export default function SetupModal({ onClose, onClick, value }) {
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+
                                 <div className={cx("private")}>
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <div>
+                                    <div className={cx("private__row")}>
+                                        <div className={cx("row__header")}>
+                                            <div
+                                                className={cx(
+                                                    "row__content--top"
+                                                )}
+                                            >
+                                                <div className={cx("title")}>
                                                     Chế độ thoại riêng biệt
                                                 </div>
-                                                <div>
-                                                    <button>
+                                                <div
+                                                    onClick={() =>
+                                                        setButton(!onButton)
+                                                    }
+                                                    className={cx("button", {
+                                                        on: onButton,
+                                                    })}
+                                                >
+                                                    <button
+                                                        className={cx(
+                                                            "button__content"
+                                                        )}
+                                                    >
                                                         <span></span>
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <span>
-                                                Duy trì ChatGPT Voice ở chế độ
-                                                toàn màn hình riêng biệt, không
-                                                có bản
-                                            </span>
-                                            <span>
-                                                ghi và hình ảnh theo thời gian
-                                                thực.
-                                            </span>
+                                        <div className={cx("row__content")}>
+                                            Duy trì ChatIZN Voice ở chế độ toàn
+                                            màn hình riêng biệt, không có bản
+                                            ghi và hình ảnh theo thời gian thực.
                                         </div>
                                     </div>
                                 </div>
