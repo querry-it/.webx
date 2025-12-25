@@ -146,6 +146,9 @@ export default function SetupModal({ onClose, onClick, value }) {
                                             <button
                                                 className={cx("button")}
                                                 type="button"
+                                                onClick={() =>
+                                                    console.log("Giao diện")
+                                                }
                                             >
                                                 <span>Hệ thống</span>
                                                 <span>
@@ -175,6 +178,9 @@ export default function SetupModal({ onClose, onClick, value }) {
                                             <button
                                                 className={cx("button")}
                                                 type="button"
+                                                onClick={() =>
+                                                    console.log("Màu điểm nhấn")
+                                                }
                                             >
                                                 <span
                                                     className={cx("span__text")}
@@ -223,6 +229,9 @@ export default function SetupModal({ onClose, onClick, value }) {
                                             <button
                                                 className={cx("button")}
                                                 type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ")
+                                                }
                                             >
                                                 <span>Dò tìm tự động</span>
                                                 <span>
@@ -252,6 +261,9 @@ export default function SetupModal({ onClose, onClick, value }) {
                                             <button
                                                 className={cx("button")}
                                                 type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ nói")
+                                                }
                                             >
                                                 <span>Dò tự động</span>
                                                 <span>
@@ -298,6 +310,9 @@ export default function SetupModal({ onClose, onClick, value }) {
                                                         className={cx(
                                                             "button__top"
                                                         )}
+                                                        onClick={() =>
+                                                            console.log("Phát")
+                                                        }
                                                     >
                                                         <span>
                                                             <i
@@ -317,6 +332,9 @@ export default function SetupModal({ onClose, onClick, value }) {
                                                         className={cx(
                                                             "button__bottom"
                                                         )}
+                                                        onClick={() =>
+                                                            console.log("Ember")
+                                                        }
                                                     >
                                                         <span>Ember</span>
                                                         <span>
@@ -347,9 +365,10 @@ export default function SetupModal({ onClose, onClick, value }) {
                                                     Chế độ thoại riêng biệt
                                                 </div>
                                                 <div
-                                                    onClick={() =>
-                                                        setButton(!onButton)
-                                                    }
+                                                    onClick={() => {
+                                                        setButton(!onButton);
+                                                        console.log("On Click");
+                                                    }}
                                                     className={cx("button", {
                                                         on: onButton,
                                                     })}
@@ -370,6 +389,294 @@ export default function SetupModal({ onClose, onClick, value }) {
                                             ghi và hình ảnh theo thời gian thực.
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        )}
+                        {index === 2 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Thông báo</h3>
+                                </div>
+                                <div className={cx("speak__x")}>
+                                    <div className={cx("speak__content")}>
+                                        <div
+                                            className={cx(
+                                                "speak__content--top"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Phản hồi
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ nói")
+                                                }
+                                            >
+                                                <span>Đẩy</span>
+                                                <span>
+                                                    <i
+                                                        className={cx(
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
+                                                        )}
+                                                    ></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            className={cx(
+                                                "speak__content--bottom"
+                                            )}
+                                        >
+                                            Nhận thông báo khi ChatIZN phản hồi
+                                            các yêu cầu mất thời gian, như
+                                            nghiên cứu hoặc tạo hình ảnh.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={cx("speak__y")}>
+                                    <div className={cx("speak__content")}>
+                                        <div
+                                            className={cx(
+                                                "speak__content--top"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Đoạn chat nhóm
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ nói")
+                                                }
+                                            >
+                                                <span>Đẩy</span>
+                                                <span>
+                                                    <i
+                                                        className={cx(
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
+                                                        )}
+                                                    ></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            className={cx(
+                                                "speak__content--bottom"
+                                            )}
+                                        >
+                                            Bạn sẽ nhận được thông báo về tin
+                                            nhắn mới từ các đoạn chat nhóm.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={cx("speak__x")}>
+                                    <div className={cx("speak__content")}>
+                                        <div
+                                            className={cx(
+                                                "speak__content--top"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Tác vụ
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ nói")
+                                                }
+                                            >
+                                                <span>
+                                                    Thông báo đẩy, Email
+                                                </span>
+                                                <span>
+                                                    <i
+                                                        className={cx(
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
+                                                        )}
+                                                    ></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            className={cx(
+                                                "speak__content--bottom"
+                                            )}
+                                        >
+                                            Nhận thông báo khi nhiệm vụ bạn đã
+                                            tạo có cập nhật. <br />
+                                            Quản lý nhiệm vụ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={cx("speak__x")}>
+                                    <div className={cx("speak__content")}>
+                                        <div
+                                            className={cx(
+                                                "speak__content--top"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Projects
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ nói")
+                                                }
+                                            >
+                                                <span>Email</span>
+                                                <span>
+                                                    <i
+                                                        className={cx(
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
+                                                        )}
+                                                    ></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            className={cx(
+                                                "speak__content--bottom"
+                                            )}
+                                        >
+                                            Nhận thông báo khi bạn nhận được
+                                            email mời tham gia một dự án <br />
+                                            chung.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={cx("speak__y")}>
+                                    <div className={cx("speak__content")}>
+                                        <div
+                                            className={cx(
+                                                "speak__content--top"
+                                            )}
+                                        >
+                                            <div className={cx("title")}>
+                                                Đề xuất
+                                            </div>
+                                            <button
+                                                className={cx("button")}
+                                                type="button"
+                                                onClick={() =>
+                                                    console.log("Ngôn ngữ nói")
+                                                }
+                                            >
+                                                <span>
+                                                    Thông báo đẩy, Email
+                                                </span>
+                                                <span>
+                                                    <i
+                                                        className={cx(
+                                                            "fas",
+                                                            "fa-chevron-down",
+                                                            "icon__x"
+                                                        )}
+                                                    ></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div
+                                            className={cx(
+                                                "speak__content--bottom"
+                                            )}
+                                        >
+                                            Nhận cập nhật về các công cụ, mẹo và
+                                            tính năng mới từ ChatIZN.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        {index === 3 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Cá nhân hóa</h3>
+                                </div>
+                                <div className={cx("box")}>
+                                    <div className={cx("box__brands")}>
+                                        <div className={cx("box__brands-x")}>
+                                            <div className={cx("box__brands--ix")}>
+                                                <i className={cx("fa-brands", "fa-itunes-note", "icon_x")}></i>
+                                            </div>
+                                        </div>
+                                        <div className={cx("box__brands-y")}>
+                                            <div className={cx("box__brands--iy")}>
+                                                <i className={cx("fa-brands", "fa-github", "icon_y")}></i>
+                                            </div>
+                                        </div>
+                                        <div className={cx("box__brands-z")}>
+                                            <div className={cx("box__brands--iz")}>
+                                                <i className={cx("fa-brands", "fa-discord", "icon_z")}></i>
+                                            </div>
+                                        </div>
+                                        <div className={cx("box__brands-t")}>
+                                            <div className={cx("box__brands--it")}>
+                                                <i className={cx("fa-brands", "fa-reddit", "icon_t")}></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={cx("box__title")}>
+                                        Thêm và quản lý các ứng dụng mà ChatGPT
+                                        có thể sử dụng trong <br />
+                                        các đoạn chat của bạn.
+                                    </div>
+                                    <div className={cx("box__button")}>
+                                        <button
+                                            className={cx("box__button--x")}
+                                        >
+                                            Khám phá ứng dụng
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className={cx("setup")}></div>
+                            </div>
+                        )}
+                        {index === 4 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Ứng dụng</h3>
+                                </div>
+                            </div>
+                        )}
+                        {index === 5 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Kiểm soát dữ liệu</h3>
+                                </div>
+                            </div>
+                        )}
+                        {index === 6 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Bảo mật</h3>
+                                </div>
+                            </div>
+                        )}
+                        {index === 7 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Quyền kiểm soát</h3>
+                                </div>
+                            </div>
+                        )}
+                        {index === 8 && (
+                            <div className={cx("container")}>
+                                <div className={cx("global")}>
+                                    <h3>Tài khoản</h3>
                                 </div>
                             </div>
                         )}
