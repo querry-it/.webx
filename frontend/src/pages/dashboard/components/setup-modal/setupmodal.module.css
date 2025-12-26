@@ -189,7 +189,7 @@
 
 .icon__x {
     font-size: 12px;
-    opacity: 70%;
+    opacity: 0.7;
 }
 
 .speak__content--top {
@@ -819,7 +819,6 @@
 .table__right .secure__login .secure__login--left {
     height: 28px;
     font-size: 16px;
-    opacity: 0.8;
     display: flex;
     align-items: center;
 }
@@ -844,7 +843,7 @@
     font-size: 13px;
     color: #8f8f8f;
     padding: 16px;
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
     border-radius: 10px;
 }
 
@@ -868,3 +867,364 @@
 /* .table__right::-webkit-scrollbar-thumb:hover {
     background: #555;
 } */
+
+.table__right .container .update__account {
+    height: 52px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table__right .update__account--left {
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.table__right .update__account .update__account--right {
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: black;
+    padding: 0 12px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.table__right .title__account {
+    height: 52px;
+    padding: 16px 0;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+}
+
+.table__right .table__account {
+    height: 220px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.table__right .table__account--x,
+.table__right .table__account--y,
+.table__right .table__account--z,
+.table__right .table__account--t,
+.table__right .table__account--xx,
+.table__right .table__account--yy {
+    display: flex;
+    gap: 8px;
+}
+
+.table__right .payment__account {
+    height: 52px;
+    width: 100%;
+    border-top: 1px solid #f3f3f3;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table__right .payment__account .payment__account--left {
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.table__right .payment__account--left .account__left--title {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.table__right .payment__account--left .account__left--content {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    color: #2964AA;
+}
+
+.table__right .payment__account .payment__account--right {
+    height: 36px;
+    padding: 0 12px;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--color-line-modal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table__right .delete__account {
+    height: 52px;
+    padding: 8px 0;
+    margin: 0 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table__right .delete__account .delete__account--left {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.table__right .delete__account .delete__account--right {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border: none;
+    background-color: transparent;
+    border: 1px solid var(--color-line-modal);
+    border-radius: 20px;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.table__right .profile__account {
+    height: 42px;
+    padding: 12px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #f3f3f3;
+    display: flex;
+    align-items: center;
+}
+
+.table__right .content__account {
+    height: 52px;
+    margin: 8px 0;
+    font-size: 13px;
+    display: flex;
+}
+
+.table__right .icon__account {
+    height: 104px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.table__right .icon__account .box__x {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table__right .icon__account .box__x .x__icon {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+    border: 1px solid var(--color-line-modal);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+
+.table__right .icon__account .box__x .x__hidden,
+.table__right .icon__account .box__x .x__note {
+    font-size: 11px;
+    color: #8f8f8f;
+}   
+
+.table__right .icon__account .box__x .x__hidden {
+    visibility: hidden;
+}
+
+.table__right .icon__account .box__y {
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table__right .icon__account .box__z {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8f8f8f;
+    gap: 5px;
+}
+
+.table__right .note__account {
+    height: 100px;
+    padding: 16px;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #e3e2e2;
+    gap: 8px;
+}
+
+
+.table__right .note__account .note__account--title {
+    font-size: 13px;
+}
+
+.table__right .note__account .note__account--content {
+    font-size: 13px;
+}
+
+.table__right .note__account .note__top {
+    height: 25%;
+}
+
+.table__right .note__account .note__bottom {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.table__right .note__account .note__bottom p {
+    margin: 0;
+    text-align: left;
+}
+
+.table__right .link__account {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.table__right .link__account .link__space {
+    padding: 12px 0;
+}
+
+.table__right .link__account .link__space .line {
+    height: 1px;
+    background-color:  #f3f3f3;
+}
+
+.table__right .link__account .link__link {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.table__right .link__account .link__world {
+    height: 30px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table__right .link__account .link__world .world__button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    border: none;
+    background-color: transparent;
+}
+
+.table__right .link__account .link__linkedin {
+    height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table__right .link__account .link__linkedin .linkedin__icon {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    gap: 8px;
+}
+
+.table__right .link__account .link__linkedin .linkedin__button,
+.table__right .link__account .link__github .github__button {
+    border: none;
+    height: 100%;
+    background-color: transparent;
+    padding: 0 12px;
+    border: 1px solid var(--color-line-modal);
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.table__right .link__account .link__github {
+    height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table__right .link__account .link__github .github__icon {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    gap: 8px;
+}
+
+.table__right .email__account {
+    height: 100px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.table__right .email__account .email__space {
+    padding: 12px 0 11px;
+}
+
+.table__right .email__account .email__space .line {
+    margin-top: 1px;
+    background-color:  #f3f3f3;
+    height: 1px;
+}
+
+.table__right .email__account .email__email {
+    height: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.table__right .email__account .email__link {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table__right .email__account .email__link .link__content,
+.table__right .email__account .email__link .link__icon {
+    font-size: 13px;
+}
+
+.table__right .tick__email {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table__right .email__account .tick__email .tick__content {
+    font-size: 13px;
+}
+
+.table__right .email__account .tick__email .tick__title {
+    font-size: 13px;
+    margin-left: 2px;
+}
