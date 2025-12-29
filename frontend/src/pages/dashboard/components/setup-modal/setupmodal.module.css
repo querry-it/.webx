@@ -1233,7 +1233,7 @@
     margin-top: 16px;
     display: grid;
     grid-template-columns: 1fr 134px;
-    grid-template-rows: 33px 45px 5px 45px repeat(4, 33px);
+    grid-template-rows: 33px 45px 5px 55px repeat(4, 33px);
     grid-template-areas: 
     "area__a area__b"
     "area__c area__c"
@@ -1586,3 +1586,4 @@
     font-weight: 600;
     color: #fff;
 }
+

@@ -4,15 +4,7 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-interface Actions {
-    logout: () => void;
-}
-
-interface NavbarProps {
-    actions: Actions;
-}
-
-export default function Navbar({ actions }: NavbarProps) {
+export default function Navbar() {
     const { state, dispatch } = useEditor();
 
     const setTooltip = (key: string, value: boolean) => {
@@ -21,6 +13,10 @@ export default function Navbar({ actions }: NavbarProps) {
             payload: { [key]: value },
         });
     };
+
+    const setState = (option: string, key: string, value: boolean | string | number) => {
+        dispatch({ type: option, payload: { [key]: value } });
+    }
 
     return (
         <>
@@ -110,7 +106,7 @@ export default function Navbar({ actions }: NavbarProps) {
                         <div
                             onMouseEnter={() => setTooltip("logout", true)}
                             onMouseLeave={() => setTooltip("logout", false)}
-                            onClick={actions.logout}
+                            onClick={() => setState("SET_DROPDOWN", "logout", !state.dropdown["logout"])}
                             className={cx("footer__end--profile")}
                         >
                             <button>

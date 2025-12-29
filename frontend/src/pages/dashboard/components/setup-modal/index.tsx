@@ -10,85 +10,46 @@ import SetupSecurity from "../setup-security";
 import SetupAccount from "../setup-account";
 import SetupPerson from "../setup-person";
 import SetupInterface from "../setup-interface";
+import { useEditor } from "../../../../state/useEditor";
 
 const cx = classNames.bind(styles);
 
-export default function SetupModal({ onClose, onClick, value }) {
-    const [index, setIndex] = useState<number>(value);
-    const [onButton, setButton] = useState<boolean>(false);
-    const [onButton1, setButton1] = useState<boolean>(false);
-    const [onButton2, setButton2] = useState<boolean>(false);
-    const [onButton3, setButton3] = useState<boolean>(false);
-    const [input1, setInput1] = useState<string>("");
-    const [input2, setInput2] = useState<string>("");
-    const [input3, setInput3] = useState<string>("");
-    const [input4, setInput4] = useState<string>("");
+export default function SetupModal() {
+    const { state, dispatch } = useEditor();
 
-    const handleInput = (e) => {
-        const { name, value } = e.target;
-
-        if (name === "input_1") setInput1(value);
-        if (name === "input_2") setInput2(value);
-        if (name === "input_3") setInput3(value);
-        if (name === "input_4") setInput4(value);
+    const setState = (option: string, key: string, value: boolean | number | null) => {
+        dispatch({ type: option, payload: { [key]: value } });
     };
 
     useEffect(() => {
-        if (
-            input1.trim() !== "" ||
-            input2.trim() !== "" ||
-            input3.trim() !== "" ||
-            input4.trim() !== ""
-        ) {
-            setButton3(true);
-        } else {
-            setButton3(false);
-        }
-    }, [input1, input2, input3, input4]);
+        if (state.modal.person) setState("SET_UTIL", "index", 3);
+        else setState("SET_UTIL", "index", 1);
+    }, [state.modal.person, state.modal.person]);
+
+    const handleOut = () => {
+        if (state.modal.person) setState("SET_MODAL", "person", false);
+        else setState("SET_MODAL", "setup", false);
+        setState("SET_UTIL", "index", null);
+    };
+
+    const StopPropagation = (e) => e.stopPropagation();
 
     return (
         <>
-            <div onClick={onClose} className={cx("modal-overlay")}>
-                <div onClick={onClick} className={cx("modal-container")}>
+            <div onClick={handleOut} className={cx("modal-overlay")}>
+                <div onClick={StopPropagation} className={cx("modal-container")}>
                     <div className={cx("table__left")}>
-                        <SetupInterface onClose={onClose} index={index} setIndexx={(x) => setIndex(x)}/>
+                        <SetupInterface />
                     </div>
                     <div className={cx("table__right")}>
-                        {index === 1 && (
-                            <SetupShared
-                                onButton={onButton}
-                                setButtonx={() => setButton(!onButton)}
-                            />
-                        )}
-                        {index === 2 && <SetupNotification />}
-                        {index === 3 && (
-                            <SetupPerson
-                                input1={input1}
-                                input2={input2}
-                                input3={input3}
-                                input4={input4}
-                                handleInput={handleInput}
-                                clear={() => {
-                                    setInput1("");
-                                    setInput2("");
-                                    setInput3("");
-                                    setInput4("");
-                                }}
-                                onButton2={onButton2}
-                                button2={() => setButton2((prev) => !prev)}
-                                onButton3={onButton3}
-                            />
-                        )}
-                        {index === 4 && <SetupApplication />}
-                        {index === 5 && <SetupData />}
-                        {index === 6 && (
-                            <SetupSecurity
-                                onButton1={onButton1}
-                                callBack1={() => setButton1(!onButton1)}
-                            />
-                        )}
-                        {index === 7 && <SetupControl />}
-                        {index === 8 && <SetupAccount />}
+                        {state.util.index === 1 && <SetupShared />}
+                        {state.util.index === 2 && <SetupNotification />}
+                        {state.util.index === 3 && <SetupPerson />}
+                        {state.util.index === 4 && <SetupApplication />}
+                        {state.util.index === 5 && <SetupData />}
+                        {state.util.index === 6 && <SetupSecurity />}
+                        {state.util.index === 7 && <SetupControl />}
+                        {state.util.index === 8 && <SetupAccount />}
                     </div>
                 </div>
             </div>

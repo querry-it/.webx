@@ -1,6 +1,7 @@
 import classNames from "classnames/bind";
 import { useState, useRef } from "react";
 import styles from "./profilemodal.module.css";
+import { useEditor } from "../../../../state/useEditor";
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,14 @@ interface Information {
     code: string;
 }
 
-export default function ProfileModal({ onClose, onClick }) {
+export default function ProfileModal() {
+
+    const { dispatch } = useEditor();
+
+    const setState = (option: string, key: string, value: boolean | string | number) => {
+        dispatch({ type: option, payload: { [key]: value }})
+    };
+
     const [active, setActive] = useState<Active>({
         name: false,
         code: false,
@@ -42,8 +50,8 @@ export default function ProfileModal({ onClose, onClick }) {
 
     return (
         <>
-            <div onClick={onClose} className={cx("modal-overlay")}>
-                <div onClick={onClick} className={cx("modal-container")}>
+            <div onClick={() => setState("SET_MODAL", "profile", false)} className={cx("modal-overlay")}>
+                <div onClick={(e) => e.stopPropagation()} className={cx("modal-container")}>
                     <div className={cx("title")}>
                         <div className={cx("title__box")}>
                             <div className={cx("title__box--line")}>
@@ -142,7 +150,7 @@ export default function ProfileModal({ onClose, onClick }) {
                         <div className={cx("submit")}>
                             <div className={cx("submit__btn")}>
                                 <button
-                                    onClick={onClose}
+                                    onClick={() => setState("SET_MODAL", "profile", false)}
                                     className={cx("no-save")}
                                 >
                                     <div>Hủy</div>

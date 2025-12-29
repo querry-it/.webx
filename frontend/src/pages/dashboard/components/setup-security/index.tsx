@@ -1,9 +1,12 @@
 import classNames from "classnames/bind";
 import styles from "../setup-modal/setupmodal.module.css";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
-export default function SetupSecurity({ onButton1,  callBack1 }) {
+export default function SetupSecurity() {
+    const [onButton1, setButton1] = useState<boolean>(false);
+
     return (
         <>
             <div className={cx("container")}>
@@ -38,10 +41,7 @@ export default function SetupSecurity({ onButton1,  callBack1 }) {
                         </div>
 
                         <div
-                            onClick={() => {
-                                // setButton1(!onButton1);
-                                callBack1
-                            }}
+                            onClick={() => setButton1(!onButton1)}
                             className={cx("button", {
                                 on: onButton1,
                             })}

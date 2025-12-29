@@ -8,19 +8,11 @@ import styles from "./container.module.css";
 
 const cx = classNames.bind(styles);
 
-interface Actions {
-    logout: () => void;
-}
-
-interface ContainerProps {
-    actions: Actions;
-}
-
-export default function Container({ actions }: ContainerProps) {
+export default function Container() {
     return (
         <>
             <div className={cx("container")}>
-                <Navbar actions={actions} />
+                <Navbar />
                 <Header />
                 <Content />
                 <ContentLeft />

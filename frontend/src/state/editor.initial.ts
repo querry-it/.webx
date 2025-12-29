@@ -9,6 +9,7 @@ export const initialEditorState: EditorState = {
         loading: false,
         hover: false,
         error: "",
+        index: null,
     },
     dropdown: {
         logout: false,

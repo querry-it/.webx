@@ -1,9 +1,12 @@
 import classNames from "classnames/bind";
 import styles from "../setup-modal/setupmodal.module.css";
+import { useState } from "react";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
-export default function SetupShared({ onButton, setButtonx }) {
+export default function SetupShared() {
+    const [onButton, setButton] = useState<boolean>(false);
+
     return (
         <>
             <div className={cx("container")}>
@@ -171,11 +174,7 @@ export default function SetupShared({ onButton, setButtonx }) {
                                     Chế độ thoại riêng biệt
                                 </div>
                                 <div
-                                    onClick={() => {
-                                        // setButton(!onButton);
-                                        setButtonx();
-                                        console.log("On Click");
-                                    }}
+                                    onClick={() => setButton(!onButton)}
                                     className={cx("button", {
                                         on: onButton,
                                     })}

@@ -7,6 +7,7 @@ export interface UtilState {
     loading: boolean;
     hover: boolean;
     error: string;
+    index: number | null;
 }
 
 export interface DropdownState {

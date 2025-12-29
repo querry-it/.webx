@@ -1,19 +1,33 @@
 import classNames from "classnames/bind";
 import styles from "../setup-modal/setupmodal.module.css";
+import { useEditor } from "../../../../state/useEditor";
 
 const cx = classNames.bind(styles);
 
-export default function SetupInterface({ onClose, index, setIndexx}) {
+export default function SetupInterface() {
+    const { state, dispatch } = useEditor()
+
+    const setState = (option: string, key: string, value: boolean | number | null) => {
+        dispatch({ type: option, payload: { [key]: value } });
+    };
+
     return (
         <>
             <div className={cx("out")}>
-                <button onClick={onClose} className={cx("out__content")}>
+                <button
+                    onClick={() => {
+                        if (state.modal.person) setState("SET_MODAL", "person", false);
+                        else setState("SET_MODAL", "setup", false);
+                        setState("SET_UTIL", "index", null);
+                    }}
+                    className={cx("out__content")}
+                >
                     X
                 </button>
             </div>
             <button
-                onClick={() => setIndexx(1)}
-                className={cx("select", { active: index === 1 })}
+                onClick={() => setState("SET_UTIL", "index", 1)}
+                className={cx("select", { active: state.util.index === 1 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -25,8 +39,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndexx(2)}
-                className={cx("select", { active: index === 2 })}
+                onClick={() => setState("SET_UTIL", "index", 2)}
+                className={cx("select", { active: state.util.index === 2 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -38,8 +52,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndexx(3)}
-                className={cx("select", { active: index === 3 })}
+                onClick={() => setState("SET_UTIL", "index", 3)}
+                className={cx("select", { active: state.util.index === 3 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -51,8 +65,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndexx(4)}
-                className={cx("select", { active: index === 4 })}
+                onClick={() => setState("SET_UTIL", "index", 4)}
+                className={cx("select", { active: state.util.index === 4 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -64,8 +78,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndexx(5)}
-                className={cx("select", { active: index === 5 })}
+                onClick={() => setState("SET_UTIL", "index", 5)}
+                className={cx("select", { active: state.util.index === 5 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -77,8 +91,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndexx(6)}
-                className={cx("select", { active: index === 6 })}
+                onClick={() => setState("SET_UTIL", "index", 6)}
+                className={cx("select", { active: state.util.index === 6 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -90,8 +104,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndexx(7)}
-                className={cx("select", { active: index === 7 })}
+                onClick={() => setState("SET_UTIL", "index", 7)}
+                className={cx("select", { active: state.util.index === 7 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
@@ -103,8 +117,8 @@ export default function SetupInterface({ onClose, index, setIndexx}) {
                 </div>
             </button>
             <button
-                onClick={() => setIndex(8)}
-                className={cx("select", { active: index === 8 })}
+                onClick={() => setState("SET_UTIL", "index", 8)}
+                className={cx("select", { active: state.util.index === 8 })}
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>

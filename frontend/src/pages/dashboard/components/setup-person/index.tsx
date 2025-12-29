@@ -1,21 +1,40 @@
 import classNames from "classnames/bind";
 import styles from "../setup-modal/setupmodal.module.css";
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
-export default function SetupPerson({
-    input1,
-    input2,
-    input3,
-    input4,
-    handleInput,
-    clear,
-    onButton2,
-    button2,
-    onButton3,
-}) {
+export default function SetupPerson() {
     const endRef = useRef(null);
+
+    const [input1, setInput1] = useState<string>("");
+    const [input2, setInput2] = useState<string>("");
+    const [input3, setInput3] = useState<string>("");
+    const [input4, setInput4] = useState<string>("");
+    const [onButton2, setButton2] = useState<boolean>(false);
+    const [onButton3, setButton3] = useState<boolean>(false);
+
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+
+        if (name === "input_1") setInput1(value);
+        if (name === "input_2") setInput2(value);
+        if (name === "input_3") setInput3(value);
+        if (name === "input_4") setInput4(value);
+    };
+
+    useEffect(() => {
+        if (
+            input1.trim() !== "" ||
+            input2.trim() !== "" ||
+            input3.trim() !== "" ||
+            input4.trim() !== ""
+        ) {
+            setButton3(true);
+        } else {
+            setButton3(false);
+        }
+    }, [input1, input2, input3, input4]);
 
     useEffect(() => {
         if (onButton2) {
@@ -245,8 +264,7 @@ export default function SetupPerson({
                     </div>
                 </div>
                 <button
-                    // onClick={() => setButton2((prev) => !prev)}
-                    onClick={button2}
+                    onClick={() => setButton2((prev) => !prev)}
                     className={cx("button__update")}
                 >
                     <div className={cx("update__title")}>Nâng cao</div>
@@ -354,13 +372,12 @@ export default function SetupPerson({
             {onButton3 && (
                 <div className={cx("sticky")}>
                     <button
-                        // onClick={() => {
-                        //     setInput1("");
-                        //     setInput2("");
-                        //     setInput3("");
-                        //     setInput4("");
-                        // }}
-                        onClick={clear()}
+                        onClick={() => {
+                            setInput1("");
+                            setInput2("");
+                            setInput3("");
+                            setInput4("");
+                        }}
                         className={cx("cancel")}
                     >
                         Hủy bỏ
