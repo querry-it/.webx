@@ -2,12 +2,17 @@ export interface InformationState {
     username: string;
 }
 
+export interface SidebarState {
+    open: boolean;
+}
+
 export interface UtilState {
     active: boolean,
     loading: boolean;
     hover: boolean;
     error: string;
     index: number | null;
+    open: boolean;
 }
 
 export interface DropdownState {
@@ -34,6 +39,7 @@ export interface ModalState {
 
 export interface EditorState {
     information: InformationState;
+    sidebar: SidebarState;
     util: UtilState;
     dropdown: DropdownState;
     tooltip: TooltipState;

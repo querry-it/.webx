@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./setupmodal.module.css";
-import { useRef, useState, useEffect } from "react";
+import { useEffect } from "react";
 import SetupShared from "../setup-shared";
 import SetupNotification from "../setup-notification";
 import SetupApplication from "../setup-application";

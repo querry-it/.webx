@@ -1,5 +1,6 @@
 .navbar {
     grid-area: navbar;
+    position: relative;
 }
 
 .header__start {
@@ -7,6 +8,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.header__start .anchor {
+    position: relative;
+}
+
+.header__start .anchor.active {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .header__end {

@@ -22,10 +22,14 @@ export default function Navbar() {
         <>
             <div className={cx("navbar")}>
                 <div className={cx("header")}>
-                    <div className={cx("header__start")}>
+                    <div className={cx("header__start", { active: state.util.open })}>
                         <div
                             onMouseEnter={() => setTooltip("logo", true)}
                             onMouseLeave={() => setTooltip("logo", false)}
+                            onClick={() => {
+                                setState("SET_UTIL", "open", !state.util["open"]),
+                                setTooltip("logo", false);
+                            }}
                             className={cx("header__start--gpt")}
                         >
                             <button>

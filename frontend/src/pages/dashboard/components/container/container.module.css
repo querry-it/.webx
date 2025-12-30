@@ -9,3 +9,15 @@
         "navbar no-content-left content no-content-right";
     height: 100vh;
 }
+
+.container.active {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 52px 1fr;
+    grid-template-columns: 250px 14px 1fr 14px;
+    grid-template-areas:
+        "navbar-x no-content-left header no-content-right"
+        "navbar-x no-content-left content no-content-right";
+    height: 100vh;
+}

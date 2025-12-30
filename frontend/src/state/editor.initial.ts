@@ -4,12 +4,16 @@ export const initialEditorState: EditorState = {
     information: {
         username: "",
     },
+    sidebar: {
+        open: false,
+    },
     util: {
         active: false,
         loading: false,
         hover: false,
         error: "",
         index: null,
+        open: false,
     },
     dropdown: {
         logout: false,
