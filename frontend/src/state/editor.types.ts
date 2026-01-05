@@ -6,6 +6,30 @@ export interface SidebarState {
     open: boolean;
 }
 
+export interface NavbarXState {
+    active: {
+        type: string | null,
+        value: string | null | number,
+    },
+    hover: {
+        type: string | null,
+        value: string | null | number,
+    },
+    project: boolean,
+    group: boolean,
+    chat: boolean,
+    open_project: boolean,
+    open_group: boolean,
+    open_chat: boolean,
+    index_project: null | boolean | number,
+    index_group: null | boolean | number,
+    index_chat: null | boolean | number,
+    list: {
+        type: string | null,
+        items: string[],
+    }
+}
+
 export interface UtilState {
     active: boolean,
     loading: boolean;
@@ -35,11 +59,13 @@ export interface ModalState {
     setup: boolean;
     help: boolean;
     logout: boolean;
+    project: boolean;
 }
 
 export interface EditorState {
     information: InformationState;
     sidebar: SidebarState;
+    navbar_x: NavbarXState;
     util: UtilState;
     dropdown: DropdownState;
     tooltip: TooltipState;

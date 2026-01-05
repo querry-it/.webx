@@ -7,18 +7,21 @@ import ContentRight from "../no-content-right/no-content-right";
 import Navbarx from "../navbar-x";
 import styles from "./container.module.css";
 import { useEditor } from "../../../../state/useEditor";
+import { useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
 export default function Container() {
     const { state, dispatch } = useEditor();
 
-    dispatch({ type: "SET_SIDEBAR", payload: { open: true }})
+    useEffect(() => {
+        dispatch({ type: "SET_SIDEBAR", payload: { open: true } });
+    }, []);
 
     return (
         <>
             <div className={cx("container", { active: state.util.open })}>
-                {!state.util.open ? <Navbar /> : <Navbarx/>}
+                {!state.util.open ? <Navbar /> : <Navbarx />}
                 <Header />
                 <Content />
                 <ContentLeft />

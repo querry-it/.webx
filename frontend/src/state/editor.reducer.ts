@@ -51,6 +51,15 @@ export function editorReducer(
                 },
             };
 
+        case "SET_NAVBAR_X":
+            return {
+                ...state,
+                navbar_x: {
+                    ...state.navbar_x,
+                    ...action.payload,
+                }
+            }
+
         default:
             return state;
     }

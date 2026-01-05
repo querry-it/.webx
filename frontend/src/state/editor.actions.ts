@@ -5,6 +5,7 @@ import type {
     TooltipState,
     ModalState,
     SidebarState,
+    NavbarXState,
 } from "./editor.types";
 
 export type EditorAction =
@@ -13,4 +14,5 @@ export type EditorAction =
     | { type: "SET_UTIL"; payload: Partial<UtilState> }
     | { type: "SET_DROPDOWN"; payload: Partial<DropdownState> }
     | { type: "SET_TOOLTIP"; payload: Partial<TooltipState> }
-    | { type: "SET_MODAL"; payload: Partial<ModalState> };
+    | { type: "SET_MODAL"; payload: Partial<ModalState> }
+    | { type: "SET_NAVBAR_X"; payload: Partial<NavbarXState> };
