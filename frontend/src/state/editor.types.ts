@@ -62,6 +62,14 @@ export interface ModalState {
     project: boolean;
 }
 
+export interface PositionState {
+    open_project: boolean,
+    project: { 
+        top: number | null,
+        left: number | null,
+    }
+}
+
 export interface EditorState {
     information: InformationState;
     sidebar: SidebarState;
@@ -70,4 +78,5 @@ export interface EditorState {
     dropdown: DropdownState;
     tooltip: TooltipState;
     modal: ModalState;
+    position: PositionState;
 }

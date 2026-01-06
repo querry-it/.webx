@@ -1,6 +1,7 @@
 .navbar-x {
     grid-area: navbar-x;
     background-color: #f9f9f9;
+    position: relative;
 }
 
 .header__start {
@@ -109,7 +110,7 @@
     background-color: #f9f9f9;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 1;
 }
 
 .content {
@@ -199,6 +200,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    /* .dropdown {
+        width: 150px;
+        height: 100px;
+        background-color: #fff;
+        position: absolute;
+        top: 35px;
+        right: -55px;
+        border-radius: 10px;
+        z-index: 2;
+        filter: drop-shadow(0 1px 2px black);
+    } */
 }
 
 .content .items:hover {
@@ -295,13 +308,15 @@
         display: flex;
         align-items: center;
         .input__icon {
-            font-size: 18px;
             color: #acacac;
             display: flex;
             justify-content: center;
             align-items: center;
             position: absolute;
             left: 25px;
+            .icon {
+                font-size: 18px;
+            }
         }
         .input__position {
             background-color: #fff;
@@ -310,6 +325,19 @@
             position: absolute;
             left: 38px;
             top: 10px;
+        }
+
+        .input__close {
+            width: 15px;
+            height: 15px;
+            background-color: #F3F3F3;
+            position: absolute;
+            right: 30px;
+            top: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         input {
@@ -345,6 +373,13 @@
                 display: flex;
                 align-items: center;
             }
+        }
+        .invest.hover,
+        .homework.hover,
+        .write.hover,
+        .health.hover,
+        .tourism.hover {
+            background-color: #F3F3F3;
         }
     }
     .note {
@@ -389,4 +424,20 @@
         color: #fff;
         font-weight: 600;
     }
+}
+
+.dropdown {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  padding: 6px;
+  min-width: 160px;
+}
+
+.item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.item:hover {
+  background: #f5f5f5;
 }

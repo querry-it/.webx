@@ -60,6 +60,15 @@ export function editorReducer(
                 }
             }
 
+        case "SET_POSITION":
+            return {
+                ...state,
+                position: {
+                    ...state.position,
+                    ...action.payload,
+                }
+            }
+
         default:
             return state;
     }

@@ -86,4 +86,11 @@ export const initialEditorState: EditorState = {
         logout: false,
         project: false,
     },
+    position: {
+        open_project: false,
+        project: {
+            top: null,
+            left: null,
+        }
+    }
 };

@@ -83,3 +83,16 @@ p {
     border: none;
     background-color: transparent;
 }
+
+
+.xyzzzzz {
+    position: absolute;
+    width: 250px;
+    height: 265px;
+    bottom: 48px;
+    left: 5px;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

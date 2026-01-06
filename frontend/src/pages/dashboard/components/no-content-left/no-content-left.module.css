@@ -1,8 +1,5 @@
 
 .no__content--left {
     grid-area: no-content-left;
-}
-
-.no__content--left {
     border-left: 1px solid var(--color-line-space);
 }
