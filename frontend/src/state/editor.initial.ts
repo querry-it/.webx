@@ -16,8 +16,11 @@ export const initialEditorState: EditorState = {
         open_project: false,
         open_group: false,
         open_chat: false,
+        open_index_project: false,
         index_project: null,
+        index_project_prev: null,
         index_group: null,
+        index_group_prev: null,
         index_chat: null,
         list: [
             {
@@ -30,6 +33,10 @@ export const initialEditorState: EditorState = {
                     "Báo cáo",
                     "May rủi",
                     "Sức khỏe",
+                    "Tâm lý",
+                    "Giáo dục",
+                    "Kinh tế",
+                    "Xã hội",
                 ],
             },
             {
@@ -54,6 +61,8 @@ export const initialEditorState: EditorState = {
                     "Golang",
                     "Rust",
                     "C++",
+                    "Ruby",
+                    "Php"
                 ],
             },
         ],

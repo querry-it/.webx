@@ -2,16 +2,25 @@ import { useRef, useState } from "react";
 import { useEditor } from "../../../../../../../state/useEditor";
 import styles from "./../../../navbar-x.module.css";
 import classNames from "classnames/bind";
-import { useFloating, offset, flip, shift, autoUpdate, useClick, useDismiss, useRole, useInteractions } from "@floating-ui/react";
+import {
+    useFloating,
+    offset,
+    flip,
+    shift,
+    autoUpdate,
+    useClick,
+    useDismiss,
+    useRole,
+    useInteractions,
+} from "@floating-ui/react";
 import { createPortal } from "react-dom";
 
 const cx = classNames.bind(styles);
 
 export default function Project() {
     const { state, dispatch } = useEditor();
-    const [indexX, setIndex] = useState<null | number>(0);
     const [open, setOpen] = useState<boolean>(false);
-    const countRef = useRef<number>(0);
+    const [openIndex, setOpenIndex] = useState<null | number>(null);
 
     const setState = (
         option: string,
@@ -29,11 +38,16 @@ export default function Project() {
         whileElementsMounted: autoUpdate,
     });
 
-    const { getReferenceProps, getFloatingProps } = useInteractions([
+    const { getFloatingProps } = useInteractions([
         useClick(context),
         useDismiss(context),
         useRole(context, { role: "menu" }),
     ]);
+
+    const handleToggle = (index: number) => {
+        // setOpenIndex((prev) => (prev === index ? null : index));
+        setState("SET_NAVBAR_X", "open_index_project", state.navbar_x.open_index_project === index ? null : index);
+    };
 
     return (
         <>
@@ -49,9 +63,7 @@ export default function Project() {
                 onMouseLeave={() => setState("SET_NAVBAR_X", "project", false)}
                 className={cx("item")}
             >
-                <div ref={refs.setReference} {...getReferenceProps()}>
-                    Dự án
-                </div>
+                <div>Dự án</div>
                 {state.navbar_x.project &&
                     (state.navbar_x.open_project ? (
                         <div>
@@ -97,52 +109,123 @@ export default function Project() {
                                     state.navbar_x.active.type === "project" &&
                                     state.navbar_x.active.value === index,
                             })}
-                            onMouseEnter={() =>
-                                setState("SET_NAVBAR_X", "index_project", index)
-                            }
-                            onMouseLeave={() =>
+                            onMouseEnter={() => {
+                                setState("SET_NAVBAR_X", "index_project", index);
+                            }}
+                            onMouseLeave={() => {
                                 setState("SET_NAVBAR_X", "index_project", null)
-                            }
+                            }}
                         >
                             <span>{value}</span>
-                            {state.navbar_x.index_project === index && (
-                                <span
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        console.log(`Setup project: ${value}`);
-                                    }}
-                                    onMouseEnter={() =>
-                                        dispatch({
-                                            type: "SET_NAVBAR_X",
-                                            payload: {
-                                                hover: {
-                                                    type: "project",
-                                                    value: index,
+                            {(state.navbar_x.index_project === index && state.navbar_x.index_project_prev !== index) && (
+                                <>
+                                    <span
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleToggle(index);
+                                            setState("SET_NAVBAR_X", "index_project_prev", index)
+                                        }}
+                                        onMouseEnter={() =>
+                                            dispatch({
+                                                type: "SET_NAVBAR_X",
+                                                payload: {
+                                                    hover: {
+                                                        type: "project",
+                                                        value: index,
+                                                    },
                                                 },
-                                            },
-                                        })
-                                    }
-                                    onMouseLeave={() =>
-                                        dispatch({
-                                            type: "SET_NAVBAR_X",
-                                            payload: {
-                                                hover: {
-                                                    type: null,
-                                                    value: null,
+                                            })
+                                        }
+                                        onMouseLeave={() =>
+                                            dispatch({
+                                                type: "SET_NAVBAR_X",
+                                                payload: {
+                                                    hover: {
+                                                        type: null,
+                                                        value: null,
+                                                    },
                                                 },
-                                            },
-                                        })
-                                    }
-                                >
-                                    <i className="fa-solid fa-ellipsis"></i>
-                                </span>
+                                            })
+                                        }
+                                    >
+                                        <i className="fa-solid fa-ellipsis"></i>
+                                    </span>
+                                    {openIndex === index &&
+                                        createPortal(
+                                            <div
+                                                ref={refs.setFloating}
+                                                {...getFloatingProps()}
+                                                className={cx(
+                                                    "dropdown__items"
+                                                )}
+                                                style={{ ...floatingStyles }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    console.log("Dropdown")
+                                                }}
+                                            >
+                                                Project
+                                            </div>,
+                                            document.body
+                                        )}
+                                </>
+                            )}
+                            {(state.navbar_x.index_project_prev === index) && (
+                                <>
+                                    <span
+                                        ref={refs.setReference}
+                                        onClick={(e) => {
+                                            e.stopPropagation(); 
+                                            handleToggle(index);
+                                            setState("SET_NAVBAR_X", "index_project_prev", null);
+                                        }}
+                                        onMouseEnter={() =>
+                                            dispatch({
+                                                type: "SET_NAVBAR_X",
+                                                payload: {
+                                                    hover: {
+                                                        type: "project",
+                                                        value: index,
+                                                    },
+                                                },
+                                            })
+                                        }
+                                        onMouseLeave={() =>
+                                            dispatch({
+                                                type: "SET_NAVBAR_X",
+                                                payload: {
+                                                    hover: {
+                                                        type: null,
+                                                        value: null,
+                                                    },
+                                                },
+                                            })
+                                        }
+                                    >
+                                        <i className="fa-solid fa-ellipsis"></i>
+                                    </span>
+                                    {openIndex === index &&
+                                        createPortal(
+                                            <div
+                                                ref={refs.setFloating}
+                                                {...getFloatingProps()}
+                                                className={cx(
+                                                    "dropdown__items"
+                                                )}
+                                                style={{ ...floatingStyles }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    console.log("Dropdown")
+                                                }}
+                                            >
+                                                Project
+                                            </div>,
+                                            document.body
+                                        )}
+                                </>
                             )}
                         </div>
                     ))}
         </>
     );
 }
-
-
-
-

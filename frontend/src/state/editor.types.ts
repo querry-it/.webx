@@ -21,8 +21,11 @@ export interface NavbarXState {
     open_project: boolean,
     open_group: boolean,
     open_chat: boolean,
+    open_index_project: null | number,
     index_project: null | boolean | number,
+    index_project_prev: null | boolean | number,
     index_group: null | boolean | number,
+    index_group_prev: null | boolean | number,
     index_chat: null | boolean | number,
     list: {
         type: string | null,

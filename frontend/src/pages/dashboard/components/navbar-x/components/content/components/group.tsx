@@ -1,11 +1,29 @@
 import { useEditor } from "../../../../../../../state/useEditor";
 import styles from "./../../../navbar-x.module.css";
 import classNames from "classnames/bind";
+import { useState } from "react";
+import {
+    useFloating,
+    offset,
+    useClick,
+    useDismiss,
+    useRole,
+    useInteractions,
+    hide,
+} from "@floating-ui/react";
+import { createPortal } from "react-dom";
 
 const cx = classNames.bind(styles);
 
 export default function Group() {
     const { state, dispatch } = useEditor();
+    const [open, setOpen] = useState<boolean>(false);
+    const [openIndex, setOpenIndex] = useState<null | number>(null);
+
+    const handleToggle = (index: number) => {
+        setOpenIndex((prev) => (prev === index ? null : index));
+        // setState("SET_NAVBAR_X", "open_index_project", state.navbar_x.open_index_project === index ? null : index)
+    };
 
     const setState = (
         option: string,
@@ -14,6 +32,21 @@ export default function Group() {
     ) => {
         dispatch({ type: option, payload: { [key]: value } });
     };
+
+    const { refs, floatingStyles, context } = useFloating({
+        open,
+        onOpenChange: setOpen,
+        placement: "bottom-start",
+        strategy: "absolute",
+        middleware: [offset(6), hide()],
+        whileElementsMounted: undefined,
+    });
+
+    const { getFloatingProps } = useInteractions([
+        useClick(context),
+        useDismiss(context),
+        useRole(context, { role: "menu" }),
+    ]);
 
     return (
         <>
@@ -75,37 +108,124 @@ export default function Group() {
                             }
                         >
                             <span>{value}</span>
-                            {state.navbar_x.index_group === index && (
-                                <span
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        console.log(`Setup group: ${value}`);
-                                    }}
-                                    onMouseEnter={() =>
-                                        dispatch({
-                                            type: "SET_NAVBAR_X",
-                                            payload: {
-                                                hover: {
-                                                    type: "group",
-                                                    value: index,
+                            {state.navbar_x.index_group === index &&
+                                state.navbar_x.index_group_prev !== index && (
+                                    <>
+                                        <span
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleToggle(index);
+                                                setState(
+                                                    "SET_NAVBAR_X",
+                                                    "index_group_prev",
+                                                    index
+                                                );
+                                            }}
+                                            onMouseEnter={() =>
+                                                dispatch({
+                                                    type: "SET_NAVBAR_X",
+                                                    payload: {
+                                                        hover: {
+                                                            type: "group",
+                                                            value: index,
+                                                        },
+                                                    },
+                                                })
+                                            }
+                                            onMouseLeave={() =>
+                                                dispatch({
+                                                    type: "SET_NAVBAR_X",
+                                                    payload: {
+                                                        hover: {
+                                                            type: null,
+                                                            value: null,
+                                                        },
+                                                    },
+                                                })
+                                            }
+                                        >
+                                            <i className="fa-solid fa-ellipsis"></i>
+                                        </span>
+                                        {state.navbar_x.open_index_project === index &&
+                                            createPortal(
+                                                <div
+                                                    ref={refs.setFloating}
+                                                    {...getFloatingProps()}
+                                                    className={cx(
+                                                        "dropdown__items"
+                                                    )}
+                                                    style={{
+                                                        ...floatingStyles,
+                                                    }}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        console.log("Dropdown");
+                                                        // setState("SET_NAVBAR_X", "open_index_project", null);
+                                                    }}
+                                                >
+                                                    Project
+                                                </div>,
+                                                document.body
+                                            )}
+                                    </>
+                                )}
+                            {state.navbar_x.index_group_prev === index && (
+                                <>
+                                    <span
+                                        ref={refs.setReference}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleToggle(index);
+                                            setState(
+                                                "SET_NAVBAR_X",
+                                                "index_group_prev",
+                                                null
+                                            );
+                                        }}
+                                        onMouseEnter={() =>
+                                            dispatch({
+                                                type: "SET_NAVBAR_X",
+                                                payload: {
+                                                    hover: {
+                                                        type: "group",
+                                                        value: index,
+                                                    },
                                                 },
-                                            },
-                                        })
-                                    }
-                                    onMouseLeave={() =>
-                                        dispatch({
-                                            type: "SET_NAVBAR_X",
-                                            payload: {
-                                                hover: {
-                                                    type: null,
-                                                    value: null,
+                                            })
+                                        }
+                                        onMouseLeave={() =>
+                                            dispatch({
+                                                type: "SET_NAVBAR_X",
+                                                payload: {
+                                                    hover: {
+                                                        type: null,
+                                                        value: null,
+                                                    },
                                                 },
-                                            },
-                                        })
-                                    }
-                                >
-                                    <i className="fa-solid fa-ellipsis"></i>
-                                </span>
+                                            })
+                                        }
+                                    >
+                                        <i className="fa-solid fa-ellipsis"></i>
+                                    </span>
+                                    {state.navbar_x.open_index_project === index &&
+                                        createPortal(
+                                            <div
+                                                ref={refs.setFloating}
+                                                {...getFloatingProps()}
+                                                className={cx(
+                                                    "dropdown__items"
+                                                )}
+                                                style={{ ...floatingStyles }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    console.log("Dropdown");
+                                                }}
+                                            >
+                                                Project
+                                            </div>,
+                                            document.body
+                                        )}
+                                </>
                             )}
                         </div>
                     ))}
