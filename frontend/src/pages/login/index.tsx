@@ -123,20 +123,19 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100" > //login__container
-            <div className="w-[500px] bg-gray-100">
-                <div className="box__title">
-                    <h3>Đăng nhập</h3>
+        <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100" >
+            <div className="w-[400px] h-[350px] bg-white rounded-[12px] overflow-hidden">
+                <div className="flex justify-center items-center w-full h-[68px] bg-blue-400 ">
+                    <h3 className="text-[20px] text-white">Đăng nhập</h3>
                 </div>
-                <div className="box__form">
+                <div className="flex flex-col items-center justify-center h-[200px] my-10">
                     <form onSubmit={handleSubmit}>
-                        <div className="form__user">
-                            <label>Tài khoản</label>
-                            <div className="user__content">
-                                <i className="fa-solid fa-user"></i>
+                        <div className="gap-10">
+                            <div className="flex items-center relative border rounded-[5px] h-[44px] hover:cursor-pointer focus-within:border-blue-500 transtition-colors">
+                                <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] text-gray-600"></i>
                                 <input
                                     type="text"
-                                    className="user__input"
+                                    className="w-[90%] ml-12 h-full outline-none border-none text-[16px] "
                                     placeholder="Nhập tài khoản..."
                                     value={user.username}
                                     onChange={(e) =>
@@ -149,7 +148,6 @@ export default function Login() {
                             </div>
                         </div>
                         <div className="form__pass">
-                            <label>Mật khẩu</label>
                             <div className="pass__content">
                                 <i className="fa-solid fa-lock"></i>
                                 <input
@@ -188,12 +186,12 @@ export default function Login() {
                         </div>
                         <div className="form__submit">
                             <button type="submit" className="submit__button">
-                                Đăng nhậpp.
+                                Đăng nhập.
                             </button>
                         </div>
                         <div className="form__register">
                             <p className="register__content">
-                                Chưa có tài khoản?.{" "}
+                                Chưa có tài khoản.{" "}
                                 <button
                                     onClick={handleRegister}
                                     className="forgot__button"
