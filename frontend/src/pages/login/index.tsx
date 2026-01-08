@@ -199,7 +199,7 @@ export default function Login() {
                                     onClick={handleRegister}
                                     className="forgot__button"
                                 >
-                                    Tạo tài khoản
+                                    Create Account
                                 </button>
                             </p>
                         </div>
