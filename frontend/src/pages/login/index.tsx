@@ -3,7 +3,6 @@ import { validationLogin } from "../../utils/validation_login";
 import { getAccessToken, setAccessToken } from "../../utils/accessToken";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./style.css";
 
 interface User {
     username: string;
@@ -124,8 +123,8 @@ export default function Login() {
     };
 
     return (
-        <div className="login__container">
-            <div className="login__box">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100" > //login__container
+            <div className="w-[500px] bg-gray-100">
                 <div className="box__title">
                     <h3>Đăng nhập</h3>
                 </div>
@@ -199,7 +198,7 @@ export default function Login() {
                                     onClick={handleRegister}
                                     className="forgot__button"
                                 >
-                                    Tạo tài khoản
+                                    Create Account
                                 </button>
                             </p>
                         </div>
