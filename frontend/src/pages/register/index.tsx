@@ -170,7 +170,7 @@ export default function Register() {
                             <p>
                                 Đã có tài khoản?.{" "}
                                 <Link className="link__back" to="/">
-                                    Quay lại
+                                    Quay lại thế giới
                                 </Link>
                             </p>
                         </div>
