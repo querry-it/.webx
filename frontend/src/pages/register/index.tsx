@@ -168,7 +168,7 @@ export default function Register() {
                         </div>
                         <div className="form__back">
                             <p>
-                                Đã có tài khoản?.{" "}
+                                Đã có tài khoản chưa?.{" "}
                                 <Link className="link__back" to="/">
                                     Quay lại thế giới
                                 </Link>
