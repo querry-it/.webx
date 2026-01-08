@@ -189,7 +189,7 @@ export default function Login() {
                         </div>
                         <div className="form__submit">
                             <button type="submit" className="submit__button">
-                                Đăng nhập
+                                Đăng nhậpp
                             </button>
                         </div>
                         <div className="form__register">
