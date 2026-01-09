@@ -22,11 +22,13 @@ export default function Login() {
     });
     const [error, setError] = useState<string>("");
     const [active, setActive] = useState<boolean>(false);
+    const userRef = useRef<HTMLInputElement>(null);
     const passRef = useRef<HTMLInputElement>(null);
     const [activeUser, setActiveUser] = useState<Active>({
         username: false,
         password: false,
-    })
+    });
+    const btnRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,8 +49,10 @@ export default function Login() {
                         ),
                     ]);
 
-                    setAccessToken(loginRes.data.accessToken);
-                    navigate("/home");
+                    if (loginRes.status === 200) {
+                        setAccessToken(loginRes.data.accessToken);
+                        navigate("/home");
+                    }
                 } else {
                     await axios.post(
                         "http://localhost:5000/auth/clear-login",
@@ -57,19 +61,15 @@ export default function Login() {
                     );
                 }
             } catch (error: any) {
-                setError(
-                    error.response?.data?.message || "Lỗi mất kết nối server..."
-                );
+                console.warn("Client refresh failed");
+                if (!error.response) {
+                    console.warn("Network error!");
+                }
             }
         };
 
         fetchData();
     }, []);
-
-    useEffect(() => {
-        console.log(activeUser.username);
-    }, [activeUser.username])
-
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -100,11 +100,23 @@ export default function Login() {
             }
         } else {
             setError(checkLogin);
-            setUser((prev) => ({
-                ...prev,
-                password: "",
-            }));
-            passRef.current?.focus();
+            if (Object.values(user).every((v) => v === "")) {
+                userRef.current?.focus();
+            } 
+            else if (user["username"].trim() === "") {
+                setUser((prev) => ({
+                    ...prev,
+                    password: "",
+                }));
+                userRef.current?.focus();
+            }
+            else {
+                setUser((prev) => ({
+                    ...prev,
+                    password: "",
+                }));
+                passRef.current?.focus();
+            }
         }
     };
 
@@ -136,6 +148,17 @@ export default function Login() {
         }
     };
 
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                btnRef.current?.click();
+            }
+        };
+        window.addEventListener("keydown", onKeyDown);
+        return () => window.removeEventListener("keydown", onKeyDown);
+    }, []);
+
     return (
         <div className="h-screen flex items-center justify-center bg-[#f0f4f9]">
             <div className="w-[450px] bg-white rounded-[12px] overflow-hidden]">
@@ -147,20 +170,42 @@ export default function Login() {
                 <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
                         <div className="mb-12">
-                            <div className={`flex items-center relative ${!activeUser.username ? "border border-[#747775]" : "border-2 border-blue-600"} rounded-[5px] h-[45px] hover:cursor-pointer`}>
-                                {!activeUser.username && <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
-                                {activeUser.username && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập tài khoản</p>}
-                                <input onFocus={() => setActiveUser((prev) => ({
-                                    ...prev,
-                                    username: true,
-                                    }))}
-                                    onBlur={() => setActiveUser((prev) => ({
-                                        ...prev,
-                                        username: false,
-                                    }))}
+                            <div
+                                className={`flex items-center relative ${
+                                    !activeUser.username
+                                        ? "border border-[#747775]"
+                                        : "border-2 border-blue-600"
+                                } rounded-[5px] h-[45px]`}
+                            >
+                                {!activeUser.username && (
+                                    <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
+                                )}
+                                {activeUser.username && (
+                                    <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">
+                                        Nhập tài khoản
+                                    </p>
+                                )}
+                                <input
+                                    onFocus={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            username: true,
+                                        }))
+                                    }
+                                    onBlur={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            username: false,
+                                        }))
+                                    }
                                     type="text"
-                                    className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
-                                    placeholder={activeUser.username ? "" : "Nhập tài khoản..."}
+                                    ref={userRef}
+                                    className="mx-[40px] w-full h-full text-[16px] focus:ml-[18px]"
+                                    placeholder={
+                                        activeUser.username
+                                            ? ""
+                                            : "Nhập tài khoản..."
+                                    }
                                     value={user.username}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -172,37 +217,57 @@ export default function Login() {
                             </div>
                         </div>
                         <div>
-                            <div className={`flex items-center relative ${!activeUser.password ? "border border-[#747775]" : "border-2 border-blue-600"} rounded-[5px] h-[45px] hover:cursor-pointer`}>
-                                {!activeUser.password && <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
-                                {activeUser.password && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
+                            <div
+                                className={`flex items-center relative ${
+                                    !activeUser.password
+                                        ? "border border-[#747775]"
+                                        : "border-2 border-blue-600"
+                                } rounded-[5px] h-[45px]`}
+                            >
+                                {!activeUser.password && (
+                                    <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
+                                )}
+                                {activeUser.password && (
+                                    <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">
+                                        Nhập mật khẩu
+                                    </p>
+                                )}
                                 <input
-                                    onFocus={() => setActiveUser((prev) => ({
-                                        ...prev,
-                                        password: true,
-                                    }))}
-                                    onBlur={() => setActiveUser((prev) => ({
-                                        ...prev,
-                                        password: false,
-                                    }))}
+                                    onFocus={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            password: true,
+                                        }))
+                                    }
+                                    onBlur={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            password: false,
+                                        }))
+                                    }
                                     type={active ? "text" : "password"}
-                                    className="ml-[44px] h-full outline-none border-none text-[16px]"
-                                    placeholder={activeUser.password ? "" : "Nhập mật khẩu..."}
+                                    className="mx-[44px] w-full h-full outline-none border-none text-[16px] focus:ml-[18px]"
+                                    placeholder={
+                                        activeUser.password
+                                            ? ""
+                                            : "Nhập mật khẩu..."
+                                    }
                                     ref={passRef}
                                     value={user.password}
                                     onChange={(e) =>
                                         setUser((prev) => ({
                                             ...prev,
-                                            password: e.target.value
+                                            password: e.target.value,
                                         }))
                                     }
                                 />
                                 <button
                                     type="button"
-                                    className=""
                                     onClick={() => setActive((prev) => !prev)}
+                                    onMouseDown={(e) => e.preventDefault()}
                                 >
                                     {active ? (
-                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500  p-0"></i>
                                     ) : (
                                         <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
                                     )}
@@ -213,6 +278,7 @@ export default function Login() {
                             <button
                                 onClick={handleForgot}
                                 className="text-[12px] text-blue-600 font-semibold"
+                                tabIndex={-1}
                             >
                                 Quên mật khẩu?
                             </button>
@@ -220,19 +286,17 @@ export default function Login() {
                         <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-10 hover:cursor-pointer ">
                             <button
                                 type="submit"
+                                ref={btnRef}
                                 className="text-[15px] text-white font-500 "
                             >
                                 Đăng nhập
                             </button>
                         </div>
 
-
                         <div className="flex justify-center items-center text-blue-600 text-[14px] mt-3 font-semibold">
                             <p className="">
                                 Chưa có tài khoản?.{" "}
-                                <button
-                                    onClick={handleRegister}
-                                >
+                                <button onClick={handleRegister}>
                                     Tạo tài khoản
                                 </button>
                             </p>
@@ -241,7 +305,9 @@ export default function Login() {
                 </div>
             </div>
             <div className="absolute mt-[450px]">
-                <p className="text-[#747775] text-[15px] font-semibold">{error !== "" ? error : ""}</p>
+                <p className="text-[#747775] text-[15px] font-semibold">
+                    {error !== "" ? error : ""}
+                </p>
             </div>
         </div>
     );
