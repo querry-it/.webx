@@ -3,7 +3,6 @@ import { validationLogin } from "../../utils/validation_login";
 import { getAccessToken, setAccessToken } from "../../utils/accessToken";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./style.css";
 
 interface User {
     username: string;
@@ -124,20 +123,19 @@ export default function Login() {
     };
 
     return (
-        <div className="login__container">
-            <div className="login__box">
-                <div className="box__title">
-                    <h3>Đăng nhập</h3>
+        <div className="relative h-screen flex items-center justify-center p-4 bg-gray-200">
+            <div className="w-[400px] bg-white rounded-[12px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.4)]">
+                <div className="flex justify-center items-center w-full h-[80px] bg-blue-400 ">
+                    <h3 className="text-[20px] text-white font-bold ">Log in to WebMap</h3>
                 </div>
-                <div className="box__form">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form__user">
-                            <label>Tài khoản</label>
-                            <div className="user__content">
-                                <i className="fa-solid fa-user"></i>
+                <div className="flex flex-col items-center justify-center my-10 px-20">
+                    <form onSubmit={handleSubmit} className="w-full">
+                        <div className="mb-12">
+                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_10px_25px_rgba(0,0,0,0.1)]">
+                                <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type="text"
-                                    className="user__input"
+                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px]"
                                     placeholder="Nhập tài khoản..."
                                     value={user.username}
                                     onChange={(e) =>
@@ -149,13 +147,12 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div className="form__pass">
-                            <label>Mật khẩu</label>
-                            <div className="pass__content">
-                                <i className="fa-solid fa-lock"></i>
+                        <div >
+                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_0_0_rgba(0,0,0,0.1)]">
+                                <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type={active ? "text" : "password"}
-                                    className="pass__input"
+                                    className="ml-[44px] h-full outline-none border-none text-[16px]"
                                     placeholder="Nhập mật khẩu..."
                                     ref={passRef}
                                     value={user.password}
@@ -168,46 +165,49 @@ export default function Login() {
                                 />
                                 <button
                                     type="button"
-                                    className="pass__button"
+                                    className=""
                                     onClick={() => setActive((prev) => !prev)}
                                 >
                                     {active ? (
-                                        <i className="fas fa-eye-slash"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] ml-[2px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
                                     ) : (
-                                        <i className="fas fa-eye"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] ml-[2px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
                                     )}
                                 </button>
                             </div>
                         </div>
-                        <div className="form__forgot">
-                            <button
-                                onClick={handleForgot}
-                                className="forgot__button"
-                            >
-                                Quên mật khẩu
+                        <div className="w-full flex items-center justify-center h-[50px] bg-green-400 hover:bg-green-500 active:bg-green-500 rounded-[12px] mt-10 hover:cursor-pointer">
+                            <button type="submit" className=" text-[20px] text-white font-semibold ">
+                                Log in
                             </button>
                         </div>
-                        <div className="form__submit">
-                            <button type="submit" className="submit__button">
-                                Đăng nhập
-                            </button>
-                        </div>
-                        <div className="form__register">
-                            <p className="register__content">
-                                Chưa có tài khoản?.{" "}
+                        <div className="flex flex-row gap-3 justify-center items-center pt-10">
+                            <div className="">
                                 <button
-                                    onClick={handleRegister}
-                                    className="forgot__button"
+                                    onClick={handleForgot}
+                                    className="text-[14px] text-blue-600 hover:underline" 
                                 >
-                                    Tạo tài khoản
+                                    Quên mật khẩu?
                                 </button>
-                            </p>
+                            </div>
+                            <div className="">
+                                <p className="">
+                                    {" "}
+                                    <button
+                                        onClick={handleRegister}
+                                        className="text-[14px] text-blue-600 hover:underline"
+                                    >
+                                        Tạo tài khoản
+                                    </button>
+                                </p>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>
-            <div className="login__error">
-                <p className="error_line">{error !== "" ? error : ""}</p>
+            <div className="absolute mt-[540px] shadow-[0_0_0_rgba(0,0,0,0.1)]">
+                <p className="text-red-600">{error !== "" ? error : ""}</p>
             </div>
         </div>
     );
