@@ -162,7 +162,7 @@ export default function Login() {
                                     onChange={(e) =>
                                         setUser((prev) => ({
                                             ...prev,
-                                            password: e.target.value,
+                                            password: e.target.value
                                         }))
                                     }
                                 />
