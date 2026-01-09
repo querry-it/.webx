@@ -123,10 +123,12 @@ export default function Login() {
     };
 
     return (
-        <div className="relative h-screen flex items-center justify-center p-4 bg-gray-200">
-            <div className="w-[400px] bg-white rounded-[12px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.4)]">
-                <div className="flex justify-center items-center w-full h-[80px] bg-blue-400 ">
-                    <h3 className="text-[20px] text-white font-bold ">Log in to WebMap</h3>
+        <div className="h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-400">
+            <div className="w-[500px] bg-white rounded-[12px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+                <div className="flex justify-center items-center w-full h-[80px]">
+                    <h3 className="text-[20px] text-blue-500 font-bold ">
+                        Log in to WebMap
+                    </h3>
                 </div>
                 <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
@@ -135,7 +137,7 @@ export default function Login() {
                                 <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type="text"
-                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px]"
+                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px] border-blue-500"
                                     placeholder="Nhập tài khoản..."
                                     value={user.username}
                                     onChange={(e) =>
@@ -147,8 +149,8 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div >
-                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_0_0_rgba(0,0,0,0.1)]">
+                        <div>
+                            <div className="flex items-center relative border-2-black border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_0_0_rgba(0,0,0,0.1)]">
                                 <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type={active ? "text" : "password"}
@@ -177,7 +179,10 @@ export default function Login() {
                             </div>
                         </div>
                         <div className="w-full flex items-center justify-center h-[50px] bg-green-400 hover:bg-green-500 active:bg-green-500 rounded-[12px] mt-10 hover:cursor-pointer">
-                            <button type="submit" className=" text-[20px] text-white font-semibold ">
+                            <button
+                                type="submit"
+                                className=" text-[20px] text-white font-semibold "
+                            >
                                 Log in
                             </button>
                         </div>
@@ -185,7 +190,7 @@ export default function Login() {
                             <div className="">
                                 <button
                                     onClick={handleForgot}
-                                    className="text-[14px] text-blue-600 hover:underline" 
+                                    className="text-[14px] text-blue-600 hover:underline"
                                 >
                                     Quên mật khẩu?
                                 </button>
@@ -202,7 +207,6 @@ export default function Login() {
                                 </p>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
