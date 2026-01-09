@@ -53,7 +53,7 @@ export default function Register() {
         <div className="register__container">
             <div className="register__box">
                 <div className="box__title">
-                    <h3>Tạo tài khoản</h3>
+                    <h3>Tạo tài khoảnn</h3>
                 </div>
                 <div className="box__form">
                     <form onSubmit={handleSubmit}>
@@ -168,9 +168,9 @@ export default function Register() {
                         </div>
                         <div className="form__back">
                             <p>
-                                Đã có tài khoản?.{" "}
+                                Đã có tài khoản chưa?.{" "}
                                 <Link className="link__back" to="/">
-                                    Quay lại
+                                    Quay lại thế giới
                                 </Link>
                             </p>
                         </div>

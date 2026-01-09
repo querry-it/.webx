@@ -123,6 +123,7 @@ export default function Login() {
     };
 
     return (
+
         <div className="relative h-screen flex items-center justify-center p-4 bg-gradient-to-r from-[#3c79e9] to-[#7a67f9]">
             <div className="w-[400px] bg-white rounded-[12px] overflow-hidden shadow-[0_0_0_rgba(0,0,0,0.1)]">
                 <div className="flex justify-center items-center w-full h-[80px]">
@@ -136,8 +137,8 @@ export default function Login() {
                                 <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type="text"
-                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px] "
-                                    placeholder="Username..."
+                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px] border-blue-500"
+                                    placeholder="Nhập tài khoản..."
                                     value={user.username}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -203,8 +204,6 @@ export default function Login() {
                                 </button>
                             </p>
                         </div>
-
-
                     </form>
                 </div>
             </div>
