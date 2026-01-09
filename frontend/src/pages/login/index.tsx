@@ -150,7 +150,7 @@ export default function Login() {
                             </div>
                         </div>
                         <div>
-                            <div className="flex items-center relative border-2-black border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_0_0_rgba(0,0,0,0.1)]">
+                            <div className="flex items-center relative border-2-black rounded-[5px] h-[60px] hover:cursor-pointer shadow-[0_0_0_rgba(0,0,0,0.1)]">
                                 <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type={active ? "text" : "password"}
@@ -210,7 +210,7 @@ export default function Login() {
                     </form>
                 </div>
             </div>
-            <div className="absolute mt-[540px] shadow-[0_0_0_rgba(0,0,0,0.1)]">
+            <div className="absolute mt-[540px] shadow-[0_0_0_rgba(0,0,0,0.11)]">
                 <p className="text-red-600">{error !== "" ? error : ""}</p>
             </div>
         </div>
