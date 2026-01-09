@@ -210,7 +210,7 @@ export default function Login() {
                     </form>
                 </div>
             </div>
-            <div className="absolute mt-[540px] shadow-[0_0_0_rgba(0,0,0,0.1)]">
+            <div className="absolute mt-[540px] shadow-[0_0_0_rgba(0,0,0,0.11)]">
                 <p className="text-red-600">{error !== "" ? error : ""}</p>
             </div>
         </div>
