@@ -123,20 +123,21 @@ export default function Login() {
     };
 
     return (
-        <div className="relative h-screen flex items-center justify-center p-4 bg-gray-200">
-            <div className="w-[400px] bg-white rounded-[12px] overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.4)]">
-                <div className="flex justify-center items-center w-full h-[80px] bg-blue-400 ">
-                    <h3 className="text-[20px] text-white font-bold ">Log in to WebMap</h3>
+        <div className="relative h-screen flex items-center justify-center p-4 bg-gradient-to-r from-[#3c79e9] to-[#7a67f9]">
+            <div className="w-[400px] bg-white rounded-[12px] overflow-hidden shadow-[0_0_0_rgba(0,0,0,0.1)]">
+                <div className="flex justify-center items-center w-full h-[80px]">
+                    <h3 className="text-[26px] text-black font-bold shadow-[0_0_0_rgba(0,0,0,0.1)]">Log in to WebMap</h3>
                 </div>
-                <div className="flex flex-col items-center justify-center my-10 px-20">
+                <div className="flex flex-col items-center justify-center my-2 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
                         <div className="mb-12">
-                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_10px_25px_rgba(0,0,0,0.1)]">
+                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] 
+                            hover:cursor-pointer focus-within:border-2 focus-within:border-black">
                                 <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type="text"
-                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px]"
-                                    placeholder="Nhập tài khoản..."
+                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px] "
+                                    placeholder="Username..."
                                     value={user.username}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -148,12 +149,13 @@ export default function Login() {
                             </div>
                         </div>
                         <div >
-                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer shadow-[0_0_0_rgba(0,0,0,0.1)]">
+                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer
+                                            focus-within:border-2 focus-within:border-black">
                                 <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
                                 <input
                                     type={active ? "text" : "password"}
                                     className="ml-[44px] h-full outline-none border-none text-[16px]"
-                                    placeholder="Nhập mật khẩu..."
+                                    placeholder="Password..."
                                     ref={passRef}
                                     value={user.password}
                                     onChange={(e) =>
@@ -176,32 +178,32 @@ export default function Login() {
                                 </button>
                             </div>
                         </div>
-                        <div className="w-full flex items-center justify-center h-[50px] bg-green-400 hover:bg-green-500 active:bg-green-500 rounded-[12px] mt-10 hover:cursor-pointer">
+                        <div className="flex justify-end">
+                            <button
+                                onClick={handleForgot}
+                                className="text-[14px] text-blue-600 hover:underline"
+                            >
+                                Forgot Password?
+                            </button>
+                        </div>
+                        <div className="w-full flex items-center justify-center h-[50px] bg-blue-400 hover:bg-blue-500 active:bg-blue-500 rounded-[12px] mt-10 hover:cursor-pointer">
                             <button type="submit" className=" text-[20px] text-white font-semibold ">
                                 Log in
                             </button>
                         </div>
-                        <div className="flex flex-row gap-3 justify-center items-center pt-10">
-                            <div className="">
+
+                        <div className="flex justify-center mt-10">
+                            <p className="">
+                                {" "}
                                 <button
-                                    onClick={handleForgot}
-                                    className="text-[14px] text-blue-600 hover:underline" 
+                                    onClick={handleRegister}
+                                    className="text-[14px] text-blue-600 hover:underline"
                                 >
-                                    Quên mật khẩu?
+                                    Create Account
                                 </button>
-                            </div>
-                            <div className="">
-                                <p className="">
-                                    {" "}
-                                    <button
-                                        onClick={handleRegister}
-                                        className="text-[14px] text-blue-600 hover:underline"
-                                    >
-                                        Tạo tài khoản
-                                    </button>
-                                </p>
-                            </div>
+                            </p>
                         </div>
+
 
                     </form>
                 </div>
