@@ -23,13 +23,10 @@ export default function Login() {
     const [error, setError] = useState<string>("");
     const [active, setActive] = useState<boolean>(false);
     const passRef = useRef<HTMLInputElement>(null);
-
-
     const [activeUser, setActiveUser] = useState<Active>({
         username: false,
         password: false,
     })
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -70,7 +67,6 @@ export default function Login() {
     }, []);
 
     useEffect(() => {
-
         console.log(activeUser.username);
     }, [activeUser.username])
 
@@ -94,7 +90,7 @@ export default function Login() {
                 navigate("/home");
             } catch (error: any) {
                 setError(
-                    error.response?.data?.message || "Lỗi mất kết nối server ................"
+                    error.response?.data?.message || "Lỗi mất kết nối server..."
                 );
                 setUser((prev) => ({
                     ...prev,
@@ -151,13 +147,13 @@ export default function Login() {
                 <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
                         <div className="mb-12">
-                        <div className={`flex items-center relative ${!activeUser.username ? "border border-[#747775]" : "border-2 border-blue-600"} rounded-[5px] h-[45px] hover:cursor-pointer`}>
-                                {!activeUser.username && <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px]  text-gray-500"></i>}
+                            <div className={`flex items-center relative ${!activeUser.username ? "border border-[#747775]" : "border-2 border-blue-600"} rounded-[5px] h-[45px] hover:cursor-pointer`}>
+                                {!activeUser.username && <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
                                 {activeUser.username && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập tài khoản</p>}
                                 <input onFocus={() => setActiveUser((prev) => ({
                                     ...prev,
                                     username: true,
-                                }))}
+                                    }))}
                                     onBlur={() => setActiveUser((prev) => ({
                                         ...prev,
                                         username: false,
@@ -176,12 +172,21 @@ export default function Login() {
                             </div>
                         </div>
                         <div>
-                            <div className="flex items-center relative border  border-blue-600 rounded-[5px] h-[45px] hover:cursor-pointer ">
-                                <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px]  text-gray-500"></i>
+                            <div className={`flex items-center relative ${!activeUser.password ? "border border-[#747775]" : "border-2 border-blue-600"} rounded-[5px] h-[45px] hover:cursor-pointer`}>
+                                {!activeUser.password && <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
+                                {activeUser.password && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
                                 <input
+                                    onFocus={() => setActiveUser((prev) => ({
+                                        ...prev,
+                                        password: true,
+                                    }))}
+                                    onBlur={() => setActiveUser((prev) => ({
+                                        ...prev,
+                                        password: false,
+                                    }))}
                                     type={active ? "text" : "password"}
                                     className="ml-[44px] h-full outline-none border-none text-[16px]"
-                                    placeholder="Nhập mật khẩu..."
+                                    placeholder={activeUser.password ? "" : "Nhập mật khẩu..."}
                                     ref={passRef}
                                     value={user.password}
                                     onChange={(e) =>
@@ -216,7 +221,8 @@ export default function Login() {
                             <button
                                 type="submit"
                                 className="text-[15px] text-white font-500 "
-                            >Đăng nhập
+                            >
+                                Đăng nhập
                             </button>
                         </div>
 
@@ -226,13 +232,11 @@ export default function Login() {
                                 Chưa có tài khoản?.{" "}
                                 <button
                                     onClick={handleRegister}
-                                
                                 >
                                     Tạo tài khoản
                                 </button>
                             </p>
                         </div>
-
                     </form>
                 </div>
             </div>
