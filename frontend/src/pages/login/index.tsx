@@ -178,11 +178,13 @@ export default function Login() {
                                 </button>
                             </div>
                         </div>
+
                         <div className="w-full flex items-center justify-center h-[50px] bg-green-400 hover:bg-green-500 active:bg-green-500 rounded-[12px] mt-10 hover:cursor-pointer">
                             <button
                                 type="submit"
                                 className=" text-[20px] text-white font-semibold "
                             >
+
                                 Log in
                             </button>
                         </div>
@@ -190,6 +192,7 @@ export default function Login() {
                             <div className="">
                                 <button
                                     onClick={handleForgot}
+
                                     className="text-[14px] text-blue-600 hover:underline"
                                 >
                                     Quên mật khẩu?
