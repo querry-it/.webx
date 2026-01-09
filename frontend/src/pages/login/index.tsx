@@ -9,6 +9,11 @@ interface User {
     password: string;
 }
 
+interface Active {
+    username: boolean;
+    password: boolean;
+}
+
 export default function Login() {
     const navigate = useNavigate();
     const [user, setUser] = useState<User>({
@@ -18,6 +23,13 @@ export default function Login() {
     const [error, setError] = useState<string>("");
     const [active, setActive] = useState<boolean>(false);
     const passRef = useRef<HTMLInputElement>(null);
+
+
+    const [activeUser, setActiveUser] = useState<Active>({
+        username: false,
+        password: false,
+    })
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,6 +69,12 @@ export default function Login() {
         fetchData();
     }, []);
 
+    useEffect(() => {
+
+        console.log(activeUser.username);
+    }, [activeUser.username])
+
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const checkLogin = validationLogin(user.username, user.password);
@@ -76,7 +94,7 @@ export default function Login() {
                 navigate("/home");
             } catch (error: any) {
                 setError(
-                    error.response?.data?.message || "Lỗi mất kết nối server..."
+                    error.response?.data?.message || "Lỗi mất kết nối server ................"
                 );
                 setUser((prev) => ({
                     ...prev,
@@ -123,22 +141,30 @@ export default function Login() {
     };
 
     return (
-
-        <div className="relative h-screen flex items-center justify-center p-4 bg-gradient-to-r from-[#3c79e9] to-[#7a67f9]">
-            <div className="w-[400px] bg-white rounded-[12px] overflow-hidden shadow-[0_0_0_rgba(0,0,0,0.1)]">
+        <div className="h-screen flex items-center justify-center bg-[#f0f4f9]">
+            <div className="w-[450px] bg-white rounded-[12px] overflow-hidden]">
                 <div className="flex justify-center items-center w-full h-[80px]">
-                    <h3 className="text-[26px] text-black font-bold shadow-[0_0_0_rgba(0,0,0,0.1)]">Log in to WebMap</h3>
+                    <h3 className="text-[20px] text-blue-500 font-bold bg-gradient-to-tr from-blue-500 to-pink-500 bg-clip-text text-transparent">
+                        Đăng nhập vào Chrome
+                    </h3>
                 </div>
-                <div className="flex flex-col items-center justify-center my-2 px-20">
+                <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
                         <div className="mb-12">
-                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] 
-                            hover:cursor-pointer focus-within:border-2 focus-within:border-black">
-                                <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
-                                <input
+                        <div className={`flex items-center relative ${!activeUser.username ? "border border-[#747775]" : "border-2 border-blue-600"} rounded-[5px] h-[45px] hover:cursor-pointer`}>
+                                {!activeUser.username && <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px]  text-gray-500"></i>}
+                                {activeUser.username && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập tài khoản</p>}
+                                <input onFocus={() => setActiveUser((prev) => ({
+                                    ...prev,
+                                    username: true,
+                                }))}
+                                    onBlur={() => setActiveUser((prev) => ({
+                                        ...prev,
+                                        username: false,
+                                    }))}
                                     type="text"
-                                    className="ml-[44px] h-full outline-none border-none text-[16px] pr-[30px] border-blue-500"
-                                    placeholder="Nhập tài khoản..."
+                                    className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
+                                    placeholder={activeUser.username ? "" : "Nhập tài khoản..."}
                                     value={user.username}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -149,14 +175,13 @@ export default function Login() {
                                 />
                             </div>
                         </div>
-                        <div >
-                            <div className="flex items-center relative border  border-transparent rounded-[5px] h-[55px] hover:cursor-pointer
-                                            focus-within:border-2 focus-within:border-black">
-                                <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[2px]  text-gray-500"></i>
+                        <div>
+                            <div className="flex items-center relative border  border-blue-600 rounded-[5px] h-[45px] hover:cursor-pointer ">
+                                <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px]  text-gray-500"></i>
                                 <input
                                     type={active ? "text" : "password"}
                                     className="ml-[44px] h-full outline-none border-none text-[16px]"
-                                    placeholder="Password..."
+                                    placeholder="Nhập mật khẩu..."
                                     ref={passRef}
                                     value={user.password}
                                     onChange={(e) =>
@@ -172,43 +197,47 @@ export default function Login() {
                                     onClick={() => setActive((prev) => !prev)}
                                 >
                                     {active ? (
-                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] ml-[2px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
                                     ) : (
-                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] ml-[2px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
                                     )}
                                 </button>
                             </div>
                         </div>
-                        <div className="flex justify-end">
+                        <div className="flex justify-end mt-2.5">
                             <button
                                 onClick={handleForgot}
-                                className="text-[14px] text-blue-600 hover:underline"
+                                className="text-[12px] text-blue-600 font-semibold"
                             >
-                                Forgot Password?
+                                Quên mật khẩu?
                             </button>
                         </div>
-                        <div className="w-full flex items-center justify-center h-[50px] bg-blue-400 hover:bg-blue-500 active:bg-blue-500 rounded-[12px] mt-10 hover:cursor-pointer">
-                            <button type="submit" className=" text-[20px] text-white font-semibold ">
-                                Log in
+                        <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-10 hover:cursor-pointer ">
+                            <button
+                                type="submit"
+                                className="text-[15px] text-white font-500 "
+                            >Đăng nhập
                             </button>
                         </div>
 
-                        <div className="flex justify-center mt-10">
+
+                        <div className="flex justify-center items-center text-blue-600 text-[14px] mt-3 font-semibold">
                             <p className="">
-                                {" "}
+                                Chưa có tài khoản?.{" "}
                                 <button
                                     onClick={handleRegister}
-                                    className="text-[14px] text-blue-600 hover:underline"
+                                
                                 >
-                                    Create Account
+                                    Tạo tài khoản
                                 </button>
                             </p>
                         </div>
+
                     </form>
                 </div>
             </div>
-            <div className="absolute mt-[540px] shadow-[0_0_0_rgba(0,0,0,0.11)]">
-                <p className="text-red-600">{error !== "" ? error : ""}</p>
+            <div className="absolute mt-[450px]">
+                <p className="text-[#747775] text-[15px] font-semibold">{error !== "" ? error : ""}</p>
             </div>
         </div>
     );
