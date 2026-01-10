@@ -6,10 +6,6 @@ import ProfileModal from "./components/profile-modal";
 import SetupModal from "./components/setup-modal";
 import LogoutModal from "./components/logout-modal";
 import { useEffect } from "react";
-import styles from "./components/drop-down/dropdown.module.css";
-import classNames from "classnames/bind";
-
-const cx = classNames.bind(styles);
 
 export default function Dashboard() {
     const { state, dispatch } = useEditor();
@@ -36,7 +32,6 @@ export default function Dashboard() {
             {state.modal.person && <SetupModal />}
             {state.modal.setup && <SetupModal />}
             {state.modal.logout && <LogoutModal />}
-            {/* {state.position.open_project && <DropDownProject />} */}
         </>
     );
 }
