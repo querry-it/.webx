@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { validationReset } from "../../utils/validation_reset";
 import axios from "axios";
@@ -76,6 +76,17 @@ export default function ResetPassword() {
         }
     };
 
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                btnRef.current?.click();
+            }
+        };
+        window.addEventListener("keydown", onKeyDown);
+        return () => window.removeEventListener("keydown", onKeyDown);
+    }, []);
+
     return (
         <div className="h-screen flex flex-col items-center justify-center bg-[#f0f4f9]">
             <div className="w-[450px] bg-white rounded-[12px] overflow-hidden]">
@@ -87,12 +98,16 @@ export default function ResetPassword() {
                         <div className="mb-12">                          
                             <div className={`flex items-center relative ${!activePassword.password ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px] hover:cursor-pointer`}>
                                 {!activePassword.password && <i className="fa-solid fa-lock-open absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
-                                {activePassword.password && <p className="whitespace-nowrap asbsolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
+                                {activePassword.password && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
                                 <input
                                     onFocus={() => setActivePassword((prev) => ({
                                         ...prev,
                                         password: true,
                                     }))} 
+                                    onBlur={() => setActivePassword((prev) => ({
+                                        ...prev,
+                                        password: false,
+                                    }))}
                                     className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
                                     type={active_pass ? "text" : "password"}
                                     placeholder= {activePassword.password ? "" : "Nhập mật khẩu..."}
@@ -112,18 +127,27 @@ export default function ResetPassword() {
                                     }
                                 >
                                     {active_pass ? (
-                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
                                     ) : (
-                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
                                     )}
                                 </button>
                             </div>
                         </div>
-                        <div className="form__pass">
-                            <div className={`flex items-center relative ${!activePassword.password ? "" : "Nhập xác nhận mật khẩu"}`}>
-                                <i className="fa-solid fa-lock"></i>
+                        <div>
+                            <div className={`flex items-center relative ${!activePassword.confirmPassword ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px] hover:cursor-pointer`}>
+                                {!activePassword.confirmPassword && <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
+                                {activePassword.confirmPassword && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập xác nhận mật khẩu</p>}
                                 <input
-                                    className="pass__input"
+                                    onFocus={() => setActivePassword((prev) => ({
+                                        ...prev,
+                                        confirmPassword: true,
+                                    }))} 
+                                    onBlur={() => setActivePassword((prev) => ({
+                                        ...prev,
+                                        confirmPassword: false,
+                                    }))}
+                                    className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
                                     type={active_conf ? "text" : "password"}
                                     placeholder={activePassword.confirmPassword ? "" : "Nhập xác nhận mật khẩu..."}
                                     value={user.confirmPassword}
@@ -142,19 +166,19 @@ export default function ResetPassword() {
                                     }
                                 >
                                     {active_conf ? (
-                                        <i className="fas fa-eye-slash"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
                                     ) : (
-                                        <i className="fas fa-eye"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
                                     )}
                                 </button>
                             </div>
                         </div>
-                        <div className="form__submitt">
-                            <button className="submit__buttond">
+                        <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-10 hover:cursor-pointer">
+                            <button className="text-[15px] text-white font-500 ">
                                 Xác nhận
                             </button>
                         </div>
-                        <div className="form__back">
+                        <div className="flex justify-center items-center text-blue-600 text-[14px] mt-3 font-semibold">
                             <p>
                                 Đã có tài khoản{" "}
                                 <Link className="link__back" to="/">
@@ -165,8 +189,8 @@ export default function ResetPassword() {
                     </form>
                 </div>
             </div>
-            <div className="forgot__error">
-                <p className="error__line">{error !== "" ? error : ""}</p>
+            <div className="absolute mt-[450px]">
+                <p className="text-[#747775] text-[15px] font-semibold">{error !== "" ? error : ""}</p>
             </div>
         </div>
     );
