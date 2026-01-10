@@ -96,7 +96,7 @@ export default function ResetPassword() {
                 <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
                         <div className="mb-12">                          
-                            <div className={`flex items-center relative ${!activePassword.password ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px] hover:cursor-pointer`}>
+                            <div className={`flex items-center relative ${!activePassword.password ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px]`}>
                                 {!activePassword.password && <i className="fa-solid fa-lock-open absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
                                 {activePassword.password && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
                                 <input
@@ -135,7 +135,7 @@ export default function ResetPassword() {
                             </div>
                         </div>
                         <div>
-                            <div className={`flex items-center relative ${!activePassword.confirmPassword ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px] hover:cursor-pointer`}>
+                            <div className={`flex items-center relative ${!activePassword.confirmPassword ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px]`}>
                                 {!activePassword.confirmPassword && <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
                                 {activePassword.confirmPassword && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập xác nhận mật khẩu</p>}
                                 <input
