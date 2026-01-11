@@ -24,10 +24,13 @@ export default function ResetPassword() {
     const [error, setError] = useState<string>("");
     const [active_pass, setActivePass] = useState<boolean>(false);
     const [active_conf, setActiveConf] = useState<boolean>(false);
-    const [activePassword, setActivePassword] = useState<Active>({
+    const [activeUser, setActiveUser] = useState<Active>({
         password: false,
         confirmPassword: false,
     })
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const confirmPasswordRef = useRef<HTMLInputElement>(null);
+    const btnRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         const fetchReset = async () => {
@@ -68,8 +71,9 @@ export default function ResetPassword() {
             } catch (error: any) {
                 setError(
                     error.response?.data?.message ||
-                        "Lỗi mất kết nối  server..."
+                    "Lỗi mất kết nối  server..."
                 );
+
             }
         } else {
             setError(checkReset);
@@ -95,22 +99,23 @@ export default function ResetPassword() {
                 </div>
                 <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
-                        <div className="mb-12">                          
-                            <div className={`flex items-center relative ${!activePassword.password ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px]`}>
-                                {!activePassword.password && <i className="fa-solid fa-lock-open absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
-                                {activePassword.password && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
+                        <div className="mb-12">
+                            <div className={`flex items-center relative ${!activeUser.password ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px]`}>
+                                {!activeUser.password && <i className="fa-solid fa-lock-open absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
+                                {activeUser.password && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mật khẩu</p>}
                                 <input
-                                    onFocus={() => setActivePassword((prev) => ({
+                                    onFocus={() => setActiveUser((prev) => ({
                                         ...prev,
                                         password: true,
-                                    }))} 
-                                    onBlur={() => setActivePassword((prev) => ({
+                                    }))}
+                                    onBlur={() => setActiveUser((prev) => ({
                                         ...prev,
                                         password: false,
                                     }))}
                                     className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
                                     type={active_pass ? "text" : "password"}
-                                    placeholder= {activePassword.password ? "" : "Nhập mật khẩu..."}
+                                    ref = {passwordRef}
+                                    placeholder={activeUser.password ? "" : "Nhập mật khẩu..."}
                                     value={user.password}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -123,8 +128,7 @@ export default function ResetPassword() {
                                     className=""
                                     type="button"
                                     onClick={() =>
-                                        setActivePass((prev) => !prev)
-                                    }
+                                        setActivePass((prev) => !prev)}
                                 >
                                     {active_pass ? (
                                         <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
@@ -135,21 +139,22 @@ export default function ResetPassword() {
                             </div>
                         </div>
                         <div>
-                            <div className={`flex items-center relative ${!activePassword.confirmPassword ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px]`}>
-                                {!activePassword.confirmPassword && <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
-                                {activePassword.confirmPassword && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập xác nhận mật khẩu</p>}
+                            <div className={`flex items-center relative ${!activeUser.confirmPassword ? "border border-[#747775]" : "border-2 border-blue-600"} h-[45px] rounded-[5px]`}>
+                                {!activeUser.confirmPassword && <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>}
+                                {activeUser.confirmPassword && <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập xác nhận mật khẩu</p>}
                                 <input
-                                    onFocus={() => setActivePassword((prev) => ({
+                                    onFocus={() => setActiveUser((prev) => ({
                                         ...prev,
                                         confirmPassword: true,
-                                    }))} 
-                                    onBlur={() => setActivePassword((prev) => ({
+                                    }))}
+                                    onBlur={() => setActiveUser((prev) => ({
                                         ...prev,
                                         confirmPassword: false,
                                     }))}
                                     className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
                                     type={active_conf ? "text" : "password"}
-                                    placeholder={activePassword.confirmPassword ? "" : "Nhập xác nhận mật khẩu..."}
+                                    ref = {confirmPasswordRef}
+                                    placeholder={activeUser.confirmPassword ? "" : "Nhập xác nhận mật khẩu..."}
                                     value={user.confirmPassword}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -164,6 +169,7 @@ export default function ResetPassword() {
                                     onClick={() =>
                                         setActiveConf((prev) => !prev)
                                     }
+                                    onMouseDown={(e) => e.preventDefault()}
                                 >
                                     {active_conf ? (
                                         <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
@@ -174,7 +180,7 @@ export default function ResetPassword() {
                             </div>
                         </div>
                         <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-10 hover:cursor-pointer">
-                            <button className="text-[15px] text-white font-500 ">
+                            <button className="text-[15px] text-white font-500 " ref = {btnRef}>
                                 Xác nhận
                             </button>
                         </div>

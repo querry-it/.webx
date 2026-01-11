@@ -3,13 +3,18 @@ import { useState, useEffect, type FormEvent } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { validationRegister } from "../../utils/validation_register";
-import "./style.css";
-
 interface User {
     code: string;
     username: string;
     password: string;
     confirm: string;
+}
+
+interface Active {
+    code: boolean;
+    username: boolean;
+    password: boolean;
+    confirm: boolean;
 }
 
 export default function Register() {
@@ -25,6 +30,12 @@ export default function Register() {
     const [activePassword, setActivePassword] = useState<boolean>(false);
     const [activeConfirmPassword, setActiveConfirmPassword] =
         useState<boolean>(false);
+    const [activeUser, setActiveUser] = useState<Active>({
+        code: false,
+        username: false,
+        password: false,
+        confirm: false,
+    })
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -41,7 +52,7 @@ export default function Register() {
             } catch (error: any) {
                 setError(
                     error.response?.data?.message ||
-                        "Lỗi mất kết nối  server..."
+                    "Lỗi mất kết nối  server..."
                 );
             }
         } else {
@@ -50,21 +61,40 @@ export default function Register() {
     };
 
     return (
-        <div className="register__container">
-            <div className="register__box">
-                <div className="box__title">
-                    <h3>Tạo tài khoảnn</h3>
+        <div className="h-screen flex items-center justify-center bg-[#f0f4f9]">
+            <div className="w-[450px] bg-white rounded-[12px] overflow-hidden]">
+                <div className="flex justify-center items-center w-full h-[80px]">
+                    <h3 className="text-[20px] text-blue-500 font-bold bg-gradient-to-tr from-blue-500 to-pink-500 bg-clip-text text-transparent">Tạo tài khoản</h3>
                 </div>
-                <div className="box__form">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form__user">
-                            <label className="label__form">Mã giới thiệu</label>
-                            <div className="code__content">
-                                <i className="fa-solid fa-key"></i>
+                <div className="flex flex-col items-center justify-center my-10 px-20">
+                    <form onSubmit={handleSubmit} className="w-full">
+                        <div className="mb-12">
+                            <div className={`flex items-center relative ${!activeUser.code
+                                ? "border border-[#747775]"
+                                : "border-2 border-blue-600"
+                                } rounded-[5px] h-[45px]`}>
+                                {!activeUser.code && (
+                                    <i className="fa-solid fa-key absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
+                                )}
+                                {activeUser.code && (
+                                    <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">Nhập mã giới thiệu</p>
+                                )}
                                 <input
-                                    className="input__form"
+                                    onFocus={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            code: true,
+                                        }))
+                                    }
+                                    onBlur={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            code: false,
+                                        }))
+                                    }
+                                    className="mx-[40px] w-full h-full text-[16px] focus:ml-[18px]"
                                     type="text"
-                                    placeholder="Nhập mã giới thiệu..."
+                                    placeholder={activeUser.code ? "" : "Nhập mã giới thiệu..."}
                                     value={user.code}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -75,14 +105,35 @@ export default function Register() {
                                 />
                             </div>
                         </div>
-                        <div className="form__user">
-                            <label className="label__form">Tài khoản</label>
-                            <div className="user__content">
-                                <i className="fa-solid fa-user"></i>
+                        <div className="mb-12">
+                            <div className={`flex items-center relative ${!activeUser.username
+                                ? "border border-[#747775]"
+                                : "border-2 border-blue-600"
+                                } rounded-[5px] h-[45px]`}>
+                                {!activeUser.username && (
+                                    <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
+                                )}
+                                {activeUser.username && (
+                                    <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">
+                                        Nhập tài khoản
+                                    </p>
+                                )}
                                 <input
-                                    className="input__form"
+                                    onFocus={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            username: true,
+                                        }))
+                                    }
+                                    onBlur={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            username: false,
+                                        }))
+                                    }
+                                    className="mx-[44px] w-full h-full outline-none border-none text-[16px] focus:ml-[18px]"
                                     type="text"
-                                    placeholder="Nhập tài khoản..."
+                                    placeholder={activeUser.username ? "" : "Nhập tài khoản..."}
                                     value={user.username}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -93,14 +144,35 @@ export default function Register() {
                                 />
                             </div>
                         </div>
-                        <div className="form__pass">
-                            <label className="label__form">Mật khẩu</label>
-                            <div className="pass__content">
-                                <i className="fa-solid fa-lock-open"></i>
+                        <div className="mb-12">
+                            <div className={`flex items-center relative ${!activeUser.password
+                                ? "border border-[#747775]"
+                                : "border-2 border-blue-600"
+                                } rounded-[5px] h-[45px]`}>
+                                {!activeUser.password && (
+                                    <i className="fa-solid fa-lock-open absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
+                                )}
+                                {activeUser.password && (
+                                    <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">
+                                        Nhập mật khẩu
+                                    </p>
+                                )}
                                 <input
-                                    className="input__form"
+                                    onFocus={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            password: true,
+                                        }))
+                                    }
+                                    onBlur={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            password: false,
+                                        }))
+                                    }
+                                    className="mx-[44px] w-full h-full outline-none border-none text-[16px] focus:ml-[18px]"
                                     type={activePassword ? "text" : "password"}
-                                    placeholder="Nhập mật khẩu..."
+                                    placeholder={activeUser.password ? "" : "Nhập mật khẩu..."}
                                     value={user.password}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -110,8 +182,8 @@ export default function Register() {
                                     }
                                 />
                                 <button
-                                    className=""
                                     type="button"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[14px] text-gray-500"
                                     onClick={() =>
                                         setActivePassword((prev) => !prev)
                                     }
@@ -124,20 +196,45 @@ export default function Register() {
                                 </button>
                             </div>
                         </div>
-                        <div className="form__confirm">
-                            <label className="label__form">
-                                Xác nhận mật khẩu
-                            </label>
-                            <div className="confirm__content">
-                                <i className="fa-solid fa-lock"></i>
+                        <div>
+                            <div className={`flex items-center relative 
+                                ${!activeUser.confirm
+                                    ? "border border-[#747775]"
+                                    : "border-2 border-blue-600"
+                                } rounded-[5px] h-[45px]`}
+                            >
+                                {!activeUser.confirm && (
+                                    <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500 "></i>
+                                )}
+                                {activeUser.confirm && (
+                                    <p className="whitespace-nowrap absolute -top-[11px] left-[12px] bg-white px-2 text-blue-600">
+                                        Nhập lại mật khẩu
+                                    </p>
+                                )}
                                 <input
-                                    className="input__form"
+                                    onFocus={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            confirm: true,
+                                        }))
+                                    }
+                                    onBlur={() =>
+                                        setActiveUser((prev) => ({
+                                            ...prev,
+                                            confirm: false,
+                                        }))
+                                    }
                                     type={
                                         activeConfirmPassword
                                             ? "text"
                                             : "password"
                                     }
-                                    placeholder="Nhập lại mật khẩu..."
+                                    className="mx-[44px] w-full h-full outline-none border-none text-[16px] focus:ml-[18px]"
+                                    placeholder={
+                                        activeUser.confirm
+                                            ? ""
+                                            : "Nhập lại mật khẩu..."
+                                    }
                                     value={user.confirm}
                                     onChange={(e) =>
                                         setUser((prev) => ({
@@ -147,8 +244,8 @@ export default function Register() {
                                     }
                                 />
                                 <button
-                                    className=""
                                     type="button"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[14px]"
                                     onClick={() =>
                                         setActiveConfirmPassword(
                                             (prev) => !prev
@@ -156,29 +253,29 @@ export default function Register() {
                                     }
                                 >
                                     {activeConfirmPassword ? (
-                                        <i className="fas fa-eye-slash"></i>
+                                        <i className="fas fa-eye-slash text-gray-500"></i>
                                     ) : (
-                                        <i className="fas fa-eye"></i>
+                                        <i className="fas fa-eye text-gray-500"></i>
                                     )}
                                 </button>
                             </div>
                         </div>
-                        <div className="form__button">
-                            <button className="submit__button">Xác nhận</button>
+                        <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-10 hover:cursor-pointer">
+                            <button className="text-[15px] text-white font-500">Xác nhận</button>
                         </div>
-                        <div className="form__back">
+                        <div className="flex justify-center items-center text-blue-600 text-[14px] mt-3 font-semibold">
                             <p>
                                 Đã có tài khoản chưa?.{" "}
-                                <Link className="link__back" to="/">
-                                    Quay lại thế giới
+                                <Link to="/">
+                                    Quay lại đăng nhập
                                 </Link>
                             </p>
                         </div>
                     </form>
                 </div>
             </div>
-            <div className="error__box">
-                <p>{error === "" ? "" : error}</p>
+            <div className="absolute mt-[580px]">
+                <p className="text-[#747775] text-[15px] font-semibold">{error === "" ? "" : error}</p>
             </div>
         </div>
     );

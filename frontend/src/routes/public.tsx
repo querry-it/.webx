@@ -11,7 +11,7 @@ import Dashboard from "../pages/dashboard";
 const publicRoutes: RouteObject[] = [
     {
         path: "/",
-        element: <ResetPassword/>,
+        element: <App />,
         children: [
             { index: true, element: <Login /> },
 
