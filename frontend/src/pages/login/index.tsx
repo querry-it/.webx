@@ -102,7 +102,7 @@ export default function Login() {
             setError(checkLogin);
             if (Object.values(user).every((v) => v === "")) {
                 userRef.current?.focus();
-            } 
+            }
             else if (user["username"].trim() === "") {
                 setUser((prev) => ({
                     ...prev,
@@ -171,11 +171,10 @@ export default function Login() {
                     <form onSubmit={handleSubmit} className="w-full">
                         <div className="mb-12">
                             <div
-                                className={`flex items-center relative ${
-                                    !activeUser.username
-                                        ? "border border-[#747775]"
-                                        : "border-2 border-blue-600"
-                                } rounded-[5px] h-[45px]`}
+                                className={`flex items-center relative ${!activeUser.username
+                                    ? "border border-[#747775]"
+                                    : "border-2 border-blue-600"
+                                    } rounded-[5px] h-[45px]`}
                             >
                                 {!activeUser.username && (
                                     <i className="fa-solid fa-user absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
@@ -200,7 +199,9 @@ export default function Login() {
                                     }
                                     type="text"
                                     ref={userRef}
-                                    className="mx-[40px] w-full h-full text-[16px] focus:ml-[18px]"
+                                    className="mx-[44px] w-full h-full outline-none border-none border-none
+                    outline-none
+                     text-[16px] focus:ml-[18px]"
                                     placeholder={
                                         activeUser.username
                                             ? ""
@@ -218,11 +219,10 @@ export default function Login() {
                         </div>
                         <div>
                             <div
-                                className={`flex items-center relative ${
-                                    !activeUser.password
-                                        ? "border border-[#747775]"
-                                        : "border-2 border-blue-600"
-                                } rounded-[5px] h-[45px]`}
+                                className={`flex items-center relative ${!activeUser.password
+                                    ? "border border-[#747775]"
+                                    : "border-2 border-blue-600"
+                                    } rounded-[5px] h-[45px]`}
                             >
                                 {!activeUser.password && (
                                     <i className="fa-solid fa-lock absolute top-1/2 -translate-y-1/2 text-[20px] ml-[5px] text-gray-500"></i>
@@ -246,7 +246,11 @@ export default function Login() {
                                         }))
                                     }
                                     type={active ? "text" : "password"}
-                                    className="mx-[44px] w-full h-full outline-none border-none text-[16px] focus:ml-[18px]"
+                                    className="mx-[44px] w-full h-full outline-none border-none border-none
+                    outline-none
+                    ring-0
+                    focus:ring-0
+                    focus:outline-none text-[16px] focus:ml-[18px]"
                                     placeholder={
                                         activeUser.password
                                             ? ""
@@ -262,14 +266,15 @@ export default function Login() {
                                     }
                                 />
                                 <button
+                                    className=""
                                     type="button"
                                     onClick={() => setActive((prev) => !prev)}
                                     onMouseDown={(e) => e.preventDefault()}
                                 >
                                     {active ? (
-                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500  p-0"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-2 -translate-x-7 text-[14px] mr-[5px] text-gray-500  p-0"></i>
                                     ) : (
-                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-2 -translate-x-7 text-[14px] mr-[5px] text-gray-500 bg-transparent border-none p-0 outline-none"></i>
                                     )}
                                 </button>
                             </div>

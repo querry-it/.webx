@@ -106,7 +106,7 @@ export default function ForgotPassword() {
                                             code: false,
                                         }))
                                     }
-                                    className="mx-[40px] w-full h-full text-[16px] focus:ml-[18px]"
+                                    className="mx-[40px] w-full h-full text-[16px] outline-none border-none focus:ml-[18px]"
                                     type="text"
                                     placeholder={activeUser.code ? "" : "Nhập mã xác nhận..."}
                                     value={user.code}

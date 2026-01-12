@@ -112,7 +112,7 @@ export default function ResetPassword() {
                                         ...prev,
                                         password: false,
                                     }))}
-                                    className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
+                                    className="ml-[40px] h-full text-[16px] border border-none outline-none pr-[30px]"
                                     type={active_pass ? "text" : "password"}
                                     ref = {passwordRef}
                                     placeholder={activeUser.password ? "" : "Nhập mật khẩu..."}
@@ -131,9 +131,9 @@ export default function ResetPassword() {
                                         setActivePass((prev) => !prev)}
                                 >
                                     {active_pass ? (
-                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2  -translate-x-2 text-[14px] right-[5px] text-gray-500"></i>
                                     ) : (
-                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 -translate-x-2 text-[14px] right-[5px] text-gray-500"></i>
                                     )}
                                 </button>
                             </div>
@@ -151,7 +151,7 @@ export default function ResetPassword() {
                                         ...prev,
                                         confirmPassword: false,
                                     }))}
-                                    className="ml-[40px] h-full text-[16px] pr-[30px] focus:ml-[18px]"
+                                    className="ml-[40px] h-full text-[16px] border border-none outline-none pr-[30px]"
                                     type={active_conf ? "text" : "password"}
                                     ref = {confirmPasswordRef}
                                     placeholder={activeUser.confirmPassword ? "" : "Nhập xác nhận mật khẩu..."}
@@ -164,7 +164,6 @@ export default function ResetPassword() {
                                     }
                                 />
                                 <button
-                                    className=""
                                     type="button"
                                     onClick={() =>
                                         setActiveConf((prev) => !prev)
@@ -172,9 +171,9 @@ export default function ResetPassword() {
                                     onMouseDown={(e) => e.preventDefault()}
                                 >
                                     {active_conf ? (
-                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
+                                        <i className="fas fa-eye-slash absolute top-1/2 -translate-y-1/2 -translate-x-2 text-[14px] text-gray-500 right-[5px]"></i>
                                     ) : (
-                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2 text-[14px] mr-[5px] text-gray-500"></i>
+                                        <i className="fas fa-eye absolute top-1/2 -translate-y-1/2  -translate-x-2 text-[14px] text-gray-500 right-[5px]"></i>
                                     )}
                                 </button>
                             </div>
