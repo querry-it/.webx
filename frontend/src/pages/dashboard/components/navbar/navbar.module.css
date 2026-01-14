@@ -1,6 +1,7 @@
 .navbar {
     grid-area: navbar;
     position: relative;
+    border-right: 1px solid #cacaca;
 }
 
 .header__start {
