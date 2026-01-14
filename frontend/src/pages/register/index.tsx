@@ -1,4 +1,4 @@
-//
+
 import { useState, useEffect, type FormEvent } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -61,14 +61,14 @@ export default function Register() {
     };
 
     return (
-        <div className="h-screen flex items-center justify-center bg-[#f0f4f9]">
+        <div className="h-screen flex items-center justify-center bg-gradient-to-tr from-blue-500 to-pink-500">
             <div className="w-[450px] bg-white rounded-[12px] overflow-hidden]">
                 <div className="flex justify-center items-center w-full h-[80px]">
                     <h3 className="text-[20px] text-blue-500 font-bold bg-gradient-to-tr from-blue-500 to-pink-500 bg-clip-text text-transparent">Tạo tài khoản</h3>
                 </div>
                 <div className="flex flex-col items-center justify-center my-10 px-20">
                     <form onSubmit={handleSubmit} className="w-full">
-                        <div className="mb-12">
+                        <div className="mb-8">
                             <div className={`flex items-center relative ${!activeUser.code
                                 ? "border border-[#747775]"
                                 : "border-2 border-blue-600"
@@ -92,7 +92,7 @@ export default function Register() {
                                             code: false,
                                         }))
                                     }
-                                    className="mx-[40px] w-full h-full text-[16px] focus:ml-[18px]"
+                                    className="mx-[40px] w-full h-full  border border-none outline-none text-[16px] focus:ml-[18px]"
                                     type="text"
                                     placeholder={activeUser.code ? "" : "Nhập mã giới thiệu..."}
                                     value={user.code}
@@ -105,7 +105,7 @@ export default function Register() {
                                 />
                             </div>
                         </div>
-                        <div className="mb-12">
+                        <div className="mb-8">
                             <div className={`flex items-center relative ${!activeUser.username
                                 ? "border border-[#747775]"
                                 : "border-2 border-blue-600"
@@ -144,7 +144,7 @@ export default function Register() {
                                 />
                             </div>
                         </div>
-                        <div className="mb-12">
+                        <div className="mb-8">
                             <div className={`flex items-center relative ${!activeUser.password
                                 ? "border border-[#747775]"
                                 : "border-2 border-blue-600"
@@ -260,10 +260,13 @@ export default function Register() {
                                 </button>
                             </div>
                         </div>
-                        <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-10 hover:cursor-pointer">
+                        <div className="flex flex-col justify-center items-center mt-10">
+                            <p className="text-[#747775] text-[15px] font-semibold">{error === "" ? "" : error}</p>
+                        </div>
+                        <div className="w-full flex items-center justify-center h-[45px] bg-[#0b57d0] hover:bg-[#0b57b0] active:bg-[#0b57ff] rounded-[5px] mt-2 hover:cursor-pointer">
                             <button className="text-[15px] text-white font-500">Xác nhận</button>
                         </div>
-                        <div className="flex justify-center items-center text-blue-600 text-[14px] mt-3 font-semibold">
+                        <div className="flex justify-center items-center text-blue-600 text-[14px] mt-2 font-semibold">
                             <p>
                                 Đã có tài khoản chưa?.{" "}
                                 <Link to="/">
@@ -274,9 +277,7 @@ export default function Register() {
                     </form>
                 </div>
             </div>
-            <div className="absolute mt-[580px]">
-                <p className="text-[#747775] text-[15px] font-semibold">{error === "" ? "" : error}</p>
-            </div>
+
         </div>
     );
 }
