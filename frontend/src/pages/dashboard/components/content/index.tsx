@@ -6,6 +6,10 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
+import classNames from "classnames/bind";
+import styles from "./content.module.css";
+
+const cx = classNames.bind(styles);
 
 export default function Content() {
     const mapRef = useRef<L.Map | null>(null);
@@ -106,15 +110,20 @@ export default function Content() {
     }, []);
 
     return (
-        <div
-            id="map"
-            style={{
-                height: "100%",
-                width: "100%",
-                border: "none",
-                outline: "none",
-                boxShadow: "none",
-            }}
-        />
+        <div className={cx("content")}>
+            <div
+                id="map"
+                style={{
+                    height: "100%",
+                    width: "100%",
+                    border: "none",
+                    outline: "none",
+                    boxShadow: "none",
+                }}
+            />
+            <div className={cx("search")}>
+                <input type="text" />
+            </div>
+        </div>
     );
 }
