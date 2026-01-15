@@ -87,14 +87,6 @@ export default function DropDown() {
                 </button>
             </div>
             <hr className={cx("divider")} />
-            <div className={cx("item")}>
-                <button onClick={() => console.log("Trợ giúp")} className={cx("btn")}>
-                    <div className={cx("wrapper")}>
-                        <i className="far fa-frown"></i>
-                        <p>Trợ giúp</p>
-                    </div>
-                </button>
-            </div>
             <div ref={buttonRef} className={cx("item")}>
                 <button onClick={() => {
                     setState("SET_MODAL", "logout", true),
