@@ -7,47 +7,24 @@ import "leaflet/dist/leaflet.css";
 import { useEffect } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
 
-const hanoiBoundaryGeoJSON = {
-    type: "FeatureCollection",
-    features: [
-        {
-            type: "Feature",
-            properties: { name: "Hà Nội" },
-            geometry: {
-                type: "Polygon",
-                coordinates: [
-                    [
-                        [105.3, 20.6],
-                        [106.0, 20.6],
-                        [106.0, 21.4],
-                        [105.3, 21.4],
-                        [105.3, 20.6],
-                    ],
-                ],
-            },
-        },
-    ],
-};
-
 export default function Content() {
-    useEffect(() => {
-        console.log(HaNoiGeoMap);
-    }, []);
 
     useEffect(() => {
         if (L.DomUtil.get("map")?._leaflet_id) return;
 
         const map = L.map("map").setView([21.0278, 105.8342], 11);
 
-        // 3 bản đồ toggle
+        // ================== BASE MAP ==================
         const streets = L.tileLayer(
             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             { maxZoom: 19 }
         ).addTo(map);
+
         const satellite = L.tileLayer(
             "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
             { maxZoom: 19 }
         );
+
         const terrain = L.tileLayer(
             "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
             { maxZoom: 19 }
@@ -61,31 +38,47 @@ export default function Content() {
             })
             .addTo(map);
 
-        // Ranh giới Hà Nội
-        L.geoJSON(hanoiBoundaryGeoJSON, {
-            style: {
-                color: "#FF0000",
-                weight: 3,
-                fillColor: "#FFAAAA",
-                fillOpacity: 0.2,
-            },
-            onEachFeature: (feature, layer) => {
-                layer.bindPopup(`<b>${feature.properties.name}</b>`);
-            },
-        }).addTo(map);
+        // ================== HÀ NỘI GEOJSON ==================
+        if (
+            HaNoiGeoMap &&
+            HaNoiGeoMap.type === "FeatureCollection" &&
+            Array.isArray(HaNoiGeoMap.features)
+        ) {
+            const hanoiLayer = L.geoJSON(HaNoiGeoMap as any, {
+                style: {
+                    color: "#FF0000",
+                    weight: 3,
+                    fillColor: "#FFAAAA",
+                    fillOpacity: 0.2,
+                },
+                onEachFeature: (feature: any, layer) => {
+                    if (feature.properties?.name) {
+                        layer.bindPopup(`<b>${feature.properties.name}</b>`);
+                    }
+                },
+            }).addTo(map);
 
-        // Scale
+            // fit map theo ranh giới Hà Nội
+            map.fitBounds(hanoiLayer.getBounds());
+        } else {
+            console.error("GeoJSON Hà Nội không hợp lệ");
+        }
+
+        // ================== SCALE ==================
         L.control.scale({ imperial: false }).addTo(map);
 
-        // Search box
+        // ================== SEARCH ==================
         L.Control.geocoder({
             defaultMarkGeocode: true,
             placeholder: "Tìm địa điểm...",
         }).addTo(map);
 
-        // Routing
+        // ================== ROUTING ==================
         L.Routing.control({
-            waypoints: [L.latLng(21.0278, 105.8342), L.latLng(21.035, 105.85)],
+            waypoints: [
+                L.latLng(21.0278, 105.8342),
+                L.latLng(21.035, 105.85),
+            ],
             routeWhileDragging: true,
             geocoder: L.Control.Geocoder.nominatim(),
             showAlternatives: true,
@@ -94,7 +87,7 @@ export default function Content() {
             },
         }).addTo(map);
 
-        // 🔹 Thêm nút bấm "Vị trí của tôi"
+        // ================== LOCATE BUTTON ==================
         const locateControl = L.control({ position: "topright" });
         locateControl.onAdd = function () {
             const div = L.DomUtil.create(
@@ -109,17 +102,17 @@ export default function Content() {
         };
         locateControl.addTo(map);
 
-        // Xử lý sự kiện locationfound / locationerror
         map.on("locationfound", function (e) {
             L.marker(e.latlng)
                 .addTo(map)
                 .bindPopup("Bạn đang ở đây")
                 .openPopup();
         });
+
         map.on("locationerror", function () {
             alert("Không thể xác định vị trí của bạn!");
         });
     }, []);
 
-    return <div id="map" style={{ height: "100%", width: "100%" }}></div>;
+    return <div id="map" style={{ height: "100%", width: "100%" }} />;
 }
