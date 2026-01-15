@@ -20,7 +20,6 @@ export default function Container() {
         <>
             <div className={cx("container", { active: state.util.open })}>
                 {!state.util.open ? <Navbar /> : <Navbarx />}
-                <Header />
                 <Content />
             </div>
         </>

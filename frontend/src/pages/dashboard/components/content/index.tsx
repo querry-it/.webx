@@ -4,17 +4,26 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet/dist/leaflet.css";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
 
 export default function Content() {
+    const mapRef = useRef<L.Map | null>(null);
 
     useEffect(() => {
-        if (L.DomUtil.get("map")?._leaflet_id) return;
+        if (mapRef.current) return;
 
-        const map = L.map("map").setView([21.0278, 105.8342], 11);
+        // Điểm móc ban đầu
+        mapRef.current = L.map("map", {
+            center: [20.98, 105.7942],
+            zoom: 10,
+            minZoom: 1,
+            maxZoom: 100,
+        });
 
-        // ================== BASE MAP ==================
+        const map = mapRef.current;
+
+        // Các options của map
         const streets = L.tileLayer(
             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             { maxZoom: 19 }
@@ -31,25 +40,25 @@ export default function Content() {
         );
 
         L.control
-            .layers({
-                Streets: streets,
-                Satellite: satellite,
-                Terrain: terrain,
-            })
+            .layers(
+                {
+                    Streets: streets,
+                    Satellite: satellite,
+                    Terrain: terrain,
+                },
+                undefined,
+                { position: "topright" }
+            )
             .addTo(map);
 
-        // ================== HÀ NỘI GEOJSON ==================
-        if (
-            HaNoiGeoMap &&
-            HaNoiGeoMap.type === "FeatureCollection" &&
-            Array.isArray(HaNoiGeoMap.features)
-        ) {
+        // Ranh giới Hà Nội
+        if (HaNoiGeoMap && HaNoiGeoMap.type === "FeatureCollection") {
             const hanoiLayer = L.geoJSON(HaNoiGeoMap as any, {
                 style: {
-                    color: "#FF0000",
-                    weight: 3,
+                    color: "blueviolet",
+                    weight: 2,
                     fillColor: "#FFAAAA",
-                    fillOpacity: 0.2,
+                    fillOpacity: 0.25,
                 },
                 onEachFeature: (feature: any, layer) => {
                     if (feature.properties?.name) {
@@ -57,44 +66,27 @@ export default function Content() {
                     }
                 },
             }).addTo(map);
-
-            // fit map theo ranh giới Hà Nội
-            map.fitBounds(hanoiLayer.getBounds());
-        } else {
-            console.error("GeoJSON Hà Nội không hợp lệ");
         }
 
-        // ================== SCALE ==================
         L.control.scale({ imperial: false }).addTo(map);
 
-        // ================== SEARCH ==================
-        L.Control.geocoder({
-            defaultMarkGeocode: true,
-            placeholder: "Tìm địa điểm...",
-        }).addTo(map);
-
-        // ================== ROUTING ==================
-        L.Routing.control({
-            waypoints: [
-                L.latLng(21.0278, 105.8342),
-                L.latLng(21.035, 105.85),
-            ],
-            routeWhileDragging: true,
-            geocoder: L.Control.Geocoder.nominatim(),
-            showAlternatives: true,
-            lineOptions: {
-                styles: [{ color: "red", opacity: 0.8, weight: 6 }],
-            },
-        }).addTo(map);
-
-        // ================== LOCATE BUTTON ==================
+        // Nút lấy vị trí của tôi
         const locateControl = L.control({ position: "topright" });
-        locateControl.onAdd = function () {
+        locateControl.onAdd = () => {
             const div = L.DomUtil.create(
                 "div",
                 "leaflet-bar leaflet-control leaflet-control-custom"
             );
-            div.innerHTML = `<button style="padding:4px 8px; cursor:pointer;">📍 Vị trí của tôi</button>`;
+            div.innerHTML = `
+                <button style="
+                    padding:4px 8px;
+                    cursor:pointer;
+                    background:white;
+                    border:none;
+                ">
+                    📍 Vị trí của tôi
+                </button>
+            `;
             div.onclick = () => {
                 map.locate({ setView: true, maxZoom: 16 });
             };
@@ -102,17 +94,27 @@ export default function Content() {
         };
         locateControl.addTo(map);
 
-        map.on("locationfound", function (e) {
-            L.marker(e.latlng)
-                .addTo(map)
-                .bindPopup("Bạn đang ở đây")
-                .openPopup();
-        });
-
-        map.on("locationerror", function () {
+        map.on("locationerror", () => {
             alert("Không thể xác định vị trí của bạn!");
         });
+
+        // Return useEff
+        return () => {
+            map.remove();
+            mapRef.current = null;
+        };
     }, []);
 
-    return <div id="map" style={{ height: "100%", width: "100%" }} />;
+    return (
+        <div
+            id="map"
+            style={{
+                height: "100%",
+                width: "100%",
+                border: "none",
+                outline: "none",
+                boxShadow: "none",
+            }}
+        />
+    );
 }
