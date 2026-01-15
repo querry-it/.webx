@@ -3,10 +3,10 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 52px 1fr;
-    grid-template-columns: 52px 14px 1fr 14px;
+    grid-template-columns: 52px 1fr;
     grid-template-areas:
-        "navbar no-content-left header no-content-right"
-        "navbar no-content-left content no-content-right";
+        "navbar header"
+        "navbar content";
     height: 100vh;
 }
 
@@ -15,9 +15,9 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 52px 1fr;
-    grid-template-columns: 250px 14px 1fr 14px;
+    grid-template-columns: 250px 1fr;
     grid-template-areas:
-        "navbar-x no-content-left header no-content-right"
-        "navbar-x no-content-left content no-content-right";
+        "navbar-x header"
+        "navbar-x content";
     height: 100vh;
 }
