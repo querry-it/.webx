@@ -5,29 +5,36 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder";
+import { GeoJSON } from "react-leaflet";
+import getHanoiBoundaryGeoJSON from '../../../../utils/hanoiGeoJSON';
+
+const hanoiBoundaryGeoJSON = getHanoiBoundaryGeoJSON();
 
 // Placeholder GeoJSON ranh giới Hà Nội
-const hanoiBoundaryGeoJSON = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": { "name": "Hà Nội" },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [105.3, 20.6],
-            [106.0, 20.6],
-            [106.0, 21.4],
-            [105.3, 21.4],
-            [105.3, 20.6]
-          ]
-        ]
-      }
-    }
-  ]
-};
+// const hanoiBoundaryGeoJSON = {
+  // "type": "FeatureCollection",
+  // "features": [
+  //   {
+  //     "type": "Feature",
+  //     "properties": { "name": "Hà Nội" },
+  //     "geometry": {
+  //       "type": "Polygon",
+  //       "coordinates": [
+  //         [
+  //           [105.3, 20.6],
+  //           [106.0, 20.6],
+  //           [106.0, 21.4],
+  //           [105.3, 21.4],
+  //           [105.3, 20.6]
+  //         ]
+  //       ]
+  //     }
+  //   }
+  // ]
+// };
+
+
+
 
 export default function Content() {
   useEffect(() => {
