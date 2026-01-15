@@ -1,4 +1,4 @@
-.modal-overlay {
+/* .modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.08);
@@ -78,4 +78,4 @@
     filter: drop-shadow(0 1px 1px var(--color-line-modal));
     width: 100%;
     font-weight: 600;
-}
+} */
