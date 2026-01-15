@@ -1,13 +1,11 @@
 import classNames from "classnames/bind";
-import Navbar from "../navbar";
-import Header from "../header";
+import { useEffect } from "react";
+import { useEditor } from "../../../../state/useEditor";
 import Content from "../content";
-import ContentLeft from "../no-content-left/no-content-left";
-import ContentRight from "../no-content-right/no-content-right";
+import Header from "../header";
+import Navbar from "../navbar";
 import Navbarx from "../navbar-x";
 import styles from "./container.module.css";
-import { useEditor } from "../../../../state/useEditor";
-import { useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -24,8 +22,6 @@ export default function Container() {
                 {!state.util.open ? <Navbar /> : <Navbarx />}
                 <Header />
                 <Content />
-                <ContentLeft />
-                <ContentRight />
             </div>
         </>
     );
