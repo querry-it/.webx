@@ -68,24 +68,24 @@ export default function Content() {
         L.control.scale({ imperial: false }).addTo(map);
 
         // ================== SEARCH ==================
-        L.Control.geocoder({
-            defaultMarkGeocode: true,
-            placeholder: "Tìm địa điểm...",
-        }).addTo(map);
+        // L.Control.geocoder({
+        //     defaultMarkGeocode: true,
+        //     placeholder: "Tìm địa điểm...",
+        // }).addTo(map);
 
         // ================== ROUTING ==================
-        L.Routing.control({
-            waypoints: [
-                L.latLng(21.0278, 105.8342),
-                L.latLng(21.035, 105.85),
-            ],
-            routeWhileDragging: true,
-            geocoder: L.Control.Geocoder.nominatim(),
-            showAlternatives: true,
-            lineOptions: {
-                styles: [{ color: "red", opacity: 0.8, weight: 6 }],
-            },
-        }).addTo(map);
+        // L.Routing.control({
+        //     waypoints: [
+        //         L.latLng(21.0278, 105.8342),
+        //         L.latLng(21.035, 105.85),
+        //     ],
+        //     routeWhileDragging: true,
+        //     geocoder: L.Control.Geocoder.nominatim(),
+        //     showAlternatives: true,
+        //     lineOptions: {
+        //         styles: [{ color: "red", opacity: 0.8, weight: 6 }],
+        //     },
+        // }).addTo(map);
 
         // ================== LOCATE BUTTON ==================
         const locateControl = L.control({ position: "topright" });
@@ -102,12 +102,12 @@ export default function Content() {
         };
         locateControl.addTo(map);
 
-        map.on("locationfound", function (e) {
-            L.marker(e.latlng)
-                .addTo(map)
-                .bindPopup("Bạn đang ở đây")
-                .openPopup();
-        });
+        // map.on("locationfound", function (e) {
+        //     L.marker(e.latlng)
+        //         .addTo(map)
+        //         .bindPopup("Bạn đang ở đây")
+        //         .openPopup();
+        // });
 
         map.on("locationerror", function () {
             alert("Không thể xác định vị trí của bạn!");
