@@ -1,14 +1,20 @@
-import classNames from "classnames/bind";
-import styles from "./logoutmodal.module.css";
+// import classNames from "classnames/bind";
+// import styles from "./logoutmodal.module.css";
 import { useEditor } from "../../../../state/useEditor";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { offset, useFloating } from "@floating-ui/react";
 
-const cx = classNames.bind(styles);
+// const cx = classNames.bind(styles);
 
 export default function LogoutModal() {
     const { dispatch } = useEditor();
     const navigate = useNavigate();
+
+    const { refs, floatingStyles } = useFloating({
+        placement: "bottom",
+        middleware: [offset(0)], 
+    });
 
     const setState = (
         option: string,
@@ -35,26 +41,29 @@ export default function LogoutModal() {
     return (
         <>
             <div
+                ref={refs.setReference}
                 onClick={() => setState("SET_MODAL", "logout", false)}
-                className={cx("modal-overlay")}
+                className="fixed inset-0 bg-black/10 flex justify-center items-center z-[99]" 
             >
                 <div
+                    ref={refs.setFloating}
+                    style={floatingStyles}
                     onClick={(e) => e.stopPropagation()}
-                    className={cx("modal-container")}
+                    className="bg-white w-[400px] h-[368px] rounded-lg overflow-hidden relative bottom-5 shadow-[0_1px_2px_#d3d3d3] border border-[var(--color-line-modal) p-10 z-[100]" 
                 >
-                    <div className={cx("box__content")}>
-                        <div className={cx("box__content--top")}>
-                            <span>Bạn có chắc muốn</span>
-                            <span>đăng xuất không?</span>
+                    <div className="w-[320px] h-[286px]"> 
+                        <div className="h-[64px] flex flex-col justify-evenly"> 
+                            <span className="block text-2xl font-medium text-center">Bạn có chắc muốn</span>
+                            <span className="block text-2xl font-medium text-center">đăng xuất không?</span>
                         </div>
-                        <div className={cx("box__content--mid")}>
-                            <span>Đăng xuất khỏi tài khoản</span>
-                            <span>112233445566@ichigo.mzn trên</span>
-                            <span>ChatIchigoMazone?</span>
+                        <div className="mt-4 mb-6 h-[84px] flex flex-col justify-evenly"> 
+                            <span className="block text-[17px] font-medium text-center color-[#5D5D5D]">Đăng xuất khỏi tài khoản</span>
+                            <span className="block text-[17px] font-medium text-center color-[#5D5D5D]">112233445566@ichigo.mzn trên</span>
+                            <span className="block text-[17px] font-medium text-center color-[#5D5D5D]">ChatIchigoMazone?</span>
                         </div>
                         <button
                             onClick={handleLogout}
-                            className={cx("box__content--left")}
+                            className="h-[44px] mx-3 w-full bg-black border border-[var(--color-line-modal)] rounded-[20px] color-white font-semibold"
                         >
                             Đăng xuất
                         </button>
@@ -62,7 +71,7 @@ export default function LogoutModal() {
                             onClick={() =>
                                 setState("SET_MODAL", "logout", false)
                             }
-                            className={cx("box__content--right")}
+                            className="h-[44px] bg-transparent rounded-[20px] border border-[var(--color-line-modal)] shadow-[0_1px_1px_var(--color-line-modal)] w-full font-semibold"  
                         >
                             Hủy
                         </button>
