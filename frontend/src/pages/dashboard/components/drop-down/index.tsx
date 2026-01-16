@@ -46,7 +46,7 @@ export default function DropDown() {
                 }} className={cx("btn")}>
                     <div className={cx("wrapper__top")}>
                         <div className={cx("avatar")}>
-                            <i className="far fa-frown"></i>
+                            <p className={cx("name")}>NN</p>
                         </div>
                         <div className={cx("info")}>
                             <p className={cx("title")}>Nhất Trịnh</p>
@@ -56,21 +56,21 @@ export default function DropDown() {
                 </button>
             </div>
             <hr className={cx("divider")} />
-            <div className={cx("item")}>
+            {/* <div className={cx("item")}>
                 <button onClick={() => console.log("Nâng cấp gói")} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className="far fa-frown"></i>
+                        <i className={cx("fa-solid fa-arrow-up")}></i>
                         <p>Nâng cấp gói</p>
                     </div>
                 </button>
-            </div>
+            </div> */}
             <div className={cx("item")}>
                 <button onClick={() => {
                     setState("SET_MODAL", "person", true),
                     setState("SET_DROPDOWN", "logout", false);
                 }} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className="far fa-frown"></i>
+                        <i className="fa-solid fa-palette"></i>
                         <p>Cá nhân hóa</p>
                     </div>
                 </button>
@@ -81,7 +81,7 @@ export default function DropDown() {
                     setState("SET_DROPDOWN", "logout", false);
                 }} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className="far fa-frown"></i>
+                        <i className="fa-solid fa-gear"></i>
                         <p>Cài đặt</p>
                     </div>
                 </button>
@@ -93,7 +93,7 @@ export default function DropDown() {
                     setState("SET_DROPDOWN", "logout", false);
                 }} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className="far fa-frown"></i>
+                        <i className={cx("fa-solid fa-arrow-right-from-bracket")}></i>
                         <p>Đăng xuất</p>
                     </div>
                 </button>

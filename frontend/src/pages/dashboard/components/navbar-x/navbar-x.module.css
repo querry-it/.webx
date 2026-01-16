@@ -441,3 +441,18 @@
     font-size: 13px;
 }
 
+.img-avatar {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: #ff96ff;
+}
+
+.img-avatar .name {
+    font-size: 10px;
+    padding-top: 2px;
+    color: white;
+}
