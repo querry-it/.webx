@@ -1,6 +1,7 @@
 import { useEditor } from "../../../../state/useEditor";
 import styles from "./navbar.module.css";
 import classNames from "classnames/bind";
+import logomap from "../../../../assets/images.png"
 
 const cx = classNames.bind(styles);
 
@@ -28,12 +29,12 @@ export default function Navbar() {
                             onMouseLeave={() => setTooltip("logo", false)}
                             onClick={() => {
                                 setState("SET_UTIL", "open", !state.util["open"]),
-                                setTooltip("logo", false);
+                                    setTooltip("logo", false);
                             }}
                             className={cx("header__start--gpt")}
                         >
                             <button>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <img src={logomap} alt="" />
                             </button>
                             {state.tooltip.logo && (
                                 <div className={cx("tooltip")}>
@@ -49,7 +50,7 @@ export default function Navbar() {
                             className={cx("header__end--add")}
                         >
                             <button>
-                                <i className={cx("far", "fa-frown")}></i>
+                            <i className={cx("fa-solid", "fa-house")}></i>
                             </button>
                             {state.tooltip.add && (
                                 <div className={cx("tooltip")}>
@@ -64,7 +65,7 @@ export default function Navbar() {
                             className={cx("header__end--search")}
                         >
                             <button>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <i className={cx("fa-solid", "fa-magnifying-glass")}></i>
                             </button>
                             {state.tooltip.search && (
                                 <div className={cx("tooltip")}>
@@ -79,7 +80,7 @@ export default function Navbar() {
                             className={cx("header__end--image")}
                         >
                             <button>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <i className={cx("fa-solid", "fa-clock-rotate-left")}></i>
                             </button>
                             {state.tooltip.image && (
                                 <div className={cx("tooltip")}>
@@ -97,7 +98,7 @@ export default function Navbar() {
                             className={cx("footer__start--spackle")}
                         >
                             <button>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <i className={cx("fa-solid", "fa-circle-info")}></i>
                             </button>
                             {state.tooltip.spackle && (
                                 <div className={cx("tooltip")}>
@@ -113,9 +114,11 @@ export default function Navbar() {
                             onClick={() => setState("SET_DROPDOWN", "logout", !state.dropdown["logout"])}
                             className={cx("footer__end--profile")}
                         >
-                            <button>
-                                <i className={cx("far", "fa-frown")}></i>
-                            </button>
+                            <div className={cx("img-avatar")}>
+                                <p className={cx("name")}>
+                                    NN
+                                </p>
+                            </div>
                             {state.tooltip.logout && !state.dropdown.logout && (
                                 <div className={cx("tooltip")}>
                                     <p>IchigoMazone</p>

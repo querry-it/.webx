@@ -75,11 +75,14 @@
 .footer__start button:hover,
 .footer__end button:hover {
     background-color: var(--color-line-space);
-    padding: 6px;
+    /* padding: 6px; */
     border-radius: 5px;
 }
 
-.header__start--gpt,
+.header__start--gpt {
+    padding: 6px;
+}
+
 .header__end--add,
 .header__end--search,
 .header__end--image,
@@ -110,3 +113,20 @@
 .footer__end .tooltip {
     left: 58px;
 }
+
+.img-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ff96ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-avatar .name{
+    font-size: 10px;
+    padding-top: 2px;
+    color: #ffffff;
+}
+

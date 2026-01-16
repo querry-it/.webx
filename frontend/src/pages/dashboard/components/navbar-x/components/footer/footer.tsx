@@ -29,9 +29,9 @@ export default function FooterNavbarX() {
                         }
                         className={cx("footer__end--profile")}
                     >
-                        <button>
-                            <i className={cx("far", "fa-frown")}></i>
-                        </button>
+                        <div className={cx("img-avatar")}>
+                            <p className={cx("name")}>NN</p>
+                        </div>
                     </div>
                 </div>
                 <div className={cx("footer__end-profile-y")}>

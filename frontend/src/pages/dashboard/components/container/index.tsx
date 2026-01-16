@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 import { useEffect } from "react";
 import { useEditor } from "../../../../state/useEditor";
 import Content from "../content";
-import Header from "../header";
 import Navbar from "../navbar";
 import Navbarx from "../navbar-x";
 import styles from "./container.module.css";
