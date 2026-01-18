@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 401;
+    pointer-events: all;
+    z-index: 1000;
 }
 
 .modal-container {
@@ -19,7 +20,7 @@
     filter: drop-shadow(0 1px 2px #d3d3d3);
     border: 1px solid var(--color-line-modal);
     display: flex;
-    z-index: 100;
+    z-index: 1001;
 }
 
 .table__left {

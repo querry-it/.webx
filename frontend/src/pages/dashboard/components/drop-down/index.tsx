@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./dropdown.module.css";
 import { useEffect, useRef } from "react";
 import { useEditor } from "../../../../state/useEditor";
+import { Palette, Settings, LogOut } from "lucide-react";
 
 const cx = classNames.bind(styles);
 
@@ -17,6 +18,7 @@ export default function DropDown() {
 
     const wrapperRef = useRef(null);
     const buttonRef = useRef(null);
+    const IconRef = useRef<{x: number, y: number}>({ x: 20, y: 1.6});
 
     useEffect(() => {
         const handleClickOutSide = (event: MouseEvent) => {
@@ -56,21 +58,13 @@ export default function DropDown() {
                 </button>
             </div>
             <hr className={cx("divider")} />
-            {/* <div className={cx("item")}>
-                <button onClick={() => console.log("Nâng cấp gói")} className={cx("btn")}>
-                    <div className={cx("wrapper")}>
-                        <i className={cx("fa-solid fa-arrow-up")}></i>
-                        <p>Nâng cấp gói</p>
-                    </div>
-                </button>
-            </div> */}
             <div className={cx("item")}>
                 <button onClick={() => {
                     setState("SET_MODAL", "person", true),
                     setState("SET_DROPDOWN", "logout", false);
                 }} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className="fa-solid fa-palette"></i>
+                        <Palette size={IconRef.current.x} strokeWidth={IconRef.current.y}/>
                         <p>Cá nhân hóa</p>
                     </div>
                 </button>
@@ -81,7 +75,7 @@ export default function DropDown() {
                     setState("SET_DROPDOWN", "logout", false);
                 }} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className="fa-solid fa-gear"></i>
+                        <Settings size={IconRef.current.x} strokeWidth={IconRef.current.y}/>   
                         <p>Cài đặt</p>
                     </div>
                 </button>
@@ -93,7 +87,7 @@ export default function DropDown() {
                     setState("SET_DROPDOWN", "logout", false);
                 }} className={cx("btn")}>
                     <div className={cx("wrapper")}>
-                        <i className={cx("fa-solid fa-arrow-right-from-bracket")}></i>
+                        <LogOut size={IconRef.current.x} strokeWidth={IconRef.current.y}/>
                         <p>Đăng xuất</p>
                     </div>
                 </button>
