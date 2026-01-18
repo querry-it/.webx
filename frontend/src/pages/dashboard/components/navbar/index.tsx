@@ -1,7 +1,8 @@
+import classNames from "classnames/bind";
+import { BookmarkCheck, Earth, History, Info, Layers } from "lucide-react";
+import { useRef } from "react";
 import { useEditor } from "../../../../state/useEditor";
 import styles from "./navbar.module.css";
-import classNames from "classnames/bind";
-import logomap from "../../../../assets/images.png"
 
 const cx = classNames.bind(styles);
 
@@ -15,26 +16,40 @@ export default function Navbar() {
         });
     };
 
-    const setState = (option: string, key: string, value: boolean | string | number) => {
+    const setState = (
+        option: string,
+        key: string,
+        value: boolean | string | number,
+    ) => {
         dispatch({ type: option, payload: { [key]: value } });
-    }
+    };
+
+    const strokeWidth = useRef<number>(1.6);
 
     return (
         <>
             <div className={cx("navbar")}>
                 <div className={cx("header")}>
-                    <div className={cx("header__start", { active: state.util.open })}>
+                    <div
+                        className={cx("header__start", {
+                            active: state.util.open,
+                        })}
+                    >
                         <div
                             onMouseEnter={() => setTooltip("logo", true)}
                             onMouseLeave={() => setTooltip("logo", false)}
                             onClick={() => {
-                                setState("SET_UTIL", "open", !state.util["open"]),
-                                    setTooltip("logo", false);
+                                (setState(
+                                    "SET_UTIL",
+                                    "open",
+                                    !state.util["open"],
+                                ),
+                                    setTooltip("logo", false));
                             }}
                             className={cx("header__start--gpt")}
                         >
                             <button>
-                                <img src={logomap} alt="" />
+                                <Earth strokeWidth={strokeWidth.current} />
                             </button>
                             {state.tooltip.logo && (
                                 <div className={cx("tooltip")}>
@@ -43,6 +58,9 @@ export default function Navbar() {
                             )}
                         </div>
                     </div>
+                    <div className={cx("header__middle")}>
+                        <div className={cx("line__xy")}></div>
+                    </div>
                     <div className={cx("header__end")}>
                         <div
                             onMouseEnter={() => setTooltip("add", true)}
@@ -50,7 +68,9 @@ export default function Navbar() {
                             className={cx("header__end--add")}
                         >
                             <button>
-                            <i className={cx("fa-solid", "fa-house")}></i>
+                                <BookmarkCheck
+                                    strokeWidth={strokeWidth.current}
+                                />
                             </button>
                             {state.tooltip.add && (
                                 <div className={cx("tooltip")}>
@@ -65,7 +85,7 @@ export default function Navbar() {
                             className={cx("header__end--search")}
                         >
                             <button>
-                                <i className={cx("fa-solid", "fa-magnifying-glass")}></i>
+                                <History strokeWidth={strokeWidth.current} />
                             </button>
                             {state.tooltip.search && (
                                 <div className={cx("tooltip")}>
@@ -73,14 +93,16 @@ export default function Navbar() {
                                 </div>
                             )}
                         </div>
-
+                        <div className={cx("header__end--line")}>
+                            <div className={cx("line__xy")}></div>
+                        </div>
                         <div
                             onMouseEnter={() => setTooltip("image", true)}
                             onMouseLeave={() => setTooltip("image", false)}
                             className={cx("header__end--image")}
                         >
                             <button>
-                                <i className={cx("fa-solid", "fa-clock-rotate-left")}></i>
+                                <Layers strokeWidth={strokeWidth.current} />
                             </button>
                             {state.tooltip.image && (
                                 <div className={cx("tooltip")}>
@@ -98,7 +120,7 @@ export default function Navbar() {
                             className={cx("footer__start--spackle")}
                         >
                             <button>
-                                <i className={cx("fa-solid", "fa-circle-info")}></i>
+                                <Info strokeWidth={strokeWidth.current} />
                             </button>
                             {state.tooltip.spackle && (
                                 <div className={cx("tooltip")}>
@@ -111,13 +133,17 @@ export default function Navbar() {
                         <div
                             onMouseEnter={() => setTooltip("logout", true)}
                             onMouseLeave={() => setTooltip("logout", false)}
-                            onClick={() => setState("SET_DROPDOWN", "logout", !state.dropdown["logout"])}
+                            onClick={() =>
+                                setState(
+                                    "SET_DROPDOWN",
+                                    "logout",
+                                    !state.dropdown["logout"],
+                                )
+                            }
                             className={cx("footer__end--profile")}
                         >
                             <div className={cx("img-avatar")}>
-                                <p className={cx("name")}>
-                                    NN
-                                </p>
+                                <p className={cx("name")}>NN</p>
                             </div>
                             {state.tooltip.logout && !state.dropdown.logout && (
                                 <div className={cx("tooltip")}>
