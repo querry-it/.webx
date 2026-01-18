@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 401;
+    z-index: 9999;
 }
 
 .modal-container {
@@ -17,8 +17,8 @@
     position: relative;
     bottom: 15px;
     filter: drop-shadow(0 1px 2px #d3d3d3);
-    border: 1px solid var(--color-line-modal);
-    padding: 14px;
+    border: 1px solid #cbcbcb;
+    padding: 0 16px 0 16px;
     z-index: 100;
 }
 
@@ -27,7 +27,7 @@
     height: 128px;
     border-radius: 50%;
     object-fit: cover;
-    filter: drop-shadow(0 1px 1px var(--color-line-modal));
+    filter: drop-shadow(0 1px 1px #cbcbcb);
 }
 
 h2 {
@@ -54,7 +54,7 @@ h2 {
 
 .content__name, .content__code {
     height: 65px;
-    border: 1px solid var(--color-line-modal);
+    border: 1px solid #cbcbcb;
     border-radius: 5px;
     margin-bottom: 8px;
 }
@@ -76,14 +76,14 @@ h2 {
 
 .content__name .content__name--label,
 .content__code .content__code--label {
-    margin: 10px 0 0 10px;
+    margin: 4px 0 4px 12px;
 }
 
 .content__name input, .content__code input {
     font-size: 15px;
     border: none;
     background-color: transparent;
-    margin: 10px 0 0 10px;
+    margin: 0 0 0 12px;
     width: 95%;
 }
 
@@ -99,27 +99,27 @@ h2 {
 
 .submit {
     display: flex;
-    justify-content: end;
+    justify-content: end;   
     align-items: end;
 }
 
 .submit .submit__btn {
-    width: 28%;
+    width: 32%;
     display: flex;
     justify-content: space-between;
 }
 
 .submit button.no-save {
     background-color: #fff;
-    border: 1px solid var(--color-line-modal);
-    filter: drop-shadow(0 1px 2px var(--color-line-modal));
+    border: 1px solid #cbcbcb;
+    filter: drop-shadow(0 1px 2px #cbcbcb);
     font-weight: 600;
 }
 
 .submit button.save {
     background-color: black;
-    border: 1px solid var(--color-line-modal);
-    filter: drop-shadow(0 1px 2px var(--color-line-modal));
+    border: 1px solid #cbcbcb;
+    filter: drop-shadow(0 1px 2px #cbcbcb);
     color: #fff;
     font-weight: 600;
 }
@@ -133,15 +133,15 @@ h2 {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    border: 1px solid var(--color-line-modal);
+    border: 1px solid #cbcbcb;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 100px;
-    left: 92px;
+    top: 96px;
+    left: 96px;
     background-color: #fff;
-    filter: drop-shadow(0 1px 2px var(--color-line-modal));
+    filter: drop-shadow(0 1px 2px #cbcbcb);
 }
 
 .content__avatar--image {
