@@ -43,13 +43,13 @@ export default function LogoutModal() {
             <div
                 // ref={refs.setReference}
                 onClick={() => setState("SET_MODAL", "logout", false)}
-                className="fixed inset-0 bg-black/10 flex justify-center items-center z-[401]" 
+                className="fixed inset-0 bg-black/10 flex justify-center items-center z-[1003]" 
             >
                 <div
                     // ref={refs.setFloating}
                     // style={floatingStyles}
                     onClick={(e) => e.stopPropagation()}
-                    className="bg-white w-[400px] h-[368px] rounded-lg overflow-hidden relative bottom-5 shadow-[0_1px_2px_#d3d3d3] border border-[var(--color-line-modal) p-10 z-[401]" 
+                    className="bg-white w-[400px] h-[368px] rounded-lg overflow-hidden relative bottom-5 shadow-[0_1px_2px_#d3d3d3] border border-[var(--color-line-modal) p-10 z-[1004]" 
                 >
                     <div className="w-[320px] h-[286px]"> 
                         <div className="h-[64px] flex flex-col justify-evenly"> 

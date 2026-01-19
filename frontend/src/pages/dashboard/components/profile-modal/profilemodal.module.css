@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 401;
+    z-index: 1003;
 }
 
 .modal-container {
@@ -19,7 +19,7 @@
     filter: drop-shadow(0 1px 2px #d3d3d3);
     border: 1px solid var(--color-line-modal);
     padding: 14px;
-    z-index: 100;
+    z-index: 1004;
 }
 
 .content img {
