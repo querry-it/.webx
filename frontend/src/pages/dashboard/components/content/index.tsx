@@ -34,7 +34,7 @@ const cx = classNames.bind(styles);
 
 export default function Content() {
     const [options, SetOptions] = useState<boolean>(false);
-    const [search, SetSearch] = useState<boolean>(false);
+    const [search, SetSearch] = useState<boolean>(true);
     const [roadmap, SetRoadMap] = useState<boolean>(false);
     const mapRef = useRef<L.Map | null>(null);
     const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
@@ -212,13 +212,6 @@ export default function Content() {
                         <p>Bảo tàng</p>
                     </div>
                     <div className={cx("search__sightseeing")}>
-                        <Star
-                            size={IconRef.current.x}
-                            strokeWidth={IconRef.current.y}
-                        />
-                        <p>Biểu tượng</p>
-                    </div>
-                    <div className={cx("search__sightseeing")}>
                         <Building2
                             size={IconRef.current.x}
                             strokeWidth={IconRef.current.y}
@@ -358,6 +351,13 @@ export default function Content() {
             )}
             {false && (
                 <div className={cx("options__input")}>
+                    <div className={cx("item")}>
+                        <Star
+                            size={IconRef.current.x}
+                            strokeWidth={IconRef.current.y}
+                        />
+                        <p>Biểu tượng</p>
+                    </div>
                     <div className={cx("item")}>
                         <Leaf
                             size={IconRef.current.x}
@@ -524,7 +524,7 @@ export default function Content() {
                     </div>
                 </>
             )}
-            {false && (
+            {true && (
                 <>
                     <div className={cx("save__option")}></div>
                     <div className={cx("search-x")}>
@@ -637,9 +637,9 @@ export default function Content() {
                 </>
             )}
             {false && <div className={cx("location__option")}></div>}
-            {/* {true && <div className={cx("location__add")}></div>} */}
-            {false && <div className={cx("location__image")}></div>}
+            {true && <div className={cx("location__add")}></div>}
             {false && <div className={cx("location__prev")}></div>}
+            {false && <div className={cx("location__image")}></div>}
         </div>
     );
 }
