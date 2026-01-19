@@ -5,11 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     z-index: 1003;
-=======
-    z-index: 9999;
->>>>>>> c117f762e65af73fc56a4ae750fa99ef67686049
 }
 
 .modal-container {
@@ -21,15 +17,9 @@
     position: relative;
     bottom: 15px;
     filter: drop-shadow(0 1px 2px #d3d3d3);
-<<<<<<< HEAD
     border: 1px solid var(--color-line-modal);
     padding: 14px;
     z-index: 1004;
-=======
-    border: 1px solid #cbcbcb;
-    padding: 0 16px 0 16px;
-    z-index: 100;
->>>>>>> c117f762e65af73fc56a4ae750fa99ef67686049
 }
 
 .content img {
