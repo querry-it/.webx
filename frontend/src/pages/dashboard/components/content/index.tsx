@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
+import Save from "./components/save__option";
 import styles from "./content.module.css";
 
 const cx = classNames.bind(styles);
@@ -412,119 +413,8 @@ export default function Content() {
                     </div>
                 </div>
             )}
+            {true && <Save />}
             {false && (
-                <>
-                    <div className={cx("save__option")}></div>
-                    <div className={cx("search-x")}>
-                        <div className={cx("search__input")}>
-                            <div className={cx("search__input--title")}>
-                                <input
-                                    onFocus={() => SetSearch(false)}
-                                    onBlur={() => SetSearch(true)}
-                                    type="text"
-                                    placeholder="Tìm kiếm trên IchigoMazone Maps"
-                                />
-                            </div>
-                            <div className={cx("search__input--icon")}>
-                                <Search
-                                    size={IconRef.current.x}
-                                    strokeWidth={IconRef.current.y}
-                                />
-                            </div>
-                            <div className={cx("search__input--road")}>
-                                <X
-                                    size={IconRef.current.x}
-                                    strokeWidth={IconRef.current.y}
-                                />
-                            </div>
-                        </div>
-                        <div className={cx("items")}>
-                            <Home
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon")}
-                            />
-                            <p className={cx("title")}>Nhà riêng</p>
-                            <X
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon_x")}
-                            />
-                        </div>
-                        <div className={cx("items")}>
-                            <Clock
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon")}
-                            />
-                            <p className={cx("title")}>Nhà riêng</p>
-                            <X
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon_x")}
-                            />
-                        </div>
-                        <div className={cx("items")}>
-                            <Clock
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon")}
-                            />
-                            <p className={cx("title")}>Nhà riêng</p>
-                            <X
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon_x")}
-                            />
-                        </div>
-                        <div className={cx("items")}>
-                            <Clock
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon")}
-                            />
-                            <p className={cx("title")}>Nhà riêng</p>
-                            <X
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon_x")}
-                            />
-                        </div>
-                        <div className={cx("items")}>
-                            <Clock
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon")}
-                            />
-                            <p className={cx("title")}>Nhà riêng</p>
-                            <X
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon_x")}
-                            />
-                        </div>
-                        <div className={cx("items")}>
-                            <Clock
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon")}
-                            />
-                            <p className={cx("title")}>Nhà riêng</p>
-                            <X
-                                size={IconRef.current.x}
-                                strokeWidth={IconRef.current.y}
-                                className={cx("icon_x")}
-                            />
-                        </div>
-                        <div className={cx("items_x")}>
-                            <p className={cx("title")}>
-                                Nội dung tìm kiếm khác gần đây
-                            </p>
-                        </div>
-                    </div>
-                </>
-            )}
-            {true && (
                 <>
                     <div className={cx("save__option")}></div>
                     <div className={cx("search-x")}>
