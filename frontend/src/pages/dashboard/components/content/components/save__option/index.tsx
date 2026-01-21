@@ -37,7 +37,7 @@ export default function Save() {
     return (
         <>
             <div className={cx("save__option")}>
-                {/* {true && (
+                 {false && (
                     <div className="w-[372px] h-screen relative bg-white flex flex-col">
                         <div className="flex items-end w-full h-[130px] shrink-0 shadow-[0_2px_4px_-1px_rgba(0,0,0,0.4)]">
                             <button onClick={() => setActiveTab("list")} className={`${activeTab === "list" ? "hover:bg-blue-100" : ""} mx-auto hover:bg-gray-200 h-[48px] p-4`}>
@@ -65,10 +65,10 @@ export default function Save() {
                         {activeTab === "label" && (<Label />)}
 
                     </div>
-                )} */}
-                {/* {false && (<PlaceList />)} */}
-                {/* </div>
-            <div className={cx("search-x")}>
+                )} 
+                {false && (<PlaceList />)}
+                 </div>
+            {true && ( <div className={cx("search-x")}>
                 <div className={cx("search__input")}>
                     <div className={cx("search__input--title")}>
                         <input
@@ -90,8 +90,8 @@ export default function Save() {
                             strokeWidth={IconRef.current.y}
                         />
                     </div>
-                </div> */}
-                {/* <div className={cx("items")}>
+                </div> 
+                 <div className={cx("items")}>
                     <Home
                         size={IconRef.current.x}
                         strokeWidth={IconRef.current.y}
@@ -173,9 +173,9 @@ export default function Save() {
                     <p className={cx("title")}>
                         Nội dung tìm kiếm khác gần đây
                     </p>
-                </div> */}
-                {true && <AddPlace />}
-            </div>
+                </div> 
+                {false && <AddPlace />}
+            </div>)}
         </>
     );
 }

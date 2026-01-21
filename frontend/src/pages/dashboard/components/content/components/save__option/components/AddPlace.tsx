@@ -1,6 +1,6 @@
 export default function AddPlace() {
     return (
-        <div className="absolute top-[10px] left-[11px] w-[348px] bg-white rounded-[15px] shadow-[2px_2px_3px_3px_rgba(0,0,0,0.15)]">
+        <div className="absolute top-[10px] w-[348px] bg-white rounded-[15px] shadow-[2px_2px_3px_3px_rgba(0,0,0,0.15)]">
             <div className="mt-3 mb-4 mx-3">
                 <div className="flex items-center gap-2">
                     <i className="fa-solid fa-house text-[18px] text-gray-600"></i>
