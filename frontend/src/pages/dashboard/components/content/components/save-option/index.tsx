@@ -29,7 +29,7 @@ import PlaceList from "./components/PlaceList";
 
 const cx = classNames.bind(styles);
 
-export default function Save() {
+export default function SaveComponent() {
 
     const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
     const [activeTab, setActiveTab] = useState("list");
