@@ -1,0 +1,11 @@
+.location__prev {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 380px;
+    width: 380px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #cacaca;
+    z-index: 1000;
+}

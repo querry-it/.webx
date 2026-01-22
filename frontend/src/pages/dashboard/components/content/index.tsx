@@ -7,13 +7,17 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
+import DynamicComponent from "./components/dynamic-option";
+import HistoryComponent from "./components/history-option";
+import ImageComponent from "./components/image-option";
+import IntroducerComponent from "./components/introducer-option";
+import IntroducerXComponent from "./components/introducerX-option";
+import RoadMapComponent from "./components/roadmap-option";
+import SaveComponent from "./components/save-option";
 import SearchComponent from "./components/search-option";
-import styles from "./content.module.css";
 import SearchXComponent from "./components/searchX-option";
 import SearchYComponent from "./components/searchY-option";
-import RoadMapComponent from "./components/roadmap-option";
-import HistoryComponent from "./components/history-option";
-import SaveComponent from "./components/save-option";
+import styles from "./content.module.css";
 
 const cx = classNames.bind(styles);
 
@@ -130,12 +134,12 @@ export default function Content() {
             {false && <SearchXComponent />}
             {false && <SearchYComponent />}
             {false && <RoadMapComponent />}
-            {true && <SaveComponent />}
+            {false && <SaveComponent />}
             {false && <HistoryComponent />}
-            {false && <div className={cx("location__option")}></div>}
-            {false && <div className={cx("location__add")}></div>}
-            {false && <div className={cx("location__prev")}></div>}
-            {false && <div className={cx("location__image")}></div>}
+            {false && <DynamicComponent />}
+            {false && <IntroducerComponent />}
+            {false && <IntroducerXComponent />}
+            {false && <ImageComponent />}
         </div>
     );
 }
