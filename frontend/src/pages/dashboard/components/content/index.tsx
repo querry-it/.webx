@@ -527,7 +527,7 @@ export default function Content() {
                 </>
             )}
             {false && <div className={cx("location__option")}></div>}
-            {false && <div className={cx("location__add")}></div>}
+            {true  && <div className={cx("location__add")}></div>}
             {false && <div className={cx("location__prev")}></div>}
             {false && <div className={cx("location__image")}></div>}
         </div>
