@@ -5,24 +5,20 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
-import Save from "./components/save__option";
 import SearchComponent from "./components/search-option";
 import styles from "./content.module.css";
 import SearchXComponent from "./components/searchX-option";
 import SearchYComponent from "./components/searchY-option";
 import RoadMapComponent from "./components/roadmap-option";
 import HistoryComponent from "./components/history-option";
+import SaveComponent from "./components/save-option";
 
 const cx = classNames.bind(styles);
 
 export default function Content() {
-    const [options, SetOptions] = useState<boolean>(false);
-    const [search, SetSearch] = useState<boolean>(true);
-    const [roadmap, SetRoadMap] = useState<boolean>(false);
     const mapRef = useRef<L.Map | null>(null);
-    const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
 
     useEffect(() => {
         if (mapRef.current) return;
@@ -134,10 +130,10 @@ export default function Content() {
             {false && <SearchXComponent />}
             {false && <SearchYComponent />}
             {false && <RoadMapComponent />}
-            {false && <Save />}
-            {true && <HistoryComponent />}
+            {true && <SaveComponent />}
+            {false && <HistoryComponent />}
             {false && <div className={cx("location__option")}></div>}
-            {true  && <div className={cx("location__add")}></div>}
+            {false && <div className={cx("location__add")}></div>}
             {false && <div className={cx("location__prev")}></div>}
             {false && <div className={cx("location__image")}></div>}
         </div>
