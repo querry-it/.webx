@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
-import Save from "./components/save__option";
+// import Save from "./components/save__option";
 import styles from "./content.module.css";
 
 const cx = classNames.bind(styles);
@@ -413,7 +413,7 @@ export default function Content() {
                     </div>
                 </div>
             )}
-            {true && <Save />}
+            {false && <Save />}
             {false && (
                 <>
                     <div className={cx("save__option")}></div>
@@ -527,7 +527,7 @@ export default function Content() {
                 </>
             )}
             {false && <div className={cx("location__option")}></div>}
-            {true && <div className={cx("location__add")}></div>}
+            {false && <div className={cx("location__add")}></div>}
             {false && <div className={cx("location__prev")}></div>}
             {false && <div className={cx("location__image")}></div>}
         </div>
