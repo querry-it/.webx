@@ -8,4 +8,19 @@
     border-radius: 10px;
     box-shadow: 0 0 0 1px #cacaca;
     z-index: 1002;
+    display: flex;
+    padding: 10px;
+    
 }
+
+
+.hideScrollbar {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / Edge */
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari */
+}
+
+

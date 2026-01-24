@@ -38,7 +38,7 @@ export default function Content() {
             {false && <options.RoadMapComponent />}
             {false && <options.SaveComponent />}
             {false && <options.HistoryComponent />}
-            {false && <options.DynamicComponent />}
+            {true && <options.DynamicComponent />}
             {false && <options.IntroducerComponent />}
             {false && <options.IntroducerXComponent />}
             {false && <options.ImageComponent />}
