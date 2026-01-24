@@ -1,0 +1,119 @@
+/* @keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}
+
+.jump {
+  animation: jump 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+} */
+
+/* 
+@keyframes jumpOnce {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.jump {
+  animation: jumpOnce 5s ease-in-out;
+} */
+
+
+/* 
+@keyframes jumpOnce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-200px);
+  }
+  70% {
+    transform: translateY(-200px); 
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.jump {
+  animation: jumpOnce 5s linear;
+} */
+
+
+/* 
+@keyframes jumpOnce {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-25px);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-40px);
+  }
+  80% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.jump {
+  animation: jumpOnce 10s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+ */
+
+@keyframes jumpOnce {
+  /* đứng yên */
+  0% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+
+  /* đi lên CHẬM */
+  20% {
+    transform: translateY(-30px);
+    animation-timing-function: ease-in-out;
+  }
+
+  40% {
+    transform: translateY(-50px);
+    animation-timing-function: ease-out;
+  }
+
+  /* giữ đỉnh */
+  55% {
+    transform: translateY(-50px);
+        animation-timing-function: ease-in-out;
+
+    /* animation-timing-function: cubic-bezier(0.2, 0, 0.4, 1); */
+  }
+
+  75% {
+    transform: translateY(30px);
+    animation-timing-function: cubic-bezier(0.2, 0, 0.4, 1);
+  }
+  /* đi xuống SIÊU CHẬM */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.jump {
+  animation: jumpOnce 8s forwards;
+  will-change: transform;
+}
