@@ -1,13 +1,35 @@
 import classNames from "classnames/bind";
 import styles from "../setup-modal/setupmodal.module.css";
 import { useEditor } from "../../../../state/useEditor";
+import {
+    Bell,
+    CircleStar,
+    CircleUser,
+    DatabaseZapIcon,
+    Key,
+    KeyRound,
+    LayoutGridIcon,
+    Settings,
+    UserLock,
+    X,
+} from "lucide-react";
+import { useRef } from "react";
 
 const cx = classNames.bind(styles);
 
 export default function SetupInterface() {
-    const { state, dispatch } = useEditor()
+    const { state, dispatch } = useEditor();
 
-    const setState = (option: string, key: string, value: boolean | number | null) => {
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
+
+    const setState = (
+        option: string,
+        key: string,
+        value: boolean | number | null,
+    ) => {
         dispatch({ type: option, payload: { [key]: value } });
     };
 
@@ -16,13 +38,17 @@ export default function SetupInterface() {
             <div className={cx("out")}>
                 <button
                     onClick={() => {
-                        if (state.modal.person) setState("SET_MODAL", "person", false);
+                        if (state.modal.person)
+                            setState("SET_MODAL", "person", false);
                         else setState("SET_MODAL", "setup", false);
                         setState("SET_UTIL", "index", null);
                     }}
                     className={cx("out__content")}
                 >
-                    X
+                    <X
+                        size={Icon.current.size}
+                        strokeWidth={Icon.current.weight}
+                    />
                 </button>
             </div>
             <button
@@ -31,7 +57,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <Settings
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Chung</div>
@@ -44,7 +73,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <Bell
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Thông báo</div>
@@ -57,7 +89,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <CircleStar
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Cá nhân hóa</div>
@@ -70,7 +105,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <LayoutGridIcon
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Ứng dụng</div>
@@ -83,7 +121,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <DatabaseZapIcon
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Kiểm soát dữ liệu</div>
@@ -96,7 +137,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <KeyRound
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Bảo mật</div>
@@ -109,7 +153,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <UserLock
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Quyền kiểm soát</div>
@@ -122,7 +169,10 @@ export default function SetupInterface() {
             >
                 <div className={cx("select__content")}>
                     <div className={cx("content__icon")}>
-                        <i className={cx("far", "fa-frown")}></i>
+                        <CircleUser
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                     <div className={cx("content__text")}>
                         <div>Tài khoản</div>

@@ -10,11 +10,20 @@ import {
     SquareArrowOutUpRight,
     X,
 } from "lucide-react";
+import { useEditor } from "../../../../../../state/useEditor";
 
 const cx = classNames.bind(styles);
 
 export default function RoadMapComponent() {
+    const { state, dispatch } = useEditor();
     const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
+    const setState = (option: string, key: string, value: boolean) => {
+        dispatch({
+            type: option,
+            payload: { [key]: value },
+        });
+    };
+
     return (
         <div className={cx("roadmap")}>
             <div className={cx("out")}>
@@ -36,7 +45,11 @@ export default function RoadMapComponent() {
                     size={IconRef.current.x}
                     strokeWidth={IconRef.current.y}
                 />
-                <X size={IconRef.current.x} strokeWidth={IconRef.current.y} />
+                <X
+                    size={IconRef.current.x}
+                    strokeWidth={IconRef.current.y}
+                    onClick={() => setState("SET_NAVBAR_X", "activeX", null)}
+                />
             </div>
         </div>
     );
