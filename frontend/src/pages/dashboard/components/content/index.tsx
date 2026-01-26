@@ -32,15 +32,15 @@ export default function Content() {
     return (
         <div className={cx("content")}>
             <div id="map" className={cx("map")} />
-            {true && <options.SearchComponent />}
+            {false && <options.SearchComponent />}
             {false && <options.SearchXComponent />}
             {false && <options.SearchYComponent />}
-            {false && <options.RoadMapComponent />}
+            {true && <options.RoadMapComponent />}
             {false && <options.SaveComponent />}
             {false && <options.HistoryComponent />}
-            {true && <options.DynamicComponent />}
+            {false && <options.DynamicComponent />}
             {false && <options.IntroducerComponent />}
-            {false && <options.IntroducerXComponent />}
+            {true && <options.IntroducerXComponent />}
             {false && <options.ImageComponent />}
         </div>
     );
