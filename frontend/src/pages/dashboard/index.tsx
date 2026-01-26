@@ -20,10 +20,6 @@ export default function Dashboard() {
         return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => {
-        console.log(state.position.project);
-    }, [state.position.project, state.position.open_project]);
-
     return (
         <>
             {state.util.loading ? <Loading /> : <Container />}

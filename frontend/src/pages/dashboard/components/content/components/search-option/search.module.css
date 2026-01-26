@@ -1,4 +1,4 @@
-.search {
+/* .search {
     position: absolute;
     top: 10px;
     padding: 0 10px;
@@ -58,4 +58,119 @@
     .search__sightseeing:hover {
         background-color: rgb(223, 223, 223);
     }
+}
+ */
+
+.search {
+    position: absolute;
+    top: 10px;
+    margin-left: 10px;
+    z-index: 1001;
+    width: 345px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc; /* viền thay vì shadow nổi */
+    overflow: hidden;
+}
+
+/* ===== INPUT ===== */
+.search__input {
+    height: 42px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.search__input--title {
+    flex: 1;
+    height: 70%;
+    font-size: 14px;
+}
+
+.search__input--title input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.search__input--title input::placeholder {
+    color: #8a8f98;
+}
+
+/* icon trái & phải */
+.search__input--icon,
+.search__input--road {
+    width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #5f6368;
+}
+
+.search__input--road {
+    border-left: 1px solid #eee;
+}
+
+/* ===== PANEL ===== */
+.items {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+
+.items:not(:last-child) {
+    border-top: 1px solid #f1f1f1;
+}
+
+.items:hover {
+    background-color: #f7f7f7;
+}
+
+.icon {
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    color: #70757a;
+}
+
+.title {
+    flex: 1;
+    font-size: 14px;
+    color: #202124;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon_x {
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    color: #9aa0a6;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.items:hover .icon_x {
+    opacity: 1;
+}
+
+/* footer text */
+.items_x {
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: #5f6368;
+    border-top: 1px solid #eee;
+    background: #fafafa;
 }

@@ -190,6 +190,7 @@ import {
     EllipsisVertical,
     GripVertical,
 } from "lucide-react";
+import { useEditor } from "../../../../../../state/useEditor";
 
 const cx = classNames.bind(styles);
 interface Place {
@@ -198,7 +199,16 @@ interface Place {
 }
 
 export default function RoadMapComponent() {
+    const { state, dispatch } = useEditor();
     const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
+    const setState = (option: string, key: string, value: boolean) => {
+        dispatch({
+            type: option,
+            payload: { [key]: value },
+        });
+    };
+
+
     const [focus, setFocus] = useState<number | null>(null);
     const [hoverPlaceId, setHoverPlaceID] = useState<boolean>(false);
     const [hoverAddBtn, setHoverAddBtn] = useState<boolean>(false);
@@ -230,6 +240,7 @@ export default function RoadMapComponent() {
     };
 
 
+
     return (
         <div className={cx("roadmap")}>
             <div className={cx("out")}>
@@ -251,7 +262,11 @@ export default function RoadMapComponent() {
                     size={IconRef.current.x}
                     strokeWidth={IconRef.current.y}
                 />
-                <X size={IconRef.current.x} strokeWidth={IconRef.current.y} />
+                <X
+                    size={IconRef.current.x}
+                    strokeWidth={IconRef.current.y}
+                    onClick={() => setState("SET_NAVBAR_X", "activeX", null)}
+                />
             </div>
 
             <div className="w-full mt-2 min-h-[160px] relative shadow-[0_2px_4px_-1px_rgba(0,0,0,0.4)]">
