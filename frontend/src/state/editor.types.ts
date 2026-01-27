@@ -7,34 +7,36 @@ export interface SidebarState {
 }
 
 export interface NavbarXState {
+    dynamic: boolean;
+    activeX: { type: string | null };
     active: {
-        type: string | null,
-        value: string | null | number,
-    },
+        type: string | null;
+        value: string | null | number;
+    };
     hover: {
-        type: string | null,
-        value: string | null | number,
-    },
-    project: boolean,
-    group: boolean,
-    chat: boolean,
-    open_project: boolean,
-    open_group: boolean,
-    open_chat: boolean,
-    open_index_project: null | number,
-    index_project: null | boolean | number,
-    index_project_prev: null | boolean | number,
-    index_group: null | boolean | number,
-    index_group_prev: null | boolean | number,
-    index_chat: null | boolean | number,
+        type: string | null;
+        value: string | null | number;
+    };
+    project: boolean;
+    group: boolean;
+    chat: boolean;
+    open_project: boolean;
+    open_group: boolean;
+    open_chat: boolean;
+    open_index_project: null | number;
+    index_project: null | boolean | number;
+    index_project_prev: null | boolean | number;
+    index_group: null | boolean | number;
+    index_group_prev: null | boolean | number;
+    index_chat: null | boolean | number;
     list: {
-        type: string | null,
-        items: string[],
-    }
+        type: string | null;
+        items: string[];
+    };
 }
 
 export interface UtilState {
-    active: boolean,
+    active: boolean;
     loading: boolean;
     hover: boolean;
     error: string;
@@ -66,11 +68,11 @@ export interface ModalState {
 }
 
 export interface PositionState {
-    open_project: boolean,
-    project: { 
-        top: number | null,
-        left: number | null,
-    }
+    open_project: boolean;
+    project: {
+        top: number | null;
+        left: number | null;
+    };
 }
 
 export interface EditorState {
