@@ -167,7 +167,7 @@ export default function RoadMapComponent() {
                             <div
                                 onFocus={() => setFocus(place.id)}
                                 onBlur={() => setFocus(null)}
-                                className={`w-[250px] h-[40px] flex justify-center items-center px-2 rounded-[8px] box-border ${focus !== place.id ? "border border-gray-600" : "border-2 border-teal-600"}`}>
+                                className={`w-[250px] h-[40px] flex justify-center items-center px-2 rounded-[8px] box-border ${focus !== place.id ? "border border-gray-300" : "border-2 border-teal-600"}`}>
                                 <input
                                     ref={(el) => (inputRefs.current[place.id] = el)}
                                     value={place.value}
@@ -192,11 +192,11 @@ export default function RoadMapComponent() {
                 </div>
             </div>
 
-            <div className="mt-2 max-h-[74%] overflow-y-auto">
+            <div className={cx("mt-2 max-h-[74%] overflow-y-auto", "hideScrollBar")}>
                 {locations.map((place, index) => (
                     <div
                         key={index}
-                        className="flex p-2 hover:bg-gray-200 rounded-lg cursor-pointer"
+                        className="flex p-2 hover:bg-gray-200 cursor-pointer"
                     >
                         {/* Icon */}
                         <div className="w-[60px] flex justify-center pt-2 shrink-0">

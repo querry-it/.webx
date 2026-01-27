@@ -12,3 +12,13 @@
         align-items: center;
     }
 }
+
+.hideScrollBar::-webkit-scrollbar {
+    display: none;
+}
+
+.hideScrollBar {
+  scrollbar-width: none;        
+  -ms-overflow-style: none;     
+}
+
