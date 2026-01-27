@@ -69,7 +69,7 @@
     width: 345px;
     border-radius: 10px;
     background-color: #fff;
-    border: 1px solid #dcdcdc; /* viền thay vì shadow nổi */
+    border: 1px solid #dcdcdc; 
     overflow: hidden;
 }
 

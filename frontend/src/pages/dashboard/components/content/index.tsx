@@ -47,7 +47,7 @@ export default function Content() {
             {option === "history" && <options.HistoryComponent />}
             {state.navbar_x.dynamic && <options.DynamicComponent />}
             {false && <options.IntroducerComponent />}
-            {true && <options.IntroducerXComponent />}
+            {false && <options.IntroducerXComponent />}
             {false && <options.ImageComponent />}
         </div>
     );
