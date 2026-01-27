@@ -174,3 +174,83 @@
     border-top: 1px solid #eee;
     background: #fafafa;
 }
+
+
+.dynamic {
+    position: absolute;
+    top: 16px;
+    left: 550px;
+    z-index: 1001;
+}
+
+.dynamic__wrapper {
+    width: 600px;
+    height: 40px;
+    display: flex;
+    gap: 2px;
+    position: relative;
+    overflow: visible;
+    white-space: nowrap;
+
+}
+
+.dynamic__list {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.dynamic__list::-webkit-scrollbar {
+    display: none;
+}
+
+.dynamic__option {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 32px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow:
+    0 1px 4px rgba(0,0,0,0.3),
+    0 2px 8px rgba(0,0,0,0.2);
+    &:hover {
+        background: #efeded;
+    }
+}
+
+.btn__scroll {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    flex-shrink: 0;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: white;
+    display: flex;                
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow:
+    0 1px 4px rgba(0,0,0,0.3),
+    0 2px 8px rgba(0,0,0,0.2);
+}
+
+.btn__scroll:first-child {
+    left: 0;
+}
+
+.btn__scroll:last-child {
+    left: 580px;
+}
+
+
+
+
