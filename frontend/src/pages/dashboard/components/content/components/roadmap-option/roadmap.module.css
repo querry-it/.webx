@@ -1,11 +1,13 @@
 .roadmap {
     position: absolute;
-    width: 360px;
+    width: 366px;
     top: 0;
     bottom: 0;
-    z-index: 1002;
+    z-index: 1004;
     background-color: #fff;
+    border-right: 1px solid #cacaca;
     .out {
+        padding: 0 4px;
         height: 60px;
         display: flex;
         justify-content: space-evenly;

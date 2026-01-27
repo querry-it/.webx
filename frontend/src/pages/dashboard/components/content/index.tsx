@@ -39,13 +39,12 @@ export default function Content() {
     return (
         <div className={cx("content")}>
             <div id="map" className={cx("map")} />
-            {true && <options.SearchComponent />}
-            {/* {true && <options.SearchXComponent />} */}
-            {/* {true && <options.SearchYComponent />} */}
+            <options.SearchComponent />
             {option === "roadmap" && <options.RoadMapComponent />}
             {option === "save" && <options.SaveComponent />}
             {option === "history" && <options.HistoryComponent />}
             {state.navbar_x.dynamic && <options.DynamicComponent />}
+            {false && <options.LocationComponent />}
             {false && <options.IntroducerComponent />}
             {false && <options.IntroducerXComponent />}
             {false && <options.ImageComponent />}
