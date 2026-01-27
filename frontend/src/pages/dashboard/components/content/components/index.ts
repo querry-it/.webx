@@ -6,5 +6,4 @@ export { default as IntroducerXComponent } from "./introducerX-option";
 export { default as RoadMapComponent } from "./roadmap-option";
 export { default as SaveComponent } from "./save-option";
 export { default as SearchComponent } from "./search-option";
-export { default as SearchXComponent } from "./searchX-option";
-export { default as SearchYComponent } from "./searchY-option";
+export { default as LocationComponent } from "./location-option";
