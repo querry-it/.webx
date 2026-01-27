@@ -7,3 +7,5 @@ export { default as RoadMapComponent } from "./roadmap-option";
 export { default as SaveComponent } from "./save-option";
 export { default as SearchComponent } from "./search-option";
 export { default as LocationComponent } from "./location-option";
+export { default as BrandComponent } from "./brand-option";
+export { default as SupportComponent } from "./support-option";

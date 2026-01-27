@@ -43,6 +43,8 @@ export default function Content() {
             {option === "roadmap" && <options.RoadMapComponent />}
             {option === "save" && <options.SaveComponent />}
             {option === "history" && <options.HistoryComponent />}
+            {option == "introducer" && <options.BrandComponent />}
+            {option == "help" && <options.SupportComponent />}
             {state.navbar_x.dynamic && <options.DynamicComponent />}
             {false && <options.LocationComponent />}
             {false && <options.IntroducerComponent />}
