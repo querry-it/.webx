@@ -1,3 +1,4 @@
+
 // import classNames from "classnames/bind";
 // import styles from "./search.module.css";
 // import { useRef } from "react";
@@ -103,7 +104,7 @@
 
 import classNames from "classnames/bind";
 import styles from "./search.module.css";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import {
     Clock,
     Home,
@@ -111,6 +112,14 @@ import {
     Search,
     SquareArrowOutUpRight,
     X,
+    Landmark,
+    Trees,
+    Amphora,
+    Building2,
+    Map,
+    Leaf,
+    ChevronLeft,
+    ChevronRight,
 } from "lucide-react";
 import { useEditor } from "../../../../../../state/useEditor";
 
@@ -145,6 +154,16 @@ export default function SearchComponent() {
         "Văn Miếu Quốc Tử Giám",
     ];
 
+    const menuOptions = [
+        { icon: Landmark, label: "Di tích" },
+        { icon: Trees, label: "Thiên nhiên" },
+        { icon: Amphora, label: "Bảo tàng" },
+        { icon: Building2, label: "Kiến trúc" },
+        { icon: Map, label: "Khu phố" },
+        { icon: Leaf, label: "Công viên" },
+        { icon: Home, label: "Làng cổ" },
+    ];
+
     const filteredSuggestions = useMemo(() => {
         return suggestions.filter((item) =>
             item.toLowerCase().includes(query.toLowerCase()),
@@ -153,79 +172,153 @@ export default function SearchComponent() {
 
     const showSuggestions = query.trim().length > 0;
 
+    const scrollRef = useRef(null);
+    const [showLeft, setShowLeft] = useState(false);
+    const [showRight, setShowRight] = useState(false);
+    const checkScroll = () => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        const { scrollLeft, scrollWidth, clientWidth } = el;
+
+        setShowLeft(scrollLeft > 0);
+        setShowRight(scrollLeft + clientWidth < scrollWidth - 1);
+    };
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        checkScroll();
+
+        el.addEventListener("scroll", checkScroll);
+        return () => el.removeEventListener("scroll", checkScroll);
+    }, []);
+
+
+    const scroll = (x) => {
+        scrollRef.current.scrollBy({
+            left: x,
+            behavior: "smooth",
+        });
+    };
+
     return (
-        <div className={cx("search", { active: focused })}>
-            <div className={cx("search__input")}>
-                <div className={cx("search__input--title")}>
-                    <input
-                        type="text"
-                        placeholder="Tìm kiếm trên IchigoMazone Maps"
-                        value={query}
-                        onFocus={() => setFocused(true)}
-                        onBlur={() => setTimeout(() => setFocused(false), 150)}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                </div>
+        <>
+            <div className={cx("search", { active: focused })}>
+                <div className={cx("search__input")}>
+                    <div className={cx("search__input--title")}>
+                        <input
+                            type="text"
+                            placeholder="Tìm kiếm trên IchigoMazone Maps"
+                            value={query}
+                            onFocus={() => setFocused(true)}
+                            onBlur={() => setTimeout(() => setFocused(false), 150)}
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                    </div>
 
-                <div className={cx("search__input--icon")}>
-                    <Search
-                        size={IconRef.current.x}
-                        strokeWidth={IconRef.current.y}
-                    />
-                </div>
+                    <div className={cx("search__input--icon")}>
+                        <Search
+                            size={IconRef.current.x}
+                            strokeWidth={IconRef.current.y}
+                        />
+                    </div>
 
-                <div
-                    className={cx("search__input--road")}
-                    onClick={() =>
-                        setState("SET_NAVBAR_X", "activeX", "roadmap")
-                    }
-                >
-                    <SquareArrowOutUpRight
-                        size={IconRef.current.x}
-                        strokeWidth={IconRef.current.y}
-                    />
+                    <div
+                        className={cx("search__input--road")}
+                        onClick={() =>
+                            setState("SET_NAVBAR_X", "activeX", "roadmap")
+                        }
+                    >
+                        <SquareArrowOutUpRight
+                            size={IconRef.current.x}
+                            strokeWidth={IconRef.current.y}
+                        />
+                    </div>
                 </div>
-            </div>
-            {focused && (
-                <>
-                    {showSuggestions ? (
-                        filteredSuggestions.length > 0 ? (
-                            filteredSuggestions.map((item) => (
-                                <div
-                                    key={item}
-                                    className={cx("items")}
-                                    onMouseDown={() => setQuery(item)}
-                                >
-                                    <MapPin className={cx("icon")} size={20} />
-                                    <p className={cx("title")}>{item}</p>
+                {focused && (
+                    <>
+                        {showSuggestions ? (
+                            filteredSuggestions.length > 0 ? (
+                                filteredSuggestions.map((item) => (
+                                    <div
+                                        key={item}
+                                        className={cx("items")}
+                                        onMouseDown={() => setQuery(item)}
+                                    >
+                                        <MapPin className={cx("icon")} size={20} />
+                                        <p className={cx("title")}>{item}</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className={cx("items_x")}>
+                                    <p className={cx("title")}>
+                                        Không tìm thấy kết quả
+                                    </p>
                                 </div>
-                            ))
+                            )
                         ) : (
-                            <div className={cx("items_x")}>
-                                <p className={cx("title")}>
-                                    Không tìm thấy kết quả
-                                </p>
-                            </div>
-                        )
-                    ) : (
-                        <>
-                            {recentSearches.map((item, i) => (
-                                <div key={i} className={cx("items")}>
-                                    <Clock className={cx("icon")} size={20} />
-                                    <p className={cx("title")}>{item}</p>
-                                    <X className={cx("icon_x")} size={18} />
-                                </div>
-                            ))}
+                            <>
+                                {recentSearches.map((item, i) => (
+                                    <div key={i} className={cx("items")}>
+                                        <Clock className={cx("icon")} size={20} />
+                                        <p className={cx("title")}>{item}</p>
+                                        <X className={cx("icon_x")} size={18} />
+                                    </div>
+                                ))}
 
-                            <div className={cx("items_x")}>
-                                <p className={cx("title")}>
-                                    Nội dung tìm kiếm khác gần đây
-                                </p>
-                            </div>
-                        </>
+                                <div className={cx("items_x")}>
+                                    <p className={cx("title")}>
+                                        Nội dung tìm kiếm khác gần đây
+                                    </p>
+                                </div>
+                            </>
+                        )}
+                    </>
+                )}
+            </div>
+
+
+
+            <div className={cx("dynamic")}>
+                <div className={cx("dynamic__wrapper")}>
+                    {showLeft && (
+                        <div
+                            className={cx("btn__scroll", "left")}
+                            onClick={() => scroll(-200)}
+                        >
+                            <ChevronLeft size={IconRef.current.x} strokeWidth={IconRef.current.y} />
+                        </div>
                     )}
-                </>
-            )}
-        </div>
+
+                    <div className={cx("dynamic__list")} ref={scrollRef}>
+                        {menuOptions.map((option, index) => (
+                            <div key={index} className={cx("dynamic__option")}>
+                                <option.icon
+                                    size={IconRef.current.x}
+                                    strokeWidth={IconRef.current.y}
+                                />
+
+                                <span>{option.label}</span>
+
+
+                            </div>
+                        ))}
+                    </div>
+                    {showRight && (
+                        <div
+                            className={cx("btn__scroll", "right")}
+                            onClick={() => scroll(200)}
+                        >
+                            <ChevronRight size={IconRef.current.x} strokeWidth={IconRef.current.y} />
+                        </div>
+                    )}
+                </div>
+
+
+            </div>
+
+        </>
     );
 }
