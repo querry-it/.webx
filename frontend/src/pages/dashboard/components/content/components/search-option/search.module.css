@@ -120,11 +120,11 @@
 }
 
 .dynamic__wrapper {
-    width: 600px;
+    position: relative;
+    width: 700px;
     height: 40px;
     display: flex;
     gap: 2px;
-    position: relative;
     overflow: visible;
     white-space: nowrap;
 }
@@ -149,7 +149,7 @@
     gap: 2px;
     height: 32px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 20px;
     padding: 8px;
     cursor: pointer;
     box-shadow:
@@ -158,6 +158,11 @@
     &:hover {
         background: #efeded;
     }
+}
+
+.dynamic__option span {
+    color:#8a8f98;
+    font-size: 14px;
 }
 
 .btn__scroll {
@@ -179,9 +184,9 @@
 }
 
 .btn__scroll:first-child {
-    left: 0;
+    left: -16px;
 }
 
 .btn__scroll:last-child {
-    left: 580px;
+    right: -16px;
 }
