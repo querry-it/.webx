@@ -17,6 +17,7 @@ import {
     ChevronLeft,
     ChevronRight,
     MapPinCheck,
+    Squirrel,
 } from "lucide-react";
 import { useEditor } from "../../../../../../state/useEditor";
 
@@ -55,6 +56,7 @@ export default function SearchComponent() {
     ];
 
     const menuOptions = [
+        { icon: Squirrel, label: "Tất cả" },
         { icon: Landmark, label: "Di tích" },
         { icon: Trees, label: "Thiên nhiên" },
         { icon: Amphora, label: "Bảo tàng" },
