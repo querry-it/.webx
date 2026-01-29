@@ -6,4 +6,92 @@
     z-index: 1002;
     background-color: #fff;
     border-right: 1px solid #cacaca;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 50px 1fr;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    .save__header {
+        grid-area: header;
+    }
+    .save__content {
+        grid-area: content;
+        border-bottom: 1px solid #cacaca;
+        box-shadow: 0px 2px 0px 0px #e1e2e2;
+        cursor: pointer;
+        display: flex;
+        .content {
+            flex: 1;
+            padding: 12px 12px 0 12px;
+            color: #007b9a;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content.active {
+            .content__active {
+                width: 60%;
+                height: 2px;
+                background-color: #007b8b;
+            }
+        }
+    }
+    .save__footer {
+        grid-area: footer;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .add_item {
+            margin: 16px 20px 8px;
+            padding: 8px;
+            border-radius: 20px;
+            background-color: #d3f7ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .item {
+            display: grid;
+            grid-template-columns: 65px 1fr 50px;
+            grid-template-rows: 50px;
+            grid-template-areas: "header content footer";
+            padding: 8px;
+            .header {
+                grid-area: header;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-right: 15px;
+            }
+            .content {
+                grid-area: content;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                .title {
+                    font-size: 16px;
+                }
+                .content {
+                    font-size: 14px;
+                }
+            }
+            .footer {
+                grid-area: footer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .item:hover {
+            background-color: #e6e9f3;
+        }
+    }
 }
