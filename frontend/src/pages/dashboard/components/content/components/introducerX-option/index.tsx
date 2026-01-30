@@ -6,6 +6,8 @@ import PlaceIntroducer from "./components/PlaceIntroducer";
 import PlaceInformation from "./components/PlaceInformation";
 import PlaceGallery from "./components/PlaceGallery";
 import { useEditor } from "../../../../../../state/useEditor";
+import { ArrowLeft, X } from "lucide-react";
+import { useRef } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -68,7 +70,7 @@ const PLACES: Place[] = [
     },
 ];
 
-function X() {
+function Xy() {
     return (
         <div className={cx("location__prev")}>
             <div className={cx("location__content")}>
@@ -93,10 +95,7 @@ function X() {
 }
 
 function Y() {
-    return <div className={cx("location__prev")}></div>;
-}
-
-export default function IntroducerXComponent() {
+    const Icon = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
     const { state, dispatch } = useEditor();
     const setState = (option: string, key: string, value: boolean) => {
         dispatch({
@@ -104,5 +103,48 @@ export default function IntroducerXComponent() {
             payload: { [key]: value },
         });
     };
-    return <>{state.navbar_x.Xreview === "overview" ? <X /> : <Y />}</>;
+    return (
+        <div className={cx("feedback__bgr")}>
+            <div className={cx("title__feedback")}>
+                <div
+                    className={cx("icon__left")}
+                    onClick={() => {
+                        if (state.navbar_x.Xreview !== "overview") {
+                            setState("SET_NAVBAR_X", "Xreview", "overview");
+                        }
+                    }}
+                >
+                    <ArrowLeft
+                        size={Icon.current.x}
+                        strokeWidth={Icon.current.y}
+                    />
+                </div>
+                <div className={cx("content")}>Lăng chủ tịch Hồ Chí Minh</div>
+                <div
+                    className={cx("icon__right")}
+                    onClick={() => {
+                        if (state.navbar_x.Xreview !== "overview") {
+                            setState("SET_NAVBAR_X", "introducerX", false);
+                        }
+                    }}
+                >
+                    <X size={Icon.current.x} strokeWidth={Icon.current.y} />
+                </div>
+            </div>
+            <div className={cx("option__feedback")}></div>
+            <div className={cx("content__feedback")}></div>
+        </div>
+    );
+}
+
+export default function IntroducerXComponent() {
+    const { state, dispatch } = useEditor();
+    const Icon = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
+    const setState = (option: string, key: string, value: boolean) => {
+        dispatch({
+            type: option,
+            payload: { [key]: value },
+        });
+    };
+    return <>{state.navbar_x.Xreview === "overview" ? <Xy /> : <Y />}</>;
 }
