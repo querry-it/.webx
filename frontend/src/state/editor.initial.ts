@@ -8,6 +8,7 @@ export const initialEditorState: EditorState = {
         open: false,
     },
     navbar_x: {
+        Xreview: "overview",
         save: "list",
         back: false,
         dynamic: false,
