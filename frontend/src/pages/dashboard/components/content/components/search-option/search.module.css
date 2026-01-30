@@ -38,6 +38,13 @@
     color: #8a8f98;
 }
 
+.search__input--back {
+    width: 25px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 /* icon trái & phải */
 .search__input--icon,
 .search__input--road {
@@ -161,7 +168,7 @@
 }
 
 .dynamic__option span {
-    color:#8a8f98;
+    color: #8a8f98;
     font-size: 14px;
 }
 
