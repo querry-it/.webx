@@ -18,6 +18,7 @@ import {
     ChevronRight,
     MapPinCheck,
     Squirrel,
+    ArrowLeft,
 } from "lucide-react";
 import { useEditor } from "../../../../../../state/useEditor";
 
@@ -108,6 +109,20 @@ export default function SearchComponent() {
         <>
             <div className={cx("search", { active: focused })}>
                 <div className={cx("search__input")}>
+                    {state.navbar_x.back && (
+                        <div
+                            className={cx("search__input--back")}
+                            onClick={() => {
+                                setState("SET_NAVBAR_X", "back", false);
+                                setState("SET_NAVBAR_X", "save", "list");
+                            }}
+                        >
+                            <ArrowLeft
+                                size={IconRef.current.x}
+                                strokeWidth={IconRef.current.y}
+                            />
+                        </div>
+                    )}
                     <div className={cx("search__input--title")}>
                         <input
                             ref={inputRef}
@@ -212,7 +227,7 @@ export default function SearchComponent() {
                 )}
             </div>
 
-            <div className={cx("dynamic")}>
+            {/* <div className={cx("dynamic")}>
                 <div className={cx("dynamic__wrapper")}>
                     {showLeft && (
                         <div
@@ -250,7 +265,7 @@ export default function SearchComponent() {
                         </div>
                     )}
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }

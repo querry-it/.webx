@@ -2,7 +2,7 @@
     position: absolute;
     top: 8px;
     margin-left: 10px;
-    z-index: 1003;
+    z-index: 1005;
     width: 345px;
     border-radius: 10px;
     background-color: #fff;
@@ -36,6 +36,13 @@
 
 .search__input--title input::placeholder {
     color: #8a8f98;
+}
+
+.search__input--back {
+    width: 25px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 /* icon trái & phải */
@@ -161,7 +168,7 @@
 }
 
 .dynamic__option span {
-    color:#8a8f98;
+    color: #8a8f98;
     font-size: 14px;
 }
 
