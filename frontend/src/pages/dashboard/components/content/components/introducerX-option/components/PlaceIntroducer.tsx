@@ -9,18 +9,13 @@ export default function PlaceIntroducer() {
 
     return (
         <div className={cx("place-introducer__wrapper")}>
-            <button className={cx("place-introducer__btn")}>
-                <div className={cx("place-introducer__items")}>
-                    <div className={cx("place-introducer__desc")}>
-                        Thi hài Chủ tịch Hồ Chí Minh, lãnh tụ
-                        nước Việt Nam, được đặt tại lăng mộ và 
-                        khu di tích lịch sử này.
-                    </div>
-                    <div className={cx("place-introducer__icon")}>
-                        <ChevronRight />
-                    </div>
+            <div className={cx("place-introducer__items")}>
+                <div className={cx("place-introducer__desc")}>
+                    Thi hài Chủ tịch Hồ Chí Minh, lãnh tụ
+                    nước Việt Nam, được đặt tại lăng mộ và
+                    khu di tích lịch sử này.
                 </div>
-            </button>
+            </div>
         </div>
     );
 }

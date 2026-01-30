@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 export default function PlaceHero({ place }) {
     const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
     return (
-        <div className={("placehero__wrapper")}>
+        <div className={("place-hero__wrapper")}>
             <div className={cx("place__img")}>
                 <img alt="" src={place.img} />
             </div>
@@ -26,6 +26,29 @@ export default function PlaceHero({ place }) {
                         <button >Điểm mốc lịch sử</button>
                     </span>
                 </div>
+            </div>
+
+            <div className={cx("tab__wrapper")}>
+
+                <button className={cx("btn__items")}>
+                    <div className={cx("content__wrapper")}>
+                        <div className={cx("bg")}></div>
+                        <span className={cx("content")}>
+                            Tổng quan
+                        </span>
+                        <div className={cx("bottom-btn")}></div>
+                    </div>
+                </button>
+
+                <button className={cx("btn__items")}>
+                    <div className={cx("content__wrapper")}>
+                        <div className={cx("bg")}></div>
+                        <span className={cx("content")}>
+                            Bài đánh giá
+                        </span>
+                        <div className={cx("bottom-btn")}></div>
+                    </div>
+                </button>
             </div>
 
         </div>

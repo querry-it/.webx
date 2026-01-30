@@ -1,12 +1,12 @@
 import classNames from "classnames/bind";
 import styles from "./introducerX.module.css";
 import PlaceHero from "./components/PlaceHero";
-import PlaceTab from "./components/PlaceTab";
 import PlaceAction from "./components/PlaceAction";
 import PlaceIntroducer from "./components/PlaceIntroducer";
+import PlaceInformation from "./components/PlaceInformation";
+import PlaceGallery from "./components/PlaceGallery";
 
 const cx = classNames.bind(styles);
-
 
 type Place = {
   id: number;
@@ -14,6 +14,7 @@ type Place = {
   address: string;
   desc: string;
   img: string;
+  status: string
 
   rating: number;
   reviews: number;
@@ -29,21 +30,19 @@ type Place = {
 
 };
 
-
-
 const PLACES: Place[] = [
   {
     id: 1,
     name: "Lăng Chủ tịch Hồ Chí Minh",
-    address: "Ba Đình, Hà Nội",
+    address: "1 Hùng Vương, Điện Biên, Ba Đình, Hà Nội, Việt Nam",
     type: "Di tích lịch sử",
     rating: 4.5,
     reviews: 19872,
-    open: "07:30 – 17:00",
+    open: "Mở cửa lúc 07:30",
     ticket: "Miễn phí",
     desc: "Di tích lịch sử quan trọng của Việt Nam.",
     img: "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer6eyEgRG3Tx70IlZGe_aeLj0gquNRECqQzPs5mvputDbV7_01duzpKXX-z-ix3N1HWacrxSv-FHycvmwK_6S_NfA7w6Wdd7cYe2P6pVaB3SkJN1i3wyk9ebWQNpsJgC5oOIEsw=w408-h544-k-no",
-
+    status: "Đã mở cửa",
     highlights: [
       "Di tích lịch sử quốc gia đặc biệt",
       "Không gian trang nghiêm",
@@ -69,13 +68,15 @@ const PLACES: Place[] = [
 ]
 
 export default function IntroducerXComponent() {
-    return <div className={cx("location__prev")}>
-        <PlaceHero place={PLACES[0]}/>
-        <PlaceTab  place={PLACES[0]}/>
-        <PlaceAction />
-        <PlaceIntroducer />
-        
-    </div>;
+  return <div className={cx("location__prev")}>
+    <div className={cx("location__content")}>
+      <div className={cx("place__hero")}><PlaceHero place={PLACES[0]} /></div>
+      <div className={cx("place__action")}><PlaceAction /></div>
+      <div className={cx("place__introducer")}><PlaceIntroducer /></div>
+      <div className={cx("place__information")}><PlaceInformation place={PLACES[0]}/></div>
+      <div className={cx("place__gallery")}><PlaceGallery /></div>
+    </div>
+  </div>;
 }
 
 
