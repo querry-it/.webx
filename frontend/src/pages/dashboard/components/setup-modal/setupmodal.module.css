@@ -1033,15 +1033,21 @@
 }
 
 .table__right .icon__account .box__x .x__icon {
-    font-size: 16px;
-    width: 20px;
-    height: 20px;
+    height: 25px;
     padding: 15px;
-    border: 1px solid var(--color-line-modal);
+    border: 1px solid #dddddd;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    .icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        color: #989898;
+    }
 }
 
 .table__right .icon__account .box__x .x__hidden,

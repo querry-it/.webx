@@ -6,11 +6,11 @@ import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef, useState } from "react";
+import { useEditor } from "../../../../state/useEditor";
 import HaNoiGeoMap from "./../../../../assets/HaNoiGeoMap.json";
 import * as options from "./components";
-import * as control from "./controls";
 import styles from "./content.module.css";
-import { useEditor } from "../../../../state/useEditor";
+import * as control from "./controls";
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +18,7 @@ export default function Content() {
     const { state } = useEditor();
     const mapRef = useRef<L.Map | null>(null);
     const [option, setOption] = useState<String | null>(null);
+    const [dynamic, setDynamic] = useState<boolean>(false);
 
     useEffect(() => {
         const cleanupMap = control.InitBaseControl(mapRef);
@@ -34,7 +35,8 @@ export default function Content() {
 
     useEffect(() => {
         setOption(state.navbar_x.activeX);
-    }, [state.navbar_x.activeX]);
+        setDynamic(state.navbar_x.dynamic);
+    }, [state.navbar_x.activeX, state.navbar_x.dynamic]);
 
     return (
         <div className={cx("content")}>
@@ -45,7 +47,7 @@ export default function Content() {
             {option === "history" && <options.HistoryComponent />}
             {option == "introducer" && <options.BrandComponent />}
             {option == "help" && <options.SupportComponent />}
-            {state.navbar_x.dynamic && <options.DynamicComponent />}
+            {dynamic && <options.DynamicComponent />}
             {false && <options.LocationComponent />}
             {false && <options.IntroducerComponent />}
             {false && <options.IntroducerXComponent />}

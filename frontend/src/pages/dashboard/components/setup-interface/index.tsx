@@ -6,7 +6,6 @@ import {
     CircleStar,
     CircleUser,
     DatabaseZapIcon,
-    Key,
     KeyRound,
     LayoutGridIcon,
     Settings,

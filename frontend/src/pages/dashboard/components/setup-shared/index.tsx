@@ -1,11 +1,16 @@
 import classNames from "classnames/bind";
+import { ChevronDown, Play } from "lucide-react";
+import { useRef, useState } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
-import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
 export default function SetupShared() {
     const [onButton, setButton] = useState<boolean>(false);
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
 
     return (
         <>
@@ -25,13 +30,10 @@ export default function SetupShared() {
                             >
                                 <span>Hệ thống</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -56,13 +58,10 @@ export default function SetupShared() {
                                     </div>
                                 </span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -80,13 +79,10 @@ export default function SetupShared() {
                             >
                                 <span>Dò tìm tự động</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -104,13 +100,10 @@ export default function SetupShared() {
                             >
                                 <span>Dò tự động</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -134,13 +127,12 @@ export default function SetupShared() {
                                         onClick={() => console.log("Phát")}
                                     >
                                         <span>
-                                            <i
-                                                className={cx(
-                                                    "fa-solid",
-                                                    "fa-play",
-                                                    "icon__y"
-                                                )}
-                                            ></i>
+                                            <Play
+                                                size={Icon.current.size - 4}
+                                                strokeWidth={
+                                                    Icon.current.weight
+                                                }
+                                            />
                                         </span>
                                         <span> Phát</span>
                                     </button>
@@ -151,13 +143,12 @@ export default function SetupShared() {
                                     >
                                         <span>Ember</span>
                                         <span>
-                                            <i
-                                                className={cx(
-                                                    "fas",
-                                                    "fa-chevron-down",
-                                                    "icon__x"
-                                                )}
-                                            ></i>
+                                            <ChevronDown
+                                                size={Icon.current.size}
+                                                strokeWidth={
+                                                    Icon.current.weight
+                                                }
+                                            />
                                         </span>
                                     </button>
                                 </div>
