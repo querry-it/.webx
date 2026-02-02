@@ -1,9 +1,15 @@
 import classNames from "classnames/bind";
+import { Plus } from "lucide-react";
+import { useRef } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
 
 const cx = classNames.bind(styles);
 
 export default function SetupControl() {
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
     return (
         <>
             <div className={cx("container")}>
@@ -25,7 +31,10 @@ export default function SetupControl() {
                         className={cx("button")}
                     >
                         <div>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Plus
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div>Thêm thành viên gia đình</div>
                     </button>

@@ -1,9 +1,29 @@
 import classNames from "classnames/bind";
+import {
+    Box,
+    Brain,
+    ChevronDown,
+    Globe,
+    Images,
+    Info,
+    LayoutDashboard,
+    Mail,
+    MessagesSquare,
+    Sparkles,
+    Telescope,
+    User,
+} from "lucide-react";
+import { useRef } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
 
 const cx = classNames.bind(styles);
 
 export default function SetupAccount() {
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
+
     return (
         <>
             <div className={cx("container")}>
@@ -25,7 +45,10 @@ export default function SetupAccount() {
                 <div className={cx("table__account")}>
                     <div className={cx("table__account--x")}>
                         <div className={cx("x__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Sparkles
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("x__content")}>
                             Đào sâu với câu hỏi khó hơn
@@ -33,7 +56,10 @@ export default function SetupAccount() {
                     </div>
                     <div className={cx("table__account--y")}>
                         <div className={cx("y__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <MessagesSquare
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("y__content")}>
                             Trò chuyện lâu hơn và tải lên nhiều nội dung hơn
@@ -41,7 +67,10 @@ export default function SetupAccount() {
                     </div>
                     <div className={cx("table__account--z")}>
                         <div className={cx("z__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Images
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("z__content")}>
                             Tạo hình ảnh chân thực cho dự án của bạn
@@ -49,7 +78,10 @@ export default function SetupAccount() {
                     </div>
                     <div className={cx("table__account--t")}>
                         <div className={cx("t__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Brain
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("t__content")}>
                             Lưu trữ nhiều ngữ cảnh hơn để nhận được câu trả lời
@@ -59,7 +91,10 @@ export default function SetupAccount() {
                     </div>
                     <div className={cx("table__account--xx")}>
                         <div className={cx("xx__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Telescope
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("x__content")}>
                             Nhận trợ giúp từ việc lập kế hoạch và nhiệm vụ
@@ -67,7 +102,10 @@ export default function SetupAccount() {
                     </div>
                     <div className={cx("table__account--yy")}>
                         <div className={cx("yy__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <LayoutDashboard
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("yy__content")}>
                             Khám phá các dự án, nhiệm vụ và IZN tùy chỉnh
@@ -108,20 +146,30 @@ export default function SetupAccount() {
                     <div className={cx("box__x")}>
                         <div className={cx("x__hidden")}>Xem trước</div>
                         <div className={cx("x__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Box
+                                className={cx("icon")}
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("x__note")}>Xem trước</div>
                     </div>
                     <div className={cx("box__y")}>PlaceholderIZN</div>
                     <div className={cx("box__z")}>
                         Bởi community builder
-                        <i className={cx("far", "fa-frown")}></i>
+                        <User
+                            size={Icon.current.size - 6}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                 </div>
                 <div className={cx("note__account")}>
                     <div className={cx("note__account--title")}>
                         <div>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Info
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                     </div>
                     <div className={cx("note__account--content")}>
@@ -150,21 +198,29 @@ export default function SetupAccount() {
                     <div className={cx("link__link")}>Liên kết</div>
                     <div className={cx("link__world")}>
                         <div className={cx("world__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Globe
+                                size={Icon.current.size - 6}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <button className={cx("world__button")}>
                             <div className={cx("button__title")}>
                                 Chọn một miền
                             </div>
                             <div className={cx("button__btn")}>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <ChevronDown
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </button>
                     </div>
                     <div className={cx("link__linkedin")}>
                         <div className={cx("linkedin__icon")}>
                             <div className={cx("icon__icon")}>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <i
+                                    className={cx("fa-brands", "fa-linkedin")}
+                                ></i>
                             </div>
                             <div className={cx("icon__title")}>LinkedIn</div>
                         </div>
@@ -175,7 +231,7 @@ export default function SetupAccount() {
                     <div className={cx("link__github")}>
                         <div className={cx("github__icon")}>
                             <div className={cx("icon__icon")}>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <i className={cx("fa-brands fa-github")}></i>
                             </div>
                             <div className={cx("icon__title")}>Github</div>
                         </div>
@@ -189,7 +245,10 @@ export default function SetupAccount() {
                     <div className={cx("email__email")}>Email</div>
                     <div className={cx("email__link")}>
                         <div className={cx("link__icon")}>
-                            <i className={cx("far", "fa-frown")}></i>
+                            <Mail
+                                size={Icon.current.size - 6}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                         <div className={cx("link__content")}>
                             ichigomazone@izn.mzn

@@ -1,9 +1,15 @@
 import classNames from "classnames/bind";
+import { ChevronRight, Settings } from "lucide-react";
+import { useRef } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
 
 const cx = classNames.bind(styles);
 
 export default function SetupApplication() {
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
     return (
         <>
             <div className={cx("container")}>
@@ -18,7 +24,7 @@ export default function SetupApplication() {
                                     className={cx(
                                         "fa-brands",
                                         "fa-itunes-note",
-                                        "icon_x"
+                                        "icon_x",
                                     )}
                                 ></i>
                             </div>
@@ -29,7 +35,7 @@ export default function SetupApplication() {
                                     className={cx(
                                         "fa-brands",
                                         "fa-github",
-                                        "icon_y"
+                                        "icon_y",
                                     )}
                                 ></i>
                             </div>
@@ -40,7 +46,7 @@ export default function SetupApplication() {
                                     className={cx(
                                         "fa-brands",
                                         "fa-discord",
-                                        "icon_z"
+                                        "icon_z",
                                     )}
                                 ></i>
                             </div>
@@ -51,7 +57,7 @@ export default function SetupApplication() {
                                     className={cx(
                                         "fa-brands",
                                         "fa-reddit",
-                                        "icon_t"
+                                        "icon_t",
                                     )}
                                 ></i>
                             </div>
@@ -75,7 +81,10 @@ export default function SetupApplication() {
                     >
                         <div className={cx("box__top")}>
                             <div className={cx("box__top--icon")}>
-                                <i className={cx("far", "fa-frown")}></i>
+                                <Settings
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                             <div className={cx("box__top--text")}>
                                 Cài đặt nâng cao
@@ -83,13 +92,10 @@ export default function SetupApplication() {
                         </div>
                         <div className={cx("box__bottom")}>
                             <div className={cx("box__bottom--content")}>
-                                <i
-                                    className={cx(
-                                        "fas",
-                                        "fa-chevron-down",
-                                        "icon__x"
-                                    )}
-                                ></i>
+                                <ChevronRight
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </div>
                     </button>
