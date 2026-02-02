@@ -50,7 +50,7 @@ export default function Content() {
             {dynamic && <options.DynamicComponent />}
             {false && <options.LocationComponent />}
             {false && <options.IntroducerComponent />}
-            {false && <options.IntroducerXComponent />}
+            {state.navbar_x.introducerX && <options.IntroducerXComponent />}
             {false && <options.ImageComponent />}
         </div>
     );

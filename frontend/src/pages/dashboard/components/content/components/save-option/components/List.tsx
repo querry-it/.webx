@@ -1,7 +1,5 @@
 export default function List() {
-    const handleAdd = () => {
-        
-    }
+    
     return (
         <div className="flex-1 overflow-y-auto">
             {Array.from({ length: 11 }).map((_, index) => (

@@ -19,7 +19,11 @@ export default function HistoryComponent() {
 
     return (
         <>
-            <div className={cx("history__bgr")}></div>
+            <div className={cx("history__bgr")}>
+                <div className={cx("history__header")}></div>
+                <div className={cx("history__content")}></div>
+                <div className={cx("history__footer")}></div>
+            </div>
         </>
     );
 }

@@ -7,6 +7,10 @@ export interface SidebarState {
 }
 
 export interface NavbarXState {
+    introducerX: boolean;
+    Xreview: String;
+    save: String;
+    back: boolean;
     dynamic: boolean;
     activeX: { type: string | null };
     active: {
