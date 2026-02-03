@@ -10,6 +10,18 @@
     overflow: hidden;
 }
 
+.location__pin {
+    position: absolute;
+    top: 8px;
+    margin-left: 10px;
+    z-index: 1005;
+    width: 345px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+}
+
 /* ===== INPUT ===== */
 .search__input {
     height: 42px;

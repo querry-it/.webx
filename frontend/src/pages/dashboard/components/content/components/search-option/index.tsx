@@ -163,6 +163,8 @@ export default function SearchComponent() {
                                 setState("SET_NAVBAR_X", "activeX", "roadmap");
                             } else {
                                 setState("SET_NAVBAR_X", "activeX", null);
+                                setState("SET_NAVBAR_X", "save", "list");
+                                setState("SET_NAVBAR_X", "back", false);
                             }
                         }}
                     >
@@ -227,7 +229,11 @@ export default function SearchComponent() {
                 )}
             </div>
 
-            {/* <div className={cx("dynamic")}>
+            <div className={cx("location__pin")}>
+                <div className={cx("")}></div>
+            </div>
+
+            <div className={cx("dynamic")}>
                 <div className={cx("dynamic__wrapper")}>
                     {showLeft && (
                         <div
@@ -265,7 +271,7 @@ export default function SearchComponent() {
                         </div>
                     )}
                 </div>
-            </div> */}
+            </div>
         </>
     );
 }
