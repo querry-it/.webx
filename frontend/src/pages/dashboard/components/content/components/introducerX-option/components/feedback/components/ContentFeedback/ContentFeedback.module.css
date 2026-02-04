@@ -1,0 +1,20 @@
+.feedback__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px 1fr;
+    overflow: hidden;
+    overflow-y: auto;
+    background: gray;
+}
+
+.feedback__grid::-webkit-scrollbar {
+    width: 0;
+}
+
+.feedback__grid > :first-child {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.feedback__grid > *{
+    background-color: white;
+}

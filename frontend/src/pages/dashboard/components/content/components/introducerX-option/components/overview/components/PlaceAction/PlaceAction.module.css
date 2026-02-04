@@ -1,0 +1,51 @@
+
+.action__wrapper {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.action__items {
+    margin: 4px;
+}
+
+.action__btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.action__btn .action__name {
+    color: teal;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+
+.btn__icon {
+    margin: 4px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__icon.primary:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+    transform: translateY(-0.1px);
+}
+
+.btn__icon.secondary:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+    transform: translateY(-0.1px);
+}
+
+.btn__icon.secondary {
+    background-color: rgb(211, 241, 251);
+}

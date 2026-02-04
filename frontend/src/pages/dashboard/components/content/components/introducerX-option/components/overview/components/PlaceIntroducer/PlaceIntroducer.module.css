@@ -1,0 +1,19 @@
+.place-introducer__wrapper {
+    width: 100%;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(234, 227, 227);
+    }
+}
+
+.place-introducer__items {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+}
+
+.place-introducer__desc {
+    text-align: start;
+    font: 12px;
+    line-height: 1.6;
+}

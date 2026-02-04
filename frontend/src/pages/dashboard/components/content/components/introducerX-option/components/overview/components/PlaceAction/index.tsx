@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
-import styles from "../introducerX.module.css";
-import { MapPin, BookmarkCheck, Share2, Info } from "lucide-react";
+import styles from "./PlaceAction.module.css";
+import { MapPinCheck, BookmarkCheck, Share2, Info } from "lucide-react";
 import { useRef } from "react";
 const cx = classNames.bind(styles);
 
@@ -11,7 +11,7 @@ export default function PlaceAction() {
             <div className={cx("action__items")}>
                 <button className={cx("action__btn")}>
                     <div className={cx("btn__icon", "primary")}>
-                        <MapPin size={IconRef.current.x} strokeWidth={IconRef.current.y} />
+                        <MapPinCheck size={IconRef.current.x} strokeWidth={IconRef.current.y} />
                     </div>
                     <div className={cx("action__name")}>Đường đi</div>
                 </button>

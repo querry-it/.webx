@@ -1,0 +1,127 @@
+.rating__grid  {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 80px;
+    grid-template-areas: "rating" "write__rating";
+}
+.rating-fill__wrapper { grid-area: rating; }
+.write__rating { grid-area: write__rating; }
+
+.rating-fill__wrapper {
+    display: flex;
+    padding: 24px 32px;
+
+}
+
+.rating-fill__grid {
+    width: 65%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 22px);
+    grid-template-areas: "items";
+}
+
+.rating__items {
+    display: flex;
+    align-items: center;
+}
+
+.star__count {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    color: gray;
+}
+
+.rating-bg__fill {
+    flex: 1;
+    height: 40%;
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+.rating__fill {
+    height: 100%;
+    border-radius: 8px;
+    background-color: gold;
+}
+
+.rating-overview__wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.rating-medium {
+    font-size: 45px;
+    line-height: 45px;
+}
+
+.rating-star {
+    display: flex;
+}
+
+.star {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.star-full {
+    color: gold;
+}
+
+.star-empty {
+    color: #ddd;
+}
+
+.star-half {
+    background: linear-gradient(90deg, gold 50%, #ddd 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+.rating-count {
+    font-size: 12px;
+    color: gray;
+}
+
+.write__rating {
+    margin: 12px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.write__btn {
+    height: 50%;
+    width: 40%;
+    border-radius: 20px;
+    background-color:aqua;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.icon-compose {
+    position: relative;
+}
+
+.pen-overlay {
+    position: absolute;
+    left: 4px;
+    bottom: 5px;
+}
+
+
+.write-review__label {
+    font-size: 14px;
+    font-weight: 500;
+}
