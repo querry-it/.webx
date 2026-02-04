@@ -1,9 +1,10 @@
 import classNames from "classnames/bind";
-import styles from "../introducerX.module.css";
+// import styles from "../introducerX.module.css";
+import styles from "./PlaceHero.module.css";
 import { Star } from "lucide-react";
 import { useRef } from "react";
 const cx = classNames.bind(styles);
-import { useEditor } from "../../../../../../../state/useEditor";
+import { useEditor } from "../../../../../../../../../../state/useEditor";
 
 export default function PlaceHero({ place }) {
     const { state, dispatch } = useEditor();
@@ -49,7 +50,7 @@ export default function PlaceHero({ place }) {
                 </button>
 
                 <button
-                    className={cx("btn__items")}
+                    className={cx("btn__items-feedback")}
                     onClick={() => {
                         if (state.navbar_x.Xreview !== "feedback") {
                             setState("SET_NAVBAR_X", "Xreview", "feedback");
@@ -58,8 +59,8 @@ export default function PlaceHero({ place }) {
                 >
                     <div className={cx("content__wrapper")}>
                         <div className={cx("bg")}></div>
-                        <span className={cx("content")}>Bài đánh giá</span>
-                        <div className={cx("bottom-btn")}></div>
+                        <span className={cx("content-feedback")}>Bài đánh giá</span>
+                        <div className={cx("bottom-btn__feedback")}></div>
                     </div>
                 </button>
             </div>
