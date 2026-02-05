@@ -16,15 +16,16 @@ const place = [
         type: "Di tích lịch sử",
         rating: 4.5,
         reviews: 19872,
-        open: {
-            "Thứ 2": "Đóng cửa",
-            "Thứ 3": "07:30 - 10:30",
-            "Thứ 4": "07:30 - 10:30",
-            "Thứ 5": "07:30 - 10:30",
-            "Thứ 6": "Đóng cửa",
-            "Thứ 7": "07:30 - 11:00",
-            "Chủ nhật": "07:30 - 11:00",
-        },
+        open: [
+            { day: "Thứ 2", time: "Đóng cửa" },
+            { day: "Thứ 3", time: "07:30 - 10:30" },
+            { day: "Thứ 4", time: "07:30 - 10:30" },
+            { day: "Thứ 5", time: "07:30 - 10:30" },
+            { day: "Thứ 6", time: "Đóng cửa" },
+            { day: "Thứ 7", time: "07:30 - 11:00" },
+            { day: "Chủ nhật", time: "07:30 - 11:00" }
+        ],
+
 
         ratingStar: {
             5: 12917,
@@ -81,7 +82,16 @@ const place = [
         type: "Di tích lịch sử – văn hóa",
         rating: 4.6,
         reviews: 15420,
-        open: "Mở cửa lúc 07:30",
+        open: [
+            { day: "Thứ Hai", time: "Đóng cửa" },
+            { day: "Thứ Ba", time: "07:30 - 10:30" },
+            { day: "Thứ Tư", time: "07:30 - 10:30" },
+            { day: "Thứ Năm", time: "07:30 - 10:30" },
+            { day: "Thứ Sáu", time: "Đóng cửa" },
+            { day: "Thứ Bảy", time: "07:30 - 11:00" },
+            { day: "Chủ Nhật", time: "07:30 - 11:00" }
+        ],
+
         ratingStar: {
             5: 10023,
             4: 3654,

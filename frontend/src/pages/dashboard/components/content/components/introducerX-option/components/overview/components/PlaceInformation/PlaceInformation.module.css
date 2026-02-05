@@ -28,9 +28,6 @@
 .items {
     width: 100%;
     padding: 8px 24px;
-    &:hover {
-        background-color: rgb(241, 236, 236);
-    }
 }
 
 
@@ -41,7 +38,7 @@
 }
 
 .place-information__icon {
-    width: 40px;
+    width: 20px;
     height: 24px;
     color: teal;
     transition: color 0.2s ease;
@@ -64,12 +61,13 @@
 
 .place-information__link {
     font-size: 14px;
-    width: 80%;
+    flex: 1;
 }
 
 .place-information__copy {
     position: absolute;
     right: 0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,6 +90,19 @@
     font-size: 14px;
 }
 
+.open-status {
+  font-weight: 500;
+}
+
+.open {
+  color: #16a34a; /* xanh */
+}
+
+.closed {
+  color: #dc2626; /* đỏ */
+}
+
+
 .timeline__icon {
     width: 50px;
     display: flex;
@@ -109,7 +120,6 @@
 
 .dropdown__wrapper {
     margin-top: 8px;
-    border-top: 1px solid #eee;
 }
 
 .dropdown__items {
@@ -118,13 +128,66 @@
 
 .dropdown__item {
     display: flex;
-    justify-content: space-between;
     padding: 6px 0;
     font-size: 14px;
-    color: #555;
+    margin-left: 40px;
 }
 
 .dropdown__item.active {
     font-weight: 600;
     color: #1a73e8;
 }
+
+.item-day {
+    width: 30%;
+}
+
+.is-today {
+    font-weight: 500;
+}
+
+
+.address-items__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Bọc address + copy */
+.place-information__address-wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.place-information__link {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.place-information__copy {
+    opacity: 0;
+    pointer-events: none;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    padding: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+.place-information__address-wrapper:hover .place-information__copy {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(2px);
+}
+
+
