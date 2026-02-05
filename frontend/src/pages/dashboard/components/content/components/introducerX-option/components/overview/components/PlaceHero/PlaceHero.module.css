@@ -120,3 +120,30 @@
 .btn__items.active .content::after {
     transform: scaleX(1);
 }
+
+.rating-star {
+    display: flex;
+    margin-top: 2px;
+}
+
+.star {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.star-full {
+    color: gold;
+}
+
+.star-empty {
+    color: #ddd;
+}
+
+.star-half {
+    background: linear-gradient(90deg, gold 50%, #ddd 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

@@ -28,10 +28,27 @@ export default function PlaceHero({ place }) {
                 <div className={cx("place__menu")}>
                     <div className={cx("place__rate")}>
                         <span>{place.rating}</span>
-                        <Star
-                            size={IconRef.current.x}
-                            strokeWidth={IconRef.current.y}
-                        />
+                        <div className={cx("rating-star")}>
+                            {Array.from({ length: 5 }).map((_, index) => {
+                                const rating = place.rating;
+                                const fullstar = Math.floor(rating);
+                                const halfstar = (fullstar - rating) % 1 !== 0;
+                                if (index < fullstar) {
+                                    return (
+                                        <span key={index} className={cx("star", "star-full")}>★</span>
+                                    );
+                                }
+                                if (index === fullstar && halfstar) {
+                                    return (
+                                        <span key={index} className={cx("star", "star-half")}>★</span>
+                                    );
+                                }
+                                return (
+                                    <span key={index} className={cx("star", "star-empty")}>★</span>
+                                );
+
+                            })}
+                        </div>
                         <span>({place.reviews})</span>
                     </div>
                     <span>

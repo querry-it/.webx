@@ -1,9 +1,6 @@
 .place-introducer__wrapper {
     width: 100%;
     cursor: pointer;
-    &:hover {
-        background-color: rgb(234, 227, 227);
-    }
 }
 
 .place-introducer__items {
