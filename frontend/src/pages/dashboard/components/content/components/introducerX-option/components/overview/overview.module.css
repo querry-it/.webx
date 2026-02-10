@@ -1,40 +1,73 @@
-
 .location__content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    background: #57585a;
-    grid-template-areas: "place__hero" "place__action" "place__introducer" "place__information" "place__gallery" "card";
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  background: #57585a;
+  grid-template-areas: 'place__hero' 'place__action' 'place__introducer' 'place__information' 'place__gallery' 'card';
 }
 
 .location__content > * {
-    background: #fff;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
 .place__hero {
-    grid-area: place__hero;
+  grid-area: place__hero;
 }
 .place__action {
-    grid-area: place__action;
+  grid-area: place__action;
 }
 .place__introducer {
-    grid-area: place__introducer;
+  grid-area: place__introducer;
 }
 .place__information {
-    grid-area: place__information;
+  grid-area: place__information;
 }
 .place__gallery {
-    grid-area: place__gallery;
+  grid-area: place__gallery;
 }
 .card {
-    grid-area: card;
+  grid-area: card;
 }
 
 .sticky {
-    height: 100px;
-    background-color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 1010;
+  position: sticky;
+  top: 0;
+
+  height: 60px;
+  background: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.15s ease,
+    opacity 0.2s ease;
+  z-index: 1010;
+  display: flex;
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'left center right';
+  .left {
+    grid-area: left;
+  }
+  .center {
+    grid-area: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .right {
+    grid-area: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.sticky--show {
+  max-height: 60px;
+  opacity: 1;
 }
