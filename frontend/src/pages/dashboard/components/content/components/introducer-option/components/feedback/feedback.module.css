@@ -1,0 +1,26 @@
+.feedback__bgr {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 366px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #cacaca;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 50px 1fr;
+    grid-template-areas:
+        "title"
+        "option"
+        "content";
+    .title__feedback {
+        grid-area: title;
+    }
+    .option__feedback {
+        grid-area: option;
+    }
+    .content__feedback {
+        grid-area: content;
+    }
+}
