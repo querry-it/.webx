@@ -19,7 +19,8 @@ export default function BrandComponent() {
 
     return (
         <>
-            <div className={cx("location__bgr")}></div>
+            <div className={cx("location__bgr")}>
+            </div>
         </>
     );
 }
