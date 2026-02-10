@@ -1,11 +1,16 @@
 import classNames from "classnames/bind";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
-import { useState, useRef, useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
 export default function SetupPerson() {
     const endRef = useRef(null);
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
 
     const [input1, setInput1] = useState<string>("");
     const [input2, setInput2] = useState<string>("");
@@ -69,13 +74,10 @@ export default function SetupPerson() {
                         <button className={cx("area__b--content")}>
                             <div className={cx("b__left")}>Mặc định</div>
                             <div className={cx("b__right")}>
-                                <i
-                                    className={cx(
-                                        "fas",
-                                        "fa-chevron-down",
-                                        "icon__x"
-                                    )}
-                                ></i>
+                                <ChevronDown
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </button>
                     </div>
@@ -108,13 +110,10 @@ export default function SetupPerson() {
                         <button className={cx("area__g--content")}>
                             <div className={cx("b__left")}>Mặc định</div>
                             <div className={cx("b__right")}>
-                                <i
-                                    className={cx(
-                                        "fas",
-                                        "fa-chevron-down",
-                                        "icon__x"
-                                    )}
-                                ></i>
+                                <ChevronDown
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </button>
                     </div>
@@ -125,13 +124,10 @@ export default function SetupPerson() {
                         <button className={cx("area__i--content")}>
                             <div className={cx("b__left")}>Mặc định</div>
                             <div className={cx("b__right")}>
-                                <i
-                                    className={cx(
-                                        "fas",
-                                        "fa-chevron-down",
-                                        "icon__x"
-                                    )}
-                                ></i>
+                                <ChevronDown
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </button>
                     </div>
@@ -144,13 +140,10 @@ export default function SetupPerson() {
                         <button className={cx("area__l--content")}>
                             <div className={cx("b__left")}>Mặc định</div>
                             <div className={cx("b__right")}>
-                                <i
-                                    className={cx(
-                                        "fas",
-                                        "fa-chevron-down",
-                                        "icon__x"
-                                    )}
-                                ></i>
+                                <ChevronDown
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </button>
                     </div>
@@ -163,13 +156,10 @@ export default function SetupPerson() {
                         <button className={cx("area__n--content")}>
                             <div className={cx("b__left")}>Mặc định</div>
                             <div className={cx("b__right")}>
-                                <i
-                                    className={cx(
-                                        "fas",
-                                        "fa-chevron-down",
-                                        "icon__x"
-                                    )}
-                                ></i>
+                                <ChevronDown
+                                    size={Icon.current.size}
+                                    strokeWidth={Icon.current.weight}
+                                />
                             </div>
                         </button>
                     </div>
@@ -269,9 +259,10 @@ export default function SetupPerson() {
                 >
                     <div className={cx("update__title")}>Nâng cao</div>
                     <div className={cx("update__button")}>
-                        <i
-                            className={cx("fas", "fa-chevron-down", "icon__x")}
-                        ></i>
+                        <ChevronDown
+                            size={Icon.current.size}
+                            strokeWidth={Icon.current.weight}
+                        />
                     </div>
                 </button>
                 {onButton2 && (

@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99;
+    pointer-events: all;
+    z-index: 1003;
 }
 
 .modal-container {
@@ -19,7 +20,7 @@
     filter: drop-shadow(0 1px 2px #d3d3d3);
     border: 1px solid var(--color-line-modal);
     display: flex;
-    z-index: 100;
+    z-index: 1004;
 }
 
 .table__left {
@@ -44,6 +45,9 @@
     height: 36px;
     border: none;
     background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .out__content:hover {
@@ -1029,15 +1033,21 @@
 }
 
 .table__right .icon__account .box__x .x__icon {
-    font-size: 16px;
-    width: 20px;
-    height: 20px;
+    height: 25px;
     padding: 15px;
-    border: 1px solid var(--color-line-modal);
+    border: 1px solid #dddddd;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    .icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        color: #989898;
+    }
 }
 
 .table__right .icon__account .box__x .x__hidden,
@@ -1236,15 +1246,15 @@
     display: grid;
     grid-template-columns: 1fr 134px;
     grid-template-rows: 33px 45px 5px 55px repeat(4, 33px);
-    grid-template-areas: 
-    "area__a area__b"
-    "area__c area__c"
-    "area__d area__d"
-    "area__e area__e"
-    "area__f area__g"
-    "area__h area__i"
-    "area__k area__l"
-    "area__m area__n";
+    grid-template-areas:
+        "area__a area__b"
+        "area__c area__c"
+        "area__d area__d"
+        "area__e area__e"
+        "area__f area__g"
+        "area__h area__i"
+        "area__k area__l"
+        "area__m area__n";
     gap: 6px;
 }
 
@@ -1375,7 +1385,7 @@
 .table__right .grid__box .area__i .area__i--content:hover,
 .table__right .grid__box .area__l .area__l--content:hover,
 .table__right .grid__box .area__n .area__n--content:hover {
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
 }
 
 .table__right .option {
@@ -1390,7 +1400,7 @@
 .table__right .option .option__input {
     padding: 8px 12px;
     color: var(--color-fz12);
-    outline: none;  
+    outline: none;
     border: 1px solid var(--color-line);
     border-radius: 5px;
 }
@@ -1406,7 +1416,7 @@
 .table__right .line__x {
     border: none;
     border-top: 1px solid var(--color-line);
-}   
+}
 
 .table__right .memory {
     height: 28px;
@@ -1501,7 +1511,7 @@
     gap: 8px;
 }
 
-.table__right .button__update .update__title, 
+.table__right .button__update .update__title,
 .table__right .button__update .update__button {
     display: flex;
     align-items: center;
@@ -1588,4 +1598,3 @@
     font-weight: 600;
     color: #fff;
 }
-

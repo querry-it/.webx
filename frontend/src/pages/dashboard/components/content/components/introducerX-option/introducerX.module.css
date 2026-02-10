@@ -1,0 +1,19 @@
+.location__prev {
+    position: absolute;
+    top: 56px;
+    bottom: 8px;
+    left: 374px;
+    width: 380px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #cacaca;
+    z-index: 1000;
+    /*overflow: hidden;*/
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.location__prev::-webkit-scrollbar {
+    display: none;
+}

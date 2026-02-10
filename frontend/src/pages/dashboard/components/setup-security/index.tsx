@@ -1,11 +1,16 @@
 import classNames from "classnames/bind";
+import { ChevronDown } from "lucide-react";
+import { useRef, useState } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
-import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
 export default function SetupSecurity() {
     const [onButton1, setButton1] = useState<boolean>(false);
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
 
     return (
         <>
@@ -27,7 +32,10 @@ export default function SetupSecurity() {
                     <div className={cx("key__row")}>
                         <div className={cx("row__title")}>Thêm</div>
                         <div className={cx("row__content")}>
-                            <i className={cx("fas", "fa-chevron-down")}></i>
+                            <ChevronDown
+                                size={Icon.current.size}
+                                strokeWidth={Icon.current.weight}
+                            />
                         </div>
                     </div>
                 </button>

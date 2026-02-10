@@ -1,10 +1,11 @@
 .navbar {
     grid-area: navbar;
     position: relative;
+    border-right: 1px solid #cacaca;
 }
 
 .header__start {
-    height: 52px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,16 +23,34 @@
 
 .header__end {
     margin-top: 8px;
-    height: 108px;
+    height: 170px;
 }
 
 .header__end .header__end--add,
-.header__end .header__end--search,
-.header__end .header__end--image {
-    height: 36px;
+.header__end .header__end--search {
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.header__end .header__end--image {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__end .header__end--line,
+.header__middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .line__xy {
+        width: 70%;
+        height: 1px;
+        background-color: #e0e2ec;
+    }
 }
 
 .footer__start {
@@ -73,12 +92,15 @@
 .header__end button:hover,
 .footer__start button:hover,
 .footer__end button:hover {
-    background-color: var(--color-line-space);
-    padding: 6px;
+    background-color: rgb(223, 223, 223);
+    outline: 10px solid rgb(223, 223, 223);
     border-radius: 5px;
 }
 
-.header__start--gpt,
+.header__start--gpt {
+    padding: 6px;
+}
+
 .header__end--add,
 .header__end--search,
 .header__end--image,
@@ -98,6 +120,7 @@
     color: #fff;
     font-weight: 700;
     font-size: 12px;
+    z-index: 1100;
 }
 
 .header__end--add .tooltip,
@@ -108,4 +131,29 @@
 
 .footer__end .tooltip {
     left: 58px;
+}
+
+.img-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ff96ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.img-avatar .name {
+    font-size: 10px;
+    color: #ffffff;
+}
+
+.header__start button.active,
+.header__end button.active,
+.footer__start button.active,
+.footer__end button.active {
+    background-color: rgb(240, 240, 240);
+    outline: 10px solid rgb(240, 240, 240);
+    border-radius: 5px;
 }

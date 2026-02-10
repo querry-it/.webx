@@ -11,9 +11,9 @@ import Dashboard from "../pages/dashboard";
 const publicRoutes: RouteObject[] = [
     {
         path: "/",
-        element: <Login />,
+        element: <App />,
         children: [
-            { index: true, element: <Dashboard /> },
+            { index: true, element: <Login /> },
 
             {
                 path: "forgot-password",

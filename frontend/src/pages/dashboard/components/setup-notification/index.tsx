@@ -1,9 +1,15 @@
 import classNames from "classnames/bind";
+import { ChevronDown } from "lucide-react";
+import { useRef } from "react";
 import styles from "../setup-modal/setupmodal.module.css";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 export default function SetupNotification() {
+    const Icon = useRef<{ size: number; weight: number }>({
+        size: 20,
+        weight: 1.6,
+    });
     return (
         <>
             <div className={cx("container")}>
@@ -21,13 +27,10 @@ export default function SetupNotification() {
                             >
                                 <span>Đẩy</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -48,13 +51,10 @@ export default function SetupNotification() {
                             >
                                 <span>Đẩy</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -75,13 +75,10 @@ export default function SetupNotification() {
                             >
                                 <span>Thông báo đẩy, Email</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -103,13 +100,10 @@ export default function SetupNotification() {
                             >
                                 <span>Email</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>
@@ -131,13 +125,10 @@ export default function SetupNotification() {
                             >
                                 <span>Thông báo đẩy, Email</span>
                                 <span>
-                                    <i
-                                        className={cx(
-                                            "fas",
-                                            "fa-chevron-down",
-                                            "icon__x"
-                                        )}
-                                    ></i>
+                                    <ChevronDown
+                                        size={Icon.current.size}
+                                        strokeWidth={Icon.current.weight}
+                                    />
                                 </span>
                             </button>
                         </div>

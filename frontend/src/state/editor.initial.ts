@@ -8,6 +8,12 @@ export const initialEditorState: EditorState = {
         open: false,
     },
     navbar_x: {
+        introducerX: true,
+        Xreview: "overview",
+        save: "list",
+        back: false,
+        dynamic: false,
+        activeX: { type: null },
         active: { type: null, value: null },
         hover: { type: null, value: null },
         project: false,
@@ -62,7 +68,7 @@ export const initialEditorState: EditorState = {
                     "Rust",
                     "C++",
                     "Ruby",
-                    "Php"
+                    "Php",
                 ],
             },
         ],
@@ -100,6 +106,6 @@ export const initialEditorState: EditorState = {
         project: {
             top: null,
             left: null,
-        }
-    }
+        },
+    },
 };

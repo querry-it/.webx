@@ -26,18 +26,20 @@ export default function SetupModal() {
         else setState("SET_UTIL", "index", 1);
     }, [state.modal.person, state.modal.person]);
 
-    const handleOut = () => {
+    const handleOut = (e) => {
         if (state.modal.person) setState("SET_MODAL", "person", false);
         else setState("SET_MODAL", "setup", false);
         setState("SET_UTIL", "index", null);
+        e.stopPropagation();
+        e.preventDefault();
     };
 
     const StopPropagation = (e) => e.stopPropagation();
 
     return (
         <>
-            <div onClick={handleOut} className={cx("modal-overlay")}>
-                <div onClick={StopPropagation} className={cx("modal-container")}>
+            <div onClick={(e) => handleOut(e)} className={cx("modal-overlay")}>
+                <div onClick={(e) => StopPropagation(e)} className={cx("modal-container")}>
                     <div className={cx("table__left")}>
                         <SetupInterface />
                     </div>
