@@ -1,6 +1,4 @@
-import { createHashRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import publicRoutes from './routes/public';
 
-export const router = createHashRouter(publicRoutes, {
-  basename: '/.webx',
-});
+export const router = createBrowserRouter(publicRoutes);
