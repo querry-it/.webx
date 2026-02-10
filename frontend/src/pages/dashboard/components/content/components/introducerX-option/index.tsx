@@ -60,14 +60,7 @@ const place = [
         url: 'https://en.wikipedia.org/wiki/Ho_Chi_Minh_Mausoleum',
         api: 'https://en.wikipedia.org/api/rest_v1/page/summary/Ho_Chi_Minh_Mausoleum',
       },
-      {
-        id: 'britannica',
-        source: 'Britannica',
-        lang: 'en',
-        title: 'Ho Chi Minh Mausoleum – Britannica',
-        url: 'https://www.britannica.com/place/Ho-Chi-Minh-Mausoleum',
-        api: null,
-      },
+      
     ],
   },
 
@@ -126,14 +119,7 @@ const place = [
         url: 'https://en.wikipedia.org/wiki/Temple_of_Literature,_Hanoi',
         api: 'https://en.wikipedia.org/api/rest_v1/page/summary/Temple_of_Literature,_Hanoi',
       },
-      {
-        id: 'unesco',
-        source: 'UNESCO',
-        lang: 'en',
-        title: 'Temple of Literature – Hanoi (UNESCO)',
-        url: 'https://whc.unesco.org/en/tentativelists/6177/',
-        api: null,
-      },
+  
     ],
   },
 ];
