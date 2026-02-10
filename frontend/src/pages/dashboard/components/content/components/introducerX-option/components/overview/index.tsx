@@ -13,14 +13,26 @@ const cx = classNames.bind(styles);
 export default function Overview({ selectedPlace }) {
 
     return (
-        <div className={cx("location__content")}>
-            <PlaceHero place={selectedPlace} className={cx("place__hero")} />
-            <PlaceAction className={cx("place__action")} />
-            <PlaceIntroducer place={selectedPlace} className={cx("place__introducer")} />
-            <PlaceInformation place={selectedPlace} className={cx("place__information")} />
-            <PlaceGallery place={selectedPlace} className={cx("place__gallery")} />
-            <ExteralArticleCard place={selectedPlace} className={cx("card")}/>
+      <>
+        <div className={cx('sticky')}></div>
+        <div className={cx('location__content')}>
+          <PlaceHero place={selectedPlace} className={cx('place__hero')} />
+          <PlaceAction className={cx('place__action')} />
+          <PlaceIntroducer
+            place={selectedPlace}
+            className={cx('place__introducer')}
+          />
+          <PlaceInformation
+            place={selectedPlace}
+            className={cx('place__information')}
+          />
+          <PlaceGallery
+            place={selectedPlace}
+            className={cx('place__gallery')}
+          />
+          <ExteralArticleCard place={selectedPlace} className={cx('card')} />
         </div>
+      </>
     );
 }
 
