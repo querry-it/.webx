@@ -31,7 +31,7 @@ export default function TitleFeedback({ place, feedbacks }) {
                     strokeWidth={IconRef.current.y}
                 />
             </div>
-            <div className={cx("content")}>Lăng chủ tịch Hồ Chí Minh</div>
+            <div className={cx("content")}>{place.name}</div>
             <div
                 className={cx("icon__right")}
                 onClick={() => {

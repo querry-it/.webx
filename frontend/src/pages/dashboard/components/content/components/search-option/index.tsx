@@ -19,6 +19,7 @@ import {
     MapPinCheck,
     Squirrel,
     ArrowLeft,
+    Icon,
 } from "lucide-react";
 import { useEditor } from "../../../../../../state/useEditor";
 
@@ -230,7 +231,59 @@ export default function SearchComponent() {
             </div>
 
             <div className={cx("location__pin")}>
-                <div className={cx("")}></div>
+                <div className={cx("loaction-grid__pin")}>
+                    <div className={cx("location-heading")}>
+                        <Home
+                            size={IconRef.current.x}
+                            strokeWidth={IconRef.current.y}
+                        />
+
+                        <div className={cx("location__title")}>
+                            <span>Chỉnh sửa địa chỉ nhà riêng</span>
+                        </div>
+
+                        <div className={cx("location__btn")}>
+                            <div className={cx("location-save__btn")}>
+                                <button>LƯU</button>
+                            </div>
+
+                            <div className={cx("space__gray")}></div>
+
+                            <div className={cx("location-cancel__btn")}>
+                                <button>HỦY</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={cx("latlon-row")}>
+                        <div className={cx("input-group")}>
+                            <input
+                                type="text"
+                                className={cx("coordinate-input")}
+                                placeholder="Tọa độ, kinh độ"
+                                readOnly
+                            />
+                        </div>
+                    </div>
+
+                    <div className={cx("map-buttons-row")}>
+                        <div className={cx("buttons-grid")}>
+                            <button className={cx("map-btn")}>
+                                <MapPin size={IconRef.current.x} strokeWidth={IconRef.current.y} className={cx("map-btn-icon")}></MapPin>
+                                <span className={cx("map-btn-text")}>
+                                    Vị trí hiện tại
+                                </span>
+                            </button>
+
+                            <button className={cx("map-btn")}>
+                                <Map size={IconRef.current.x} strokeWidth={IconRef.current.y} className={cx("map-btn-icon")}></Map>
+                                <span className={cx("map-btn-text")}>
+                                    Chọn trên map
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className={cx("dynamic")}>
