@@ -1,4 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
-import publicRoutes from "./routes/public";
+import { createBrowserRouter } from 'react-router-dom';
+import publicRoutes from './routes/public';
 
-export const router = createBrowserRouter(publicRoutes);
+export const router = createBrowserRouter(publicRoutes, {
+  basename: '/.webx',
+});
