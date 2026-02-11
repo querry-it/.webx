@@ -27,6 +27,7 @@
   }
   .history__footer {
     grid-area: footer;
+    position: relative;
   }
 }
 
@@ -48,7 +49,6 @@
 .history-title {
   margin-top: 12px;
   height: 50px;
-  width: 80%;
   padding: 12px 24px;
   font-weight: 500;
   font-size: 16px;
@@ -88,6 +88,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.delete__btn:hover {
+  background-color: rgb(223, 219, 219);
 }
 
 .items-img {
@@ -159,6 +163,9 @@
   align-items: center;
   gap: 6px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .place-save__items {
@@ -168,12 +175,6 @@
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;  
-}
-
-.place-save {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .save__btn {
@@ -246,9 +247,22 @@
   transition: background-color 0.2s ease;
 }
 
-.history-items--hover {
-  background-color: #f1f3f4;
+.history-items:hover {
+  background-color: #f5f5f5;
 }
+
+.history-items__hover {
+  background-color: #e9ecee;
+}
+
+.history-items__hover:hover {
+  background-color: #bebfc0;
+}
+
+.history-items__active {
+  background-color: #e8eaeb !important;
+}
+
 
 .delete-items {
   opacity: 0;
@@ -259,4 +273,53 @@
 .delete-items--show {
   opacity: 1;
   pointer-events: auto;
+}
+
+.btn-disabled {
+  color: gray;
+  background-color: rgb(227, 227, 227);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.bookmark__icon {
+  margin-bottom: 4px;
+}
+
+.alertCoppy {
+  position: absolute;
+  left: 400px;
+  bottom: 2px;
+  height: 44px;
+  width: 500px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.alertCoppy span {
+  color: white;
+  font-size: 14px;
+}
+
+.close-alert__icon {
+  color: white;
+}
+
+.alertCoppy {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
