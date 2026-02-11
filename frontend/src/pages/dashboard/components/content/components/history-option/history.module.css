@@ -8,7 +8,7 @@
   border-right: 1px solid #cacaca;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 1fr 60px;
+  grid-template-rows: 110px 1fr 60px;
   grid-template-areas:
     'header'
     'content'
@@ -29,6 +29,40 @@
     grid-area: footer;
     position: relative;
   }
+}
+
+.history__header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 50px;
+}
+
+.history-header__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  padding-left: 40px;
+  width: 35%;
+}
+
+.history-title__header {
+  color: teal;
+  margin: auto;
+}
+
+.space__footer {
+  margin-top: auto;
+  width: 100%;
+  height: 2px;
+}
+
+.space__green {
+  width: 100%;
+  height: 100%;
+  background: teal;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .history-grid__content {
@@ -76,8 +110,8 @@
   position: absolute;
   width: 32px;
   height: 32px;
-  top: -6px;
-  left: -2px;
+  top: 0;
+  left: 0;
 }
 
 .delete__btn {
@@ -191,7 +225,7 @@
 
 .check__icon {
   position: absolute;
-  background: teal;
+  background: blue;
   border-radius: 2px;
   color: white;
 }
