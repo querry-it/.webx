@@ -37,7 +37,6 @@ export default function Content() {
     setOption(state.navbar_x.activeX);
     setDynamic(state.navbar_x.dynamic);
   }, [state.navbar_x.activeX, state.navbar_x.dynamic]);
-
   return (
     <div className={cx('content')}>
       <div id="map" className={cx('map')} />
