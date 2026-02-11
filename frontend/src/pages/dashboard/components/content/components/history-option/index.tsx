@@ -134,6 +134,7 @@ export default function HistoryComponent() {
   const [isSelectAll, setIsSelectAll] = useState(false);
   const [sharePlace, setSharePlace] = useState<places | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const hasSelected = selectedIds.length > 0;
   const isAllSelected = selectedIds.length === items.length;
@@ -154,6 +155,12 @@ export default function HistoryComponent() {
 
     try {
       await navigator.clipboard.writeText(link);
+
+      setShowAlert(true);
+
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
     } catch (error) {
       console.error(error);
     }
@@ -496,16 +503,19 @@ export default function HistoryComponent() {
             </div>
           </div>
 
-          <div className={cx('alertCoppy')}>
-            <span>
-              Đã sao chép đường liên kết đến một địa điểm vào bảng nhớ tạm
-            </span>
-            <X
-              className={cx('close-alert__icon')}
-              size={IconRef.current.x}
-              strokeWidth={IconRef.current.y}
-            ></X>
-          </div>
+          {showAlert && (
+            <div className={cx('alertCoppy')}>
+              <span>
+                Đã sao chép đường liên kết đến một địa điểm vào bảng nhớ tạm
+              </span>
+              <X
+                className={cx('close-alert__icon')}
+                size={IconRef.current.x}
+                strokeWidth={IconRef.current.y}
+                onClick={() => setShowAlert(false)}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
