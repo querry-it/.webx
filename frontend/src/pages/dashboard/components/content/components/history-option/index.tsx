@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
+  Bookmark,
   BookmarkCheck,
   X,
   Square,
@@ -18,91 +19,101 @@ const places = [
     id: 1,
     name: 'Lăng Chủ tịch Hồ Chí Minh',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Điểm mốc lịch sử',
     rating: 4.8,
     reviews: 125430,
-    type: 'Điểm mốc lịch sử',
     searchedAt: '2026-02-10T08:30:00',
+    mapUrl: 'https://maps.app.goo.gl/5U1cGyHVZDhAAigB7',
   },
   {
     id: 2,
     name: 'Chùa Một Cột',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Chùa / Di tích lịch sử',
     rating: 4.6,
     reviews: 89320,
-    type: 'Chùa / Di tích lịch sử',
     searchedAt: '2026-02-09T09:10:00',
+    mapUrl: 'https://maps.app.goo.gl/7Qe6H2o9xJpQmA6K9',
   },
   {
     id: 3,
     name: 'Văn Miếu – Quốc Tử Giám',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Di tích lịch sử',
     rating: 4.7,
     reviews: 102540,
-    type: 'Di tích lịch sử',
     searchedAt: '2026-02-08T16:45:00',
+    mapUrl: 'https://maps.app.goo.gl/Wr1z9Q9bB7ePp3gY8',
   },
   {
     id: 4,
     name: 'Bảo tàng Lịch sử Quân sự Việt Nam',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Bảo tàng quân sự',
     rating: 4.5,
     reviews: 45670,
-    type: 'Bảo tàng quân sự',
     searchedAt: '2026-02-07T14:20:00',
+    mapUrl: 'https://maps.app.goo.gl/9K4qXcRz8oYx3H4E7',
   },
   {
     id: 5,
     name: 'Hoàng thành Thăng Long',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Di sản lịch sử',
     rating: 4.6,
     reviews: 67890,
-    type: 'Di sản lịch sử',
     searchedAt: '2026-02-06T10:00:00',
+    mapUrl: 'https://maps.app.goo.gl/q8JZy4F6D7B5N3V2A',
   },
   {
     id: 6,
     name: 'Nhà tù Hỏa Lò',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Bảo tàng lịch sử',
     rating: 4.4,
     reviews: 51230,
-    type: 'Bảo tàng lịch sử',
     searchedAt: '2026-02-05T18:30:00',
+    mapUrl: 'https://maps.app.goo.gl/3N8kL7V4YH1J6E2D9',
   },
   {
     id: 7,
     name: 'Đền Ngọc Sơn',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Đền / Tâm linh',
     rating: 4.5,
     reviews: 73450,
-    type: 'Đền / Tâm linh',
     searchedAt: '2026-02-04T07:50:00',
+    mapUrl: 'https://maps.app.goo.gl/2A6R5F8M4Z9B1E7XQ',
   },
   {
     id: 8,
     name: 'Bảo tàng Dân tộc học Việt Nam',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Bảo tàng văn hóa',
     rating: 4.7,
     reviews: 84210,
-    type: 'Bảo tàng văn hóa',
     searchedAt: '2026-01-31T15:40:00',
+    mapUrl: 'https://maps.app.goo.gl/V8R9Z3M6N2Y1A4X7P',
   },
   {
     id: 9,
     name: 'Nhà hát Lớn Hà Nội',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Công trình kiến trúc',
     rating: 4.6,
     reviews: 65980,
-    type: 'Công trình kiến trúc',
     searchedAt: '2026-01-30T20:15:00',
+    mapUrl: 'https://maps.app.goo.gl/6H7B9M2X8N1Z4P5R3',
   },
   {
     id: 10,
     name: 'Phố cổ Hà Nội',
     img: 'https://ik.imagekit.io/tvlk/blog/2022/08/van-mieu-quoc-tu-giam-1.jpg',
+    type: 'Khu du lịch / Di sản văn hóa',
     rating: 4.5,
     reviews: 158900,
-    type: 'Khu du lịch / Di sản văn hóa',
     searchedAt: '2026-01-30T09:05:00',
+    mapUrl: 'https://maps.app.goo.gl/Y3M6Z9P8A7N2R5X4B',
   },
 ];
 
@@ -121,39 +132,60 @@ export default function HistoryComponent() {
   const [selectedIds, setSelectedIds] = useState([]);
   const [hoverId, setHoverId] = useState(null);
   const [isSelectAll, setIsSelectAll] = useState(false);
+  const [sharePlace, setSharePlace] = useState<places | null>(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
+
+  const hasSelected = selectedIds.length > 0;
+  const isAllSelected = selectedIds.length === items.length;
+  const hasSelectedMap = selectedIds.length === 1 || selectedIds.length === 2;
+
+  const createMapLink = (places) => {
+    const name = encodeURIComponent(places.name);
+    return `https://www.google.com/maps/search/?api=1&query=${name}`;
+  };
+
+  const handleShare = async () => {
+    if (selectedIds.length !== 1) return;
+
+    const place = items.find((item) => item.id === selectedIds[0]);
+    if (!place) return;
+
+    const link = createMapLink(place);
+
+    try {
+      await navigator.clipboard.writeText(link);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleDeleted = (id) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const handleSelect = (id) => {
+  const handleSelect = (places) => {
     setSelectedIds((prev) => {
-      const next = prev.includes(id)
-        ? prev.filter((x) => x !== id)
-        : [...prev, id];
-
-      setIsSelectAll(next.length > 0);
+      const next = prev.includes(places.id)
+        ? prev.filter((x) => x !== places.id)
+        : [...prev, places.id];
       return next;
     });
   };
 
   const handleSelectAll = () => {
-    if (isSelectAll) {
-      // Bỏ chọn tất cả
+    if (selectedIds.length > 0) {
       setSelectedIds([]);
+      setSharePlace(null);
       setIsSelectAll(false);
-      setHoverId(null);
     } else {
-      // Chọn tất cả
-      setSelectedIds(items.map((item) => item.id));
+      const allIds = items.map((item) => item.id);
+      setSelectedIds(allIds);
+      setSharePlace(null);
       setIsSelectAll(true);
-      setHoverId(null); // hover global, không hover từng item
     }
   };
 
   const isItemActive = (id) => {
-    if (isSelectAll) return true;
-    if (hoverId === id) return true;
     return selectedIds.includes(id);
   };
 
@@ -197,17 +229,17 @@ export default function HistoryComponent() {
                       key={place.id}
                       className={cx(
                         'history-items',
-                        isItemActive(place.id) && 'history-items--hover',
+                        isItemActive(place.id) && 'history-items__hover',
+                        activeId === place.id && 'history-items__active',
                       )}
-                      onMouseEnter={() => !isSelectAll && setHoverId(place.id)}
-                      onMouseLeave={() => !isSelectAll && setHoverId(null)}
+                      onClick={() => setActiveId(place.id)}
+                      onMouseEnter={() => setHoverId(place.id)}
+                      onMouseLeave={() => setHoverId(null)}
                     >
                       <div
                         className={cx(
                           'delete-items',
-                          hoverId === place.id &&
-                            !isSelectAll &&
-                            'delete-items--show',
+                          hoverId === place.id && 'delete-items--show',
                         )}
                       >
                         <button
@@ -265,7 +297,10 @@ export default function HistoryComponent() {
                         </div>
                         <div className={cx('place-type')}>{place.type}</div>
                         <div className={cx('place-save')}>
-                          <BookmarkCheck size={16} />
+                          <BookmarkCheck
+                            size={16}
+                            className={cx('bookmarkcheck__icon')}
+                          />
                           <span className={cx('place-save__items')}>
                             Da luu vao abc va danh sach cac tieu de chua co ten
                           </span>
@@ -274,7 +309,10 @@ export default function HistoryComponent() {
                       <div className={cx('place-save')}>
                         <button
                           className={cx('save__btn')}
-                          onClick={() => handleSelect(place.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSelect(place);
+                          }}
                         >
                           <Square size={20} />
                           {selectedIds.includes(place.id) && (
@@ -302,7 +340,7 @@ export default function HistoryComponent() {
                       key={place.id}
                       className={cx(
                         'history-items',
-                        isItemActive(place.id) && 'history-items--hover',
+                        isItemActive(place.id) && 'history-items__hover',
                       )}
                       onMouseEnter={() => !isSelectAll && setHoverId(place.id)}
                       onMouseLeave={() => !isSelectAll && setHoverId(null)}
@@ -370,7 +408,10 @@ export default function HistoryComponent() {
                         </div>
                         <div className={cx('place-type')}>{place.type}</div>
                         <div className={cx('place-save')}>
-                          <BookmarkCheck size={16} />
+                          <BookmarkCheck
+                            size={16}
+                            className={'bookmarkcheck__icon'}
+                          />
                           <span className={cx('place-save__items')}>
                             Da luu vao abc va danh sach cac tieu de chua co ten
                           </span>
@@ -379,7 +420,10 @@ export default function HistoryComponent() {
                       <div className={cx('place-save')}>
                         <button
                           className={cx('save__btn')}
-                          onClick={() => handleSelect(place.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSelect(place);
+                          }}
                         >
                           <Square size={20} />
                           {selectedIds.includes(place.id) && (
@@ -398,20 +442,40 @@ export default function HistoryComponent() {
         <div className={cx('history__footer')}>
           <div className={cx('btn-footer__wrapper')}>
             <div className={cx('btn-left')}>
-              <button className={cx('btn-items', 'btn-l')}>
-                <BookmarkCheck
-                  size={IconRef.current.x}
-                  strokeWidth={IconRef.current.y}
-                />
+              <button
+                className={cx(
+                  'btn-items',
+                  'btn-l',
+                  !hasSelected && 'btn-disabled',
+                )}
+                disabled={!hasSelected}
+              >
+                <Bookmark className={cx('bookmark__icon')} size={16} />
                 <span>Lưu</span>
               </button>
-              <button className={cx('btn-items', 'btn-mid')}>
+              <button
+                className={cx(
+                  'btn-items',
+                  'btn-mid',
+                  !hasSelected && 'btn-disabled',
+                )}
+                disabled={!hasSelected}
+                onClick={handleShare}
+              >
                 <Share2
                   size={IconRef.current.x}
                   strokeWidth={IconRef.current.y}
                 />
               </button>
-              <button className={cx('btn-items', 'btn-mid')}>
+
+              <button
+                className={cx(
+                  'btn-items',
+                  'btn-mid',
+                  !hasSelectedMap && 'btn-disabled',
+                )}
+                disabled={!hasSelectedMap}
+              >
                 <MapPinCheck
                   size={IconRef.current.x}
                   strokeWidth={IconRef.current.y}
@@ -423,13 +487,24 @@ export default function HistoryComponent() {
                 className={cx('btn-items', 'btn-sides')}
                 onClick={handleSelectAll}
               >
-                {selectedIds.length === 0
+                {!hasSelected
                   ? 'Chọn tất cả'
-                  : selectedIds.length === items.length
+                  : isAllSelected
                     ? 'Bỏ chọn tất cả'
                     : `Bỏ chọn tấ… (${selectedIds.length})`}
               </button>
             </div>
+          </div>
+
+          <div className={cx('alertCoppy')}>
+            <span>
+              Đã sao chép đường liên kết đến một địa điểm vào bảng nhớ tạm
+            </span>
+            <X
+              className={cx('close-alert__icon')}
+              size={IconRef.current.x}
+              strokeWidth={IconRef.current.y}
+            ></X>
           </div>
         </div>
       </div>

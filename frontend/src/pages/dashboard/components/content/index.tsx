@@ -41,7 +41,7 @@ export default function Content() {
     return (
         <div className={cx("content")}>
             <div id="map" className={cx("map")} />
-                <options.SearchComponent />
+                {/* <options.SearchComponent /> */}
             {option === "roadmap" && <options.RoadMapComponent />}
             {option === "save" && <options.SaveComponent />}
             {option === "history" && <options.HistoryComponent />}
