@@ -219,7 +219,16 @@ export default function HistoryComponent() {
   return (
     <>
       <div className={cx('history__bgr')}>
-        <div className={cx('history__header')}></div>
+        <div className={cx('history__header')}>
+          <div></div>
+          <div className={cx('history-header__wrapper')}>
+            <div></div>
+            <span className={cx('history-title__header')}>Gần đây</span>
+            <div className={cx('space__footer')}>
+              <div className={cx('space__green')}></div>
+            </div>
+          </div>
+        </div>
         <div className={cx('history__content')}>
           <div className={cx('history-grid__content')}>
             {last3Days.length > 0 && (
@@ -300,7 +309,7 @@ export default function HistoryComponent() {
                               );
                             })}
                           </div>
-                          <span>({place.reviews})</span>
+                          <span>({place.reviews.toLocaleString('vi-VN')})</span>
                         </div>
                         <div className={cx('place-type')}>{place.type}</div>
                         <div className={cx('place-save')}>
@@ -411,7 +420,7 @@ export default function HistoryComponent() {
                               );
                             })}
                           </div>
-                          <span>({place.reviews})</span>
+                          <span>({place.reviews.toLocaleString('vi-VN')})</span>
                         </div>
                         <div className={cx('place-type')}>{place.type}</div>
                         <div className={cx('place-save')}>
