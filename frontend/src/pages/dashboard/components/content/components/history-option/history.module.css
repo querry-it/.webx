@@ -294,7 +294,7 @@
 }
 
 .history-items__active {
-  background-color: #e8eaeb !important;
+  background-color: #d7d9da !important;
 }
 
 
@@ -320,40 +320,3 @@
   margin-bottom: 4px;
 }
 
-.alertCoppy {
-  position: absolute;
-  left: 400px;
-  bottom: 2px;
-  height: 44px;
-  width: 500px;
-  background: #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  border-radius: 4px;
-}
-
-.alertCoppy span {
-  color: white;
-  font-size: 14px;
-}
-
-.close-alert__icon {
-  color: white;
-}
-
-.alertCoppy {
-  animation: fadeIn 0.2s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
