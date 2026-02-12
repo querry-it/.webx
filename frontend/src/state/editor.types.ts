@@ -7,6 +7,7 @@ export interface SidebarState {
 }
 
 export interface NavbarXState {
+  option: String | null;
   headerXy: boolean;
   introducerX: boolean;
   Xreview: String;
