@@ -186,7 +186,7 @@ export default function SearchComponent() {
                 ))
               ) : (
                 <div className={cx('items_x')}>
-                  <p className={cx('title')}>Không tìm thấy kết quả</p>
+                  <p className={cx('title', 'title-footer')}>Không tìm thấy kết quả</p>
                 </div>
               )
             ) : (
@@ -200,7 +200,7 @@ export default function SearchComponent() {
                 ))}
 
                 <div className={cx('items_x')}>
-                  <p className={cx('title')}>Nội dung tìm kiếm khác gần đây</p>
+                  <span className={cx('title', 'title-footer')}>Nội dung tìm kiếm khác gần đây</span>
                 </div>
               </>
             )}

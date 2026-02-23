@@ -5,7 +5,6 @@ import {
   X,
   Square,
   Check,
-  Share2,
   MapPinCheck,
 } from 'lucide-react';
 import { useEditor } from '../../../../../../state/useEditor';
