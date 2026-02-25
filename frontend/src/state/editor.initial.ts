@@ -8,6 +8,7 @@ export const initialEditorState: EditorState = {
     open: false,
   },
   navbar_x: {
+    image: false,
     option: null,
     headerXy: false,
     introducerX: false,
