@@ -1,14 +1,23 @@
-import { useState, useRef, useEffect, type FormEvent } from 'react';
+import {
+  useState,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+  type FormEvent,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import FormLayout from '../../components/FormLayout';
 import InputField from '../../components/InputField';
 import ForgotPassword from '../../components/ForgotPassword';
-import { getAccessToken, setAccessToken } from '../../utils/accessToken';
 import { validationLogin } from '../../utils/validation_login';
 import SubmitButton from '../../components/SubmitButton';
 import SwitchLink from '../../components/SwitchLink';
 import PasswordToggle from '../../components/PasswordToggle';
+import { accessToken } from '../../utils/accessToken';
+import { UserHook } from '../../hook/user';
+import axios from 'axios';
+import Loading from '../loading';
+
 interface User {
   username: string;
   password: string;
@@ -31,64 +40,78 @@ export default function Login() {
   });
   const [active, setActive] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  const [textLogin, setTextLogin] = useState<string | undefined>('Đăng nhập');
 
   const userRef = useRef<HTMLInputElement>(null);
   const passRef = useRef<HTMLInputElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
-  // Refresh token khi vào trang
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = getAccessToken();
-        if (token) {
-          const [loginRes] = await Promise.all([
-            axios.post(
-              'http://localhost:5000/auth/refresh',
-              {},
-              { withCredentials: true },
-            ),
-            axios.post(
-              'http://localhost:5000/auth/clear-login',
-              {},
-              { withCredentials: true },
-            ),
-          ]);
+  const { setAccessToken } = accessToken();
+  const { setUserId } = UserHook();
+  const [checkingAuth, setCheckingAuth] = useState<boolean>(true);
 
-          if (loginRes.status === 200) {
-            setAccessToken(loginRes.data.accessToken);
-            navigate('/home');
-          }
-        } else {
-          await axios.post(
+  useLayoutEffect(() => {
+    const refreshLogin = async () => {
+      try {
+        const [response] = await Promise.all([
+          axios.post(
+            'http://localhost:5000/auth/refresh',
+            {},
+            { withCredentials: true },
+          ),
+          axios.post(
             'http://localhost:5000/auth/clear-login',
             {},
             { withCredentials: true },
+          ),
+        ]);
+        setAccessToken(response.data.data.accessToken);
+        setUserId(response.data.data.userId);
+        try {
+          await axios.post(
+            'http://localhost:5000/auth/request-home',
+            {},
+            { withCredentials: true },
           );
+          navigate('/home');
+          return;
+        } catch {
+          setError('Lỗi mất kết nối server...');
         }
-      } catch (error: any) {
-        console.warn('Client refresh failed');
-        if (!error.response) {
-          console.warn('Network error!');
-        }
+      } catch (err: any) {
+        setAccessToken(null);
+        setUserId(null);
+        setCheckingAuth(false);
       }
     };
-    fetchData();
+    refreshLogin();
   }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const checkLogin = validationLogin(user.username, user.password);
+    setTextLogin(undefined);
 
-    if (checkLogin === '') {
+    if (checkLogin === 'true') {
       try {
         const response = await axios.post(
           'http://localhost:5000/auth/login',
           { ...user },
           { withCredentials: true },
         );
-        setAccessToken(response.data.accessToken);
-        navigate('/home');
+        setError(response.data.message);
+        setAccessToken(response.data.data.accessToken);
+        setUserId(response.data.data.userId);
+        try {
+          await axios.post(
+            'http://localhost:5000/auth/request-home',
+            {},
+            { withCredentials: true },
+          );
+          navigate('/home');
+        } catch {
+          setError('Lỗi mất kết nối server...');
+        }
       } catch (error: any) {
         setError(error.response?.data?.message || 'Lỗi mất kết nối server...');
         setUser((prev) => ({ ...prev, password: '' }));
@@ -105,6 +128,7 @@ export default function Login() {
         userRef.current?.focus();
       } else passRef.current?.focus();
     }
+    setTextLogin('Đăng nhập');
   };
 
   const handleForgot = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -146,6 +170,8 @@ export default function Login() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  if (checkingAuth) return null;
+
   return (
     <FormLayout title="Đăng nhập" onSubmit={handleSubmit} error={error}>
       <InputField
@@ -184,7 +210,7 @@ export default function Login() {
         <ForgotPassword onClick={handleForgot} />
       </div>
 
-      <SubmitButton text="Đăng nhập" btnRef={btnRef} />
+      <SubmitButton text={textLogin} btnRef={btnRef} />
 
       <SwitchLink
         text="Bạn đã có tài khoản?."

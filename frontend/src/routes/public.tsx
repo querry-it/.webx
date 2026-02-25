@@ -14,7 +14,6 @@ const publicRoutes: RouteObject[] = [
     element: <App />,
     children: [
       { index: true, element: <Login /> },
-
       {
         path: 'forgot-password',
         loader: async () => {
@@ -63,7 +62,22 @@ const publicRoutes: RouteObject[] = [
         element: <ResetPassword />,
         errorElement: <NotFound />,
       },
-      { path: 'home', element: <Dashboard /> },
+      {
+        path: 'home',
+        loader: async () => {
+          try {
+            if (import.meta.env.PROD) return null;
+            await axios.get('http://localhost:5000/auth/can-access-home', {
+              withCredentials: true,
+            });
+            return null;
+          } catch {
+            throw new Response('Not Found', { status: 404 });
+          }
+        },
+        element: <Dashboard />,
+        errorElement: <NotFound />,
+      },
       { path: '*', element: <NotFound /> },
     ],
   },

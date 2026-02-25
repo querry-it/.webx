@@ -2,7 +2,8 @@ import type { EditorState } from './editor.types';
 
 export const initialEditorState: EditorState = {
   information: {
-    username: '',
+    username: null,
+    token: null,
   },
   sidebar: {
     open: false,

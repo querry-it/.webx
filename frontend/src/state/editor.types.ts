@@ -1,5 +1,7 @@
 export interface InformationState {
-  username: string;
+  username: string | null;
+  userid: string | null;
+  token: string | null;
 }
 
 export interface SidebarState {
