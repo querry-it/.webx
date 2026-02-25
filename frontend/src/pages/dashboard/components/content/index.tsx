@@ -33,6 +33,7 @@ export default function Content() {
     };
   }, []);
 
+
   useEffect(() => {
     setOption(state.navbar_x.activeX);
     setDynamic(state.navbar_x.dynamic);

@@ -5,7 +5,6 @@ import {
   X,
   Square,
   Check,
-  Share2,
   MapPinCheck,
 } from 'lucide-react';
 import { useEditor } from '../../../../../../state/useEditor';
@@ -134,37 +133,10 @@ export default function HistoryComponent() {
   const [isSelectAll, setIsSelectAll] = useState(false);
   const [sharePlace, setSharePlace] = useState<places | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const [showAlert, setShowAlert] = useState(false);
 
   const hasSelected = selectedIds.length > 0;
   const isAllSelected = selectedIds.length === items.length;
   const hasSelectedMap = selectedIds.length === 1 || selectedIds.length === 2;
-
-  const createMapLink = (places) => {
-    const name = encodeURIComponent(places.name);
-    return `https://www.google.com/maps/search/?api=1&query=${name}`;
-  };
-
-  const handleShare = async () => {
-    if (selectedIds.length !== 1) return;
-
-    const place = items.find((item) => item.id === selectedIds[0]);
-    if (!place) return;
-
-    const link = createMapLink(place);
-
-    try {
-      await navigator.clipboard.writeText(link);
-
-      setShowAlert(true);
-
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 5000);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const handleDeleted = (id) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
@@ -357,16 +329,16 @@ export default function HistoryComponent() {
                       className={cx(
                         'history-items',
                         isItemActive(place.id) && 'history-items__hover',
+                        activeId === place.id && 'history-items__active',
                       )}
-                      onMouseEnter={() => !isSelectAll && setHoverId(place.id)}
-                      onMouseLeave={() => !isSelectAll && setHoverId(null)}
+                      onClick={() => setActiveId(place.id)}
+                      onMouseEnter={() => setHoverId(place.id)}
+                      onMouseLeave={() => setHoverId(null)}
                     >
                       <div
                         className={cx(
                           'delete-items',
-                          hoverId === place.id &&
-                            !isSelectAll &&
-                            'delete-items--show',
+                          hoverId === place.id && 'delete-items--show',
                         )}
                       >
                         <button
@@ -469,20 +441,6 @@ export default function HistoryComponent() {
                 <Bookmark className={cx('bookmark__icon')} size={16} />
                 <span>Lưu</span>
               </button>
-              <button
-                className={cx(
-                  'btn-items',
-                  'btn-mid',
-                  !hasSelected && 'btn-disabled',
-                )}
-                disabled={!hasSelected}
-                onClick={handleShare}
-              >
-                <Share2
-                  size={IconRef.current.x}
-                  strokeWidth={IconRef.current.y}
-                />
-              </button>
 
               <button
                 className={cx(
@@ -511,20 +469,6 @@ export default function HistoryComponent() {
               </button>
             </div>
           </div>
-
-          {showAlert && (
-            <div className={cx('alertCoppy')}>
-              <span>
-                Đã sao chép đường liên kết đến một địa điểm vào bảng nhớ tạm
-              </span>
-              <X
-                className={cx('close-alert__icon')}
-                size={IconRef.current.x}
-                strokeWidth={IconRef.current.y}
-                onClick={() => setShowAlert(false)}
-              />
-            </div>
-          )}
         </div>
       </div>
     </>
