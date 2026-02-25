@@ -154,6 +154,74 @@
   background: #000;
 }
 
+.location-right__image .img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.location-right__image .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infor-image {
+  position: fixed;
+  left: 460px;
+  top: 20px;
+  background-color: #000;
+  width: 280px;
+  height: 120px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.infor-image div {
+  color: white;
+}
+
+.infor-image__title {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.infor-image__content {
+  font-size: 12px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.infor-image__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.infor-image__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infor-image__timeline {
+  font-size: 11px;
+  padding-top: 8px;
+  opacity: 0.6;
+}
+
+.infor-image div:last-child {
+  border-top: 1px solid white;
+}
+
 .image-slider {
   height: 40px;
   width: 120px;

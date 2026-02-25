@@ -51,7 +51,7 @@ export default function Content() {
       {false && <options.LocationComponent />}
       {false && <options.IntroducerComponent />}
       {state.navbar_x.introducerX && <options.IntroducerXComponent />}
-      {true && <options.ImageComponent />}
+      {false && <options.ImageComponent />}
     </div>
   );
 }
