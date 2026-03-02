@@ -21,7 +21,7 @@ const places = [
     type: 'Điểm mốc lịch sử',
     rating: 4.8,
     reviews: 125430,
-    searchedAt: '2026-02-10T08:30:00',
+    searchedAt: '2026-02-25T08:30:00',
     mapUrl: 'https://maps.app.goo.gl/5U1cGyHVZDhAAigB7',
   },
   {

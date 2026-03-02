@@ -48,7 +48,7 @@ export default function Content() {
       {option == 'introducer' && <options.BrandComponent />}
       {option == 'help' && <options.SupportComponent />}
       {dynamic && <options.DynamicComponent />}
-      {false && <options.LocationComponent />}
+      {true && <options.LocationComponent />}
       {false && <options.IntroducerComponent />}
       {state.navbar_x.introducerX && <options.IntroducerXComponent />}
       {false && <options.ImageComponent />}
