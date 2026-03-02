@@ -186,21 +186,34 @@ export default function SearchComponent() {
                 ))
               ) : (
                 <div className={cx('items_x')}>
-                  <p className={cx('title', 'title-footer')}>Không tìm thấy kết quả</p>
+                  <p className={cx('title', 'title-footer')}>
+                    Không tìm thấy kết quả
+                  </p>
                 </div>
               )
             ) : (
               <>
                 {recentSearches.map((item, i) => (
                   <div key={i} className={cx('items')}>
-                    <Clock className={cx('icon')} size={20} />
+                    {item === 'Nhà riêng' ? (
+                      <Home className={cx('icon')} size={20} />
+                    ) : (
+                      <Clock className={cx('icon')} size={20} />
+                    )}
+
                     <p className={cx('title')}>{item}</p>
-                    <X className={cx('icon_x')} size={18} />
+                    {item === 'Nhà riêng' ? (
+                      <button className={cx('set-location')}>Đặt vị trí</button>
+                    ) : (
+                      <X className={cx('icon_x')} size={18} />
+                    )}
                   </div>
                 ))}
 
                 <div className={cx('items_x')}>
-                  <span className={cx('title', 'title-footer')}>Nội dung tìm kiếm khác gần đây</span>
+                  <button className={cx('title', 'title-footer')}>
+                    Nội dung tìm kiếm khác gần đây
+                  </button>
                 </div>
               </>
             )}

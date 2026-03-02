@@ -8,6 +8,7 @@ export const initialEditorState: EditorState = {
     open: false,
   },
   navbar_x: {
+    brand: 'review',
     image: false,
     option: null,
     headerXy: false,
