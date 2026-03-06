@@ -1,1 +1,1 @@
-export const domain = 'http://localhost:5000';
+export const domain = 'https://studying-drug-son-metric.trycloudflare.com';

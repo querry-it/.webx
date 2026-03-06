@@ -102,7 +102,7 @@ export default function SearchComponent() {
   }, [query]);
 
   const [recentSearches, setRecentSearches] = useState<
-    { query: string; loationId: string }[]
+    { query: string; locationId: string }[]
   >([]);
 
   useEffect(() => {
@@ -263,22 +263,10 @@ export default function SearchComponent() {
               )
             ) : (
               <>
-                {recentSearches.map((item) => (
-                  <div
-                    key={item.loationId}
-                    className={cx('items')}
-                    onClick={() => {
-                      setQuery(item.query);
-                      setState(
-                        'SET_INFORMATION',
-                        'locationid',
-                        item.locationId,
-                      );
-                      setState('SET_NAVBAR_X', 'activeX', 'location');
-                    }}
-                  >
+                {recentSearches.map((item, i) => (
+                  <div key={i} className={cx('items')}>
                     <Clock className={cx('icon')} size={20} />
-                    <p className={cx('title')}>{item.query}</p>
+                    <p className={cx('title')}>{item}</p>
                     <X className={cx('icon_x')} size={18} />
                   </div>
                 ))}

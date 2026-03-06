@@ -15,6 +15,7 @@ export interface SidebarState {
 }
 
 export interface NavbarXState {
+  brand: String;
   image: boolean;
   option: String | null;
   headerXy: boolean;
