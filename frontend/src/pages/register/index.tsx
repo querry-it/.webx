@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { validationRegister } from '../../utils/validation_register';
 import Loader from '../../components/loader/loader';
+import { domain } from '../../utils/domain';
 
 interface User {
   code: string;
@@ -47,10 +48,9 @@ export default function Register() {
 
     if (checkRegister === '') {
       try {
-        const response = await axios.post(
-          'http://localhost:5000/auth/register',
-          { ...user },
-        );
+        const response = await axios.post(`${domain}/auth/register`, {
+          ...user,
+        });
         setError(response.data.message);
         navigate('/');
       } catch (error: any) {

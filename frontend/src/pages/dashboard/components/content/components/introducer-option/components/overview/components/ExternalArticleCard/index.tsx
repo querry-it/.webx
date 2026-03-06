@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './ExternalArticleCard.module.css';
 import { ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { domain } from '../../../../../../../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -24,7 +25,7 @@ export default function ExternalArticleCard({ place }) {
     place.externalArticles.forEach((article) => {
       if (!article.api) return;
 
-      const proxyUrl = `http://localhost:5000/proxy/fetch-article?url=${encodeURIComponent(article.api)}`;
+      const proxyUrl = `${domain}/proxy/fetch-article?url=${encodeURIComponent(article.api)}`;
 
       fetch(proxyUrl)
         .then((res) => res.json())

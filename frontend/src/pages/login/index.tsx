@@ -16,6 +16,7 @@ import PasswordToggle from '../../components/PasswordToggle';
 import { accessToken } from '../../utils/accessToken';
 import { UserHook } from '../../hook/user';
 import axios from 'axios';
+import { domain } from '../../utils/domain';
 
 interface User {
   username: string;
@@ -53,13 +54,9 @@ export default function Login() {
     const refreshLogin = async () => {
       try {
         const [response] = await Promise.all([
+          axios.post(`${domain}/auth/refresh`, {}, { withCredentials: true }),
           axios.post(
-            'http://localhost:5000/auth/refresh',
-            {},
-            { withCredentials: true },
-          ),
-          axios.post(
-            'http://localhost:5000/auth/clear-login',
+            `${domain}/auth/clear-login`,
             {},
             { withCredentials: true },
           ),
@@ -84,7 +81,7 @@ export default function Login() {
     if (checkLogin === 'true') {
       try {
         const response = await axios.post(
-          'http://localhost:5000/auth/login',
+          `${domain}/auth/login`,
           { ...user },
           { withCredentials: true },
         );
@@ -115,7 +112,7 @@ export default function Login() {
     event.preventDefault();
     try {
       await axios.post(
-        'http://localhost:5000/auth/request-forgot',
+        `${domain}/auth/request-forgot`,
         {},
         { withCredentials: true },
       );
@@ -129,7 +126,7 @@ export default function Login() {
     event.preventDefault();
     try {
       await axios.post(
-        'http://localhost:5000/auth/request-register',
+        `${domain}/auth/request-register`,
         {},
         { withCredentials: true },
       );

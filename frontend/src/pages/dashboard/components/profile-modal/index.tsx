@@ -10,6 +10,7 @@ import { getAvatarLetters } from '../../../../utils/name';
 import { validationProfile } from '../../../../utils/validate_profile';
 import { Camera } from 'lucide-react';
 import Loader from '../../../../components/loader/loader';
+import { domain } from '../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -57,9 +58,7 @@ export default function ProfileModal() {
   const [loading, setLoading] = useState<boolean>(true);
   const [errorLine, setErrorLine] = useState<string | null>(null);
 
-  const [src, setSrc] = useState<string>(
-    `http://localhost:5000/uploads/${getAvatar()}`,
-  );
+  const [src, setSrc] = useState<string>(`${domain}/uploads/${getAvatar()}`);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChooseImage = () => {
@@ -79,7 +78,7 @@ export default function ProfileModal() {
 
     if (url) {
       setAvatar(url);
-      setSrc(`http://localhost:5000/uploads/${url}`);
+      setSrc(`${domain}/uploads/${url}`);
       setLoading(true);
     }
   };

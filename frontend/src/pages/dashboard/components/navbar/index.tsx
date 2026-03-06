@@ -5,6 +5,7 @@ import { useEditor } from '../../../../state/useEditor';
 import { UserHook } from '../../../../hook/user';
 import styles from './navbar.module.css';
 import { getAvatarLetters } from '../../../../utils/name';
+import { domain } from '../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -200,10 +201,7 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className={cx('img_avatar_img')}>
-                  <img
-                    src={`http://localhost:5000/uploads/${getAvatar()}`}
-                    alt=""
-                  />
+                  <img src={`${domain}/uploads/${getAvatar()}`} alt="" />
                 </div>
               )}
               {state.tooltip.logout && !state.dropdown.logout && (

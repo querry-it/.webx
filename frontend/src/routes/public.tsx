@@ -7,6 +7,7 @@ import Register from '../pages/register';
 import ResetPassword from '../pages/reset-password';
 import NotFound from '../pages/not-found';
 import Dashboard from '../pages/dashboard';
+import { domain } from '../utils/domain';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -19,7 +20,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           if (import.meta.env.PROD) return null;
           try {
-            await axios.get('http://localhost:5000/auth/can-access-forgot', {
+            await axios.get(`${domain}/auth/can-access-forgot`, {
               withCredentials: true,
             });
             return null;
@@ -35,7 +36,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get('http://localhost:5000/auth/can-access-register', {
+            await axios.get(`${domain}/auth/can-access-register`, {
               withCredentials: true,
             });
             return null;
@@ -51,7 +52,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get('http://localhost:5000/auth/can-access-reset', {
+            await axios.get(`${domain}/auth/can-access-reset`, {
               withCredentials: true,
             });
             return null;
@@ -62,22 +63,7 @@ const publicRoutes: RouteObject[] = [
         element: <ResetPassword />,
         errorElement: <NotFound />,
       },
-      {
-        path: 'home',
-        loader: async () => {
-          try {
-            if (import.meta.env.PROD) return null;
-            await axios.get('http://localhost:5000/auth/can-access-home', {
-              withCredentials: true,
-            });
-            return null;
-          } catch {
-            throw new Response('Not Found', { status: 404 });
-          }
-        },
-        element: <Dashboard />,
-        errorElement: <NotFound />,
-      },
+      { path: 'home', element: <Dashboard /> },
       { path: '*', element: <NotFound /> },
     ],
   },

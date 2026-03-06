@@ -29,8 +29,8 @@ export class AuthController {
 
       res.cookie('next-auth.rftk', refreshToken, {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax',
+        secure: true,
+        sameSite: 'none',
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -168,7 +168,6 @@ export class AuthController {
     });
   }
   static async accessHome(req: Request, res: Response) {
-    // ✅ Còn refreshToken hợp lệ = đã đăng nhập → cho vào Home
     const refresh = req.cookies?.['next-auth.rftk'];
     if (!refresh) {
       return res
@@ -231,9 +230,9 @@ export class AuthController {
     try {
       res.clearCookie('next-auth.rftk', {
         httpOnly: true,
-        secure: false, // true nếu production HTTPS
-        sameSite: 'lax',
-        path: '/', // rất quan trọng
+        secure: true,
+        sameSite: 'none',
+        path: '/',
       });
 
       return res.status(200).json({

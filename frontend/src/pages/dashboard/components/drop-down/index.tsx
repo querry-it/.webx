@@ -5,6 +5,7 @@ import { useEditor } from '../../../../state/useEditor';
 import { Palette, Settings, LogOut } from 'lucide-react';
 import { UserHook } from '../../../../hook/user';
 import { getAvatarLetters } from '../../../../utils/name';
+import { domain } from '../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -60,10 +61,7 @@ export default function DropDown() {
               </div>
             ) : (
               <div className={cx('avatar_img')}>
-                <img
-                  src={`http://localhost:5000/uploads/${getAvatar()}`}
-                  alt="avatar"
-                />
+                <img src={`${domain}/uploads/${getAvatar()}`} alt="avatar" />
               </div>
             )}
             <div className={cx('info')}>

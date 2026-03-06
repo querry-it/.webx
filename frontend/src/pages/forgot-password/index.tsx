@@ -6,6 +6,7 @@ import InputField from '../../components/InputField';
 import FormLayout from '../../components/FormLayout';
 import SubmitButton from '../../components/SubmitButton';
 import SwitchLink from '../../components/SwitchLink';
+import { domain } from '../../utils/domain';
 
 interface User {
   code: string;
@@ -38,7 +39,7 @@ export default function ForgotPassword() {
     const fetchForgot = async () => {
       try {
         await axios.post(
-          'http://localhost:5000/auth/clear-forgot',
+          `${domain}/auth/clear-forgot`,
           {},
           { withCredentials: true },
         );
@@ -56,13 +57,12 @@ export default function ForgotPassword() {
 
     if (checkForgot === '') {
       try {
-        const response = await axios.post(
-          'http://localhost:5000/auth/forgot-password',
-          { ...user },
-        );
+        const response = await axios.post(`${domain}/auth/forgot-password`, {
+          ...user,
+        });
         try {
           await axios.post(
-            'http://localhost:5000/auth/request-reset',
+            `${domain}/auth/request-reset`,
             {},
             { withCredentials: true },
           );
