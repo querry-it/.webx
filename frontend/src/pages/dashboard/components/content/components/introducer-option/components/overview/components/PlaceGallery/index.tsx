@@ -79,7 +79,7 @@ export default function PlaceGallery({ place }) {
         <div className={cx('allitems')}>
           <button className={cx('items__wrapper')}>
             <div className={cx('img')}>
-              <img src={place.img} alt="" />
+              <img src={`http://localhost:5000/uploads/${place.img}`} alt="" />
             </div>
             <div className={cx('title')}>
               <span>Tất cả</span>
@@ -89,7 +89,7 @@ export default function PlaceGallery({ place }) {
         <div className={cx('itemsnew')}>
           <button className={cx('items__wrapper')}>
             <div className={cx('img')}>
-              <img src={place.img} alt="" />
+              <img src={`http://localhost:5000/uploads/${place.img}`} alt="" />
             </div>
             <div className={cx('title')}>
               <span>Mới nhất</span>
@@ -99,7 +99,7 @@ export default function PlaceGallery({ place }) {
         <div className={cx('image')}>
           <button className={cx('items__wrapper')}>
             <div className={cx('img')}>
-              <img src={place.img} alt="" />
+              <img src={`http://localhost:5000/uploads/${place.img}`} alt="" />
             </div>
             <div className={cx('title')}>
               <span>Ảnh</span>
@@ -113,7 +113,10 @@ export default function PlaceGallery({ place }) {
               onClick={() => setCurrentIndex(index)}
             >
               <div className={cx('img')}>
-                <img src={img} alt="" />
+                <img
+                  src={`http://localhost:5000/uploads/${place.img}`}
+                  alt=""
+                />
               </div>
               <div className={cx('title')}>
                 <span>Ảnh của tôi</span>

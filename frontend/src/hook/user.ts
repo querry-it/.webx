@@ -15,5 +15,49 @@ export const UserHook = () => {
     dispatch({ type: 'SET_INFORMATION', payload: { userid: null } });
   };
 
-  return { getUserId, setUserId, clearUserId };
+  const getCode = (): string | null => {
+    return state.information.code;
+  };
+
+  const setCode = (code: string | null): void => {
+    dispatch({ type: 'SET_INFORMATION', payload: { code: code } });
+  };
+
+  const getUserName = (): string | null => {
+    return state.information.username;
+  };
+
+  const setUserName = (username: string | null): void => {
+    dispatch({ type: 'SET_INFORMATION', payload: { username: username } });
+  };
+
+  const getFullName = (): string | null => {
+    return state.information.fullname;
+  };
+
+  const setFullName = (fullname: string | null): void => {
+    dispatch({ type: 'SET_INFORMATION', payload: { fullname: fullname } });
+  };
+
+  const getAvatar = (): string | null => {
+    return state.information.avatar_url;
+  };
+
+  const setAvatar = (avatar_url: string | null): void => {
+    dispatch({ type: 'SET_INFORMATION', payload: { avatar_url: avatar_url } });
+  };
+
+  return {
+    getUserId,
+    setUserId,
+    clearUserId,
+    getCode,
+    setCode,
+    getUserName,
+    setUserName,
+    getFullName,
+    setFullName,
+    getAvatar,
+    setAvatar,
+  };
 };

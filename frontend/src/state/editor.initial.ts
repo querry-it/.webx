@@ -3,7 +3,13 @@ import type { EditorState } from './editor.types';
 export const initialEditorState: EditorState = {
   information: {
     username: null,
+    fullname: null,
+    avatar_url: null,
+    code: null,
     token: null,
+    locationid: null,
+    lat: null,
+    lon: null,
   },
   sidebar: {
     open: false,

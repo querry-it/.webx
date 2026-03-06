@@ -19,9 +19,11 @@ import {
   MapPinCheck,
   Squirrel,
   ArrowLeft,
-  Icon,
 } from 'lucide-react';
 import { useEditor } from '../../../../../../state/useEditor';
+import { Api } from '../../../../../../utils/api';
+import { accessToken } from '../../../../../../utils/accessToken';
+import { UserHook } from '../../../../../../hook/user';
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +34,9 @@ export default function SearchComponent() {
   const [focused, setFocused] = useState(false);
   const [query, setQuery] = useState('');
 
+  const { getAccessToken, setAccessToken } = accessToken();
+  const { setUserId, getUserId } = UserHook();
+
   const setState = (option: string, key: string, value: boolean) => {
     dispatch({
       type: option,
@@ -41,21 +46,12 @@ export default function SearchComponent() {
 
   const blockList = ['save', 'history', 'location'];
 
-  const recentSearches = [
-    'Nhà riêng',
-    'Quán cà phê gần đây',
-    'Hồ Gươm',
-    'Bảo tàng Hà Nội',
-  ];
-
-  const suggestions = [
-    'Hồ Gươm, Hà Nội',
-    'Hồ Tây, Hà Nội',
-    'Hoàng Thành Thăng Long',
-    'Nhà hát Lớn Hà Nội',
-    'Bưu điện Hà Nội',
-    'Văn Miếu Quốc Tử Giám',
-  ];
+  // const recentSearches = [
+  //   'Nhà riêng',
+  //   'Quán cà phê gần đây',
+  //   'Hồ Gươm',
+  //   'Bảo tàng Hà Nội',
+  // ];
 
   const menuOptions = [
     { icon: Squirrel, label: 'Tất cả' },
@@ -68,11 +64,77 @@ export default function SearchComponent() {
     { icon: Home, label: 'Làng cổ' },
   ];
 
-  const filteredSuggestions = useMemo(() => {
-    return suggestions.filter((item) =>
-      item.toLowerCase().includes(query.toLowerCase()),
-    );
+  const [filteredSuggestions, setFilteredSuggestions] = useState<
+    { id: number; name: string }[]
+  >([]);
+
+  useEffect(() => {
+    if (!query.trim()) {
+      setFilteredSuggestions([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      try {
+        const data = await Api<{
+          success: boolean;
+          data: { id: number; name: string }[];
+        }>(
+          {
+            method: 'GET',
+            url: `/locations/search`,
+            params: { q: query },
+          },
+          { token: getAccessToken(), setToken: setAccessToken, setUserId },
+        );
+        setFilteredSuggestions(
+          data.data.map((item) => ({
+            id: item.id,
+            name: item.name,
+          })),
+        );
+      } catch (err) {
+        console.error('Search error:', err);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
   }, [query]);
+
+  const [recentSearches, setRecentSearches] = useState<
+    { query: string; loationId: string }[]
+  >([]);
+
+  useEffect(() => {
+    console.log(getUserId());
+    const fetchHistory = async () => {
+      try {
+        const data = await Api<{
+          success: boolean;
+          data: { locationId: String; query: string }[];
+        }>(
+          {
+            method: 'GET',
+            url: `/locations/history/${getUserId()}`, // nếu bạn truyền userId qua params
+          },
+          { token: getAccessToken(), setToken: setAccessToken, setUserId },
+        );
+
+        if (data.success && data.data) {
+          setRecentSearches(
+            data.data.map((item) => ({
+              query: item.query,
+              locationId: item.location_id,
+            })),
+          );
+        }
+      } catch (error) {
+        console.error('Lỗi lấy lịch sử:', error);
+      }
+    };
+
+    fetchHistory();
+  }, []);
 
   const showSuggestions = query.trim().length > 0;
 
@@ -157,6 +219,10 @@ export default function SearchComponent() {
                 setState('SET_NAVBAR_X', 'activeX', null);
                 setState('SET_NAVBAR_X', 'save', 'list');
                 setState('SET_NAVBAR_X', 'back', false);
+                setState('SET_INFORMATION', 'locationid', null);
+                setState('SET_INFORMATION', 'lat', null);
+                setState('SET_INFORMATION', 'lon', null);
+                setQuery('');
               }
             }}
           >
@@ -176,31 +242,51 @@ export default function SearchComponent() {
               filteredSuggestions.length > 0 ? (
                 filteredSuggestions.map((item) => (
                   <div
-                    key={item}
+                    key={item.id}
                     className={cx('items')}
-                    onMouseDown={() => setQuery(item)}
+                    onMouseDown={() => {
+                      setQuery(item.name);
+                      setState('SET_INFORMATION', 'locationid', item.id);
+                      setState('SET_NAVBAR_X', 'activeX', 'location');
+                    }}
                   >
                     <MapPin className={cx('icon')} size={20} />
-                    <p className={cx('title')}>{item}</p>
+                    <p className={cx('title')}>{item.name}</p>
                   </div>
                 ))
               ) : (
                 <div className={cx('items_x')}>
-                  <p className={cx('title', 'title-footer')}>Không tìm thấy kết quả</p>
+                  <p className={cx('title', 'title-footer')}>
+                    Không tìm thấy kết quả
+                  </p>
                 </div>
               )
             ) : (
               <>
-                {recentSearches.map((item, i) => (
-                  <div key={i} className={cx('items')}>
+                {recentSearches.map((item) => (
+                  <div
+                    key={item.loationId}
+                    className={cx('items')}
+                    onClick={() => {
+                      setQuery(item.query);
+                      setState(
+                        'SET_INFORMATION',
+                        'locationid',
+                        item.locationId,
+                      );
+                      setState('SET_NAVBAR_X', 'activeX', 'location');
+                    }}
+                  >
                     <Clock className={cx('icon')} size={20} />
-                    <p className={cx('title')}>{item}</p>
+                    <p className={cx('title')}>{item.query}</p>
                     <X className={cx('icon_x')} size={18} />
                   </div>
                 ))}
 
                 <div className={cx('items_x')}>
-                  <span className={cx('title', 'title-footer')}>Nội dung tìm kiếm khác gần đây</span>
+                  <span className={cx('title', 'title-footer')}>
+                    Nội dung tìm kiếm khác gần đây
+                  </span>
                 </div>
               </>
             )}

@@ -16,7 +16,6 @@ import PasswordToggle from '../../components/PasswordToggle';
 import { accessToken } from '../../utils/accessToken';
 import { UserHook } from '../../hook/user';
 import axios from 'axios';
-import Loading from '../loading';
 
 interface User {
   username: string;
@@ -67,17 +66,7 @@ export default function Login() {
         ]);
         setAccessToken(response.data.data.accessToken);
         setUserId(response.data.data.userId);
-        try {
-          await axios.post(
-            'http://localhost:5000/auth/request-home',
-            {},
-            { withCredentials: true },
-          );
-          navigate('/home');
-          return;
-        } catch {
-          setError('Lỗi mất kết nối server...');
-        }
+        navigate('/home');
       } catch (err: any) {
         setAccessToken(null);
         setUserId(null);
@@ -102,16 +91,7 @@ export default function Login() {
         setError(response.data.message);
         setAccessToken(response.data.data.accessToken);
         setUserId(response.data.data.userId);
-        try {
-          await axios.post(
-            'http://localhost:5000/auth/request-home',
-            {},
-            { withCredentials: true },
-          );
-          navigate('/home');
-        } catch {
-          setError('Lỗi mất kết nối server...');
-        }
+        navigate('/home');
       } catch (error: any) {
         setError(error.response?.data?.message || 'Lỗi mất kết nối server...');
         setUser((prev) => ({ ...prev, password: '' }));
