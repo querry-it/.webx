@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { domain } from './domain';
 
 export async function refreshToken() {
   const res = await axios.post(
-    'http://localhost:5000/auth/refresh',
+    `${domain}/auth/refresh`,
     {},
     { withCredentials: true },
   );
