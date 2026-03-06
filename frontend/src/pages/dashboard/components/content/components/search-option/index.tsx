@@ -115,7 +115,7 @@ export default function SearchComponent() {
         }>(
           {
             method: 'GET',
-            url: `/locations/history/${getUserId()}`, // nếu bạn truyền userId qua params
+            url: `/locations/history/${getUserId()}`,
           },
           { token: getAccessToken(), setToken: setAccessToken, setUserId },
         );
@@ -263,10 +263,22 @@ export default function SearchComponent() {
               )
             ) : (
               <>
-                {recentSearches.map((item, i) => (
-                  <div key={i} className={cx('items')}>
+                {recentSearches.map((item) => (
+                  <div
+                    key={item.locationId}
+                    className={cx('items')}
+                    onClick={() => {
+                      setQuery(item.query);
+                      setState(
+                        'SET_INFORMATION',
+                        'locationid',
+                        item.locationId,
+                      );
+                      setState('SET_NAVBAR_X', 'activeX', 'location');
+                    }}
+                  >
                     <Clock className={cx('icon')} size={20} />
-                    <p className={cx('title')}>{item}</p>
+                    <p className={cx('title')}>{item.query}</p>
                     <X className={cx('icon_x')} size={18} />
                   </div>
                 ))}

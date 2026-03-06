@@ -68,15 +68,10 @@ export default function Content() {
       {option == 'introducer' && <options.BrandComponent />}
       {option == 'help' && <options.SupportComponent />}
       {dynamic && <options.DynamicComponent />}
-<<<<<<< HEAD
       {false && <options.LocationComponent />}
       {locationId && (
         <options.IntroducerComponent key={locationId} locationId={locationId} />
       )}
-=======
-      {true && <options.LocationComponent />}
-      {false && <options.IntroducerComponent />}
->>>>>>> 5d62714f523380256c5ca6e8df0c500d4e5de888
       {state.navbar_x.introducerX && <options.IntroducerXComponent />}
       {false && <options.ImageComponent />}
     </div>
