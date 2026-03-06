@@ -1,5 +1,13 @@
 export interface InformationState {
-  username: string;
+  username: string | null;
+  userid: string | null;
+  fullname: string | null;
+  avatar_url: string | null;
+  code: string | null;
+  token: string | null;
+  locationid: string | null;
+  lat: number | null;
+  lon: number | null;
 }
 
 export interface SidebarState {
@@ -7,6 +15,8 @@ export interface SidebarState {
 }
 
 export interface NavbarXState {
+  brand: String;
+  image: boolean;
   option: String | null;
   headerXy: boolean;
   introducerX: boolean;

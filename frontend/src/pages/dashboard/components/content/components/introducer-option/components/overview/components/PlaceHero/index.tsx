@@ -1,86 +1,93 @@
-import classNames from "classnames/bind";
+import classNames from 'classnames/bind';
 // import styles from "../introducerX.module.css";
-import styles from "./PlaceHero.module.css";
-import { Star } from "lucide-react";
-import { useRef } from "react";
+import styles from './PlaceHero.module.css';
+// import { Star } from "lucide-react";
+import { useEffect, useRef } from 'react';
 const cx = classNames.bind(styles);
-import { useEditor } from "../../../../../../../../../../state/useEditor";
+import { useEditor } from '../../../../../../../../../../state/useEditor';
 
 export default function PlaceHero({ place }) {
-    const { state, dispatch } = useEditor();
-    const setState = (option: string, key: string, value: boolean) => {
-        dispatch({
-            type: option,
-            payload: { [key]: value },
-        });
-    };
-    const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
-    return (
-        <div className={"place-hero__wrapper"}>
-            <div className={cx("place__img")}>
-                <img alt="" src={place.img} />
-            </div>
+  const { state, dispatch } = useEditor();
+  const setState = (option: string, key: string, value: boolean) => {
+    dispatch({
+      type: option,
+      payload: { [key]: value },
+    });
+  };
 
-            <div className={cx("place__items")}>
-                <div className={cx("place__name")}>
-                    <h1>{place.name}</h1>
-                </div>
-                <div className={cx("place__menu")}>
-                    <div className={cx("place__rate")}>
-                        <span>{place.rating}</span>
-                        <div className={cx("rating-star")}>
-                            {Array.from({ length: 5 }).map((_, index) => {
-                                const rating = place.rating;
-                                const fullstar = Math.floor(rating);
-                                const halfstar = (fullstar - rating) % 1 !== 0;
-                                if (index < fullstar) {
-                                    return (
-                                        <span key={index} className={cx("star", "star-full")}>★</span>
-                                    );
-                                }
-                                if (index === fullstar && halfstar) {
-                                    return (
-                                        <span key={index} className={cx("star", "star-half")}>★</span>
-                                    );
-                                }
-                                return (
-                                    <span key={index} className={cx("star", "star-empty")}>★</span>
-                                );
+  const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
+  if (!place) return null;
+  return (
+    <div className={'place-hero__wrapper'}>
+      <div className={cx('place__img')}>
+        <img alt="" src={`http://localhost:5000/uploads/${place.img}`} />
+      </div>
 
-                            })}
-                        </div>
-                        <span>({place.reviews})</span>
-                    </div>
-                    <span>
-                        <button>Điểm mốc lịch sử</button>
-                    </span>
-                </div>
-            </div>
-
-            <div className={cx("tab__wrapper")}>
-                <button className={cx("btn__items")}>
-                    <div className={cx("content__wrapper")}>
-                        <div className={cx("bg")}></div>
-                        <span className={cx("content")}>Tổng quan</span>
-                        <div className={cx("bottom-btn")}></div>
-                    </div>
-                </button>
-
-                <button
-                    className={cx("btn__items-feedback")}
-                    onClick={() => {
-                        if (state.navbar_x.Xreview !== "feedback") {
-                            setState("SET_NAVBAR_X", "Xreview", "feedback");
-                        }
-                    }}
-                >
-                    <div className={cx("content__wrapper")}>
-                        <div className={cx("bg")}></div>
-                        <span className={cx("content-feedback")}>Bài đánh giá</span>
-                        <div className={cx("bottom-btn__feedback")}></div>
-                    </div>
-                </button>
-            </div>
+      <div className={cx('place__items')}>
+        <div className={cx('place__name')}>
+          <h1>{place.name}</h1>
         </div>
-    );
+        <div className={cx('place__menu')}>
+          <div className={cx('place__rate')}>
+            <span>{place.rating}</span>
+            <div className={cx('rating-star')}>
+              {Array.from({ length: 5 }).map((_, index) => {
+                const rating = place.rating;
+                const fullstar = Math.floor(rating);
+                const halfstar = (fullstar - rating) % 1 !== 0;
+                if (index < fullstar) {
+                  return (
+                    <span key={index} className={cx('star', 'star-full')}>
+                      ★
+                    </span>
+                  );
+                }
+                if (index === fullstar && halfstar) {
+                  return (
+                    <span key={index} className={cx('star', 'star-half')}>
+                      ★
+                    </span>
+                  );
+                }
+                return (
+                  <span key={index} className={cx('star', 'star-empty')}>
+                    ★
+                  </span>
+                );
+              })}
+            </div>
+            <span>({place.reviews})</span>
+          </div>
+          <span>
+            <span>Điểm mốc lịch sử</span>
+          </span>
+        </div>
+      </div>
+
+      <div className={cx('tab__wrapper')}>
+        <button className={cx('btn__items')}>
+          <div className={cx('content__wrapper')}>
+            <div className={cx('bg')}></div>
+            <span className={cx('content')}>Tổng quan</span>
+            <div className={cx('bottom-btn')}></div>
+          </div>
+        </button>
+
+        <button
+          className={cx('btn__items-feedback')}
+          onClick={() => {
+            if (state.navbar_x.Xreview !== 'feedback') {
+              setState('SET_NAVBAR_X', 'Xreview', 'feedback');
+            }
+          }}
+        >
+          <div className={cx('content__wrapper')}>
+            <div className={cx('bg')}></div>
+            <span className={cx('content-feedback')}>Bài đánh giá</span>
+            <div className={cx('bottom-btn__feedback')}></div>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
 }

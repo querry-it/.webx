@@ -1,11 +1,18 @@
-export const setAccessToken = (token: string) => {
-    localStorage.setItem("accessToken", token);
-};
+import { useEditor } from '../state/useEditor';
 
-export const getAccessToken = (): string | null => {
-    return localStorage.getItem("accessToken");
-};
+export const accessToken = () => {
+  const { state, dispatch } = useEditor();
 
-export const clearToken = () => {
-    localStorage.removeItem("accessToken");
+  const setAccessToken = (token: string | null): void => {
+    dispatch({ type: 'SET_INFORMATION', payload: { token: token } });
+  };
+
+  const getAccessToken = (): string | null => {
+    return state.information.token;
+  };
+
+  const clearToken = (): void => {
+    dispatch({ type: 'SET_INFORMATION', payload: { token: null } });
+  };
+  return { getAccessToken, setAccessToken, clearToken };
 };

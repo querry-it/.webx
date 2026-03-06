@@ -2,12 +2,21 @@ import type { EditorState } from './editor.types';
 
 export const initialEditorState: EditorState = {
   information: {
-    username: '',
+    username: null,
+    fullname: null,
+    avatar_url: null,
+    code: null,
+    token: null,
+    locationid: null,
+    lat: null,
+    lon: null,
   },
   sidebar: {
     open: false,
   },
   navbar_x: {
+    brand: 'review',
+    image: false,
     option: null,
     headerXy: false,
     introducerX: false,
