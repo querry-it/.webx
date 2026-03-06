@@ -25,7 +25,7 @@ export async function Api<T = any>(
 
     if (!refreshing) {
       refreshing = axios
-        .post('${domain}/auth/refresh', {}, { withCredentials: true })
+        .post(`${domain}/auth/refresh`, {}, { withCredentials: true })
         .then((res) => {
           const newToken = res.data.data.accessToken;
           const userId = res.data.data.userId;
