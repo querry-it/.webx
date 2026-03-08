@@ -61,11 +61,7 @@ export default function ForgotPassword() {
           ...user,
         });
         try {
-          await axios.post(
-            `${domain}/auth/request-reset`,
-            {},
-            { withCredentials: true },
-          );
+          await axios.post(`${domain}/auth/request-reset`);
           navigate('/reset-password', {
             state: { userId: response.data.data.userid },
           });

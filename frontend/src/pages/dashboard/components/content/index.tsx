@@ -74,6 +74,7 @@ export default function Content() {
       )}
       {state.navbar_x.introducerX && <options.IntroducerXComponent />}
       {false && <options.ImageComponent />}
+      {state.navbar_x.detail && <options.DetaiConponent />}
     </div>
   );
 }

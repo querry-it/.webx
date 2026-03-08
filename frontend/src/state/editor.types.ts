@@ -15,13 +15,14 @@ export interface SidebarState {
 }
 
 export interface NavbarXState {
-  brand: String;
+  detail: boolean;
+  brand: string;
   image: boolean;
   option: String | null;
   headerXy: boolean;
   introducerX: boolean;
-  Xreview: String;
-  save: String;
+  Xreview: string;
+  save: string;
   back: boolean;
   dynamic: boolean;
   activeX: { type: string | null };
@@ -58,6 +59,9 @@ export interface UtilState {
   error: string;
   index: number | null;
   open: boolean;
+  lockRegister: boolean;
+  lockForgot: boolean;
+  lockReset: boolean;
 }
 
 export interface DropdownState {

@@ -13,7 +13,7 @@ export class LocationRepository {
   static async getHistoryByUser(userId: string) {
     const { rows } = await pool.query(
       `
-      SELECT location_id, query FROM search_history
+      SELECT id, location_id, query FROM search_history
       WHERE user_id = $1
       ORDER BY created_at DESC
       LIMIT 5
@@ -145,5 +145,14 @@ export class LocationRepository {
       [userId],
     );
     return rows[0] ?? null;
+  }
+  static async deleteHistoryByLocationId(
+    userId: string,
+    locationId: string,
+  ): Promise<void> {
+    await pool.query(
+      `DELETE FROM search_history WHERE user_id = $1 AND location_id = $2`,
+      [userId, locationId],
+    );
   }
 }

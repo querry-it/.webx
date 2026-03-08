@@ -20,9 +20,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           if (import.meta.env.PROD) return null;
           try {
-            await axios.get(`${domain}/auth/can-access-forgot`, {
-              withCredentials: true,
-            });
+            await axios.get(`${domain}/auth/can-access-forgot`);
             return null;
           } catch {
             throw new Response('Not Found', { status: 404 });
@@ -36,9 +34,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get(`${domain}/auth/can-access-register`, {
-              withCredentials: true,
-            });
+            await axios.get(`${domain}/auth/can-access-register`);
             return null;
           } catch {
             throw new Response('Not Found', { status: 404 });
@@ -52,9 +48,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get(`${domain}/auth/can-access-reset`, {
-              withCredentials: true,
-            });
+            await axios.get(`${domain}/auth/can-access-reset`);
             return null;
           } catch {
             throw new Response('Not Found', { status: 404 });
@@ -63,7 +57,22 @@ const publicRoutes: RouteObject[] = [
         element: <ResetPassword />,
         errorElement: <NotFound />,
       },
-      { path: 'home', element: <Dashboard /> },
+      {
+        path: 'home',
+        loader: async () => {
+          try {
+            if (import.meta.env.PROD) return null;
+            await axios.get(`${domain}/auth/can-access-home`, {
+              withCredentials: true,
+            });
+            return null;
+          } catch {
+            throw new Response('Not Found', { status: 404 });
+          }
+        },
+        element: <Dashboard />,
+        errorElement: <NotFound />,
+      },
       { path: '*', element: <NotFound /> },
     ],
   },

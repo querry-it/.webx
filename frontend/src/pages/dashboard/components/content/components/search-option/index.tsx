@@ -1,12 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './search.module.css';
-import { useRef, useState, useMemo, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import {
   Clock,
   Home,
   MapPin,
   Search,
-  SquareArrowOutUpRight,
   X,
   Landmark,
   Trees,
@@ -24,6 +23,7 @@ import { useEditor } from '../../../../../../state/useEditor';
 import { Api } from '../../../../../../utils/api';
 import { accessToken } from '../../../../../../utils/accessToken';
 import { UserHook } from '../../../../../../hook/user';
+import { domain } from '../../../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +32,7 @@ export default function SearchComponent() {
   const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
   const inputRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
+  const [focusCount, setFocusCount] = useState(0);
   const [query, setQuery] = useState('');
 
   const { getAccessToken, setAccessToken } = accessToken();
@@ -45,13 +46,6 @@ export default function SearchComponent() {
   };
 
   const blockList = ['save', 'history', 'location'];
-
-  // const recentSearches = [
-  //   'Nhà riêng',
-  //   'Quán cà phê gần đây',
-  //   'Hồ Gươm',
-  //   'Bảo tàng Hà Nội',
-  // ];
 
   const menuOptions = [
     { icon: Squirrel, label: 'Tất cả' },
@@ -102,20 +96,24 @@ export default function SearchComponent() {
   }, [query]);
 
   const [recentSearches, setRecentSearches] = useState<
-    { query: string; locationId: string }[]
+    { id: string; query: string; locationId: string }[]
   >([]);
 
   useEffect(() => {
-    console.log(getUserId());
+    if (!focusCount) return;
+
     const fetchHistory = async () => {
+      const userId = getUserId();
+      if (!userId) return;
+
       try {
         const data = await Api<{
           success: boolean;
-          data: { locationId: String; query: string }[];
+          data: { id: String; location_id: string; query: string }[];
         }>(
           {
             method: 'GET',
-            url: `/locations/history/${getUserId()}`,
+            url: `/locations/history/${userId}`,
           },
           { token: getAccessToken(), setToken: setAccessToken, setUserId },
         );
@@ -123,6 +121,7 @@ export default function SearchComponent() {
         if (data.success && data.data) {
           setRecentSearches(
             data.data.map((item) => ({
+              id: item.id,
               query: item.query,
               locationId: item.location_id,
             })),
@@ -134,7 +133,7 @@ export default function SearchComponent() {
     };
 
     fetchHistory();
-  }, []);
+  }, [focusCount]);
 
   const showSuggestions = query.trim().length > 0;
 
@@ -194,6 +193,7 @@ export default function SearchComponent() {
               value={query}
               onFocus={() => {
                 setFocused(true);
+                setFocusCount((c) => c + 1);
                 setState('SET_NAVBAR_X', 'dynamic', false);
               }}
               onBlur={() => setTimeout(() => setFocused(false), 150)}
@@ -222,6 +222,7 @@ export default function SearchComponent() {
                 setState('SET_INFORMATION', 'locationid', null);
                 setState('SET_INFORMATION', 'lat', null);
                 setState('SET_INFORMATION', 'lon', null);
+                setState('SET_NAVBAR_X', 'detail', false);
                 setQuery('');
               }
             }}
@@ -263,11 +264,12 @@ export default function SearchComponent() {
               )
             ) : (
               <>
-                {recentSearches.map((item) => (
+                {recentSearches.map((item, index) => (
                   <div
-                    key={item.locationId}
+                    key={`${item.id}`}
                     className={cx('items')}
-                    onClick={() => {
+                    onMouseDown={(e) => {
+                      e.preventDefault();
                       setQuery(item.query);
                       setState(
                         'SET_INFORMATION',
@@ -279,11 +281,34 @@ export default function SearchComponent() {
                   >
                     <Clock className={cx('icon')} size={20} />
                     <p className={cx('title')}>{item.query}</p>
-                    <X className={cx('icon_x')} size={18} />
+                    <X
+                      className={cx('icon_x')}
+                      size={18}
+                      onMouseDown={async (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        try {
+                          await fetch(`${domain}/locations/delete/${item.id}`, {
+                            method: 'DELETE',
+                          });
+                          setRecentSearches((prev) =>
+                            prev.filter((_, i) => i !== index),
+                          );
+                          inputRef.current?.focus();
+                        } catch (err) {
+                          console.error('Lỗi xóa history:', err);
+                        }
+                      }}
+                    />
                   </div>
                 ))}
 
-                <div className={cx('items_x')}>
+                <div
+                  className={cx('items_x')}
+                  onClick={() => {
+                    setState('SET_NAVBAR_X', 'activeX', 'history');
+                  }}
+                >
                   <span className={cx('title', 'title-footer')}>
                     Nội dung tìm kiếm khác gần đây
                   </span>

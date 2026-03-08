@@ -2,6 +2,7 @@ import { useEditor } from '../../../../state/useEditor';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { UserHook } from '../../../../hook/user';
+import { domain } from '../../../../utils/domain';
 
 export default function LogoutModal() {
   const { dispatch } = useEditor();
@@ -17,11 +18,7 @@ export default function LogoutModal() {
 
   const handleLogout = async () => {
     try {
-      await axios.post(
-        'http://localhost:5000/auth/logout',
-        {},
-        { withCredentials: true },
-      );
+      await axios.post(`${domain}/auth/logout`, {}, { withCredentials: true });
       navigate('/');
       window.location.reload();
     } catch (error: any) {

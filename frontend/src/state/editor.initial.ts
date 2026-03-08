@@ -15,6 +15,7 @@ export const initialEditorState: EditorState = {
     open: false,
   },
   navbar_x: {
+    detail: false,
     brand: 'review',
     image: false,
     option: null,
@@ -91,6 +92,9 @@ export const initialEditorState: EditorState = {
     error: '',
     index: null,
     open: false,
+    lockForgot: false,
+    lockRegister: false,
+    lockReset: false,
   },
   dropdown: {
     logout: false,

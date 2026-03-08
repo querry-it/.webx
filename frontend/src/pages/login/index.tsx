@@ -17,6 +17,7 @@ import { accessToken } from '../../utils/accessToken';
 import { UserHook } from '../../hook/user';
 import axios from 'axios';
 import { domain } from '../../utils/domain';
+import { useEditor } from '../../state/useEditor';
 
 interface User {
   username: string;
@@ -46,6 +47,15 @@ export default function Login() {
   const passRef = useRef<HTMLInputElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
+  const { state, dispatch } = useEditor();
+
+  const setState = (option: string, key: string, value: boolean) => {
+    dispatch({
+      type: option,
+      payload: { [key]: value },
+    });
+  };
+
   const { setAccessToken } = accessToken();
   const { setUserId } = UserHook();
   const [checkingAuth, setCheckingAuth] = useState<boolean>(true);
@@ -61,6 +71,9 @@ export default function Login() {
             { withCredentials: true },
           ),
         ]);
+        setState('SET_UTIL', 'lockForgot', false);
+        setState('SET_UTIL', 'lockReset', false);
+        setState('SET_UTIL', 'lockRegister', false);
         setAccessToken(response.data.data.accessToken);
         setUserId(response.data.data.userId);
         navigate('/home');
@@ -111,11 +124,7 @@ export default function Login() {
   const handleForgot = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     try {
-      await axios.post(
-        `${domain}/auth/request-forgot`,
-        {},
-        { withCredentials: true },
-      );
+      await axios.post(`${domain}/auth/request-forgot`);
       navigate('/forgot-password');
     } catch {
       setError('Lỗi mất kết nối server...');
@@ -125,11 +134,7 @@ export default function Login() {
   const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await axios.post(
-        `${domain}/auth/request-register`,
-        {},
-        { withCredentials: true },
-      );
+      await axios.post(`${domain}/auth/request-register`);
       navigate('/register');
     } catch {
       setError('Lỗi mất kết nối server...');

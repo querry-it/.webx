@@ -29,6 +29,7 @@ export class LocationService {
       throw new Error('Thiếu dữ liệu bắt buộc.');
     }
 
+    await LocationRepository.deleteHistoryByLocationId(userId, locationId);
     await LocationRepository.createHistory(userId, query.trim(), locationId);
 
     return {

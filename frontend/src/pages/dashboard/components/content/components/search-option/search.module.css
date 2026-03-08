@@ -235,8 +235,8 @@
   color: #5f6368;
   border-top: 1px solid #eee;
   background: #fafafa;
+  cursor: pointer;
 }
-
 
 .title-footer {
   width: 100%;
@@ -463,4 +463,3 @@
   font-size: 14px;
   font-weight: 500;
 }
-
