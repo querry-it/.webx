@@ -21,7 +21,7 @@ const places = [
     rating: 4.5,
     reviews: 20345,
     type: 'Di tích văn hóa',
-    savedAt: ['visited'],
+    savedAt: [],
   },
   {
     id: 3,
@@ -165,24 +165,24 @@ export default function LocationComponent() {
               </div>
             </div>
             <div className={cx('location-content__action')}>
-              <div className={cx('action__wrapper')}>
-                <button className={cx('action__btn')}>
-                  <MapPinCheck
-                    size={IconRef.current.x}
-                    strokeWidth={IconRef.current.y}
-                  ></MapPinCheck>
-                </button>
-              </div>
-              <span className={cx('action__switch')}>Đường đi</span>
+              <img
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweo-1VGkhEyCVV_KcHDtlz08DNNnkgV1fWq6NgoaXg5zAOSDvoeAXfVBqfqEh60EGm3SYLtNXs2tuuaq9uxI-gGSYcv6IbgHff6IZEUQW16VY6_dU60XxA5RuPV5bjaw1F7FLG4=w408-h544-k-no"
+                alt=""
+              />
             </div>
-            {place.savedAt.length > 0 && (
-              <div className={cx('location-content__list-save')}>
-                <div className={cx('list-icon')}>
-                  <List size={12} strokeWidth={IconRef.current.y} />
-                </div>
-                <div className={cx('list-save')}>{saveList(place.savedAt)}</div>
+
+            <div className={cx('location-content__list-save')}>
+              <div className={cx('list-icon')}>
+                {place.savedAt.length > 0 ? (
+                  <List size={12} strokeWidth={1.6} />
+                ) : (
+                  <div className={cx('icon-placeholder')} />
+                )}
               </div>
-            )}
+              <div className={cx('list-save')}>
+                {place.savedAt.length > 0 ? saveList(place.savedAt) : ''}
+              </div>
+            </div>
           </div>
         ))}
       </div>
