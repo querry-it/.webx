@@ -175,7 +175,7 @@ export class LocationRepository {
   }
   static async getLocationByCategory(category: string) {
     const { rows } = await pool.query(
-      `SELECT id, name, lat, lon, category FROM locations WHERE category = $1`,
+      `SELECT id, name, lat, lon, category, rating_avg, rating_count FROM locations WHERE category = $1`,
       [category],
     );
     return rows;

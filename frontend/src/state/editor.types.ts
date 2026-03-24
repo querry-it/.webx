@@ -14,7 +14,18 @@ export interface SidebarState {
   open: boolean;
 }
 
+export interface Location {
+  id: string;
+  name: string;
+  lat: number;
+  lon: number;
+  category: string;
+  rating_avg: number;
+  rating_count: number;
+}
+
 export interface NavbarXState {
+  location_search: Location | null;
   detail: boolean;
   brand: string;
   image: boolean;

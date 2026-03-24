@@ -424,8 +424,30 @@ export default function SearchComponent() {
               <div
                 key={index}
                 className={cx('dynamic__option')}
-                onClick={() => {
-                  setState('SET_NAVBAR_X', 'activeX', 'result');
+                onClick={async () => {
+                  try {
+                    const res = await fetch(
+                      `${domain}/locations/category/${option.category}`,
+                      {
+                        method: 'GET',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                      },
+                    );
+
+                    if (!res.ok) {
+                      console.error('API error:', res.status);
+                      throw new Error('Fetch dữ liệu thất bại');
+                    }
+
+                    const json = await res.json();
+                    setState('SET_NAVBAR_X', 'location_search', json.data);
+                    setState('SET_NAVBAR_X', 'activeX', 'result');
+                  } catch (err) {
+                    console.error('fetchLocationsByCategory error:', err);
+                    return [];
+                  }
                 }}
               >
                 <option.icon
