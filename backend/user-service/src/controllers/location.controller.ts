@@ -123,4 +123,17 @@ export class LocationController {
       return res.status(500).json({ message: 'Internal server error' });
     }
   }
+  static async getAllLocations(req: Request, res: Response) {
+    try {
+      const locations = await LocationService.getAllLocations();
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy tất cả địa điểm thành công.',
+        data: locations,
+      });
+    } catch (error) {
+      console.error('[LocationController] getAllLocations error:', error);
+      return res.status(500).json({ success: false, message: 'Lỗi máy chủ' });
+    }
+  }
 }

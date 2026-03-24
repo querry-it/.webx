@@ -4,9 +4,21 @@ export class LocationRepository {
   static async searchLocation(keyword: string) {
     const result = await pool.query(
       `SELECT name, id
-       FROM locations
-       WHERE unaccent(lower(name)) LIKE unaccent(lower($1))`,
-      [`${keyword}%`],
+   FROM locations
+   WHERE unaccent(lower(name)) LIKE unaccent(lower($1))
+   AND category = ANY($2)`,
+      [
+        `${keyword}%`,
+        [
+          'history',
+          'nature',
+          'street',
+          'architecture',
+          'museum',
+          'park',
+          'village',
+        ],
+      ],
     );
     return result.rows;
   }
@@ -154,5 +166,11 @@ export class LocationRepository {
       `DELETE FROM search_history WHERE user_id = $1 AND location_id = $2`,
       [userId, locationId],
     );
+  }
+  static async getAllLocations() {
+    const { rows } = await pool.query(
+      `SELECT id, name, lat, lon, category FROM locations WHERE image is not NULL`,
+    );
+    return rows;
   }
 }

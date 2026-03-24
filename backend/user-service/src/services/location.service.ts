@@ -139,4 +139,7 @@ export class LocationService {
 
     return { summary, list };
   }
+  static async getAllLocations() {
+    return LocationRepository.getAllLocations();
+  }
 }

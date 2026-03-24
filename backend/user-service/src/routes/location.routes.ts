@@ -1,4 +1,3 @@
-// location.routes.ts
 import { Router } from 'express';
 import { LocationController } from '../controllers/location.controller';
 
@@ -10,5 +9,6 @@ router.post('/insert-history', LocationController.createHistory);
 router.delete('/delete/:id', LocationController.deleteHistory);
 router.get('/get-location/:locationId', LocationController.getLocation);
 router.get('/:locationId/feedbacks', LocationController.getFeedbacks);
+router.get('/all', LocationController.getAllLocations);
 
 export default router;

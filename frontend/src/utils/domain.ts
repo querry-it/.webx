@@ -1,2 +1,2 @@
 export const domain =
-  'https://totals-robin-programming-russia.trycloudflare.com';
+  'https://trust-chapel-discussions-infinite.trycloudflare.com';
