@@ -142,4 +142,7 @@ export class LocationService {
   static async getAllLocations() {
     return LocationRepository.getAllLocations();
   }
+  static async getLocationsByCategory(category: string) {
+    return LocationRepository.getLocationByCategory(category);
+  }
 }

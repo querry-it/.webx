@@ -173,4 +173,11 @@ export class LocationRepository {
     );
     return rows;
   }
+  static async getLocationByCategory(category: string) {
+    const { rows } = await pool.query(
+      `SELECT id, name, lat, lon, category FROM locations WHERE category = $1`,
+      [category],
+    );
+    return rows;
+  }
 }

@@ -10,5 +10,6 @@ router.delete('/delete/:id', LocationController.deleteHistory);
 router.get('/get-location/:locationId', LocationController.getLocation);
 router.get('/:locationId/feedbacks', LocationController.getFeedbacks);
 router.get('/all', LocationController.getAllLocations);
+router.get('/category/:category', LocationController.getLocationsByCategory);
 
 export default router;

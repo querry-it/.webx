@@ -136,4 +136,27 @@ export class LocationController {
       return res.status(500).json({ success: false, message: 'Lỗi máy chủ' });
     }
   }
+  static async getLocationsByCategory(req: Request, res: Response) {
+    try {
+      const category = req.params.category as string;
+      if (!category) {
+        return res.status(400).json({
+          success: false,
+          message: 'Thiếu category.',
+        });
+      }
+      const locations = await LocationService.getLocationsByCategory(category);
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy địa điểm theo category thành công.',
+        data: locations,
+      });
+    } catch (error) {
+      console.error(
+        '[LocationController] getLocationsByCategory error:',
+        error,
+      );
+      return res.status(500).json({ success: false, message: 'Lỗi máy chủ' });
+    }
+  }
 }

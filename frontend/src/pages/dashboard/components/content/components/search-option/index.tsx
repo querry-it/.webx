@@ -16,7 +16,11 @@ import {
   ChevronLeft,
   ChevronRight,
   MapPinCheck,
-  Squirrel,
+  Bus,
+  Coffee,
+  Store,
+  Hotel,
+  Train,
   ArrowLeft,
 } from 'lucide-react';
 import { useEditor } from '../../../../../../state/useEditor';
@@ -45,17 +49,21 @@ export default function SearchComponent() {
     });
   };
 
-  const blockList = ['save', 'history', 'location'];
+  const blockList = ['save', 'history', 'location', 'result'];
 
   const menuOptions = [
-    { icon: Squirrel, label: 'Tất cả' },
-    { icon: Landmark, label: 'Di tích' },
-    { icon: Trees, label: 'Thiên nhiên' },
-    { icon: Amphora, label: 'Bảo tàng' },
-    { icon: Building2, label: 'Kiến trúc' },
-    { icon: Map, label: 'Khu phố' },
-    { icon: Leaf, label: 'Công viên' },
-    { icon: Home, label: 'Làng cổ' },
+    { icon: Landmark, label: 'Di tích', category: 'history' },
+    { icon: Trees, label: 'Thiên nhiên', category: 'nature' },
+    { icon: Amphora, label: 'Bảo tàng', category: 'museum' },
+    { icon: Building2, label: 'Kiến trúc', category: 'architecture' },
+    { icon: Map, label: 'Khu phố', category: 'street' },
+    { icon: Leaf, label: 'Công viên', category: 'park' },
+    { icon: Home, label: 'Làng cổ', category: 'village' },
+    { icon: Bus, label: 'Bến xe', category: 'bus' },
+    { icon: Coffee, label: 'Quán cà phê', category: 'cofe' },
+    { icon: Store, label: 'Cửa hàng', category: 'shop' },
+    { icon: Hotel, label: 'Khách sạn', category: 'restaurant' },
+    { icon: Train, label: 'Bến tàu điện', category: 'metro' },
   ];
 
   const [filteredSuggestions, setFilteredSuggestions] = useState<
@@ -413,7 +421,13 @@ export default function SearchComponent() {
 
           <div className={cx('dynamic__list')} ref={scrollRef}>
             {menuOptions.map((option, index) => (
-              <div key={index} className={cx('dynamic__option')}>
+              <div
+                key={index}
+                className={cx('dynamic__option')}
+                onClick={() => {
+                  setState('SET_NAVBAR_X', 'activeX', 'result');
+                }}
+              >
                 <option.icon
                   size={IconRef.current.x}
                   strokeWidth={IconRef.current.y}

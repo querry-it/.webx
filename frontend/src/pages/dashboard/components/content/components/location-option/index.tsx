@@ -77,7 +77,7 @@ const places = [
     rating: 4.6,
     reviews: 19234,
     type: 'Di tích tâm linh',
-    savedAt: ['wishlist', 'favorite'],
+    savedAt: [],
   },
   {
     id: 10,
@@ -165,10 +165,10 @@ export default function LocationComponent() {
               </div>
             </div>
             <div className={cx('location-content__action')}>
-              <img
+              {/* <img
                 src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweo-1VGkhEyCVV_KcHDtlz08DNNnkgV1fWq6NgoaXg5zAOSDvoeAXfVBqfqEh60EGm3SYLtNXs2tuuaq9uxI-gGSYcv6IbgHff6IZEUQW16VY6_dU60XxA5RuPV5bjaw1F7FLG4=w408-h544-k-no"
                 alt=""
-              />
+              /> */}
             </div>
 
             <div className={cx('location-content__list-save')}>
