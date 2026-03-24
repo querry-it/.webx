@@ -68,7 +68,7 @@ export default function Content() {
       {option == 'introducer' && <options.BrandComponent />}
       {option == 'help' && <options.SupportComponent />}
       {dynamic && <options.DynamicComponent />}
-      {option && <options.LocationComponent />}
+      {option == 'result' && <options.LocationComponent />}
       {locationId && (
         <options.IntroducerComponent key={locationId} locationId={locationId} />
       )}
