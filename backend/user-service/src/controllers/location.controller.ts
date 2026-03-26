@@ -159,4 +159,74 @@ export class LocationController {
       return res.status(500).json({ success: false, message: 'Lỗi máy chủ' });
     }
   }
+  static async getAllHistory(req: Request, res: Response) {
+    try {
+      const userId = req.params.userId;
+
+      if (!userId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Thiếu userId trong URL params.',
+        });
+      }
+
+      const histories = await LocationService.getAllHistory(userId);
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy lịch sử thành công',
+        data: histories,
+      });
+    } catch (error) {
+      console.error('getAllHistory error:', error);
+
+      return res.status(500).json({
+        success: false,
+        message: 'Lỗi server.',
+      });
+    }
+  }
+  static async getLocationByKeyword(req: Request, res: Response) {
+    try {
+      const keyword = req.params.keyword;
+
+      if (!keyword?.trim()) {
+        return res.status(400).json({
+          success: false,
+          message: 'Thiếu keyword trong query params.',
+        });
+      }
+      const locations = await LocationService.getLocationByKeyword(
+        keyword.trim(),
+      );
+      return res.status(200).json({
+        success: true,
+        message: 'Tìm kiếm địa điểm thành công.',
+        data: locations,
+      });
+    } catch (error) {
+      console.error('getLocationByKeyword error:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Lỗi server.',
+      });
+    }
+  }
+  static async getReviewsByUserId(req: Request, res: Response) {
+    try {
+      const userId = req.params.userId;
+      const reviews = await LocationService.getReviewsByUserId(userId);
+      res.status(200).json({
+        success: true,
+        message: 'Lấy dữ liệu thành công.',
+        data: reviews,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({
+        success: false,
+        message: 'Máy chủ mất kết nối.',
+      });
+    }
+  }
 }

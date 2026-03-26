@@ -34,6 +34,55 @@ export class LocationRepository {
     );
     return rows;
   }
+  static async getLocationByKeyword(keyword: string) {
+    const { rows } = await pool.query(
+      `SELECT id, name, lat, lon, address
+   FROM locations
+   WHERE unaccent(lower(name)) LIKE unaccent(lower($1))
+   AND category = ANY($2)`,
+      [
+        `${keyword}%`,
+        [
+          'history',
+          'nature',
+          'street',
+          'architecture',
+          'museum',
+          'park',
+          'village',
+        ],
+      ],
+    );
+    return rows;
+  }
+  static async getAllHistoryByUser(userId: string) {
+    const { rows } = await pool.query(
+      `
+      SELECT id, location_id, query
+      FROM search_history
+      WHERE user_id = $1
+      ORDER BY created_at DESC
+      `,
+      [userId],
+    );
+    return rows;
+  }
+
+  // 2. Lấy tất cả địa chỉ theo danh sách locationId (1 query duy nhất)
+  static async getAddressesByLocationIds(locationIds: string[]) {
+    if (!locationIds || locationIds.length === 0) return [];
+
+    const { rows } = await pool.query(
+      `
+      SELECT id, address
+      FROM locations
+      WHERE id = ANY($1)
+      `,
+      [locationIds],
+    );
+
+    return rows; // trả về mảng { id, address }
+  }
   static async countHistoryByUser(userId: string) {
     const { rows } = await pool.query(
       `
@@ -169,14 +218,57 @@ export class LocationRepository {
   }
   static async getAllLocations() {
     const { rows } = await pool.query(
-      `SELECT id, name, lat, lon, category FROM locations WHERE image is not NULL`,
+      `SELECT id, name, lat, lon, category FROM locations`,
     );
     return rows;
   }
   static async getLocationByCategory(category: string) {
     const { rows } = await pool.query(
-      `SELECT id, name, lat, lon, category, rating_avg, rating_count FROM locations WHERE category = $1`,
+      `SELECT id, name, lat, lon, category, rating_avg, rating_count, image, address FROM locations WHERE category = $1`,
       [category],
+    );
+    return rows;
+  }
+  static async getLatLonByLocationIds(locationIds: string[]) {
+    if (!Array.isArray(locationIds) || locationIds.length === 0) {
+      return [];
+    }
+
+    const query = `
+        SELECT id, lat, lon
+        FROM locations
+        WHERE id = ANY($1)
+    `;
+
+    const params = [locationIds];
+
+    const { rows } = await pool.query(query, params);
+
+    // đảm bảo trả về đúng dạng
+    return rows.map((r) => ({
+      id: r.id,
+      lat: Number(r.lat),
+      lon: Number(r.lon),
+    }));
+  }
+  static async getReviewsByUserId(userId: string) {
+    const { rows } = await pool.query(
+      `SELECT r.id, r.location_id, r.rating, r.content, r.created_at,
+      COUNT(rl.id) AS likes,
+      BOOL_OR(rl.user_id = $1) AS liked
+     FROM reviews r
+     LEFT JOIN review_likes rl ON rl.review_id = r.id
+     WHERE r.user_id = $1
+     GROUP BY r.id
+     ORDER BY r.created_at DESC`,
+      [userId],
+    );
+    return rows;
+  }
+  static async getImageByLocationId(locationId: string) {
+    const { rows } = await pool.query(
+      `SELECT image FROM locations WHERE id = $1`,
+      [locationId],
     );
     return rows;
   }

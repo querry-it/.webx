@@ -18,12 +18,14 @@
     "classnames": "^2.5.1",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^3.3.1",
+    "leaflet-polylinedecorator": "^1.6.0",
     "leaflet-routing-machine": "^3.2.12",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-leaflet": "^5.0.0",
-    "react-router-dom": "^7.10.1"
+    "react-router-dom": "^7.10.1",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

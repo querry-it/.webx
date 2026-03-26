@@ -1,97 +1,45 @@
 import { Clock, Home, MapPinCheck, Search, X, List, Icon } from 'lucide-react';
 import classNames from 'classnames/bind';
 import styles from './location.module.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useEditor } from '../../../../../../state/useEditor';
+import { domain } from '../../../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
-const places = [
-  {
-    id: 1,
-    name: 'Hoàng thành Thăng Long',
-    rating: 4.6,
-    reviews: 15432,
-    type: 'Di tích lịch sử',
-    savedAt: ['favorite', 'wishlist'],
-  },
-  {
-    id: 2,
-    name: 'Văn Miếu - Quốc Tử Giám',
-    rating: 4.5,
-    reviews: 20345,
-    type: 'Di tích văn hóa',
-    savedAt: [],
-  },
-  {
-    id: 3,
-    name: 'Cố đô Huế',
-    rating: 4.7,
-    reviews: 18721,
-    type: 'Di sản văn hóa thế giới',
-    savedAt: ['wishlist', 'favorite', 'visited'],
-  },
-  {
-    id: 4,
-    name: 'Phố cổ Hội An',
-    rating: 4.8,
-    reviews: 25467,
-    type: 'Di sản văn hóa thế giới',
-    savedAt: [],
-  },
-  {
-    id: 5,
-    name: 'Thánh địa Mỹ Sơn',
-    rating: 4.4,
-    reviews: 11234,
-    type: 'Di tích tôn giáo',
-    savedAt: ['visited'],
-  },
-  {
-    id: 6,
-    name: 'Địa đạo Củ Chi',
-    rating: 4.6,
-    reviews: 16789,
-    type: 'Di tích chiến tranh',
-    savedAt: ['wishlist'],
-  },
-  {
-    id: 7,
-    name: 'Nhà tù Hỏa Lò',
-    rating: 4.7,
-    reviews: 14321,
-    type: 'Di tích lịch sử',
-    savedAt: ['favorite', 'visited'],
-  },
-  {
-    id: 8,
-    name: 'Thành nhà Hồ',
-    rating: 4.3,
-    reviews: 8456,
-    type: 'Di sản văn hóa thế giới',
-    savedAt: [],
-  },
-  {
-    id: 9,
-    name: 'Đền Hùng',
-    rating: 4.6,
-    reviews: 19234,
-    type: 'Di tích tâm linh',
-    savedAt: [],
-  },
-  {
-    id: 10,
-    name: 'Chùa Một Cột',
-    rating: 4.5,
-    reviews: 21098,
-    type: 'Di tích tôn giáo',
-    savedAt: ['favorite'],
-  },
-];
+const categoryToVietnamese = (cat) => {
+  const map = {
+    history: 'Di tích',
+    nature: 'Thiên nhiên',
+    museum: 'Bảo tàng',
+    architecture: 'Kiến trúc',
+    street: 'Khu phố',
+    park: 'Công viên',
+    village: 'Làng cổ',
+    bus: 'Bến xe',
+    cafe: 'Quán cà phê',
+    shop: 'Cửa hàng',
+    restaurant: 'Khách sạn',
+    metro: 'Bến tàu điện',
+  };
+
+  return map[cat] || 'Khác';
+};
+
+export interface Location {
+  id: number;
+  name: string;
+  rating: number;
+  reviews: number;
+  type: string;
+  savedAt: string[];
+}
 
 export default function LocationComponent() {
-  const { dispatch } = useEditor();
+  const { state, dispatch } = useEditor();
   const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
+
+  const [places, setPlaces] = useState<Location[]>([]);
 
   const setState = (option: string, key: string, value: boolean) => {
     dispatch({
@@ -99,6 +47,28 @@ export default function LocationComponent() {
       payload: { [key]: value },
     });
   };
+
+  useEffect(() => {
+    const data = state.navbar_x.location_search;
+    if (!Array.isArray(data)) return;
+
+    const mapped = data.map((d) => ({
+      id: d.id,
+      name: d.name === '' ? d.address : d.name,
+      rating: Number(d.rating_avg) || 0,
+      reviews: Number(d.rating_count) || 0,
+      type: categoryToVietnamese(d.category),
+      savedAt: ['yêu thích của tôi.'],
+      image:
+        d.image === null
+          ? 'avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp'
+          : d.image,
+      lat: d.lat,
+      lon: d.lon,
+    }));
+
+    setPlaces(mapped);
+  }, [state.navbar_x.location_search]);
 
   const [activeItems, setActiveItems] = useState(null);
 
@@ -133,7 +103,11 @@ export default function LocationComponent() {
             className={cx('location-content__items', {
               'location-content__items-active': activeItems === place.id,
             })}
-            onClick={() => setActiveItems(place.id)}
+            onClick={() => {
+              setActiveItems(place.id);
+              setState('SET_INFORMATION', 'lat', place.lat);
+              setState('SET_INFORMATION', 'lon', place.lon);
+            }}
           >
             <div className={cx('location-content__information')}>
               <div className={cx('location-content__information-title')}>
@@ -165,10 +139,7 @@ export default function LocationComponent() {
               </div>
             </div>
             <div className={cx('location-content__action')}>
-              {/* <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweo-1VGkhEyCVV_KcHDtlz08DNNnkgV1fWq6NgoaXg5zAOSDvoeAXfVBqfqEh60EGm3SYLtNXs2tuuaq9uxI-gGSYcv6IbgHff6IZEUQW16VY6_dU60XxA5RuPV5bjaw1F7FLG4=w408-h544-k-no"
-                alt=""
-              /> */}
+              <img src={`${domain}/uploads/${place.image}`} alt="" />
             </div>
 
             <div className={cx('location-content__list-save')}>

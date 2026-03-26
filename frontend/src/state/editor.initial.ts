@@ -10,11 +10,14 @@ export const initialEditorState: EditorState = {
     locationid: null,
     lat: null,
     lon: null,
+    point_end: null,
+    point_start: null,
   },
   sidebar: {
     open: false,
   },
   navbar_x: {
+    location_search: null,
     detail: false,
     brand: 'review',
     image: false,

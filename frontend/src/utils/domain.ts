@@ -1,2 +1,1 @@
-export const domain =
-  'https://enables-films-novelty-equilibrium.trycloudflare.com';
+export const domain = 'http://localhost:5000';

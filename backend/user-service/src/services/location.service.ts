@@ -145,4 +145,74 @@ export class LocationService {
   static async getLocationsByCategory(category: string) {
     return LocationRepository.getLocationByCategory(category);
   }
+  static async getAllHistory(userId: string) {
+    const histories = await LocationRepository.getAllHistoryByUser(userId);
+    if (!histories?.length) return [];
+
+    // Lấy danh sách location_id duy nhất
+    const locationIds = [...new Set(histories.map((h) => h.location_id))];
+
+    // Query address & lat/lon 1 lần
+    const [locations, latLonData] = await Promise.all([
+      LocationRepository.getAddressesByLocationIds(locationIds),
+      LocationRepository.getLatLonByLocationIds(locationIds),
+    ]);
+
+    // Tạo map address theo id
+    const addressMap = new Map(locations.map((loc) => [loc.id, loc.address]));
+
+    // Tạo map lat/lon theo id
+    const latLonMap = new Map(
+      latLonData.map((loc) => [loc.id, { lat: loc.lat, lon: loc.lon }]),
+    );
+
+    // Trả về kết quả đầy đủ
+    return histories.map((h) => ({
+      ...h,
+      address: addressMap.get(h.location_id) ?? null,
+      lat: latLonMap.get(h.location_id)?.lat ?? null,
+      lon: latLonMap.get(h.location_id)?.lon ?? null,
+    }));
+  }
+  static async getLocationByKeyword(keyword: string) {
+    return LocationRepository.getLocationByKeyword(keyword);
+  }
+  // service
+  static async getReviewsByUserId(userId: string) {
+    const reviews = await LocationRepository.getReviewsByUserId(userId);
+    if (!reviews?.length) return [];
+
+    const locationIds = [...new Set(reviews.map((r) => r.location_id))];
+
+    const [locations, latLonData, images, reviewImages] = await Promise.all([
+      LocationRepository.getAddressesByLocationIds(locationIds),
+      LocationRepository.getLatLonByLocationIds(locationIds),
+      Promise.all(
+        locationIds.map((id) => LocationRepository.getImageByLocationId(id)),
+      ),
+      Promise.all(reviews.map((r) => LocationRepository.getReviewImages(r.id))),
+    ]);
+
+    return reviews.map((r, i) => {
+      const location = locations.find((l) => l.id === r.location_id);
+      const latLon = latLonData.find((l) => l.id === r.location_id);
+      const imageIndex = locationIds.indexOf(r.location_id);
+      const avatar = images[imageIndex]?.[0]?.image ?? null;
+
+      return {
+        id: r.id,
+        location: {
+          name: location?.name ?? null,
+          address: location?.address ?? null,
+          avatar,
+        },
+        rating: r.rating,
+        content: r.content,
+        images: reviewImages[i].map((img) => img.url),
+        createdAt: r.created_at,
+        likes: Number(r.likes) ?? 0,
+        liked: r.liked ?? false,
+      };
+    });
+  }
 }

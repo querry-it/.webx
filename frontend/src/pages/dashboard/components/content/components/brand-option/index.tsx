@@ -3,98 +3,14 @@ import classNames from 'classnames/bind';
 import styles from './brand.module.css';
 import { useRef, useState, useEffect } from 'react';
 import { useEditor } from '../../../../../../state/useEditor';
+import { UserHook } from '../../../../../../hook/user';
+import { domain } from '../../../../../../utils/domain';
+import { fetchReviews } from '../../../../../../utils/fetchreviews';
 
 const cx = classNames.bind(styles);
 
-const feedbacks = [
-  {
-    id: 1,
-    location: {
-      name: 'Văn Miếu – Quốc Tử Giám',
-      address: '58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội, Việt Nam',
-      avatar:
-        'https://mautranhve.vn/wp-content/uploads/2025/10/avatar-cute-vo-tri-3.jpg',
-    },
-    rating: 5,
-    content: `  Không gian ở đây rất trang nghiêm và yên tĩnh.
-                Mọi khu vực đều được giữ gìn sạch sẽ, gọn gàng.
-                Nhân viên hướng dẫn nhiệt tình, giải thích rõ ràng từng chi tiết lịch sử.
-                Mình cảm thấy rất tự hào khi được đến tham quan nơi này.
-                Đây là địa điểm mà mỗi người Việt Nam nên ghé thăm ít nhất một lần.
-                `,
-    images: [
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwerx0nziz0IBXcPGc2wXZYc0U2MGAxfFjTFrDOTk51MpJo3836BwDDjQSMlWNcx8Gb36BHWNAedRMBQ9OjqVUj6HVSQgXP0bipFEKcvJ5KAcEqDo1eBXekJR91iexu69KEf8TZdw=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwep7LOP9L8Bs18Z87cJ6k4x_syz_exvxfph_8gbzMAfWd6ovsFY1vXGCcq7jcc6wiGjJzqobCw95y69Vqn2_Rr-FvNJLbddK6mnCm8diush5WB-BXguG7Lht2fAXkQGMoWMe-nrOBxwBaRrm=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwept0fabouImcvvhZbvLjFkiHB0T3lat0RQE03WAJvxe0ELrKzQLQS7QdVoo8NmYH3kil7M9WwNyUPXevpzKar1_Jwr8f0C-90VpefZkvWG_Te4nxnSdDO_9TyrmaAhRpcvl89gZBB38fxrN=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwer6eyEgRG3Tx70IlZGe_aeLj0gquNRECqQzPs5mvputDbV7_01duzpKXX-z-ix3N1HWacrxSv-FHycvmwK_6S_NfA7w6Wdd7cYe2P6pVaB3SkJN1i3wyk9ebWQNpsJgC5oOIEsw=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAweoZn-OajcEYopzjo7qoD1326w0-z3NRaiag-W0bggFtIMsJz1DXFGCOhvhm2fdodZtDvdBnhQWFtxseNLpAreIMTTdTLNTyioWJS_VoGUlvveLyqM9Diwj-cKsHmG5UDEKVEOFcsjTcbABu=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAweootfSRmSXOEjE9bHrSHUdKgrGOfE_YPbotzt794vGt9l-WIHbLlaE9N5oBlXg0qLfJ0KNn0duhwub6KZouoiNvdP9D_wtFYEjo9_tsczb2_IzXp2-2IKWwlYkmUJKmImpuI0y6lw2k2b0=w400',
-    ],
-    createdAt: '2026-02-01T14:30:00',
-    likes: 10,
-    liked: false,
-  },
-
-  {
-    id: 2,
-    location: {
-      name: 'Văn Miếu – Quốc Tử Giám',
-      address: '58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội, Việt Nam',
-      avatar:
-        'https://mautranhve.vn/wp-content/uploads/2025/10/avatar-cute-vo-tri-3.jpg',
-    },
-    rating: 4,
-    content: `
-                Không gian ở đây rất trang nghiêm và yên tĩnh.
-                Mọi khu vực đều được giữ gìn sạch sẽ, gọn gàng.
-                Nhân viên hướng dẫn nhiệt tình, giải thích rõ ràng từng chi tiết lịch sử.
-                Mình cảm thấy rất tự hào khi được đến tham quan nơi này.
-                Đây là địa điểm mà mỗi người Việt Nam nên ghé thăm ít nhất một lần.
-                `,
-    images: [
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwep7LOP9L8Bs18Z87cJ6k4x_syz_exvxfph_8gbzMAfWd6ovsFY1vXGCcq7jcc6wiGjJzqobCw95y69Vqn2_Rr-FvNJLbddK6mnCm8diush5WB-BXguG7Lht2fAXkQGMoWMe-nrOBxwBaRrm=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwerx0nziz0IBXcPGc2wXZYc0U2MGAxfFjTFrDOTk51MpJo3836BwDDjQSMlWNcx8Gb36BHWNAedRMBQ9OjqVUj6HVSQgXP0bipFEKcvJ5KAcEqDo1eBXekJR91iexu69KEf8TZdw=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwept0fabouImcvvhZbvLjFkiHB0T3lat0RQE03WAJvxe0ELrKzQLQS7QdVoo8NmYH3kil7M9WwNyUPXevpzKar1_Jwr8f0C-90VpefZkvWG_Te4nxnSdDO_9TyrmaAhRpcvl89gZBB38fxrN=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwer6eyEgRG3Tx70IlZGe_aeLj0gquNRECqQzPs5mvputDbV7_01duzpKXX-z-ix3N1HWacrxSv-FHycvmwK_6S_NfA7w6Wdd7cYe2P6pVaB3SkJN1i3wyk9ebWQNpsJgC5oOIEsw=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAweoZn-OajcEYopzjo7qoD1326w0-z3NRaiag-W0bggFtIMsJz1DXFGCOhvhm2fdodZtDvdBnhQWFtxseNLpAreIMTTdTLNTyioWJS_VoGUlvveLyqM9Diwj-cKsHmG5UDEKVEOFcsjTcbABu=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAweootfSRmSXOEjE9bHrSHUdKgrGOfE_YPbotzt794vGt9l-WIHbLlaE9N5oBlXg0qLfJ0KNn0duhwub6KZouoiNvdP9D_wtFYEjo9_tsczb2_IzXp2-2IKWwlYkmUJKmImpuI0y6lw2k2b0=w400',
-    ],
-    createdAt: '2024-12-02T12:30:30',
-    likes: 121,
-    liked: false,
-  },
-
-  {
-    id: 3,
-    location: {
-      name: 'Văn Miếu – Quốc Tử Giám',
-      address: '58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội, Việt Nam',
-      avatar:
-        'https://mautranhve.vn/wp-content/uploads/2025/10/avatar-cute-vo-tri-3.jpg',
-    },
-    rating: 5,
-    content: `
-                Không gian ở đây rất trang nghiêm và yên tĩnh.
-                Mọi khu vực đều được giữ gìn sạch sẽ, gọn gàng.
-                Nhân viên hướng dẫn nhiệt tình, giải thích rõ ràng từng chi tiết lịch sử.
-                Mình cảm thấy rất tự hào khi được đến tham quan nơi này.
-                Đây là địa điểm mà mỗi người Việt Nam nên ghé thăm ít nhất một lần.
-                `,
-    images: [
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwer6eyEgRG3Tx70IlZGe_aeLj0gquNRECqQzPs5mvputDbV7_01duzpKXX-z-ix3N1HWacrxSv-FHycvmwK_6S_NfA7w6Wdd7cYe2P6pVaB3SkJN1i3wyk9ebWQNpsJgC5oOIEsw=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwerx0nziz0IBXcPGc2wXZYc0U2MGAxfFjTFrDOTk51MpJo3836BwDDjQSMlWNcx8Gb36BHWNAedRMBQ9OjqVUj6HVSQgXP0bipFEKcvJ5KAcEqDo1eBXekJR91iexu69KEf8TZdw=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwep7LOP9L8Bs18Z87cJ6k4x_syz_exvxfph_8gbzMAfWd6ovsFY1vXGCcq7jcc6wiGjJzqobCw95y69Vqn2_Rr-FvNJLbddK6mnCm8diush5WB-BXguG7Lht2fAXkQGMoWMe-nrOBxwBaRrm=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAwept0fabouImcvvhZbvLjFkiHB0T3lat0RQE03WAJvxe0ELrKzQLQS7QdVoo8NmYH3kil7M9WwNyUPXevpzKar1_Jwr8f0C-90VpefZkvWG_Te4nxnSdDO_9TyrmaAhRpcvl89gZBB38fxrN=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAweoZn-OajcEYopzjo7qoD1326w0-z3NRaiag-W0bggFtIMsJz1DXFGCOhvhm2fdodZtDvdBnhQWFtxseNLpAreIMTTdTLNTyioWJS_VoGUlvveLyqM9Diwj-cKsHmG5UDEKVEOFcsjTcbABu=w400',
-      'https://lh3.googleusercontent.com/gps-cs-s/AHVAweootfSRmSXOEjE9bHrSHUdKgrGOfE_YPbotzt794vGt9l-WIHbLlaE9N5oBlXg0qLfJ0KNn0duhwub6KZouoiNvdP9D_wtFYEjo9_tsczb2_IzXp2-2IKWwlYkmUJKmImpuI0y6lw2k2b0=w400',
-    ],
-    createdAt: '2024-12-15T07:03:31',
-    likes: 11,
-    liked: false,
-  },
-];
-
 export default function BrandComponent() {
+  const { getUserId } = UserHook();
   const { state, dispatch } = useEditor();
   const IconRef = useRef<{ x: number; y: number }>({ x: 20, y: 1.6 });
   const contentRef = useRef(null);
@@ -104,7 +20,7 @@ export default function BrandComponent() {
       payload: { [key]: value },
     });
   };
-
+  const { getAvatar, getFullName } = UserHook();
   const options = [
     { label: 'Bài đánh giá', value: 'review' },
     { label: 'Ảnh', value: 'image' },
@@ -113,7 +29,21 @@ export default function BrandComponent() {
   const [seeMore, setSeeMore] = useState(false);
   const [openGalleryId, setOpenGalleryId] = useState<number | null>(null);
   const [showButton, setShowButton] = useState(false);
-  const [list, setList] = useState(feedbacks);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const userId = getUserId();
+
+    fetchReviews(userId)
+      .then((data) => {
+        setList(data.data);
+      })
+      .catch((err) => console.error('API error:', err));
+    setState('SET_NAVBAR_X', 'brand', 'review');
+  }, []);
+
+  const totalFeedback = () => list.length;
+
   const timeAgo = (date) => {
     const diff = new Date() - new Date(date);
     const m = Math.floor(diff / 60000);
@@ -160,12 +90,10 @@ export default function BrandComponent() {
   const getFilterList = () => {
     switch (state.navbar_x.brand) {
       case 'review':
-        return [...list]
-          .sort(
-            (a, b) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-          )
-          .slice(0, 10);
+        return [...list].sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        );
 
       case 'image':
         return [...list]
@@ -176,19 +104,11 @@ export default function BrandComponent() {
           );
 
       default:
-        return feedbacks;
+        return list;
     }
   };
 
   const filterList = getFilterList();
-  
-  const totalFeedback = (list) => {
-    let sum = 0;
-    for(let i = 1; i <= feedbacks.length; i++) {
-       sum += 1;
-    }
-    return sum;
-  }
 
   return (
     <div className={cx('location__bgr')}>
@@ -196,12 +116,9 @@ export default function BrandComponent() {
 
       <div className={cx('location-introducer')}>
         <div className={cx('location-img')}>
-          <img
-            src="https://www.lemon8-app.com/seo/image?item_id=7381094404980851217&index=2&sign=f353babbbe07e53ea367272688735525"
-            alt=""
-          />
+          <img src={`${domain}/uploads/${getAvatar()}`} alt="" loading="lazy" />
         </div>
-        <div className={cx('location-name')}>Nguyen Van A</div>
+        <div className={cx('location-name')}>{getFullName()}</div>
       </div>
 
       <div className={cx('location-option')}>
@@ -218,7 +135,11 @@ export default function BrandComponent() {
             <div></div>
             <div className={cx('option-title')}>{option.label}</div>
             <div className={cx('space-line__wrapper')}>
-              <div className={cx('space-line-none', {'space-line' : state.navbar_x.brand === option.value })}></div>
+              <div
+                className={cx('space-line-none', {
+                  'space-line': state.navbar_x.brand === option.value,
+                })}
+              ></div>
             </div>
           </div>
         ))}
@@ -229,7 +150,7 @@ export default function BrandComponent() {
           <div className={cx('location__review')}>
             <div className={cx('feedback-total')}>
               <span className={cx('feedback-total__title')}>
-                {totalFeedback(list)} bài đánh giá
+                {totalFeedback()} bài đánh giá
               </span>
             </div>
 
@@ -238,7 +159,11 @@ export default function BrandComponent() {
                 <div key={feedback.id} className={cx('content-review__items')}>
                   <div className={cx('content-review__header')}>
                     <div className={cx('avatar__wrapper')}>
-                      <img src={feedback.location.avatar} alt="Ảnh đại diện" />
+                      <img
+                        src={`${domain}/uploads/${feedback.location.avatar}`}
+                        alt="Ảnh đại diện"
+                        loading="lazy"
+                      />
                     </div>
                     <div className={cx('title-review')}>
                       <div className={cx('title-review__name')}>
@@ -321,7 +246,11 @@ export default function BrandComponent() {
                             }
                           }}
                         >
-                          <img src={img} alt="" />
+                          <img
+                            src={`${domain}/uploads/${img}`}
+                            alt=""
+                            loading="lazy"
+                          />
 
                           {openGalleryId !== feedback.id &&
                             index === 3 &&
@@ -371,7 +300,11 @@ export default function BrandComponent() {
             <div key={f.id} className={cx('image__items')}>
               <div className={cx('image__title')}>
                 <div className={cx('image__avatar')}>
-                  <img src={f.location.avatar} alt="" />
+                  <img
+                    src={`${domain}/uploads/${f.location.avatar}`}
+                    alt=""
+                    loading="lazy"
+                  />
                 </div>
                 <div className={cx('image__location')}>
                   <div className={cx('image__name')}>{f.location.name}</div>
@@ -384,7 +317,11 @@ export default function BrandComponent() {
               <div className={cx('image__content')}>
                 {f.images.map((img, index) => (
                   <div key={index} className={cx('img-item')}>
-                    <img src={img} alt="" />
+                    <img
+                      src={`${domain}/uploads/${img}`}
+                      alt=""
+                      loading="lazy"
+                    />
                   </div>
                 ))}
               </div>

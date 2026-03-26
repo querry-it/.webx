@@ -1,7 +1,9 @@
 .location__bgr {
-    position: absolute;
-    inset: 0;
-    z-index: 1003;
-    background-color: #fff;
-    border-right: 1px solid #cacaca;
+  position: absolute;
+  width: 366px;
+  top: 0;
+  bottom: 0;
+  z-index: 1003;
+  background-color: #fff;
+  border-right: 1px solid #cacaca;
 }

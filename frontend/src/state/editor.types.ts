@@ -8,6 +8,8 @@ export interface InformationState {
   locationid: string | null;
   lat: number | null;
   lon: number | null;
+  point_start: { lat: number; lon: number } | null;
+  point_end: { lat: number; lon: number } | null;
 }
 
 export interface SidebarState {

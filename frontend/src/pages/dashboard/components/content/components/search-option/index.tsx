@@ -49,7 +49,14 @@ export default function SearchComponent() {
     });
   };
 
-  const blockList = ['save', 'history', 'location', 'result'];
+  const blockList = [
+    'save',
+    'history',
+    'location',
+    'result',
+    'help',
+    'introducer',
+  ];
 
   const menuOptions = [
     { icon: Landmark, label: 'Di tích', category: 'history' },
@@ -60,7 +67,7 @@ export default function SearchComponent() {
     { icon: Leaf, label: 'Công viên', category: 'park' },
     { icon: Home, label: 'Làng cổ', category: 'village' },
     { icon: Bus, label: 'Bến xe', category: 'bus' },
-    { icon: Coffee, label: 'Quán cà phê', category: 'cofe' },
+    { icon: Coffee, label: 'Quán cà phê', category: 'cafe' },
     { icon: Store, label: 'Cửa hàng', category: 'shop' },
     { icon: Hotel, label: 'Khách sạn', category: 'restaurant' },
     { icon: Train, label: 'Bến tàu điện', category: 'metro' },

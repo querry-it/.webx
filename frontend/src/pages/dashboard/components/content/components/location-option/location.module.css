@@ -69,6 +69,7 @@
   display: grid;
   grid-template-columns: 8fr 2fr;
   border-top: 1px solid rgb(237, 233, 233);
+  cursor: pointer;
 }
 
 .location-content__items:hover {
