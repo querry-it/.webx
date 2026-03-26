@@ -14,5 +14,7 @@ router.get('/category/:category', LocationController.getLocationsByCategory);
 router.get('/history/all/:userId', LocationController.getAllHistory);
 router.get('/search/:keyword', LocationController.getLocationByKeyword);
 router.get('/reviews/:userId', LocationController.getReviewsByUserId);
+router.get('/roadmap/:id', LocationController.getPoints);
+router.get('/ids', LocationController.getAllIds);
 
 export default router;

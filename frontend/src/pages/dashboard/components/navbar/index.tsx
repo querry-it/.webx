@@ -1,5 +1,12 @@
 import classNames from 'classnames/bind';
-import { BookmarkCheck, Earth, History, Info, Layers } from 'lucide-react';
+import {
+  BookmarkCheck,
+  Earth,
+  History,
+  Info,
+  Layers,
+  Settings,
+} from 'lucide-react';
 import { act, useEffect, useRef } from 'react';
 import { useEditor } from '../../../../state/useEditor';
 import { UserHook } from '../../../../hook/user';
@@ -169,7 +176,7 @@ export default function Navbar() {
                   active: state.navbar_x.activeX === 'help',
                 })}
               >
-                <Info
+                <Settings
                   size={Icon.current.size}
                   strokeWidth={Icon.current.weight}
                 />

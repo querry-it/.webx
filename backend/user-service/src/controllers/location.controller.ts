@@ -1,6 +1,6 @@
-// location.controller.ts
 import { Request, Response } from 'express';
 import { LocationService } from '../services/location.service';
+import { getPointsFromFile, readDataFile } from '../utils/read_json';
 
 export class LocationController {
   static async search(req: Request, res: Response) {
@@ -226,6 +226,64 @@ export class LocationController {
       res.status(500).json({
         success: false,
         message: 'Máy chủ mất kết nối.',
+      });
+    }
+  }
+  static async getPoints(req: Request, res: Response) {
+    const { id } = req.params;
+
+    if (!id)
+      return res.status(400).json({
+        success: false,
+        message: 'Vui lòng truyền đúng tham số.',
+      });
+
+    try {
+      const points = getPointsFromFile(id, './src/stores/data.json');
+      if (!points)
+        return res.status(404).json({
+          success: false,
+          message: 'Máy chủ mất kết nối.',
+        });
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy dữ liệu thành công',
+        data: [{ id: id, points: points }],
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({
+        success: false,
+        message: 'Máy chủ mất kết nối.',
+      });
+    }
+  }
+  static async getAllIds(req: Request, res: Response) {
+    try {
+      const data = readDataFile('./src/stores/data.json');
+
+      if (data.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: 'Không tìm thấy dữ liệu trong file JSON',
+          data: [],
+        });
+      }
+
+      const ids = data.map((item) => ({ id: item.id }));
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy tất cả ID thành công',
+        data: ids,
+      });
+    } catch (err) {
+      console.error('Lỗi xử lý controller:', err);
+      return res.status(500).json({
+        success: false,
+        message: 'Lỗi server khi lấy dữ liệu',
+        error: err instanceof Error ? err.message : err,
       });
     }
   }

@@ -1,1 +1,2 @@
-export const domain = 'http://localhost:5000';
+export const domain =
+  'https://propose-arbitration-bumper-brad.trycloudflare.com';

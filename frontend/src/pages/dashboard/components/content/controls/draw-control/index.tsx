@@ -24,6 +24,10 @@ export function clearRoute(map: L.Map) {
 }
 
 export function getCurrentLocation(): Promise<{ lat: number; lon: number }> {
+  if (!navigator.geolocation) {
+    alert('Trình duyệt không hỗ trợ định vị!');
+    return null;
+  }
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) return reject('Geolocation not supported');
     navigator.geolocation.getCurrentPosition(
