@@ -1,31 +1,51 @@
 import L from 'leaflet';
 
-const Style = {
-  color: 'blueviolet',
-  weight: 2,
-  fillColor: '#FFAAAA',
-  fillOpacity: 0.25,
-};
+// lưu layer theo map để tránh conflict nếu dùng nhiều map
+const layerMap = new WeakMap();
 
-export default function HanoiGeoLayer(map, data) {
-  if (!data || data.type !== 'FeatureCollection') {
-    return () => {};
+export function GeoLayerControl(map, data) {
+  if (!map || !data) return () => {};
+
+  // Nếu đã có layer cho map này → xóa trước khi tạo mới
+  const oldLayer = layerMap.get(map);
+  if (oldLayer && map.hasLayer(oldLayer)) {
+    map.removeLayer(oldLayer);
   }
 
   const layer = L.geoJSON(data, {
-    style: Style,
-    onEachFeature: (feature, layer) => {
-      if (feature.properties?.name) {
-        layer.bindPopup(`<b>${feature.properties.name}</b>`);
-      }
+    style: {
+      color: 'royalblue',
+      weight: 2,
+      fillColor: 'transparent',
+      fillOpacity: 0,
     },
   });
 
   layer.addTo(map);
+  layerMap.set(map, layer);
 
   return () => {
-    if (map.hasLayer(layer)) {
+    if (layerMap.get(map) && map.hasLayer(layer)) {
       map.removeLayer(layer);
+      layerMap.delete(map);
     }
   };
+}
+
+export function toggleGeoLayer(map, data, show) {
+  if (!map) return;
+
+  const existing = layerMap.get(map);
+
+  if (show) {
+    // đã bật rồi → không làm gì
+    if (existing && map.hasLayer(existing)) return;
+    GeoLayerControl(map, data);
+  } else {
+    // tắt layer
+    if (existing && map.hasLayer(existing)) {
+      map.removeLayer(existing);
+      layerMap.delete(map);
+    }
+  }
 }

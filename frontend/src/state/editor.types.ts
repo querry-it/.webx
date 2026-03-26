@@ -10,6 +10,7 @@ export interface InformationState {
   lon: number | null;
   point_start: { lat: number; lon: number } | null;
   point_end: { lat: number; lon: number } | null;
+  hanoi_boundary_map: boolean;
 }
 
 export interface SidebarState {

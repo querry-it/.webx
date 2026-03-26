@@ -7,3 +7,13 @@
   background-color: #fff;
   border-right: 1px solid #cacaca;
 }
+
+.scroll-hidden {
+  overflow-y: auto !important; /* thêm !important */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none !important;
+}

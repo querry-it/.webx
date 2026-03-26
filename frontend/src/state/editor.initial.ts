@@ -12,6 +12,7 @@ export const initialEditorState: EditorState = {
     lon: null,
     point_end: null,
     point_start: null,
+    hanoi_boundary_map: false,
   },
   sidebar: {
     open: false,
