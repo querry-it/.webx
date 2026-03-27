@@ -45,14 +45,117 @@ export default function Content() {
     const map = mapRef.current;
     if (!map) return;
 
-    toggleGeoLayer(map, HaNoiGeoMap, state.information.hanoi_boundary_map);
-  }, [state.information.hanoi_boundary_map]);
+    toggleGeoLayer(map, HaNoiGeoMap, state.information.class_01);
+  }, [state.information.class_01]);
+
+  useEffect(() => {
+    console.log('class_02: ', state.information.class_02);
+  }, [state.information.class_02]);
+
+  useEffect(() => {
+    console.log('class_03: ', state.information.class_03);
+  }, [state.information.class_03]);
+
+  useEffect(() => {
+    console.log('class_04: ', state.information.class_04);
+  }, [state.information.class_04]);
+
+  useEffect(() => {
+    console.log('class_05: ', state.information.class_05);
+  }, [state.information.class_05]);
+
+  useEffect(() => {
+    console.log('marker_01: ', state.information.marker_01);
+  }, [state.information.marker_01]);
+
+  useEffect(() => {
+    console.log('marker_02: ', state.information.marker_02);
+  }, [state.information.marker_02]);
+
+  useEffect(() => {
+    console.log('marker_03: ', state.information.marker_03);
+  }, [state.information.marker_03]);
+
+  useEffect(() => {
+    console.log('marker_04: ', state.information.marker_04);
+  }, [state.information.marker_04]);
+
+  useEffect(() => {
+    console.log('marker_05: ', state.information.marker_05);
+  }, [state.information.marker_05]);
+
+  useEffect(() => {
+    console.log('marker_06: ', state.information.marker_06);
+  }, [state.information.marker_06]);
+
+  useEffect(() => {
+    console.log('marker_07: ', state.information.marker_07);
+  }, [state.information.marker_07]);
+
+  useEffect(() => {
+    console.log('marker_08: ', state.information.marker_08);
+  }, [state.information.marker_08]);
+
+  useEffect(() => {
+    console.log('marker_09: ', state.information.marker_09);
+  }, [state.information.marker_09]);
+
+  useEffect(() => {
+    console.log('marker_10: ', state.information.marker_10);
+  }, [state.information.marker_01]);
+
+  useEffect(() => {
+    console.log('marker_11: ', state.information.marker_11);
+  }, [state.information.marker_01]);
+
+  useEffect(() => {
+    console.log('marker_12: ', state.information.marker_12);
+  }, [state.information.marker_12]);
+
+  useEffect(() => {
+    console.log('travel_01: ', state.information.travel_01);
+  }, [state.information.travel_01]);
+
+  useEffect(() => {
+    console.log('travel_02: ', state.information.travel_02);
+  }, [state.information.travel_02]);
+
+  useEffect(() => {
+    console.log('travel_03: ', state.information.travel_03);
+  }, [state.information.travel_03]);
+
+  useEffect(() => {
+    console.log('travel_04: ', state.information.travel_04);
+  }, [state.information.travel_04]);
+
+  useEffect(() => {
+    console.log('travel_05: ', state.information.travel_05);
+  }, [state.information.travel_05]);
+
+  useEffect(() => {
+    console.log('travel_06: ', state.information.travel_06);
+  }, [state.information.travel_06]);
+
+  useEffect(() => {
+    console.log('travel_07: ', state.information.travel_07);
+  }, [state.information.travel_07]);
+
+  useEffect(() => {
+    console.log('travel_08: ', state.information.travel_08);
+  }, [state.information.travel_08]);
+
+  useEffect(() => {
+    console.log('travel_09: ', state.information.travel_09);
+  }, [state.information.travel_09]);
+
+  useEffect(() => {
+    console.log('travel_10: ', state.information.travel_10);
+  }, [state.information.travel_10]);
 
   // Marker hiện tại
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
-
     const { lat, lon } = state.information;
     if (!lat || !lon) return;
 

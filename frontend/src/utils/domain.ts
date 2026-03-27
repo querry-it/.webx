@@ -1,2 +1,1 @@
-export const domain =
-  'https://propose-arbitration-bumper-brad.trycloudflare.com';
+export const domain = 'https://ppc-les-seemed-fellowship.trycloudflare.com';

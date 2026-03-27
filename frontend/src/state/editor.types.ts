@@ -10,7 +10,33 @@ export interface InformationState {
   lon: number | null;
   point_start: { lat: number; lon: number } | null;
   point_end: { lat: number; lon: number } | null;
-  hanoi_boundary_map: boolean;
+  class_01: boolean | null;
+  class_02: boolean | null;
+  class_03: boolean | null;
+  class_04: boolean | null;
+  class_05: boolean | null;
+  marker_01: boolean | null;
+  marker_02: boolean | null;
+  marker_03: boolean | null;
+  marker_04: boolean | null;
+  marker_05: boolean | null;
+  marker_06: boolean | null;
+  marker_07: boolean | null;
+  marker_08: boolean | null;
+  marker_09: boolean | null;
+  marker_10: boolean | null;
+  marker_11: boolean | null;
+  marker_12: boolean | null;
+  travel_01: boolean | null;
+  travel_02: boolean | null;
+  travel_03: boolean | null;
+  travel_04: boolean | null;
+  travel_05: boolean | null;
+  travel_06: boolean | null;
+  travel_07: boolean | null;
+  travel_08: boolean | null;
+  travel_09: boolean | null;
+  travel_10: boolean | null;
 }
 
 export interface SidebarState {
