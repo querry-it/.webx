@@ -1,9 +1,11 @@
 import L from 'leaflet';
 import { createRoot } from 'react-dom/client';
 import { Locate } from 'lucide-react';
+import { createLogoMarker } from '../components/icon';
 
-export default function LocationControl(map) {
+export default function LocationControl(map: L.Map) {
   let root = null;
+  let currentMarker: L.Marker | null = null;
   const control = L.control({ position: 'bottomright' });
 
   const onLocationError = () => {
@@ -28,10 +30,19 @@ export default function LocationControl(map) {
       map.once('locationfound', (e) => {
         const { latitude, longitude } = e;
 
-        console.log('Lat:', latitude, 'Lon:', longitude);
+        if (currentMarker && map.hasLayer(currentMarker)) {
+          map.removeLayer(currentMarker);
+        }
 
-        // Hiển thị marker với icon mặc định của Leaflet
-        L.marker([latitude, longitude]).addTo(map);
+        const icon = createLogoMarker(
+          'http://localhost:5000/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp', // Icon mặc định
+          [35, 35],
+          2,
+          '#2563eb',
+          2,
+        );
+
+        currentMarker = L.marker([latitude, longitude], { icon }).addTo(map);
       });
     };
 
@@ -43,6 +54,9 @@ export default function LocationControl(map) {
 
   control.onRemove = () => {
     map.off('locationerror', onLocationError);
+    if (currentMarker && map.hasLayer(currentMarker)) {
+      map.removeLayer(currentMarker);
+    }
     root?.unmount();
   };
 

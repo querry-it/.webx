@@ -1,0 +1,1539 @@
+[
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.94058",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7810649, 21.0399809],
+          [105.7809697, 21.0405879]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "935868525",
+      "code": 5131,
+      "fclass": "motorway_link",
+      "name": "",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 60,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.9529",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.797789, 21.0570595],
+          [105.7977887, 21.0572434],
+          [105.7977852, 21.0593291],
+          [105.7977849, 21.05953]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "496002605",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Đường Xuân Tảo",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.128513",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8182137, 21.0130422],
+          [105.8185435, 21.0133935],
+          [105.8188156, 21.0136887],
+          [105.8188893, 21.0137777]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "962493748",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Yên Lãng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.31781",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7963674, 21.0003023],
+          [105.7959836, 21.0008365],
+          [105.7958144, 21.0010698],
+          [105.7951723, 21.0018602]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "600535040",
+      "code": 5131,
+      "fclass": "motorway_link",
+      "name": "Lối xuống Trần Duy Hưng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 60,
+      "layer": 2,
+      "bridge": "T",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.4128",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8054909, 21.0340445],
+          [105.8055604, 21.0339967],
+          [105.805603, 21.0339702],
+          [105.8058243, 21.0338076],
+          [105.8060455, 21.0336509],
+          [105.8064206, 21.0333888]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "202516833",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Đào Tấn",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.657",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8474309, 21.0132433],
+          [105.847322, 21.0132304],
+          [105.8471999, 21.013217],
+          [105.8471157, 21.0132215],
+          [105.8470557, 21.0132352],
+          [105.8469783, 21.0132688],
+          [105.8468483, 21.0133443],
+          [105.8467252, 21.0134149],
+          [105.8466479, 21.0134641]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "36080987",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Tô Hiến Thành",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.4978",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8436347, 21.0174211],
+          [105.8434041, 21.0174454],
+          [105.8424984, 21.0175268]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "221152998",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Trần Nhân Tông",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.182840",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7830284, 20.9856974],
+          [105.7825051, 20.9856531],
+          [105.7824165, 20.9856633]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1374431425",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Nguyễn Văn Lộc",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50808",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8624897, 20.9962471],
+          [105.8626334, 20.9962951],
+          [105.862677, 20.9963102],
+          [105.8628421, 20.9963674]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "705548642",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Phố Minh Khai",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.100104",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8547012, 21.0028119],
+          [105.8546386, 21.0028168],
+          [105.8543896, 21.002836],
+          [105.8538097, 21.0028876],
+          [105.853497, 21.002914],
+          [105.8530321, 21.0029532],
+          [105.8528302, 21.002972],
+          [105.8526601, 21.0029844],
+          [105.8523702, 21.0030067],
+          [105.8523523, 21.0030081],
+          [105.851983, 21.0030453],
+          [105.8513949, 21.0030976],
+          [105.8510591, 21.0031333],
+          [105.8510241, 21.0031371]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "946030638",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Thanh Nhàn",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 50,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.49473",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8723518, 21.0030253],
+          [105.8720925, 21.003107],
+          [105.8719843, 21.0031493],
+          [105.8718029, 21.0032203],
+          [105.8715859, 21.0033262],
+          [105.871403, 21.0034395],
+          [105.8711226, 21.0036027],
+          [105.8707185, 21.003868],
+          [105.8704462, 21.0041123],
+          [105.8701139, 21.0044545],
+          [105.8696973, 21.0048917]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "702791127",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Nguyễn Khoái",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.54773",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8149733, 21.0081672],
+          [105.8147835, 21.0083622]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "711366275",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Láng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.10221",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7892558, 21.051932],
+          [105.789278, 21.0518809]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "503707346",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Trần Cung",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 1,
+      "bridge": "T",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.164700",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8413677, 20.9959883],
+          [105.8413721, 20.996156],
+          [105.8413897, 20.9968235]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1290402078",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Giải Phóng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.157418",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8414668, 21.0242204],
+          [105.8416014, 21.0241751],
+          [105.8420916, 21.0240237],
+          [105.8421089, 21.0240184],
+          [105.8427541, 21.0238309]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1221932053",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Trần Hưng Đạo",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.143776",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7979717, 21.0626295],
+          [105.7979452, 21.0627044],
+          [105.7979242, 21.0627305]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1128183494",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50595",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8680533, 21.0064097],
+          [105.868578, 21.0058805]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "704988348",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Nguyễn Khoái",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.183931",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8055902, 21.0645168],
+          [105.8054505, 21.0643004],
+          [105.8050917, 21.063735],
+          [105.804767, 21.0632095],
+          [105.80469, 21.063017]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1412959575",
+      "code": 5112,
+      "fclass": "trunk",
+      "name": "Đường Võ Chí Công",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.128945",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7835488, 21.0601892],
+          [105.7836224, 21.0603313],
+          [105.7837915, 21.0609846],
+          [105.7838531, 21.061227],
+          [105.7841954, 21.0625749],
+          [105.7846308, 21.0643399]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "967878676",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Phạm Văn Đồng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 60,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.54406",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8310576, 21.0172221],
+          [105.8309379, 21.0173242],
+          [105.8305145, 21.0176889],
+          [105.8303433, 21.0178598],
+          [105.8301743, 21.0180171],
+          [105.8301196, 21.0180675]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "710307672",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Phố Xã Đàn",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 60,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.7",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.842177, 21.0188567],
+          [105.8422982, 21.0188563],
+          [105.8435559, 21.0188748],
+          [105.8440234, 21.0188761]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "9964663",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Nguyễn Thượng Hiền",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.65484",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7975454, 21.0439572],
+          [105.7975313, 21.0429957],
+          [105.7975304, 21.0428548]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "883126622",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Nguyễn Văn Huyên",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50628",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7923398, 21.0042272],
+          [105.7925843, 21.0041968],
+          [105.7929092, 21.0040969]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "704994515",
+      "code": 5133,
+      "fclass": "primary_link",
+      "name": "",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.120557",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7984798, 21.0461069],
+          [105.7993495, 21.0461197],
+          [105.8003978, 21.0461251],
+          [105.8007895, 21.0461272],
+          [105.8009458, 21.046128],
+          [105.8009703, 21.0461281],
+          [105.8011079, 21.0461288],
+          [105.8013006, 21.0461299],
+          [105.8013472, 21.0461301],
+          [105.8014341, 21.0461317],
+          [105.8018385, 21.0461327],
+          [105.8018807, 21.0461328],
+          [105.8019033, 21.0461329],
+          [105.8019223, 21.046133],
+          [105.8019628, 21.0461332],
+          [105.8023712, 21.0461355],
+          [105.8025166, 21.0461361],
+          [105.8026171, 21.0461366],
+          [105.8030611, 21.0461363],
+          [105.8032661, 21.0461361],
+          [105.8042263, 21.0461347],
+          [105.8043671, 21.0461345],
+          [105.8048071, 21.0461339],
+          [105.8049529, 21.0461337],
+          [105.8050187, 21.0461308],
+          [105.8052348, 21.0461334],
+          [105.8053961, 21.0461203],
+          [105.8055269, 21.0461122]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "954183036",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Đường Hoàng Quốc Việt",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50332",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.841088, 20.9951327],
+          [105.8410825, 20.9947723]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "704595016",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Giải Phóng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.49087",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8045429, 21.0158073],
+          [105.8046613, 21.0157022]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "701436151",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Láng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.1634",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8456502, 21.0050332],
+          [105.8456383, 21.0048584],
+          [105.8456327, 21.0047355],
+          [105.8456261, 21.0046923],
+          [105.8456056, 21.0046043],
+          [105.8455641, 21.004436],
+          [105.8454383, 21.004262],
+          [105.8453124, 21.0041101],
+          [105.8451651, 21.0039695],
+          [105.8450193, 21.003853],
+          [105.8449428, 21.0037839],
+          [105.8448777, 21.0036982],
+          [105.8448111, 21.0035933],
+          [105.8447504, 21.0034945],
+          [105.8447262, 21.0034402],
+          [105.8446991, 21.0033784],
+          [105.8446805, 21.0032602],
+          [105.8446744, 21.0031261],
+          [105.8446758, 21.0030107],
+          [105.8446945, 21.0028504],
+          [105.8447285, 21.0025977],
+          [105.8447374, 21.0025379],
+          [105.8447624, 21.002369],
+          [105.8447894, 21.0022024],
+          [105.8448228, 21.0021152],
+          [105.8448651, 21.0020399],
+          [105.844914, 21.0019552],
+          [105.8449504, 21.0018846],
+          [105.8449863, 21.0018106]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "37731777",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Trần Đại Nghĩa",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50341",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8517969, 20.983651],
+          [105.8516054, 20.9836574],
+          [105.8512146, 20.9836705],
+          [105.8507136, 20.9836999],
+          [105.8505339, 20.9837104]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "704597574",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Phố Tân Mai",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.160",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8517888, 20.9834709],
+          [105.8519841, 20.9834696],
+          [105.8520994, 20.9834689],
+          [105.852591, 20.9834657],
+          [105.8529916, 20.9834634],
+          [105.8535825, 20.9834595],
+          [105.8539957, 20.9834644]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "11856385",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Phố Tân Mai",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.54865",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8289753, 21.016992],
+          [105.8289464, 21.0169438],
+          [105.8286659, 21.0164755],
+          [105.8283788, 21.0159989],
+          [105.8278604, 21.0151389],
+          [105.8278134, 21.0150609]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "711492060",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Phố Nguyễn Lương Bằng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50179",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8325097, 20.967177],
+          [105.8316139, 20.9676219],
+          [105.8299891, 20.9684835],
+          [105.8278688, 20.9695887],
+          [105.827053, 20.9700103],
+          [105.82664, 20.9702177],
+          [105.8261749, 20.9704148],
+          [105.8256468, 20.9706094],
+          [105.8250666, 20.9707897],
+          [105.8243735, 20.9710026],
+          [105.8220065, 20.9717273],
+          [105.8196273, 20.9724568],
+          [105.8191393, 20.9726332],
+          [105.8186107, 20.9728456],
+          [105.8178746, 20.9732369],
+          [105.8173287, 20.973569],
+          [105.816811, 20.9739244],
+          [105.8164634, 20.9742005],
+          [105.8161266, 20.9744961],
+          [105.8157852, 20.9748254],
+          [105.8154155, 20.9752151],
+          [105.8148909, 20.9758638],
+          [105.8138005, 20.9773509],
+          [105.8071705, 20.9863334]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "704031412",
+      "code": 5111,
+      "fclass": "motorway",
+      "name": "Đường cao tốc Vành đai 3 TP. Hà Nội",
+      "ref": "CT.37",
+      "oneway": "F",
+      "maxspeed": 80,
+      "layer": 2,
+      "bridge": "T",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.54492",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.833274, 21.0079399],
+          [105.8331555, 21.0078656],
+          [105.8327433, 21.0075279]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "711031659",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Phạm Ngọc Thạch",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.26161",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8532306, 21.025479],
+          [105.8532826, 21.025682],
+          [105.8533274, 21.0259064],
+          [105.8533541, 21.0260809],
+          [105.8534544, 21.0266765],
+          [105.8535215, 21.0270746],
+          [105.8535679, 21.0273306],
+          [105.8536089, 21.0276169],
+          [105.8536483, 21.0278901]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "599200595",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Đinh Tiên Hoàng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50606",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7889516, 21.0089789],
+          [105.7895192, 21.0082711],
+          [105.7900125, 21.0076602],
+          [105.7902372, 21.0074531]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "704990514",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Phạm Hùng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.51192",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8655067, 21.047481],
+          [105.8656045, 21.0475113],
+          [105.8655102, 21.0479897],
+          [105.8654743, 21.0481911],
+          [105.8654515, 21.048291],
+          [105.8654143, 21.0484736],
+          [105.8653706, 21.0486912],
+          [105.8653595, 21.0488592],
+          [105.8653541, 21.0490072]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "706525308",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Đường Ngọc Thụy",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.147008",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8659097, 21.0087776],
+          [105.8658625, 21.0088254]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1165355229",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Nguyễn Khoái",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.8953",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8289804, 21.0005756],
+          [105.829059, 21.0008036]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "464925870",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Tôn Thất Tùng",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.183841",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8105007, 21.0103209],
+          [105.8106768, 21.0102154]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1411417355",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Đường Nguyễn Ngọc Vũ",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.124594",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7832492, 20.9821855],
+          [105.7834085, 20.9823099]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "955842632",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Phố Nguyễn Văn Lộc",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.51184",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8645051, 21.050557],
+          [105.8644121, 21.0506475],
+          [105.8643728, 21.050685]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "706521723",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Đường Ngọc Thụy",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.2075",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7915176, 21.0788625],
+          [105.7917624, 21.0787671],
+          [105.7918533, 21.0787348],
+          [105.7920541, 21.0785789],
+          [105.7921359, 21.0785153],
+          [105.7922563, 21.0784146],
+          [105.7927166, 21.0780717],
+          [105.793035, 21.0778902],
+          [105.7931626, 21.0778175],
+          [105.7932901, 21.0777513],
+          [105.7936201, 21.0775964],
+          [105.7943546, 21.0773143],
+          [105.7946737, 21.0771906]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "73814334",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Promenade Road",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.1637",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8137114, 21.0090491],
+          [105.8134114, 21.0087166]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "37734139",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Cầu Mọc",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 1,
+      "bridge": "T",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.54318",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.873185, 21.035084],
+          [105.8728378, 21.0353082]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "710191403",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Long Biên - Xuân Quan",
+      "ref": "ĐT.195",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.50918",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8148097, 21.0090667],
+          [105.8151113, 21.0094149]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "705792495",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Yên Lãng",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.168194",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8150487, 21.0165795],
+          [105.8150977, 21.0166733],
+          [105.8151942, 21.016811]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1297912942",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Phố Láng Hạ",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.1544",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8050648, 21.0345518],
+          [105.8049688, 21.0346196],
+          [105.8049524, 21.0346327]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "37447644",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Đường Nguyễn Khánh Toàn",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.155730",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7919663, 20.9937503],
+          [105.7914306, 20.9940572],
+          [105.7908694, 20.9943692],
+          [105.7908357, 20.9943879],
+          [105.7903971, 20.9946629],
+          [105.7902791, 20.9947345]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1212693217",
+      "code": 5115,
+      "fclass": "tertiary",
+      "name": "Đường Lương Thế Vinh",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 50,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.52634",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8103806, 21.0098132],
+          [105.8104036, 21.009845],
+          [105.8104261, 21.0098763]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "707829404",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "Đường Lê Văn Lương",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.143764",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.7979242, 21.0627305],
+          [105.7978804, 21.0627851],
+          [105.7977871, 21.0628443],
+          [105.7977213, 21.0628606]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "1128183482",
+      "code": 5113,
+      "fclass": "primary",
+      "name": "",
+      "ref": "",
+      "oneway": "F",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  },
+  {
+    "type": "Feature",
+    "id": "hanoi_roads_clip.6797",
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [105.8348012, 20.982043],
+          [105.8348537, 20.9817479],
+          [105.8349188, 20.9814576],
+          [105.8349682, 20.9812237],
+          [105.8350394, 20.9808879],
+          [105.835115, 20.9805162],
+          [105.835146, 20.9803499],
+          [105.8351752, 20.9801832],
+          [105.8352114, 20.9799967],
+          [105.8352379, 20.9798623],
+          [105.8352788, 20.9796643],
+          [105.8352838, 20.9796373],
+          [105.8354067, 20.9790582],
+          [105.835416, 20.9790158],
+          [105.8354441, 20.9788883],
+          [105.8354774, 20.9787124],
+          [105.8354879, 20.9786228],
+          [105.8354979, 20.9784156],
+          [105.8354953, 20.9782856],
+          [105.8354783, 20.9782433],
+          [105.8354536, 20.978205],
+          [105.8353728, 20.9781443],
+          [105.8350751, 20.9779428],
+          [105.8347297, 20.9777353],
+          [105.8339601, 20.9772667],
+          [105.8328779, 20.9766078],
+          [105.8324639, 20.9763619],
+          [105.8324276, 20.9763376],
+          [105.8322859, 20.9762426],
+          [105.8321465, 20.9761421],
+          [105.8320452, 20.9760007],
+          [105.8320003, 20.9759077],
+          [105.8319543, 20.9758034],
+          [105.8316973, 20.9751581],
+          [105.8315822, 20.9749457],
+          [105.8314205, 20.974749],
+          [105.8308896, 20.9742279],
+          [105.8305381, 20.9739017],
+          [105.830455, 20.9738414],
+          [105.830376, 20.9737962],
+          [105.8302424, 20.9737304],
+          [105.830077, 20.9736722],
+          [105.8299183, 20.9736366],
+          [105.8297409, 20.9736133],
+          [105.8295683, 20.9736104],
+          [105.8293998, 20.9736226],
+          [105.8291802, 20.9736636],
+          [105.8288455, 20.9737363],
+          [105.8286997, 20.9737472],
+          [105.8285983, 20.9737414],
+          [105.8285142, 20.9737306],
+          [105.8282615, 20.9736249]
+        ]
+      ]
+    },
+    "geometry_name": "the_geom",
+    "properties": {
+      "osm_id": "317219071",
+      "code": 5114,
+      "fclass": "secondary",
+      "name": "Phố Trịnh Đình Cửu",
+      "ref": "",
+      "oneway": "B",
+      "maxspeed": 0,
+      "layer": 0,
+      "bridge": "F",
+      "tunnel": "F"
+    }
+  }
+]

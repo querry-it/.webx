@@ -1,12 +1,10 @@
 import L from 'leaflet';
 
-// lưu layer theo map để tránh conflict nếu dùng nhiều map
 const layerMap = new WeakMap();
 
 export function GeoLayerControl(map, data) {
   if (!map || !data) return () => {};
 
-  // Nếu đã có layer cho map này → xóa trước khi tạo mới
   const oldLayer = layerMap.get(map);
   if (oldLayer && map.hasLayer(oldLayer)) {
     map.removeLayer(oldLayer);
@@ -38,11 +36,9 @@ export function toggleGeoLayer(map, data, show) {
   const existing = layerMap.get(map);
 
   if (show) {
-    // đã bật rồi → không làm gì
     if (existing && map.hasLayer(existing)) return;
     GeoLayerControl(map, data);
   } else {
-    // tắt layer
     if (existing && map.hasLayer(existing)) {
       map.removeLayer(existing);
       layerMap.delete(map);

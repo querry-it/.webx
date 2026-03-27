@@ -39,7 +39,7 @@ export default function SupportComponent() {
     { id: 8, name: 'Bến xe' },
     { id: 9, name: 'Quán cà phê' },
     { id: 10, name: 'Cửa hàng' },
-    { id: 11, name: 'Khách sạn' },
+    { id: 11, name: 'Nhà hàng' },
     { id: 12, name: 'Bến tàu điện' },
   ];
 

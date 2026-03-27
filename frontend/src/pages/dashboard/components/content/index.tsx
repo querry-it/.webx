@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import L, { map } from 'leaflet';
+import L from 'leaflet';
 import 'leaflet-control-geocoder';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 import 'leaflet-routing-machine';
@@ -8,11 +8,18 @@ import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
 import { useEditor } from '../../../../state/useEditor';
 import HaNoiGeoMap from './../../../../assets/HaNoiGeoMap.json';
+import DistMap from './../../../../assets/distmap_00.1.0.json';
+import GeoJson from './../../../../assets/geojson_07.1.1.json';
+import TrafficJson from './../../../../assets/random_roads.json';
 import * as options from './components';
 import styles from './content.module.css';
 import * as control from './controls';
 import { DrawControl, clearRoute } from './controls/draw-control';
 import { toggleGeoLayer } from './controls/geomap-control';
+import { toggleDistMap } from './controls/dist-control';
+import { toggleGeoJSONLayer } from './controls/geojson-control';
+import { toggleTrafficLayer } from './controls/traffic-control';
+import { toggleMarkerLayer } from './controls/points-control';
 
 const cx = classNames.bind(styles);
 
@@ -49,15 +56,24 @@ export default function Content() {
   }, [state.information.class_01]);
 
   useEffect(() => {
-    console.log('class_02: ', state.information.class_02);
+    const map = mapRef.current;
+    if (!map) return;
+
+    toggleDistMap(map, DistMap, state.information.class_02);
   }, [state.information.class_02]);
 
   useEffect(() => {
-    console.log('class_03: ', state.information.class_03);
+    const map = mapRef.current;
+    if (!map) return;
+
+    toggleGeoJSONLayer(map, GeoJson, state.information.class_03);
   }, [state.information.class_03]);
 
   useEffect(() => {
-    console.log('class_04: ', state.information.class_04);
+    const map = mapRef.current;
+    if (!map) return;
+
+    toggleTrafficLayer(map, TrafficJson, state.information.class_04);
   }, [state.information.class_04]);
 
   useEffect(() => {
@@ -65,51 +81,171 @@ export default function Content() {
   }, [state.information.class_05]);
 
   useEffect(() => {
-    console.log('marker_01: ', state.information.marker_01);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'history', state.information.marker_01);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'history', false);
+    };
   }, [state.information.marker_01]);
 
   useEffect(() => {
-    console.log('marker_02: ', state.information.marker_02);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'nature', state.information.marker_02);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'nature', false);
+    };
   }, [state.information.marker_02]);
 
   useEffect(() => {
-    console.log('marker_03: ', state.information.marker_03);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'museum', state.information.marker_03);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'museum', false);
+    };
   }, [state.information.marker_03]);
 
   useEffect(() => {
-    console.log('marker_04: ', state.information.marker_04);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'architecture', state.information.marker_04);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'architecture', false);
+    };
   }, [state.information.marker_04]);
 
   useEffect(() => {
-    console.log('marker_05: ', state.information.marker_05);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'street', state.information.marker_05);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'street', false);
+    };
   }, [state.information.marker_05]);
 
   useEffect(() => {
-    console.log('marker_06: ', state.information.marker_06);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'park', state.information.marker_06);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'park', false);
+    };
   }, [state.information.marker_06]);
 
   useEffect(() => {
-    console.log('marker_07: ', state.information.marker_07);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'village', state.information.marker_07);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'village', false);
+    };
   }, [state.information.marker_07]);
 
   useEffect(() => {
-    console.log('marker_08: ', state.information.marker_08);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'bus', state.information.marker_08);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'bus', false);
+    };
   }, [state.information.marker_08]);
 
   useEffect(() => {
-    console.log('marker_09: ', state.information.marker_09);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'cafe', state.information.marker_09);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'cafe', false);
+    };
   }, [state.information.marker_09]);
 
   useEffect(() => {
-    console.log('marker_10: ', state.information.marker_10);
-  }, [state.information.marker_01]);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'shop', state.information.marker_10);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'shop', false);
+    };
+  }, [state.information.marker_10]);
 
   useEffect(() => {
-    console.log('marker_11: ', state.information.marker_11);
-  }, [state.information.marker_01]);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'restaurant', state.information.marker_11);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'restaurant', false);
+    };
+  }, [state.information.marker_11]);
 
   useEffect(() => {
-    console.log('marker_12: ', state.information.marker_12);
+    const map = mapRef.current;
+    if (!map) return;
+
+    const toggle = async () => {
+      await toggleMarkerLayer(map, 'metro', state.information.marker_12);
+    };
+    toggle();
+
+    return () => {
+      toggleMarkerLayer(map, 'metro', false);
+    };
   }, [state.information.marker_12]);
 
   useEffect(() => {
@@ -152,7 +288,6 @@ export default function Content() {
     console.log('travel_10: ', state.information.travel_10);
   }, [state.information.travel_10]);
 
-  // Marker hiện tại
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -163,7 +298,6 @@ export default function Content() {
     return cleanupMarker;
   }, [state.information.lat, state.information.lon]);
 
-  // Draw route khi point_start và point_end thay đổi
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -171,13 +305,11 @@ export default function Content() {
     const start = state.information.point_start;
     const end = state.information.point_end;
 
-    // Nếu 1 trong 2 điểm null → xóa route
     if (!start || !end) {
       clearRoute(map);
       return;
     }
 
-    // Nếu 2 điểm trùng nhau → cảnh báo
     if (start.lat === end.lat && start.lon === end.lon) {
       alert('Điểm bắt đầu và điểm đến không thể giống nhau!');
       return;
@@ -193,13 +325,11 @@ export default function Content() {
 
     draw();
 
-    // Cleanup khi effect chạy lại hoặc unmount
     return () => {
       clearRoute(map);
     };
   }, [state.information.point_start, state.information.point_end]);
 
-  // Cập nhật các option
   useEffect(() => {
     setOption(state.navbar_x.activeX);
     setDynamic(state.navbar_x.dynamic);
@@ -209,7 +339,6 @@ export default function Content() {
     setLocationId(state.information.locationid);
   }, [state.information.locationid]);
 
-  // Reset point chỉ khi activeX thay đổi (đổi tab/mode)
   useEffect(() => {
     setState('SET_INFORMATION', 'point_start', null);
     setState('SET_INFORMATION', 'point_end', null);

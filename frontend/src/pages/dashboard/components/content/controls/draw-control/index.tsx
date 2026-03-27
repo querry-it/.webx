@@ -115,7 +115,7 @@ export async function DrawControl(
       const iconUrl =
         'http://localhost:5000/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp';
       return L.marker(wp.latLng, {
-        icon: createLogoMarker(iconUrl, [35, 35], 2, '#fff', 2),
+        icon: createLogoMarker(iconUrl, [35, 35], 2, '#2563eb', 2),
       });
     },
   }).addTo(map);
