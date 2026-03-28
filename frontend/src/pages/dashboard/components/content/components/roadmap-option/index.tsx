@@ -57,6 +57,22 @@ export default function RoadMapComponent() {
   ]);
 
   useEffect(() => {
+    if (!state.navbar_x.point_end) return;
+    const { lat, lon, locationId, value } = state.navbar_x.point_end;
+    setPlaces([
+      { ...places[0], value: '', lat: null, lon: null, locationId: null },
+      {
+        ...places[1],
+        value: value,
+        lat: lat,
+        lon: lon,
+        locationId: locationId,
+      },
+    ]);
+    console.log('Roadmap: ', lat, lon);
+  }, [state.navbar_x.point_end]);
+
+  useEffect(() => {
     const change = setTimeout(() => {
       if (isUUID(places[0].locationId!) && isUUID(places[1].locationId!)) {
         setState('SET_INFORMATION', 'point_start', {
@@ -68,6 +84,11 @@ export default function RoadMapComponent() {
           lon: places[1].lon!,
         });
       }
+      console.log(
+        'state: ',
+        state.information.point_end,
+        state.information.point_start,
+      );
     }, 300);
     return () => clearTimeout(change);
   }, [places]);
@@ -92,7 +113,11 @@ export default function RoadMapComponent() {
   useEffect(() => {
     setFetchModel('history');
     fetchHistory(setLocations);
-    pointEndRef.current?.focus();
+    if (places[0].value) {
+      pointEndRef.current?.focus();
+    } else {
+      pointStartRef.current?.focus();
+    }
     setFocus(2);
   }, []);
 
@@ -150,6 +175,12 @@ export default function RoadMapComponent() {
             setState('SET_NAVBAR_X', 'activeX', null);
             setState('SET_INFORMATION', 'point_start', null);
             setState('SET_INFORMATION', 'point_end', null);
+            setState(
+              'SET_NAVBAR_X',
+              'clear_query',
+              !state.navbar_x.clear_query,
+            );
+            setState('SET_NAVBAR_X', 'point_end', null);
             clearFocus(1);
             clearFocus(2);
           }}

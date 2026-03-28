@@ -1,5 +1,6 @@
 import L from 'leaflet';
 import { createLogoMarker } from '../components/icon';
+import { domain } from '../../../../../../utils/domain';
 
 export default function MarkerControl(
   map: L.Map,
@@ -18,7 +19,7 @@ export default function MarkerControl(
 
   const icon = createLogoMarker(
     options?.imgUrl ||
-      'http://localhost:5000/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp',
+      `${domain}/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp`,
     options?.size || [35, 35],
     options?.padding ?? 2,
     options?.borderColor || '#2563eb',

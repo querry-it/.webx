@@ -2,6 +2,7 @@ import L from 'leaflet';
 import { createRoot } from 'react-dom/client';
 import { Locate } from 'lucide-react';
 import { createLogoMarker } from '../components/icon';
+import { domain } from '../../../../../../utils/domain';
 
 export default function LocationControl(map: L.Map) {
   let root = null;
@@ -35,7 +36,7 @@ export default function LocationControl(map: L.Map) {
         }
 
         const icon = createLogoMarker(
-          'http://localhost:5000/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp', // Icon mặc định
+          `${domain}/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp`,
           [35, 35],
           2,
           '#2563eb',

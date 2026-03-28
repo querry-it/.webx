@@ -44,6 +44,8 @@ export const initialEditorState: EditorState = {
     open: false,
   },
   navbar_x: {
+    point_end: null,
+    clear_search: false,
     location_search: null,
     detail: false,
     brand: 'review',

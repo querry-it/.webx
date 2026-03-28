@@ -1,9 +1,7 @@
 import L from 'leaflet';
 
-// Lưu layer theo map để tránh conflict
 const layerMap = new WeakMap();
 
-// Toggle layer GeoJSON giống class_01
 export function toggleGeoJSONLayer(map, data, show) {
   if (!map || !data) return;
 

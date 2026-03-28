@@ -54,6 +54,13 @@ export interface Location {
 }
 
 export interface NavbarXState {
+  point_end: {
+    lat: number;
+    lon: number;
+    locationId: string;
+    value: string;
+  } | null;
+  clear_query: boolean;
   location_search: Location | null;
   detail: boolean;
   brand: string;

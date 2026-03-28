@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { domain } from './domain';
 
 export const fetchKeyword = async (
   keyword: string,
@@ -10,9 +11,7 @@ export const fetchKeyword = async (
   }
 
   try {
-    const response = await fetch(
-      `http://localhost:5000/locations/search/${keyword}`,
-    );
+    const response = await fetch(`${domain}/locations/search/${keyword}`);
 
     if (!response.ok) {
       throw new Error('Network error');

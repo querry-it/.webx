@@ -2,6 +2,7 @@ import L from 'leaflet';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-polylinedecorator';
 import { createLogoMarker } from '../components/icon';
+import { domain } from '../../../../../../utils/domain';
 
 const Style = {
   color: 'blueviolet',
@@ -78,6 +79,8 @@ export async function DrawControl(
     return;
   }
 
+  console.log(point_start, point_end);
+
   const isValid = (p: any) => p && p.lat != null && p.lon != null;
 
   const validStart = isValid(point_start) ? point_start : null;
@@ -112,8 +115,7 @@ export async function DrawControl(
     show: false,
     fitSelectedRoutes: false,
     createMarker: (i, wp) => {
-      const iconUrl =
-        'http://localhost:5000/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp';
+      const iconUrl = `${domain}/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp`;
       return L.marker(wp.latLng, {
         icon: createLogoMarker(iconUrl, [35, 35], 2, '#2563eb', 2),
       });

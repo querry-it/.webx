@@ -49,6 +49,12 @@ export default function SearchComponent() {
     });
   };
 
+  useEffect(() => {
+    if (state.navbar_x.clear_query) {
+      setQuery('');
+    }
+  }, [state.navbar_x.clear_query]);
+
   const blockList = [
     'save',
     'history',
@@ -450,6 +456,7 @@ export default function SearchComponent() {
 
                     const json = await res.json();
                     setState('SET_NAVBAR_X', 'location_search', json.data);
+                    setState('SET_INFORMATION', 'locationid', null);
                     setState('SET_NAVBAR_X', 'activeX', 'result');
                   } catch (err) {
                     console.error('fetchLocationsByCategory error:', err);
