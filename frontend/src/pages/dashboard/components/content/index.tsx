@@ -411,7 +411,6 @@ export default function Content() {
     };
   }, [state.information.travel_06]);
 
-  // travel_07
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -438,7 +437,6 @@ export default function Content() {
     };
   }, [state.information.travel_07]);
 
-  // travel_08
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
