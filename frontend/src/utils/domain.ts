@@ -1,1 +1,1 @@
-export const domain = 'https://ppc-les-seemed-fellowship.trycloudflare.com';
+export const domain = 'https://information-bus-carb-clinic.trycloudflare.com';

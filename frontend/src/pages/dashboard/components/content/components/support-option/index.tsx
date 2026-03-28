@@ -153,9 +153,8 @@ export default function SupportComponent() {
     if (group === 'travel') {
       setCheckedTravel((prev) => {
         const updated = { ...prev, [id]: !prev[id] };
-        saveData('checkedTravel', updated);
+        // saveData('checkedTravel', updated);
 
-        // Dispatch trực tiếp
         if (fieldName) {
           dispatch({
             type: 'SET_INFORMATION',
