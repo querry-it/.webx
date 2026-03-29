@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { AuthService } from '../services/auth.service';
 import jwt from 'jsonwebtoken';
 import { REFRESH_SECRET_KEY } from '../constants/auth.constant';
+import { setAllow, checkAllow, clearAllow } from '../utils/accessStore';
 
 export class AuthController {
   static async register(req: Request, res: Response) {
@@ -29,8 +30,8 @@ export class AuthController {
 
       res.cookie('next-auth.rftk', refreshToken, {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax',
+        secure: true,
+        sameSite: 'none',
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -107,68 +108,57 @@ export class AuthController {
       });
     }
   }
+  // REQUEST
   static async requestForgot(req: Request, res: Response) {
-    req.session.allowForgot = true;
-
-    return res.status(200).json({
-      success: true,
-      message: 'Đã cấp quyền tới quên mật khẩu.',
-    });
+    setAllow(req.ip, 'forgot');
+    return res
+      .status(200)
+      .json({ success: true, messgae: 'Cấp quyền sang quên mật khẩu.' });
   }
   static async requestRegister(req: Request, res: Response) {
-    req.session.allowRegister = true;
-
-    return res.status(200).json({
-      success: true,
-      message: 'Đã cấp quyền tới quên mật khẩu.',
-    });
+    setAllow(req.ip, 'register');
+    return res
+      .status(200)
+      .json({ success: true, message: 'Cấp quyền sang tạo tài khoản.' });
   }
   static async requestReset(req: Request, res: Response) {
-    req.session.allowReset = true;
-
-    return res.status(200).json({
-      success: true,
-      message: 'Đã cấp quyền tới quên mật khẩu.',
-    });
+    setAllow(req.ip, 'reset');
+    return res
+      .status(200)
+      .json({ success: true, message: 'Cấp quyền sang đổi mật khẩu.' });
   }
+
   static async accessForgot(req: Request, res: Response) {
-    if (req.session?.allowForgot) {
-      return res.status(200).json({
-        success: true,
-        message: 'Đã cấp quyền tới quên mật khẩu.',
-      });
-    }
-    return res.status(404).json({
-      success: false,
-      message: 'Không có quyền tới quên mật khẩu.',
-    });
+    if (!checkAllow(req.ip, 'forgot'))
+      return res
+        .status(404)
+        .json({ success: false, message: 'Truy cập thất bại.' });
+    clearAllow(req.ip, 'forgot');
+    return res
+      .status(200)
+      .json({ success: true, message: 'Truy cập thành công' });
   }
   static async accessRegister(req: Request, res: Response) {
-    if (req.session?.allowRegister) {
-      return res.status(200).json({
-        success: true,
-        message: 'Đã cấp quyền tới quên mật khẩu.',
-      });
-    }
-    return res.status(404).json({
-      success: false,
-      message: 'Không có quyền tới quên mật khẩu.',
-    });
+    if (!checkAllow(req.ip, 'register'))
+      return res
+        .status(404)
+        .json({ success: false, message: 'Truy cập thất bại.' });
+    clearAllow(req.ip, 'register');
+    return res
+      .status(200)
+      .json({ success: true, message: 'Truy cập thành công.' });
   }
   static async accessReset(req: Request, res: Response) {
-    if (req.session?.allowReset) {
-      return res.status(200).json({
-        success: true,
-        message: 'Đã cấp quyền tới quên mật khẩu.',
-      });
-    }
-    return res.status(404).json({
-      success: false,
-      message: 'Không có quyền tới quên mật khẩu.',
-    });
+    if (!checkAllow(req.ip, 'reset'))
+      return res
+        .status(404)
+        .json({ success: false, message: 'Truy cập thất bại.' });
+    clearAllow(req.ip, 'reset');
+    return res
+      .status(200)
+      .json({ success: true, message: 'Truy cập thành công' });
   }
   static async accessHome(req: Request, res: Response) {
-    // ✅ Còn refreshToken hợp lệ = đã đăng nhập → cho vào Home
     const refresh = req.cookies?.['next-auth.rftk'];
     if (!refresh) {
       return res
@@ -231,9 +221,9 @@ export class AuthController {
     try {
       res.clearCookie('next-auth.rftk', {
         httpOnly: true,
-        secure: false, // true nếu production HTTPS
-        sameSite: 'lax',
-        path: '/', // rất quan trọng
+        secure: true,
+        sameSite: 'none',
+        path: '/',
       });
 
       return res.status(200).json({

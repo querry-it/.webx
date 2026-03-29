@@ -1,0 +1,30 @@
+.checkbox-wrapper-2 .ikxBAC {
+  appearance: none;
+  background-color: #dfe1e4;
+  border-radius: 72px;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: all 120ms ease-out;
+}
+
+.checkbox-wrapper-2 .ikxBAC::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: all 120ms ease-out;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked {
+  background-color: #4f46e5;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked::after {
+  left: 13px;
+}

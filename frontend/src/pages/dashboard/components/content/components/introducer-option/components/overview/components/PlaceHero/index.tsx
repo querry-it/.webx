@@ -5,6 +5,7 @@ import styles from './PlaceHero.module.css';
 import { useEffect, useRef } from 'react';
 const cx = classNames.bind(styles);
 import { useEditor } from '../../../../../../../../../../state/useEditor';
+import { domain } from '../../../../../../../../../../utils/domain';
 
 export default function PlaceHero({ place }) {
   const { state, dispatch } = useEditor();
@@ -20,7 +21,7 @@ export default function PlaceHero({ place }) {
   return (
     <div className={'place-hero__wrapper'}>
       <div className={cx('place__img')}>
-        <img alt="" src={`http://localhost:5000/uploads/${place.img}`} />
+        <img alt="" src={`${domain}/uploads/${place.img}`} />
       </div>
 
       <div className={cx('place__items')}>

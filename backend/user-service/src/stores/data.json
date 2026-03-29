@@ -1,0 +1,274 @@
+[
+  {
+    "id": "6f2c1a9d-4c11-4f2b-9c10-111111111111",
+    "points": [
+      {
+        "name": "Hồ Hoàn Kiếm",
+        "lat": 21.028905166449647,
+        "lon": 105.85212953788225,
+        "category": "history"
+      },
+      {
+        "name": "Văn Miếu – Quốc Tử Giám",
+        "lat": 21.028118908054335,
+        "lon": 105.83565610776836,
+        "category": "history"
+      },
+      {
+        "name": "Phố đi bộ Hồ Gươm",
+        "lat": 21.031952522627698,
+        "lon": 105.85149925793975,
+        "category": "street"
+      },
+      {
+        "name": "Nhà thờ Lớn Hà Nội",
+        "lat": 21.02859506466942,
+        "lon": 105.84885961475938,
+        "category": "architecture"
+      }
+    ]
+  },
+  {
+    "id": "7a3d2b8e-5d22-4c3b-8d21-222222222222",
+    "points": [
+      {
+        "name": "Lăng Chủ tịch Hồ Chí Minh",
+        "lat": 21.03688684466192,
+        "lon": 105.83466732955408,
+        "category": "history"
+      },
+      {
+        "name": "Chùa Một Cột",
+        "lat": 21.03568241797018,
+        "lon": 105.83343615061096,
+        "category": "history"
+      },
+      {
+        "name": "Quảng trường Ba Đình",
+        "lat": 21.036897224748014,
+        "lon": 105.83466621472766,
+        "category": "architecture"
+      },
+      {
+        "name": "Bảo tàng Hồ Chí Minh",
+        "lat": 21.03563978840977,
+        "lon": 105.83266153631034,
+        "category": "museum"
+      }
+    ]
+  },
+  {
+    "id": "8b4e3c9f-6e33-4d4c-9e32-333333333333",
+    "points": [
+      {
+        "name": "Hồ Tây",
+        "lat": 21.053304862628885,
+        "lon": 105.81678351228088,
+        "category": "nature"
+      },
+      {
+        "name": "Chùa Trấn Quốc",
+        "lat": 21.047851265531765,
+        "lon": 105.83686714981921,
+        "category": "history"
+      },
+      {
+        "name": "Đền Quán Thánh",
+        "lat": 21.043008073553594,
+        "lon": 105.83654833301784,
+        "category": "history"
+      },
+      {
+        "name": "Vườn thú Hà Nội",
+        "lat": 21.031076407485624,
+        "lon": 105.80374270428831,
+        "category": "nature"
+      }
+    ]
+  },
+  {
+    "id": "9c5f4d0a-7f44-4e5d-8f43-444444444444",
+    "points": [
+      {
+        "name": "Cầu Long Biên",
+        "lat": 21.043054984716044,
+        "lon": 105.85783712299921,
+        "category": "architecture"
+      },
+      {
+        "name": "Nhà hát Lớn Hà Nội",
+        "lat": 21.024241032371247,
+        "lon": 105.85762416292684,
+        "category": "architecture"
+      },
+      {
+        "name": "Bảo tàng Mỹ thuật Việt Nam",
+        "lat": 21.030678439942566,
+        "lon": 105.83705697690614,
+        "category": "museum"
+      },
+      {
+        "name": "Cột cờ Hà Nội",
+        "lat": 21.032548653085698,
+        "lon": 105.83979169335319,
+        "category": "history"
+      }
+    ]
+  },
+  {
+    "id": "ad6e5f1b-8055-4f6e-9f54-555555555555",
+    "points": [
+      {
+        "name": "Bảo tàng Dân tộc học Việt Nam",
+        "lat": 21.04033973154595,
+        "lon": 105.79873134314246,
+        "category": "museum"
+      },
+      {
+        "name": "Bảo tàng Lịch sử Quốc gia",
+        "lat": 21.02456736019228,
+        "lon": 105.85934117273044,
+        "category": "museum"
+      },
+      {
+        "name": "Phố sách Hà Nội",
+        "lat": 21.02502564641411,
+        "lon": 105.84791255418399,
+        "category": "street"
+      },
+      {
+        "name": "Nhà tù Hỏa Lò",
+        "lat": 21.0253009884003,
+        "lon": 105.84653163368944,
+        "category": "history"
+      }
+    ]
+  },
+  {
+    "id": "be7f601c-9166-4a7f-8b65-666666666666",
+    "points": [
+      {
+        "name": "Hoàng Thành Thăng Long",
+        "lat": 21.035222969406657,
+        "lon": 105.84025708254242,
+        "category": "history"
+      },
+      {
+        "name": "Quảng trường Đông Kinh – Nghĩa Thục",
+        "lat": 21.031907245994798,
+        "lon": 105.85157480145034,
+        "category": "architecture"
+      },
+      {
+        "name": "Đền Ngọc Sơn",
+        "lat": 21.03068236362315,
+        "lon": 105.8523712708518,
+        "category": "history"
+      },
+      {
+        "name": "Khu Phố cổ Hà Nội",
+        "lat": 21.034056773312503,
+        "lon": 105.8506372830743,
+        "category": "street"
+      }
+    ]
+  },
+  {
+    "id": "cf80112d-a277-4b8a-9c76-777777777777",
+    "points": [
+      {
+        "name": "Vườn hoa Nhật Tân",
+        "lat": 21.083918080060347,
+        "lon": 105.82231793124183,
+        "category": "nature"
+      },
+      {
+        "name": "Bãi đá sông Hồng",
+        "lat": 21.07851880403316,
+        "lon": 105.83526689221374,
+        "category": "nature"
+      },
+      {
+        "name": "Công viên Thống Nhất",
+        "lat": 21.014268520585006,
+        "lon": 105.84397256276081,
+        "category": "park"
+      },
+      {
+        "name": "Công viên Yên Sở",
+        "lat": 20.964389750963676,
+        "lon": 105.85464820601577,
+        "category": "park"
+      }
+    ]
+  },
+  {
+    "id": "d081223e-b388-4c9b-8d87-888888888888",
+    "points": [
+      {
+        "name": "Hồ Hàm Lợn",
+        "lat": 21.303061638412466,
+        "lon": 105.80099733883442,
+        "category": "nature"
+      },
+      {
+        "name": "Vườn quốc gia Ba Vì",
+        "lat": 21.081198390357343,
+        "lon": 105.36269705333123,
+        "category": "nature"
+      },
+      {
+        "name": "Đồi Bù",
+        "lat": 20.83259338424265,
+        "lon": 105.58216038920843,
+        "category": "nature"
+      }
+    ]
+  },
+  {
+    "id": "e192334f-c499-4dac-9d98-999999999999",
+    "points": [
+      {
+        "name": "Chùa Hương",
+        "lat": 20.618179993296685,
+        "lon": 105.74680434839827,
+        "category": "history"
+      },
+      {
+        "name": "Chùa Thầy",
+        "lat": 21.02301599278118,
+        "lon": 105.64628102695399,
+        "category": "history"
+      },
+      {
+        "name": "Làng gốm Bát Tràng",
+        "lat": 20.97463125899652,
+        "lon": 105.91338841791749,
+        "category": "village"
+      }
+    ]
+  },
+  {
+    "id": "f2a3445g-d5aa-4ebc-8e0a-aaaaaaaaaaaa",
+    "points": [
+      {
+        "name": "Đền thờ Hai Bà Trưng",
+        "lat": 21.156056566046036,
+        "lon": 105.73331280613137,
+        "category": "history"
+      },
+      {
+        "name": "Phủ Tây Hồ",
+        "lat": 21.055092969380695,
+        "lon": 105.81972499575247,
+        "category": "history"
+      },
+      {
+        "name": "Vườn quốc gia Ba Vì",
+        "lat": 21.081198390357343,
+        "lon": 105.36269705333123,
+        "category": "nature"
+      }
+    ]
+  }
+]

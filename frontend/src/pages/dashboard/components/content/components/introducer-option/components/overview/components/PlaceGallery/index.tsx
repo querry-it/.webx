@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './PlaceGallery.module.css';
 import { Plus, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
+import { domain } from '../../../../../../../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -79,7 +80,7 @@ export default function PlaceGallery({ place }) {
         <div className={cx('allitems')}>
           <button className={cx('items__wrapper')}>
             <div className={cx('img')}>
-              <img src={`http://localhost:5000/uploads/${place.img}`} alt="" />
+              <img src={`${domain}/uploads/${place.img}`} alt="" />
             </div>
             <div className={cx('title')}>
               <span>Tất cả</span>
@@ -89,7 +90,7 @@ export default function PlaceGallery({ place }) {
         <div className={cx('itemsnew')}>
           <button className={cx('items__wrapper')}>
             <div className={cx('img')}>
-              <img src={`http://localhost:5000/uploads/${place.img}`} alt="" />
+              <img src={`${domain}/uploads/${place.img}`} alt="" />
             </div>
             <div className={cx('title')}>
               <span>Mới nhất</span>
@@ -99,7 +100,7 @@ export default function PlaceGallery({ place }) {
         <div className={cx('image')}>
           <button className={cx('items__wrapper')}>
             <div className={cx('img')}>
-              <img src={`http://localhost:5000/uploads/${place.img}`} alt="" />
+              <img src={`${domain}/uploads/${place.img}`} alt="" />
             </div>
             <div className={cx('title')}>
               <span>Ảnh</span>
@@ -113,10 +114,7 @@ export default function PlaceGallery({ place }) {
               onClick={() => setCurrentIndex(index)}
             >
               <div className={cx('img')}>
-                <img
-                  src={`http://localhost:5000/uploads/${place.img}`}
-                  alt=""
-                />
+                <img src={`${domain}/uploads/${place.img}`} alt="" />
               </div>
               <div className={cx('title')}>
                 <span>Ảnh của tôi</span>

@@ -1,18 +1,20 @@
 .location__add {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    z-index: 1003;
-    display: flex;
-    width: 366px;
-    overflow-y: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 1003;
+  display: flex;
+  width: 366px;
+  overflow-y: auto;
+}
+
+.location__add {
+  border-right: 1px solid #cdcdcd;
 }
 
 .location__add::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
-
-

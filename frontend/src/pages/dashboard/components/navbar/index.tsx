@@ -1,10 +1,18 @@
 import classNames from 'classnames/bind';
-import { BookmarkCheck, Earth, History, Info, Layers } from 'lucide-react';
+import {
+  BookmarkCheck,
+  Earth,
+  History,
+  Info,
+  Layers,
+  Settings,
+} from 'lucide-react';
 import { act, useEffect, useRef } from 'react';
 import { useEditor } from '../../../../state/useEditor';
 import { UserHook } from '../../../../hook/user';
 import styles from './navbar.module.css';
 import { getAvatarLetters } from '../../../../utils/name';
+import { domain } from '../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -168,7 +176,7 @@ export default function Navbar() {
                   active: state.navbar_x.activeX === 'help',
                 })}
               >
-                <Info
+                <Settings
                   size={Icon.current.size}
                   strokeWidth={Icon.current.weight}
                 />
@@ -200,10 +208,7 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className={cx('img_avatar_img')}>
-                  <img
-                    src={`http://localhost:5000/uploads/${getAvatar()}`}
-                    alt=""
-                  />
+                  <img src={`${domain}/uploads/${getAvatar()}`} alt="" />
                 </div>
               )}
               {state.tooltip.logout && !state.dropdown.logout && (

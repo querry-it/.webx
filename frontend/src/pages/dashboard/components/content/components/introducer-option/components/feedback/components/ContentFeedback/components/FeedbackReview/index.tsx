@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './FeedbackReview.module.css';
 import { ThumbsUp, ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { domain } from '../../../../../../../../../../../../utils/domain';
 const cx = classNames.bind(styles);
 
 export default function FeedBackReview({ feedbacks }) {
@@ -100,7 +101,7 @@ export default function FeedBackReview({ feedbacks }) {
             <div className={cx('content-review__header')}>
               <div className={cx('avatar__wrapper')}>
                 <img
-                  src={`http://localhost:5000/uploads/${feedback.user.avatar}`}
+                  src={`${domain}/uploads/${feedback.user.avatar}`}
                   alt="Ảnh đại diện"
                 />
               </div>
@@ -180,7 +181,7 @@ export default function FeedBackReview({ feedbacks }) {
                       }
                     }}
                   >
-                    <img src={`http://localhost:5000/uploads/${img}`} alt="" />
+                    <img src={`${domain}/uploads/${img}`} alt="" />
 
                     {openGalleryId !== feedback.id &&
                       index === 3 &&

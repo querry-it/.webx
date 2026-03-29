@@ -7,6 +7,7 @@ import SubmitButton from '../../components/SubmitButton';
 import SwitchLink from '../../components/SwitchLink';
 import PasswordToggle from '../../components/PasswordToggle';
 import axios from 'axios';
+import { domain } from '../../utils/domain';
 
 interface User {
   password: string;
@@ -45,13 +46,10 @@ export default function ResetPassword() {
 
     if (checkReset === '') {
       try {
-        const response = await axios.post(
-          'http://localhost:5000/auth/reset-password',
-          {
-            userid: state.userId,
-            password: user.password,
-          },
-        );
+        const response = await axios.post(`${domain}/auth/reset-password`, {
+          userid: state.userId,
+          password: user.password,
+        });
 
         setError(response.data.message);
         navigate('/');

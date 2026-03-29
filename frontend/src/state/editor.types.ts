@@ -8,20 +8,68 @@ export interface InformationState {
   locationid: string | null;
   lat: number | null;
   lon: number | null;
+  point_start: { lat: number; lon: number } | null;
+  point_end: { lat: number; lon: number } | null;
+  class_01: boolean | null;
+  class_02: boolean | null;
+  class_03: boolean | null;
+  class_04: boolean | null;
+  class_05: boolean | null;
+  marker_01: boolean | null;
+  marker_02: boolean | null;
+  marker_03: boolean | null;
+  marker_04: boolean | null;
+  marker_05: boolean | null;
+  marker_06: boolean | null;
+  marker_07: boolean | null;
+  marker_08: boolean | null;
+  marker_09: boolean | null;
+  marker_10: boolean | null;
+  marker_11: boolean | null;
+  marker_12: boolean | null;
+  travel_01: boolean | null;
+  travel_02: boolean | null;
+  travel_03: boolean | null;
+  travel_04: boolean | null;
+  travel_05: boolean | null;
+  travel_06: boolean | null;
+  travel_07: boolean | null;
+  travel_08: boolean | null;
+  travel_09: boolean | null;
+  travel_10: boolean | null;
 }
 
 export interface SidebarState {
   open: boolean;
 }
 
+export interface Location {
+  id: string;
+  name: string;
+  lat: number;
+  lon: number;
+  category: string;
+  rating_avg: number;
+  rating_count: number;
+}
+
 export interface NavbarXState {
-  brand: String;
+  point_end: {
+    lat: number;
+    lon: number;
+    locationId: string;
+    value: string;
+  } | null;
+  clear_query: boolean;
+  location_search: Location | null;
+  detail: boolean;
+  brand: string;
   image: boolean;
   option: String | null;
   headerXy: boolean;
   introducerX: boolean;
-  Xreview: String;
-  save: String;
+  Xreview: string;
+  save: string;
   back: boolean;
   dynamic: boolean;
   activeX: { type: string | null };
@@ -58,6 +106,9 @@ export interface UtilState {
   error: string;
   index: number | null;
   open: boolean;
+  lockRegister: boolean;
+  lockForgot: boolean;
+  lockReset: boolean;
 }
 
 export interface DropdownState {

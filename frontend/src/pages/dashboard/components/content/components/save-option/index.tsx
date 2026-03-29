@@ -18,6 +18,7 @@ import classNames from 'classnames/bind';
 import styles from './save.module.css';
 import { useRef, useState, useMemo } from 'react';
 import { useEditor } from '../../../../../../state/useEditor';
+import { domain } from '../../../../../../utils/domain';
 
 const cx = classNames.bind(styles);
 
@@ -395,7 +396,7 @@ export default function SaveComponent() {
       >
         <div className={cx('location__img')}>
           <img
-            src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer_J5-qDA7caFQ9qQJ5W19Ia1qKoSj3WwepiYI6n7ZECYEoYExWYTYC8SJPxL3b9LcPum4168sm2kP7PE5AEDfWsnH-tYqFxJwj2OFN6580QkWhd6oXbGrko67manH6VRUZfwvZ=w100-h115-p-k-no"
+            src={`${domain}/uploads/avatars/4889286d-1732-48b4-8196-2c92dbb54306-1772812715326-49c08a57-9979-41cd-8af5-7def33b4ec28.webp`}
             alt="avatar"
           />
           {hover && (

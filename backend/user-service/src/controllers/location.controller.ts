@@ -1,6 +1,6 @@
-// location.controller.ts
 import { Request, Response } from 'express';
 import { LocationService } from '../services/location.service';
+import { getPointsFromFile, readDataFile } from '../utils/read_json';
 
 export class LocationController {
   static async search(req: Request, res: Response) {
@@ -121,6 +121,170 @@ export class LocationController {
     } catch (error) {
       console.error('[FeedbackController.getFeedbacks]', error);
       return res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+  static async getAllLocations(req: Request, res: Response) {
+    try {
+      const locations = await LocationService.getAllLocations();
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy tất cả địa điểm thành công.',
+        data: locations,
+      });
+    } catch (error) {
+      console.error('[LocationController] getAllLocations error:', error);
+      return res.status(500).json({ success: false, message: 'Lỗi máy chủ' });
+    }
+  }
+  static async getLocationsByCategory(req: Request, res: Response) {
+    try {
+      const category = req.params.category as string;
+      if (!category) {
+        return res.status(400).json({
+          success: false,
+          message: 'Thiếu category.',
+        });
+      }
+      const locations = await LocationService.getLocationsByCategory(category);
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy địa điểm theo category thành công.',
+        data: locations,
+      });
+    } catch (error) {
+      console.error(
+        '[LocationController] getLocationsByCategory error:',
+        error,
+      );
+      return res.status(500).json({ success: false, message: 'Lỗi máy chủ' });
+    }
+  }
+  static async getAllHistory(req: Request, res: Response) {
+    try {
+      const userId = req.params.userId;
+
+      if (!userId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Thiếu userId trong URL params.',
+        });
+      }
+
+      const histories = await LocationService.getAllHistory(userId);
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy lịch sử thành công',
+        data: histories,
+      });
+    } catch (error) {
+      console.error('getAllHistory error:', error);
+
+      return res.status(500).json({
+        success: false,
+        message: 'Lỗi server.',
+      });
+    }
+  }
+  static async getLocationByKeyword(req: Request, res: Response) {
+    try {
+      const keyword = req.params.keyword;
+
+      if (!keyword?.trim()) {
+        return res.status(400).json({
+          success: false,
+          message: 'Thiếu keyword trong query params.',
+        });
+      }
+      const locations = await LocationService.getLocationByKeyword(
+        keyword.trim(),
+      );
+      return res.status(200).json({
+        success: true,
+        message: 'Tìm kiếm địa điểm thành công.',
+        data: locations,
+      });
+    } catch (error) {
+      console.error('getLocationByKeyword error:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Lỗi server.',
+      });
+    }
+  }
+  static async getReviewsByUserId(req: Request, res: Response) {
+    try {
+      const userId = req.params.userId;
+      const reviews = await LocationService.getReviewsByUserId(userId);
+      res.status(200).json({
+        success: true,
+        message: 'Lấy dữ liệu thành công.',
+        data: reviews,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({
+        success: false,
+        message: 'Máy chủ mất kết nối.',
+      });
+    }
+  }
+  static async getPoints(req: Request, res: Response) {
+    const { id } = req.params;
+
+    if (!id)
+      return res.status(400).json({
+        success: false,
+        message: 'Vui lòng truyền đúng tham số.',
+      });
+
+    try {
+      const points = getPointsFromFile(id, './src/stores/data.json');
+      if (!points)
+        return res.status(404).json({
+          success: false,
+          message: 'Máy chủ mất kết nối.',
+        });
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy dữ liệu thành công',
+        data: [{ id: id, points: points }],
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({
+        success: false,
+        message: 'Máy chủ mất kết nối.',
+      });
+    }
+  }
+  static async getAllIds(req: Request, res: Response) {
+    try {
+      const data = readDataFile('./src/stores/data.json');
+
+      if (data.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: 'Không tìm thấy dữ liệu trong file JSON',
+          data: [],
+        });
+      }
+
+      const ids = data.map((item) => ({ id: item.id }));
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lấy tất cả ID thành công',
+        data: ids,
+      });
+    } catch (err) {
+      console.error('Lỗi xử lý controller:', err);
+      return res.status(500).json({
+        success: false,
+        message: 'Lỗi server khi lấy dữ liệu',
+        error: err instanceof Error ? err.message : err,
+      });
     }
   }
 }

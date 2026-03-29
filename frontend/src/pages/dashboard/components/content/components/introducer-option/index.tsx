@@ -5,12 +5,14 @@ import Feedback from './components/feedback';
 import { useEditor } from '../../../../../../state/useEditor';
 import { useEffect, useRef, useState } from 'react';
 import { domain } from '../../../../../../utils/domain';
+import { UserHook } from '../../../../../../hook/user';
 
 const cx = classNames.bind(styles);
 
 function Xy() {
   const { state, dispatch } = useEditor();
   const [selectedPlace, setSelectedPlace] = useState<any>(null);
+  const { getUserId } = UserHook();
 
   const setState = (option: string, key: string, value: boolean) => {
     dispatch({
@@ -19,23 +21,39 @@ function Xy() {
     });
   };
 
+  const createdRef = useRef<string | null>(null);
+
   useEffect(() => {
     const fetchLocation = async () => {
       try {
         const locationId = state.information.locationid;
-
         if (!locationId) return;
 
         const res = await fetch(
           `${domain}/locations/get-location/${locationId}`,
         );
-
         const data = await res.json();
 
         if (data.success) {
           setSelectedPlace(data.data);
           setState('SET_INFORMATION', 'lat', data.data.lat);
           setState('SET_INFORMATION', 'lon', data.data.lon);
+
+          if (createdRef.current !== locationId) {
+            createdRef.current = locationId;
+            const userId = getUserId();
+            if (userId) {
+              await fetch(`${domain}/locations/insert-history`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  userId,
+                  query: data.data.name,
+                  locationId,
+                }),
+              });
+            }
+          }
         }
       } catch (err) {
         console.error('Lỗi lấy location:', err);

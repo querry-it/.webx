@@ -1,31 +1,47 @@
-import L from "leaflet";
+import L from 'leaflet';
 
-const Style = {
-    color: "blueviolet",
-    weight: 2,
-    fillColor: "#FFAAAA",
-    fillOpacity: 0.25,
-};
+const layerMap = new WeakMap();
 
-export default function HanoiGeoLayer(map, data) {
-    if (!data || data.type !== "FeatureCollection") {
-        return () => {};
+export function GeoLayerControl(map, data) {
+  if (!map || !data) return () => {};
+
+  const oldLayer = layerMap.get(map);
+  if (oldLayer && map.hasLayer(oldLayer)) {
+    map.removeLayer(oldLayer);
+  }
+
+  const layer = L.geoJSON(data, {
+    style: {
+      color: 'royalblue',
+      weight: 2,
+      fillColor: 'transparent',
+      fillOpacity: 0,
+    },
+  });
+
+  layer.addTo(map);
+  layerMap.set(map, layer);
+
+  return () => {
+    if (layerMap.get(map) && map.hasLayer(layer)) {
+      map.removeLayer(layer);
+      layerMap.delete(map);
     }
+  };
+}
 
-    const layer = L.geoJSON(data, {
-        style: Style,
-        onEachFeature: (feature, layer) => {
-            if (feature.properties?.name) {
-                layer.bindPopup(`<b>${feature.properties.name}</b>`);
-            }
-        },
-    });
+export function toggleGeoLayer(map, data, show) {
+  if (!map) return;
 
-    layer.addTo(map);
+  const existing = layerMap.get(map);
 
-    return () => {
-        if (map.hasLayer(layer)) {
-            map.removeLayer(layer);
-        }
-    };
+  if (show) {
+    if (existing && map.hasLayer(existing)) return;
+    GeoLayerControl(map, data);
+  } else {
+    if (existing && map.hasLayer(existing)) {
+      map.removeLayer(existing);
+      layerMap.delete(map);
+    }
+  }
 }

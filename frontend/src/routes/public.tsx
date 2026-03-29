@@ -7,6 +7,7 @@ import Register from '../pages/register';
 import ResetPassword from '../pages/reset-password';
 import NotFound from '../pages/not-found';
 import Dashboard from '../pages/dashboard';
+import { domain } from '../utils/domain';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -19,9 +20,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           if (import.meta.env.PROD) return null;
           try {
-            await axios.get('http://localhost:5000/auth/can-access-forgot', {
-              withCredentials: true,
-            });
+            await axios.get(`${domain}/auth/can-access-forgot`);
             return null;
           } catch {
             throw new Response('Not Found', { status: 404 });
@@ -35,9 +34,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get('http://localhost:5000/auth/can-access-register', {
-              withCredentials: true,
-            });
+            await axios.get(`${domain}/auth/can-access-register`);
             return null;
           } catch {
             throw new Response('Not Found', { status: 404 });
@@ -51,9 +48,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get('http://localhost:5000/auth/can-access-reset', {
-              withCredentials: true,
-            });
+            await axios.get(`${domain}/auth/can-access-reset`);
             return null;
           } catch {
             throw new Response('Not Found', { status: 404 });
@@ -67,7 +62,7 @@ const publicRoutes: RouteObject[] = [
         loader: async () => {
           try {
             if (import.meta.env.PROD) return null;
-            await axios.get('http://localhost:5000/auth/can-access-home', {
+            await axios.get(`${domain}/auth/can-access-home`, {
               withCredentials: true,
             });
             return null;

@@ -1,1 +1,1 @@
-export const domain = 'https://studying-drug-son-metric.trycloudflare.com';
+export const domain = 'https://information-bus-carb-clinic.trycloudflare.com';

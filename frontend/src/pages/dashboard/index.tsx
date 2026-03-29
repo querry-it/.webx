@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { accessToken } from '../../utils/accessToken';
 import { UserHook } from '../../hook/user';
 import { refreshToken } from '../../utils/refresh';
+import { loadAndSyncLayers } from '../../utils/datainit';
 
 export default function Dashboard() {
   const { state, dispatch } = useEditor();
@@ -45,6 +46,7 @@ export default function Dashboard() {
         console.log(err);
       } finally {
         dispatch({ type: 'SET_UTIL', payload: { loading: true } });
+        loadAndSyncLayers(dispatch);
       }
     };
 
