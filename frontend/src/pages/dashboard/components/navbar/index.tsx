@@ -183,7 +183,7 @@ export default function Navbar() {
               </button>
               {state.tooltip.spackle && (
                 <div className={cx('tooltip')}>
-                  <p>Hướng dẫn</p>
+                  <p>Các lớp bản đồ</p>
                 </div>
               )}
             </div>

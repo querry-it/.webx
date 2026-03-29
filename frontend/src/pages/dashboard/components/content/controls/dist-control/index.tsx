@@ -51,8 +51,8 @@ export function createDistMapLayer(map: L.Map, data: any) {
     style: (feature) => {
       const name = getNameFromProps(feature?.properties);
       return {
-        color: '#333',
-        weight: 1.8,
+        color: '#ffffff',
+        weight: 0.1,
         opacity: 0.9,
         fillColor: getDistrictColor(name),
         fillOpacity: 0.45,

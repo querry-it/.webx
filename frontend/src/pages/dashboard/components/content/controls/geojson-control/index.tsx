@@ -13,7 +13,7 @@ export function toggleGeoJSONLayer(map, data, show) {
     const layer = L.geoJSON(data, {
       style: () => ({
         color: '#3498db',
-        weight: 2,
+        weight: 0.1,
         opacity: 0.8,
         fillOpacity: 0.1,
       }),

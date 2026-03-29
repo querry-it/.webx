@@ -36,12 +36,25 @@ type RouteRef = {
 
 const routeRefs = new Map<string, RouteRef>();
 
+function getCategoryName(category: string): string {
+  const categoryMap: Record<string, string> = {
+    history: 'Di tích',
+    nature: 'Thiên nhiên',
+    street: 'Khu phố',
+    park: 'Công viên',
+    village: 'Làng cổ',
+    architecture: 'Kiến trúc',
+    museum: 'Bảo tàng',
+  };
+  return categoryMap[category] || category;
+}
+
 function createMarkerIcon(category: string, index: number, color: string) {
-  const cfg = MARKER_CONFIG[category] || { color: '#aaa', icon: '📍' };
+  const cfg = MARKER_CONFIG[category] || { color: '#aaa', icon: '' };
   return L.divIcon({
     html: `
-      <div style="position:relative;width:36px;height:36px;">
-        <div style="background:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.2);border:2px solid ${cfg.color};font-size:16px;">
+      <div style="position:relative;width:25px;height:25px;">
+        <div style="background:#fff;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.2);border:2px solid ${cfg.color};font-size:16px;">
           ${cfg.icon}
         </div>
         <div style="position:absolute;top:-6px;right:-6px;background:${color};color:#fff;border-radius:50%;width:16px;height:16px;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,0.3);">
@@ -49,7 +62,7 @@ function createMarkerIcon(category: string, index: number, color: string) {
         </div>
       </div>
     `,
-    iconSize: [36, 36],
+    iconSize: [25, 25],
     iconAnchor: [18, 18],
     popupAnchor: [0, -18],
     className: 'custom-marker-icon',
@@ -58,8 +71,8 @@ function createMarkerIcon(category: string, index: number, color: string) {
 
 function createRouteLabel(name: string, color: string) {
   return L.divIcon({
-    html: `<div style="background:${color};color:#fff;padding:4px 14px;border-radius:30px;font-size:12px;font-weight:bold;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.25);">🚌 ${name}</div>`,
-    iconAnchor: [50, 30],
+    html: `<div style="background:${color};color:#fff;padding:0px;border-radius:30px;font-size:12px;font-weight:bold;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.25);"></div>`,
+    iconAnchor: [30, 30],
     className: 'route-label-icon',
   });
 }
@@ -156,7 +169,7 @@ export async function toggleRouteLayer(
             icon: createMarkerIcon(pt.category || 'unknown', i, color),
           }).bindPopup(
             `<b>${i + 1}. ${pt.name || 'Điểm đến'}</b><br>` +
-              `${MARKER_CONFIG[pt.category]?.icon || '📍'} ${pt.category || 'Địa điểm'}`,
+              `${MARKER_CONFIG[pt.category]?.icon || ''} ${getCategoryName(pt.category) || 'Địa điểm'}`,
           );
           marker.addTo(map);
           markers.push(marker);

@@ -75,7 +75,7 @@ export default function SearchComponent() {
     { icon: Bus, label: 'Bến xe', category: 'bus' },
     { icon: Coffee, label: 'Quán cà phê', category: 'cafe' },
     { icon: Store, label: 'Cửa hàng', category: 'shop' },
-    { icon: Hotel, label: 'Khách sạn', category: 'restaurant' },
+    { icon: Hotel, label: 'Nhà hàng', category: 'restaurant' },
     { icon: Train, label: 'Bến tàu điện', category: 'metro' },
   ];
 

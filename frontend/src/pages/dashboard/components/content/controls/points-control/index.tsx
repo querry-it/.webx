@@ -13,7 +13,7 @@ export const MARKER_CONFIG = {
   restaurant: { name: 'Nhà hàng', color: '#ff6b6b', icon: '🍽️' },
   village: { name: 'Làng cổ', color: '#d4a26b', icon: '🏡' },
   bus: { name: 'Bến xe', color: '#2563eb', icon: '🚌' },
-  architecture: { name: 'Kiến trúc', color: '#ffb347', icon: '🏛️' },
+  architecture: { name: 'Kiến trúc', color: '#ffb347', icon: '🏗️' },
   shop: { name: 'Cửa hàng', color: '#e91e63', icon: '🛍️' },
   museum: { name: 'Bảo tàng', color: '#b388ff', icon: '🏺' },
 };
@@ -62,7 +62,7 @@ function createPopupContent(item: any, category: string): string {
   const rating = parseFloat(item.rating_avg).toFixed(1);
   const ratingText =
     rating !== '0.0'
-      ? `${rating} ⭐ (${item.rating_count || 0} đánh giá)`
+      ? `${rating} sao (${item.rating_count || 0} đánh giá)`
       : 'Chưa có đánh giá';
 
   let buttonHtml = '';
@@ -74,7 +74,7 @@ function createPopupContent(item: any, category: string): string {
         style="width:100%;padding:6px 0;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;margin-top:8px;"
         onmouseover="this.style.background='#1d4ed8'"
         onmouseout="this.style.background='#2563eb'">
-        🧭 Dẫn đường
+        Dẫn đường
       </button>`;
   } else if (TOURIST_CATEGORIES.has(category)) {
     buttonHtml = `
@@ -83,7 +83,7 @@ function createPopupContent(item: any, category: string): string {
         style="width:100%;padding:6px 0;background:#f59e0b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;margin-top:8px;"
         onmouseover="this.style.background='#d97706'"
         onmouseout="this.style.background='#f59e0b'">
-        📖 Tìm hiểu
+        Tìm hiểu
       </button>`;
   }
 
