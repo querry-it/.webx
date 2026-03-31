@@ -25,7 +25,7 @@ export default function SupportComponent() {
     { id: 2, name: 'Bản đồ danh giới quận huyện' },
     { id: 3, name: 'Bản đồ giao thông' },
     { id: 4, name: 'Bản đồ mật độ giao thông' },
-    { id: 5, name: 'Bản đồ mật độ dân số' },
+    { id: 5, name: 'Bản đồ nhiệt độ' },
   ];
 
   const markerItems = [

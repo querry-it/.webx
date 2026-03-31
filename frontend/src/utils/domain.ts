@@ -1,2 +1,1 @@
-export const domain =
-  'https://divided-graphical-system-console.trycloudflare.com';
+export const domain = 'http://localhost:5000';
